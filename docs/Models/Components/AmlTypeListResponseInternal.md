@@ -1,0 +1,10 @@
+# AmlTypeListResponseInternal
+
+
+## Fields
+
+| Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `AmlType`                                                                                     | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `Fields`                                                                                      | List<[KYCFieldTypeResponseInternal](../../Models/Components/KYCFieldTypeResponseInternal.md)> | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `ListHits`                                                                                    | *long*                                                                                        | :heavy_minus_sign:                                                                            | N/A                                                                                           |

@@ -1,0 +1,36 @@
+speakeasyVersion: 1.535.1
+sources:
+    Proveapi-OAS:
+        sourceNamespace: proveapi-oas
+        sourceRevisionDigest: sha256:ea8e47791f8820dc39d30728d6aeae3e2942f81996199802fb134b3cb9eb8b07
+        sourceBlobDigest: sha256:c601466454f39c6f21c6ddaac74a7029be6f74b7097ec6f21306bf4033e54ab9
+        tags:
+            - latest
+            - 1.0.0
+targets:
+    proveapi:
+        source: Proveapi-OAS
+        sourceNamespace: proveapi-oas
+        sourceRevisionDigest: sha256:ea8e47791f8820dc39d30728d6aeae3e2942f81996199802fb134b3cb9eb8b07
+        sourceBlobDigest: sha256:c601466454f39c6f21c6ddaac74a7029be6f74b7097ec6f21306bf4033e54ab9
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        Proveapi-OAS:
+            inputs:
+                - location: https://raw.githubusercontent.com/payfone/prove-openapi/refs/heads/main/orchestration.yaml
+                  authHeader: Authorization
+                  authSecret: $OPENAPI_DOC_AUTH_TOKEN
+            registry:
+                location: registry.speakeasyapi.dev/prove-identity-wqp/test/proveapi-oas
+    targets:
+        proveapi:
+            target: csharp
+            source: Proveapi-OAS
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/prove-identity-wqp/test/proveapi-oas-csharp-code-samples
+                labelOverride:
+                    fixedValue: Csharp (SDK)
+                blocking: false

@@ -1,0 +1,44 @@
+configVersion: 2.0.0
+generation:
+  sdkClassName: Proveapi
+  maintainOpenAPIOrder: true
+  usageSnippets:
+    optionalPropertyRendering: withExample
+  useClassNamesForArrayFields: true
+  fixes:
+    nameResolutionDec2023: true
+    nameResolutionFeb2025: false
+    parameterOrderingFeb2024: true
+    requestResponseComponentNamesFeb2024: true
+    securityFeb2025: true
+  auth:
+    oAuth2ClientCredentialsEnabled: false
+    oAuth2PasswordEnabled: false
+csharp:
+  version: 0.0.2
+  additionalDependencies: []
+  author: Speakeasy
+  clientServerStatusCodesAsErrors: true
+  defaultErrorName: APIException
+  disableNamespacePascalCasingApr2024: true
+  dotnetVersion: net8.0
+  enableSourceLink: false
+  flattenGlobalSecurity: true
+  flatteningOrder: parameters-first
+  imports:
+    option: openapi
+    paths:
+      callbacks: Models/Callbacks
+      errors: Models/Errors
+      operations: Models/Requests
+      shared: Models/Components
+      webhooks: Models/Webhooks
+  includeDebugSymbols: false
+  inputModelSuffix: input
+  maxMethodParams: 4
+  methodArguments: infer-optional-args
+  outputModelSuffix: output
+  packageName: Prove.Proveapi
+  packageTags: ""
+  responseFormat: envelope-http
+  sourceDirectory: src
