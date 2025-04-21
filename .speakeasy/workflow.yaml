@@ -12,6 +12,9 @@ targets:
     proveapi:
         target: csharp
         source: Proveapi-OAS
+        publish:
+            nuget:
+                apiKey: $nuget_api_key
         codeSamples:
             registry:
                 location: registry.speakeasyapi.dev/prove-identity-wqp/test/proveapi-oas-csharp-code-samples
