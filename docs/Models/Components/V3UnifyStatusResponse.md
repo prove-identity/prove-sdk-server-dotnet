@@ -1,0 +1,9 @@
+# V3UnifyStatusResponse
+
+
+## Fields
+
+| Field                                                   | Type                                                    | Required                                                | Description                                             | Example                                                 |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `PhoneNumber`                                           | *string*                                                | :heavy_check_mark:                                      | The number of the mobile phone used during the process. | 2001004011                                              |
+| `Success`                                               | *string*                                                | :heavy_check_mark:                                      | N/A                                                     |                                                         |

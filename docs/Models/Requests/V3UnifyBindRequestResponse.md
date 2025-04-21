@@ -1,0 +1,10 @@
+# V3UnifyBindRequestResponse
+
+
+## Fields
+
+| Field                                                                 | Type                                                                  | Required                                                              | Description                                                           | Example                                                               |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `HttpMeta`                                                            | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)               | :heavy_check_mark:                                                    | N/A                                                                   |                                                                       |
+| `V3UnifyBindResponse`                                                 | [V3UnifyBindResponse](../../Models/Components/V3UnifyBindResponse.md) | :heavy_minus_sign:                                                    | Successful Request.                                                   | {<br/>"phoneNumber": "2001004011",<br/>"success": "success"<br/>}     |
+| `Headers`                                                             | Dictionary<String, List<*string*>>                                    | :heavy_check_mark:                                                    | N/A                                                                   |                                                                       |

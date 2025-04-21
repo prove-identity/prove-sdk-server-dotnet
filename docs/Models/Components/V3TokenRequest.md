@@ -1,0 +1,10 @@
+# V3TokenRequest
+
+
+## Fields
+
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      | Example                                                                          |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `ClientId`                                                                       | *string*                                                                         | :heavy_check_mark:                                                               | ClientID is the optional client ID.                                              | customer_id                                                                      |
+| `ClientSecret`                                                                   | *string*                                                                         | :heavy_check_mark:                                                               | ClientSecret is the client secret ID provided to the customer during onboarding. | secret                                                                           |
+| `GrantType`                                                                      | *string*                                                                         | :heavy_check_mark:                                                               | GrantType only allows option: `client_credentials`.                              | client_credentials                                                               |
