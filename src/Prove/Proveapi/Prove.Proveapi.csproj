@@ -3,10 +3,12 @@
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <PackageId>Prove.Proveapi</PackageId>
-    <Version>0.0.2</Version>
+    <Version>0.0.3</Version>
     <TargetFramework>net8.0</TargetFramework>
     <Authors>Speakeasy</Authors>
     <Copyright>Copyright (c) Speakeasy 2025</Copyright>
+    <RepositoryUrl>https://github.com/prove-identity/prove-sdk-server-dotnet.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
     <Description>Prove APIs: This specification describes the Prove API.<br/>
 <br/>
 OpenAPI Spec - generated.</Description>
@@ -23,7 +25,7 @@ OpenAPI Spec - generated.</Description>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\README.md" Pack="true" PackagePath="\"/>
+    <None Include="..\..\..\NUGET.md" Pack="true" PackagePath="README.md"/>
     <None Include="..\..\..\docs\**\*" Pack="true" PackagePath="\docs"  CopyToOutputDirectory="PreserveNewest"/>
   </ItemGroup>
 

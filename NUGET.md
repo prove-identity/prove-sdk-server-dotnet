@@ -1,44 +1,5 @@
-# prove-sdk-server-dotnet
-.NET Server SDK for Prove APIs - Customer Access
+# Prove.Proveapi
 
-<!-- Start Summary [summary] -->
-## Summary
-
-Prove APIs: This specification describes the Prove API.
-
-OpenAPI Spec - generated.
-<!-- End Summary [summary] -->
-
-<!-- Start Table of Contents [toc] -->
-## Table of Contents
-<!-- $toc-max-depth=2 -->
-* [prove-sdk-server-dotnet](#prove-sdk-server-dotnet)
-  * [SDK Installation](#sdk-installation)
-  * [SDK Example Usage](#sdk-example-usage)
-  * [Authentication](#authentication)
-  * [Available Resources and Operations](#available-resources-and-operations)
-  * [Error Handling](#error-handling)
-  * [Server Selection](#server-selection)
-
-<!-- End Table of Contents [toc] -->
-
-<!-- Start SDK Installation [installation] -->
-## SDK Installation
-
-### NuGet
-
-To add the [NuGet](https://www.nuget.org/) package to a .NET project:
-```bash
-dotnet add package Prove.Proveapi
-```
-
-### Locally
-
-To add a reference to a local instance of the SDK in a .NET project:
-```bash
-dotnet add reference src/Prove/Proveapi/Prove.Proveapi.csproj
-```
-<!-- End SDK Installation [installation] -->
 
 <!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
@@ -97,29 +58,6 @@ var res = await sdk.V3.V3TokenRequestAsync(req);
 // handle response
 ```
 <!-- End Authentication [security] -->
-
-<!-- Start Available Resources and Operations [operations] -->
-## Available Resources and Operations
-
-<details open>
-<summary>Available methods</summary>
-
-
-### [V3](docs/sdks/v3/README.md)
-
-* [V3TokenRequest](docs/sdks/v3/README.md#v3tokenrequest) - Request OAuth token.
-* [V3ChallengeRequest](docs/sdks/v3/README.md#v3challengerequest) - Submit challenge.
-* [V3CompleteRequest](docs/sdks/v3/README.md#v3completerequest) - Complete flow.
-* [V3StartRequest](docs/sdks/v3/README.md#v3startrequest) - Start flow.
-* [V3UnifyRequest](docs/sdks/v3/README.md#v3unifyrequest) - Initiate Possession Check
-* [V3UnifyBindRequest](docs/sdks/v3/README.md#v3unifybindrequest) - Bind Prove Key
-* [V3UnifyStatusRequest](docs/sdks/v3/README.md#v3unifystatusrequest) - Check Status of Unify Session
-* [V3ValidateRequest](docs/sdks/v3/README.md#v3validaterequest) - Validate phone number.
-* [V3VerifyRequest](docs/sdks/v3/README.md#v3verifyrequest) - Initiate verified users session.
-* [V3VerifyStatusRequest](docs/sdks/v3/README.md#v3verifystatusrequest) - Perform checks for verified users session.
-
-</details>
-<!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Error Handling [errors] -->
 ## Error Handling
