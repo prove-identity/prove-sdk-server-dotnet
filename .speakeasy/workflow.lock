@@ -1,4 +1,4 @@
-speakeasyVersion: 1.535.1
+speakeasyVersion: 1.540.1
 sources:
     Proveapi-OAS:
         sourceNamespace: proveapi-oas
@@ -28,6 +28,9 @@ workflow:
         proveapi:
             target: csharp
             source: Proveapi-OAS
+            publish:
+                nuget:
+                    apiKey: $nuget_api_key
             codeSamples:
                 registry:
                     location: registry.speakeasyapi.dev/prove-identity-wqp/test/proveapi-oas-csharp-code-samples

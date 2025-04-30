@@ -3,10 +3,12 @@ id: 99003e79-c0db-4110-b5b2-e9c131bd48f0
 management:
   docChecksum: 881b3374972f56d6a834287fb698b669
   docVersion: 1.0.0
-  speakeasyVersion: 1.535.1
-  generationVersion: 2.585.2
-  releaseVersion: 0.0.2
-  configChecksum: 551f8dd706ca8bc118aba1a88be94c58
+  speakeasyVersion: 1.540.1
+  generationVersion: 2.593.4
+  releaseVersion: 0.0.3
+  configChecksum: 8e21cabc37d4a5f519143690d0c7bac2
+  repoURL: https://github.com/prove-identity/prove-sdk-server-dotnet.git
+  published: true
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -23,6 +25,7 @@ features:
     serverIDs: 2.82.1
 generatedFiles:
   - .gitattributes
+  - NUGET.md
   - Prove.Proveapi.sln
   - USAGE.md
   - docs/Models/Components/AmlTypeListResponseInternal.md

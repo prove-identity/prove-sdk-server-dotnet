@@ -106,10 +106,10 @@ namespace Prove.Proveapi
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.2";
-        private const string _sdkGenVersion = "2.585.2";
+        private const string _sdkVersion = "0.0.3";
+        private const string _sdkGenVersion = "2.593.4";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.2 2.585.2 1.0.0 Prove.Proveapi";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.3 2.593.4 1.0.0 Prove.Proveapi";
         private string _serverUrl = "";
         private SDKConfig.Server? _server = null;
         private ISpeakeasyHttpClient _client;
