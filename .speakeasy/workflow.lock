@@ -1,4 +1,4 @@
-speakeasyVersion: 1.540.1
+speakeasyVersion: 1.541.1
 sources:
     Proveapi-OAS:
         sourceNamespace: proveapi-oas
