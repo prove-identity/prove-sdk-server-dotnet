@@ -5,8 +5,8 @@ management:
   docVersion: 1.0.0
   speakeasyVersion: 1.541.2
   generationVersion: 2.595.4
-  releaseVersion: 0.0.8
-  configChecksum: 526c8fc3719f21fa92ffe4a65924fbc8
+  releaseVersion: 0.0.9
+  configChecksum: 37e377f26e752fc2f1fb3065d7204482
   repoURL: https://github.com/prove-identity/prove-sdk-server-dotnet.git
   published: true
 features:
@@ -145,7 +145,7 @@ generatedFiles:
   - src/Prove/Proveapi/Models/Requests/V3VerifyRequestResponse.cs
   - src/Prove/Proveapi/Models/Requests/V3VerifyStatusRequestResponse.cs
   - src/Prove/Proveapi/Prove.Proveapi.csproj
-  - src/Prove/Proveapi/Proveapi.cs
+  - src/Prove/Proveapi/ProveAPI.cs
   - src/Prove/Proveapi/Utils/AnyDeserializer.cs
   - src/Prove/Proveapi/Utils/BigIntStrConverter.cs
   - src/Prove/Proveapi/Utils/DecimalStrConverter.cs

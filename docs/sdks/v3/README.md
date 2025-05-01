@@ -26,7 +26,7 @@ Send this request to request the OAuth token.
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
 
-var sdk = new Proveapi();
+var sdk = new ProveAPI();
 
 V3TokenRequest req = new V3TokenRequest() {
     ClientId = "customer_id",
@@ -68,7 +68,7 @@ Send this request to submit challenge information. Either a DOB or last 4 of SSN
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
 
-var sdk = new Proveapi(auth: "<YOUR_AUTH_HERE>");
+var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 V3ChallengeRequest req = new V3ChallengeRequest() {
     CorrelationId = "713189b8-5555-4b08-83ba-75d08780aebd",
@@ -112,7 +112,7 @@ using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
 using System.Collections.Generic;
 
-var sdk = new Proveapi(auth: "<YOUR_AUTH_HERE>");
+var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 V3CompleteRequest req = new V3CompleteRequest() {
     CorrelationId = "713189b8-5555-4b08-83ba-75d08780aebd",
@@ -179,7 +179,7 @@ Send this request to start a Prove flow. It will return a correlation ID and an 
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
 
-var sdk = new Proveapi(auth: "<YOUR_AUTH_HERE>");
+var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 V3StartRequest req = new V3StartRequest() {
     Dob = "1981-01",
@@ -227,7 +227,7 @@ This endpoint allows you to initiate the possession check.
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
 
-var sdk = new Proveapi(auth: "<YOUR_AUTH_HERE>");
+var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 V3UnifyRequest req = new V3UnifyRequest() {
     ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
@@ -273,7 +273,7 @@ This endpoint allows you to bind a Prove Key to a phone number of a Unify sessio
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
 
-var sdk = new Proveapi(auth: "<YOUR_AUTH_HERE>");
+var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 V3UnifyBindRequest req = new V3UnifyBindRequest() {
     ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
@@ -316,7 +316,7 @@ This endpoint allows you to check the status of a Unify session and get the poss
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
 
-var sdk = new Proveapi(auth: "<YOUR_AUTH_HERE>");
+var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 V3UnifyStatusRequest req = new V3UnifyStatusRequest() {
     ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
@@ -359,7 +359,7 @@ Send this request to check the phone number entered/discovered earlier in the fl
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
 
-var sdk = new Proveapi(auth: "<YOUR_AUTH_HERE>");
+var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 V3ValidateRequest req = new V3ValidateRequest() {
     CorrelationId = "713189b8-5555-4b08-83ba-75d08780aebd",
@@ -400,7 +400,7 @@ Send this request to initiate a Verified Users session. It will return a correla
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
 
-var sdk = new Proveapi(auth: "<YOUR_AUTH_HERE>");
+var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 V3VerifyRequest req = new V3VerifyRequest() {
     ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
@@ -449,7 +449,7 @@ Send this request to perform the necessary checks for a Verified Users session. 
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
 
-var sdk = new Proveapi(auth: "<YOUR_AUTH_HERE>");
+var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 V3VerifyStatusRequest req = new V3VerifyStatusRequest() {
     ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",

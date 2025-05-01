@@ -28,7 +28,7 @@ namespace Prove.Proveapi
     /// OpenAPI Spec - generated.
     /// </remarks>
     /// </summary>
-    public interface IProveapi
+    public interface IProveAPI
     {
         public IV3 V3 { get; }
     }
@@ -101,22 +101,22 @@ namespace Prove.Proveapi
     /// OpenAPI Spec - generated.
     /// </remarks>
     /// </summary>
-    public class Proveapi: IProveapi
+    public class ProveAPI: IProveAPI
     {
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.8";
+        private const string _sdkVersion = "0.0.9";
         private const string _sdkGenVersion = "2.595.4";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.8 2.595.4 1.0.0 Prove.Proveapi";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.9 2.595.4 1.0.0 Prove.Proveapi";
         private string _serverUrl = "";
         private SDKConfig.Server? _server = null;
         private ISpeakeasyHttpClient _client;
         private Func<Prove.Proveapi.Models.Components.Security>? _securitySource;
         public IV3 V3 { get; private set; }
 
-        public Proveapi(string? auth = null, Func<string>? authSource = null, SDKConfig.Server? server = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
+        public ProveAPI(string? auth = null, Func<string>? authSource = null, SDKConfig.Server? server = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
         {
             if (server != null)
             {
