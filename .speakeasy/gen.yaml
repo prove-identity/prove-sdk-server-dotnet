@@ -1,6 +1,6 @@
 configVersion: 2.0.0
 generation:
-  sdkClassName: Proveapi
+  sdkClassName: ProveAPI
   maintainOpenAPIOrder: true
   usageSnippets:
     optionalPropertyRendering: withExample
