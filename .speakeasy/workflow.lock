@@ -2,20 +2,20 @@ speakeasyVersion: 1.541.2
 sources:
     Proveapi-OAS:
         sourceNamespace: proveapi-oas
-        sourceRevisionDigest: sha256:e18b8026152adbeade1f53e4ac815c2c207333cbc191e7d123aa7a439d3062a7
+        sourceRevisionDigest: sha256:bf0c515374e886836f02ea3dc59ee4624284254b21f9cdf72adac470fe357287
         sourceBlobDigest: sha256:c601466454f39c6f21c6ddaac74a7029be6f74b7097ec6f21306bf4033e54ab9
         tags:
             - latest
-            - speakeasy-sdk-regen-1746108888
+            - speakeasy-sdk-regen-1746124669
             - 1.0.0
 targets:
     proveapi:
         source: Proveapi-OAS
         sourceNamespace: proveapi-oas
-        sourceRevisionDigest: sha256:e18b8026152adbeade1f53e4ac815c2c207333cbc191e7d123aa7a439d3062a7
+        sourceRevisionDigest: sha256:bf0c515374e886836f02ea3dc59ee4624284254b21f9cdf72adac470fe357287
         sourceBlobDigest: sha256:c601466454f39c6f21c6ddaac74a7029be6f74b7097ec6f21306bf4033e54ab9
         codeSamplesNamespace: proveapi-oas-csharp-code-samples
-        codeSamplesRevisionDigest: sha256:f5bb4d097aa5c8ac77169957bafd6369295790a30b83794e3f5f675243ce769c
+        codeSamplesRevisionDigest: sha256:dd7bb6e30cab5dad7d72980498861de564896a142a7625adaa8cc94598aeb7a0
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

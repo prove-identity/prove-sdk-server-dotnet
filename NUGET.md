@@ -10,7 +10,7 @@
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
 
-var sdk = new Proveapi(auth: "<YOUR_AUTH_HERE>");
+var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 V3StartRequest req = new V3StartRequest() {
     Dob = "1981-01",
@@ -45,7 +45,7 @@ To authenticate with the API the `Auth` parameter must be set when initializing 
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
 
-var sdk = new Proveapi(auth: "<YOUR_AUTH_HERE>");
+var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 V3TokenRequest req = new V3TokenRequest() {
     ClientId = "customer_id",
@@ -88,7 +88,7 @@ using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
 using Prove.Proveapi.Models.Errors;
 
-var sdk = new Proveapi();
+var sdk = new ProveAPI();
 
 try
 {
@@ -148,7 +148,7 @@ You can override the default server globally by passing a server name to the `se
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
 
-var sdk = new Proveapi(server: "prod-eu");
+var sdk = new ProveAPI(server: "prod-eu");
 
 V3TokenRequest req = new V3TokenRequest() {
     ClientId = "customer_id",
@@ -168,7 +168,7 @@ The default server can also be overridden globally by passing a URL to the `serv
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
 
-var sdk = new Proveapi(serverUrl: "https://platform.uat.proveapis.com");
+var sdk = new ProveAPI(serverUrl: "https://platform.uat.proveapis.com");
 
 V3TokenRequest req = new V3TokenRequest() {
     ClientId = "customer_id",

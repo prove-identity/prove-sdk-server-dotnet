@@ -3,7 +3,7 @@
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
 
-var sdk = new Proveapi(auth: "<YOUR_AUTH_HERE>");
+var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 V3StartRequest req = new V3StartRequest() {
     Dob = "1981-01",
