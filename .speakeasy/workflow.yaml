@@ -1,23 +1,23 @@
 workflowVersion: 1.0.0
 speakeasyVersion: latest
 sources:
-  Proveapi-OAS:
-    inputs:
-      - location: https://raw.githubusercontent.com/payfone/prove-openapi/refs/heads/main/orchestration.yaml
-        authHeader: Authorization
-        authSecret: $OPENAPI_DOC_AUTH_TOKEN
-    registry:
-      location: registry.speakeasyapi.dev/prove-identity-wqp/prove-dev/proveapi-oas
+    Proveapi-OAS:
+        inputs:
+            - location: https://raw.githubusercontent.com/payfone/prove-openapi/refs/heads/main/orchestration.yaml
+              authHeader: Authorization
+              authSecret: $OPENAPI_DOC_AUTH_TOKEN
+        registry:
+            location: registry.speakeasyapi.dev/prove-identity-wqp/prove-dev/proveapi-oas
 targets:
-  proveapi:
-    target: csharp
-    source: Proveapi-OAS
-    publish:
-      nuget:
-        apiKey: $nuget_api_key
-    codeSamples:
-      registry:
-        location: registry.speakeasyapi.dev/prove-identity-wqp/test/proveapi-oas-csharp-code-samples
-      labelOverride:
-        fixedValue: Csharp (SDK)
-      blocking: false
+    proveapi:
+        target: csharp
+        source: Proveapi-OAS
+        publish:
+            nuget:
+                apiKey: $nuget_api_key
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/prove-identity-wqp/test/proveapi-oas-csharp-code-samples
+            labelOverride:
+                fixedValue: Csharp (SDK)
+            blocking: false

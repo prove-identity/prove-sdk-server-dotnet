@@ -5,8 +5,8 @@ management:
   docVersion: 1.0.0
   speakeasyVersion: 1.541.2
   generationVersion: 2.595.4
-  releaseVersion: 0.0.5
-  configChecksum: aa08db84a031860eb49ede4a67a83627
+  releaseVersion: 0.0.6
+  configChecksum: 52f79f51b41ef95760e183f14f5060fc
   repoURL: https://github.com/prove-identity/prove-sdk-server-dotnet.git
   published: true
 features:

@@ -13,8 +13,6 @@ targets:
         sourceNamespace: proveapi-oas
         sourceRevisionDigest: sha256:5035db437dc24d5bebac6bd3423908e897c5d361bc50c2d7df9336b8669a61d8
         sourceBlobDigest: sha256:c601466454f39c6f21c6ddaac74a7029be6f74b7097ec6f21306bf4033e54ab9
-        codeSamplesNamespace: proveapi-oas-csharp-code-samples
-        codeSamplesRevisionDigest: sha256:21865a2a7c2d5d2fdfd987901071b1e47e8b2082d2c96cb27db260567c27e9ff
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -25,7 +23,7 @@ workflow:
                   authHeader: Authorization
                   authSecret: $OPENAPI_DOC_AUTH_TOKEN
             registry:
-                location: registry.speakeasyapi.dev/prove-identity-wqp/test/proveapi-oas
+                location: registry.speakeasyapi.dev/prove-identity-wqp/prove-dev/proveapi-oas
     targets:
         proveapi:
             target: csharp
