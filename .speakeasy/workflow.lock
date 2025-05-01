@@ -2,17 +2,20 @@ speakeasyVersion: 1.541.2
 sources:
     Proveapi-OAS:
         sourceNamespace: proveapi-oas
-        sourceRevisionDigest: sha256:5035db437dc24d5bebac6bd3423908e897c5d361bc50c2d7df9336b8669a61d8
+        sourceRevisionDigest: sha256:e18b8026152adbeade1f53e4ac815c2c207333cbc191e7d123aa7a439d3062a7
         sourceBlobDigest: sha256:c601466454f39c6f21c6ddaac74a7029be6f74b7097ec6f21306bf4033e54ab9
         tags:
             - latest
+            - speakeasy-sdk-regen-1746108888
             - 1.0.0
 targets:
     proveapi:
         source: Proveapi-OAS
         sourceNamespace: proveapi-oas
-        sourceRevisionDigest: sha256:5035db437dc24d5bebac6bd3423908e897c5d361bc50c2d7df9336b8669a61d8
+        sourceRevisionDigest: sha256:e18b8026152adbeade1f53e4ac815c2c207333cbc191e7d123aa7a439d3062a7
         sourceBlobDigest: sha256:c601466454f39c6f21c6ddaac74a7029be6f74b7097ec6f21306bf4033e54ab9
+        codeSamplesNamespace: proveapi-oas-csharp-code-samples
+        codeSamplesRevisionDigest: sha256:f5bb4d097aa5c8ac77169957bafd6369295790a30b83794e3f5f675243ce769c
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -23,7 +26,7 @@ workflow:
                   authHeader: Authorization
                   authSecret: $OPENAPI_DOC_AUTH_TOKEN
             registry:
-                location: registry.speakeasyapi.dev/prove-identity-wqp/prove-dev/proveapi-oas
+                location: registry.speakeasyapi.dev/prove/prove-dev/proveapi-oas
     targets:
         proveapi:
             target: csharp
@@ -33,7 +36,7 @@ workflow:
                     apiKey: $nuget_api_key
             codeSamples:
                 registry:
-                    location: registry.speakeasyapi.dev/prove-identity-wqp/prove-dev/proveapi-oas-csharp-code-samples
+                    location: registry.speakeasyapi.dev/prove/prove-dev/proveapi-oas-csharp-code-samples
                 labelOverride:
                     fixedValue: Csharp (SDK)
                 blocking: false
