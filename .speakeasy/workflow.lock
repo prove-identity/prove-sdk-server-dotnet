@@ -33,7 +33,7 @@ workflow:
                     apiKey: $nuget_api_key
             codeSamples:
                 registry:
-                    location: registry.speakeasyapi.dev/prove-identity-wqp/test/proveapi-oas-csharp-code-samples
+                    location: registry.speakeasyapi.dev/prove-identity-wqp/prove-dev/proveapi-oas-csharp-code-samples
                 labelOverride:
                     fixedValue: Csharp (SDK)
                 blocking: false
