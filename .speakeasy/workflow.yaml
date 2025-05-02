@@ -16,6 +16,7 @@ targets:
             nuget:
                 apiKey: $nuget_api_key
         codeSamples:
+            output: codeSamples.yaml
             registry:
                 location: registry.speakeasyapi.dev/prove/prove-dev/proveapi-oas-csharp-code-samples
             labelOverride:
