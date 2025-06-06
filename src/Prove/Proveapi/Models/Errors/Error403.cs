@@ -17,13 +17,13 @@ namespace Prove.Proveapi.Models.Errors
     {
 
         /// <summary>
-        /// An internal error code that identifies the specific authorization issue.
+        /// An error code that identifies the specific authorization issue.
         /// </summary>
         [JsonProperty("code")]
         public long? Code { get; set; }
 
         /// <summary>
-        /// An error message describing why access is forbidden.
+        /// The error message describing why access is forbidden.
         /// </summary>
         [JsonProperty("message")]
         private string? _message { get; set; }

@@ -5,20 +5,20 @@
 
 ### Available Operations
 
-* [V3TokenRequest](#v3tokenrequest) - Request OAuth token.
-* [V3ChallengeRequest](#v3challengerequest) - Submit challenge.
-* [V3CompleteRequest](#v3completerequest) - Complete flow.
-* [V3StartRequest](#v3startrequest) - Start flow.
+* [V3TokenRequest](#v3tokenrequest) - Request OAuth Token
+* [V3ChallengeRequest](#v3challengerequest) - Submit Challenge
+* [V3CompleteRequest](#v3completerequest) - Complete Flow
+* [V3StartRequest](#v3startrequest) - Start Flow
 * [V3UnifyRequest](#v3unifyrequest) - Initiate Possession Check
 * [V3UnifyBindRequest](#v3unifybindrequest) - Bind Prove Key
-* [V3UnifyStatusRequest](#v3unifystatusrequest) - Check Status of Unify Session
-* [V3ValidateRequest](#v3validaterequest) - Validate phone number.
-* [V3VerifyRequest](#v3verifyrequest) - Initiate verified users session.
-* [V3VerifyStatusRequest](#v3verifystatusrequest) - Perform checks for verified users session.
+* [V3UnifyStatusRequest](#v3unifystatusrequest) - Check Status
+* [V3ValidateRequest](#v3validaterequest) - Validate Phone Number
+* [V3VerifyRequest](#v3verifyrequest) - Initiate Verified Users Session
+* [V3VerifyStatusRequest](#v3verifystatusrequest) - Perform Checks for Verified Users Session
 
 ## V3TokenRequest
 
-Send this request to request the OAuth token.
+This endpoint allows you to request an OAuth token.
 
 ### Example Usage
 
@@ -53,14 +53,14 @@ var res = await sdk.V3.V3TokenRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.APIException | 4XX, 5XX                                  | \*/\*                                     |
 
 ## V3ChallengeRequest
 
-Send this request to submit challenge information. Either a DOB or last 4 of SSN needs to be submitted if neither was submitted to the /start endpoint (challenge fields submitted to this endpoint will overwrite the /start endpoint fields submitted). It will return a correlation ID, user information, and the next step to call in the flow. This capability is only available in Pre-Fill®, it's not available in Prove Identity®. You'll notice that when using Prove Identity®, if /validate is successful, it will then return `v3-complete` as one of the keys in the `Next` field map instead of `v3-challenge`.
+This endpoint allows you to submit challenge information.
 
 ### Example Usage
 
@@ -95,7 +95,7 @@ var res = await sdk.V3.V3ChallengeRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -103,7 +103,7 @@ var res = await sdk.V3.V3ChallengeRequestAsync(req);
 
 ## V3CompleteRequest
 
-Send this request to verify the user and complete the flow. It will return a correlation ID, user information, and the next step to call in the flow. There is a validation check that requires at least first + last name or SSN passed in, else an HTTP 400 is returned. Additionally, specific to the Pre-Fill® or Prove Identity® with KYC use case, you need to pass in first name, last name, DOB and SSN (or address) to ensure you receive back the KYC elements and correct CIP values.
+This endpoint allows you to verify the user and complete the flow.
 
 ### Example Usage
 
@@ -125,18 +125,10 @@ V3CompleteRequest req = new V3CompleteRequest() {
                 PostalCode = "78285",
                 Region = "TX",
             },
-            new V3CompleteAddressEntryRequest() {
-                Address = "4861 Jay Junction",
-                City = "Boston",
-                ExtendedAddress = "Apt 78",
-                PostalCode = "02208",
-                Region = "MS",
-            },
         },
         Dob = "1981-01",
         EmailAddresses = new List<string>() {
             "jdoe@example.com",
-            "dsmith@example.com",
         },
         FirstName = "Tod",
         LastName = "Weedall",
@@ -163,7 +155,7 @@ var res = await sdk.V3.V3CompleteRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -171,7 +163,7 @@ var res = await sdk.V3.V3CompleteRequestAsync(req);
 
 ## V3StartRequest
 
-Send this request to start a Prove flow. It will return a correlation ID and an authToken for the client SDK.
+This endpoint allows you to start the solution flow.
 
 ### Example Usage
 
@@ -182,6 +174,7 @@ using Prove.Proveapi.Models.Components;
 var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 V3StartRequest req = new V3StartRequest() {
+    AllowOTPRetry = true,
     Dob = "1981-01",
     EmailAddress = "mpinsonm@dyndns.org",
     FinalTargetUrl = "https://www.example.com/landing-page",
@@ -211,7 +204,7 @@ var res = await sdk.V3.V3StartRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -230,12 +223,14 @@ using Prove.Proveapi.Models.Components;
 var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 V3UnifyRequest req = new V3UnifyRequest() {
+    AllowOTPRetry = true,
     ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
     ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
     FinalTargetUrl = "https://www.example.com/landing-page",
     PhoneNumber = "2001004011",
     PossessionType = "mobile",
-    SmsMessage = "#### is your verification code",
+    Rebind = true,
+    SmsMessage = "#### is your verification code.",
 };
 
 var res = await sdk.V3.V3UnifyRequestAsync(req);
@@ -257,7 +252,7 @@ var res = await sdk.V3.V3UnifyRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -300,7 +295,7 @@ var res = await sdk.V3.V3UnifyBindRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -343,7 +338,7 @@ var res = await sdk.V3.V3UnifyStatusRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -351,7 +346,7 @@ var res = await sdk.V3.V3UnifyStatusRequestAsync(req);
 
 ## V3ValidateRequest
 
-Send this request to check the phone number entered/discovered earlier in the flow is validated. It will return a correlation ID and the next step.
+This endpoint allows you to check if the phone number entered/discovered earlier in the flow is validated.
 
 ### Example Usage
 
@@ -384,7 +379,7 @@ var res = await sdk.V3.V3ValidateRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -392,7 +387,7 @@ var res = await sdk.V3.V3ValidateRequestAsync(req);
 
 ## V3VerifyRequest
 
-Send this request to initiate a Verified Users session. It will return a correlation ID, authToken for the client SDK, and the results of the possession and verify checks (usually pending from this API).
+This endpoint allows you to initiate a Verified Users session.
 
 ### Example Usage
 
@@ -403,6 +398,7 @@ using Prove.Proveapi.Models.Components;
 var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 V3VerifyRequest req = new V3VerifyRequest() {
+    AllowOTPRetry = true,
     ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
     ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
     EmailAddress = "sbutrimovichb@who.int",
@@ -433,7 +429,7 @@ var res = await sdk.V3.V3VerifyRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -441,7 +437,7 @@ var res = await sdk.V3.V3VerifyRequestAsync(req);
 
 ## V3VerifyStatusRequest
 
-Send this request to perform the necessary checks for a Verified Users session. It will return the results of the possession and verify checks, as well as the overall success.
+This endpoint allows you to perform the necessary checks for a Verified Users session.
 
 ### Example Usage
 
@@ -475,7 +471,7 @@ var res = await sdk.V3.V3VerifyStatusRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |

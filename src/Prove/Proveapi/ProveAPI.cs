@@ -33,65 +33,6 @@ namespace Prove.Proveapi
         public IV3 V3 { get; }
     }
 
-    public class SDKConfig
-    {
-        /// <summary>
-        /// Server identifiers available to the SDK.
-        /// </summary>
-        public enum Server {
-        UatUs,
-        ProdUs,
-        UatEu,
-        ProdEu,
-        }
-
-        /// <summary>
-        /// Server URLs available to the SDK.
-        /// </summary>
-        public static readonly Dictionary<Server, string> ServerMap = new Dictionary<Server, string>()
-        {
-            { Server.UatUs, "https://platform.uat.proveapis.com" },
-            { Server.ProdUs, "https://platform.proveapis.com" },
-            { Server.UatEu, "https://platform.uat.eu.proveapis.com" },
-            { Server.ProdEu, "https://platform.eu.proveapis.com" },
-        };
-
-        public string ServerUrl = "";
-        public Server? ServerName = null;
-        public SDKHooks Hooks = new SDKHooks();
-        public RetryConfig? RetryConfig = null;
-
-        public string GetTemplatedServerUrl()
-        {
-            if (!String.IsNullOrEmpty(this.ServerUrl))
-            {
-                return Utilities.TemplateUrl(Utilities.RemoveSuffix(this.ServerUrl, "/"), new Dictionary<string, string>());
-            }
-            if (this.ServerName is null)
-            {
-                this.ServerName = SDKConfig.Server.UatUs;
-            }
-            else if (!SDKConfig.ServerMap.ContainsKey(this.ServerName.Value))
-            {
-                throw new Exception($"Invalid server \"{this.ServerName.Value}\"");
-            }
-
-            Dictionary<string, string> serverDefault = new Dictionary<string, string>();
-
-            return Utilities.TemplateUrl(SDKConfig.ServerMap[this.ServerName.Value], serverDefault);
-        }
-
-        public ISpeakeasyHttpClient InitHooks(ISpeakeasyHttpClient client)
-        {
-            string preHooksUrl = GetTemplatedServerUrl();
-            var (postHooksUrl, postHooksClient) = this.Hooks.SDKInit(preHooksUrl, client);
-            if (preHooksUrl != postHooksUrl)
-            {
-                this.ServerUrl = postHooksUrl;
-            }
-            return postHooksClient;
-        }
-    }
 
     /// <summary>
     /// Prove APIs: This specification describes the Prove API.<br/>
@@ -106,22 +47,21 @@ namespace Prove.Proveapi
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.1";
-        private const string _sdkGenVersion = "2.596.2";
+        private const string _sdkVersion = "1.1.0";
+        private const string _sdkGenVersion = "2.621.3";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 1.0.1 2.596.2 1.0.0 Prove.Proveapi";
-        private string _serverUrl = "";
-        private SDKConfig.Server? _server = null;
-        private ISpeakeasyHttpClient _client;
-        private Func<Prove.Proveapi.Models.Components.Security>? _securitySource;
         public IV3 V3 { get; private set; }
+
+        public ProveAPI(SDKConfig config)
+        {
+            SDKConfiguration = config;
+            InitHooks();
+
+            V3 = new V3(SDKConfiguration);
+        }
 
         public ProveAPI(string? auth = null, Func<string>? authSource = null, SDKConfig.Server? server = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
         {
-            if (server != null)
-            {
-              _server = server;
-            }
 
             if (serverUrl != null)
             {
@@ -129,10 +69,8 @@ namespace Prove.Proveapi
                 {
                     serverUrl = Utilities.TemplateUrl(serverUrl, urlParams);
                 }
-                _serverUrl = serverUrl;
             }
-
-            _client = client ?? new SpeakeasyHttpClient();
+            Func<Prove.Proveapi.Models.Components.Security>? _securitySource = null;
 
             if(authSource != null)
             {
@@ -143,17 +81,85 @@ namespace Prove.Proveapi
                 _securitySource = () => new Prove.Proveapi.Models.Components.Security() { Auth = auth };
             }
 
-            SDKConfiguration = new SDKConfig()
+            SDKConfiguration = new SDKConfig(client)
             {
-                ServerName = _server,
-                ServerUrl = _serverUrl,
+                ServerName = server,
+                ServerUrl = serverUrl == null ? "" : serverUrl,
+                SecuritySource = _securitySource,
                 RetryConfig = retryConfig
             };
 
-            _client = SDKConfiguration.InitHooks(_client);
+            InitHooks();
 
-
-            V3 = new V3(_client, _securitySource, _serverUrl, SDKConfiguration);
+            V3 = new V3(SDKConfiguration);
         }
+
+        private void InitHooks()
+        {
+            string preHooksUrl = SDKConfiguration.GetTemplatedServerUrl();
+            var (postHooksUrl, postHooksClient) = SDKConfiguration.Hooks.SDKInit(preHooksUrl, SDKConfiguration.Client);
+            var config = SDKConfiguration;
+            if (preHooksUrl != postHooksUrl)
+            {
+                config.ServerUrl = postHooksUrl;
+            }
+            config.Client = postHooksClient;
+            SDKConfiguration = config;
+        }
+
+        public class SDKBuilder
+        {
+            private SDKConfig _sdkConfig = new SDKConfig(client: new SpeakeasyHttpClient());
+
+            public SDKBuilder() { }
+
+            public SDKBuilder WithServer(SDKConfig.Server server)
+            {
+                _sdkConfig.ServerName = server;
+                return this;
+            }
+
+            public SDKBuilder WithServerUrl(string serverUrl, Dictionary<string, string>? serverVariables = null)
+            {
+                if (serverVariables != null)
+                {
+                    serverUrl = Utilities.TemplateUrl(serverUrl, serverVariables);
+                }
+                _sdkConfig.ServerUrl = serverUrl;
+                return this;
+            }
+
+            public SDKBuilder WithAuthSource(Func<string> authSource)
+            {
+                _sdkConfig.SecuritySource = () => new Prove.Proveapi.Models.Components.Security() { Auth = authSource() };
+                return this;
+            }
+
+            public SDKBuilder WithAuth(string auth)
+            {
+                _sdkConfig.SecuritySource = () => new Prove.Proveapi.Models.Components.Security() { Auth = auth };
+                return this;
+            }
+
+            public SDKBuilder WithClient(ISpeakeasyHttpClient client)
+            {
+                _sdkConfig.Client = client;
+                return this;
+            }
+
+            public SDKBuilder WithRetryConfig(RetryConfig retryConfig)
+            {
+                _sdkConfig.RetryConfig = retryConfig;
+                return this;
+            }
+
+            public ProveAPI Build()
+            {
+              return new ProveAPI(_sdkConfig);
+            }
+
+        }
+
+        public static SDKBuilder Builder() => new SDKBuilder();
     }
 }

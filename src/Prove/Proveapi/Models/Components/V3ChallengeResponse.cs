@@ -21,13 +21,13 @@ namespace Prove.Proveapi.Models.Components
         public V3ChallengeIndividualRequest? Individual { get; set; }
 
         /// <summary>
-        /// Next contains the next set of allowed calls in the same flow.
+        /// The next set of allowed calls in the same flow.
         /// </summary>
         [JsonProperty("next")]
         public Dictionary<string, string> Next { get; set; } = default!;
 
         /// <summary>
-        /// Success returns true if the challenge was accepted and user info retrieved.
+        /// True if the challenge was accepted and user info retrieved.
         /// </summary>
         [JsonProperty("success")]
         public bool Success { get; set; } = default!;

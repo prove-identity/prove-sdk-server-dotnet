@@ -6,6 +6,7 @@ using Prove.Proveapi.Models.Components;
 var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 V3StartRequest req = new V3StartRequest() {
+    AllowOTPRetry = true,
     Dob = "1981-01",
     EmailAddress = "mpinsonm@dyndns.org",
     FinalTargetUrl = "https://www.example.com/landing-page",

@@ -16,60 +16,64 @@ namespace Prove.Proveapi.Models.Components
     {
 
         /// <summary>
-        /// DOB, an optional challenge, is the date of birth in one of these formats: YYYY-MM-DD, YYYY-MM, or MM-DD. Acceptable characters are: numeric with symbol &apos;-&apos;.
+        /// If true, the customer can request additional OTP codes if the initial code verification failed.
+        /// </summary>
+        [JsonProperty("allowOTPRetry")]
+        public bool? AllowOTPRetry { get; set; }
+
+        /// <summary>
+        /// The date of birth in one of these formats: YYYY-MM-DD, YYYY-MM, or MM-DD. Acceptable characters are: numeric with symbol &apos;-&apos;.
         /// </summary>
         [JsonProperty("dob")]
         public string? Dob { get; set; }
 
         /// <summary>
-        /// Email is the email address of the customer. Acceptable characters are: alphanumeric with symbols &apos;@.+&apos;.
+        /// The email address of the customer. Acceptable characters are: alphanumeric with symbols &apos;@.+&apos;.
         /// </summary>
         [JsonProperty("emailAddress")]
         public string? EmailAddress { get; set; }
 
         /// <summary>
-        /// Final target URL is only required for when flowType=desktop. The final target URL is where the end user will be redirected at the end of Instant Link flow. Acceptable characters are: alphanumeric with symbols &apos;-._+=/:?&apos;.
+        /// The URL where the end user will be redirected at the end of the Instant Link flow. Required only when `flowType=desktop`. Acceptable characters are: alphanumeric with symbols &apos;-._+=/:?&apos;.
         /// </summary>
         [JsonProperty("finalTargetUrl")]
         public string? FinalTargetUrl { get; set; }
 
         /// <summary>
-        /// Flow type is based on the method used - either &apos;desktop&apos; if using desktop or &apos;mobile&apos; for iOS/Android native apps and mobile web. Acceptable options are: &apos;desktop&apos; or &apos;mobile&apos;.
+        /// The type of device being user - either `desktop` for desktop web or `mobile` for iOS/Android native apps and mobile web.
         /// </summary>
         [JsonProperty("flowType")]
         public string FlowType { get; set; } = default!;
 
         /// <summary>
-        /// IP address is the IP address of the device of the customer. Acceptable characters are: numeric with symbols &apos;:.&apos;.
+        /// The IP address of the mobile device. Acceptable characters are: numeric with symbols &apos;:.&apos;.
         /// </summary>
         [JsonProperty("ipAddress")]
         public string? IpAddress { get; set; }
 
         /// <summary>
-        /// Phone number is the number of the mobile phone. Refer to the Prove Pre-Fill with Mobile Auth and Prove Identity with Mobile Auth documentation for situations where this field is not required. US phone numbers can be passed in with or without a leading +1. Acceptable characters are: alphanumeric with symbols &apos;+&apos;.
+        /// The number of the mobile phone. Refer to the <a href="https://developer.prove.com/docs/prove-pre-fill-implementation-guide#implement-prove-pre-fill">Prove Pre-Fill Implementation guide</a> and <a href="https://developer.prove.com/docs/prove-identity-implementation-guide#implement-prove-identity">Prove Identity Implementation guide</a> for situations where this field is not required. Acceptable characters are: alphanumeric with symbols &apos;+&apos;.
         /// </summary>
         [JsonProperty("phoneNumber")]
         public string? PhoneNumber { get; set; }
 
         /// <summary>
-        /// SMSMessage is an optional field to customize the message body sent in the Instant Link (flowType=desktop) or OTP (on mobile) SMS message.<br/>
+        /// The message body sent in the Instant Link (`flowType=desktop`) or OTP (`flowType=mobile`) SMS message. If not provided, the following default messages will be used:<br/>
         /// 
         /// <remarks>
-        /// If not provided, the following default messages will be used:<br/>
-        /// 1. For Instant Link: &quot;Complete your verification. If you did not make this request, do not click the link. ####&quot;<br/>
-        /// 2. For OTP: &quot;#### is your temporary code to continue your application. Caution: for your security, don&apos;t share this code with anyone.&quot;<br/>
-        /// Max length is 160 characters. Only ASCII characters are allowed.<br/>
         /// <br/>
-        /// The placeholder format varies by flow type:<br/>
-        /// 1. For OTP (mobile flow): Use ####, #####, or ###### to generate 4-6 digit verification codes respectively.<br/>
-        /// 2. For Instant Link (desktop flow): Must use exactly #### which will be replaced with the verification URL.
+        /// Instant Link: &quot;Complete your verification. If you did not make this request, do not click the link. ####&quot; _The verification URL replaces ####._<br/>
+        /// <br/>
+        /// OTP: &quot;#### is your temporary code to continue your application. Caution: for your security, don&apos;t share this code with anyone.&quot; _Use ####, #####, or ###### to generate 4-6 digit verification codes respectively._<br/>
+        /// <br/>
+        /// Max length is 160 characters. Non-ASCII characters are allowed.
         /// </remarks>
         /// </summary>
         [JsonProperty("smsMessage")]
         public string? SmsMessage { get; set; }
 
         /// <summary>
-        /// SSN, an optional challenge, is either the full or last 4 digits of the social security number. Acceptable characters are: numeric.
+        /// The full or last 4 digits of the social security number. Acceptable characters are: numeric.
         /// </summary>
         [JsonProperty("ssn")]
         public string? Ssn { get; set; }

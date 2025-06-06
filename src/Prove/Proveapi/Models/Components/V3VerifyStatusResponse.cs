@@ -13,26 +13,29 @@ namespace Prove.Proveapi.Models.Components
     using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
     
-    /// <summary>
-    /// Response body for the V3 Verify Status API
-    /// </summary>
     public class V3VerifyStatusResponse
     {
 
         /// <summary>
-        /// Possession Result represents the result of the Possession check. Possible values are &quot;success&quot;, &quot;pending&quot;, &quot;failed&quot;, and &quot;not applicable&quot;.
+        /// A unique ID that Prove generates to refer to a specific identity.
+        /// </summary>
+        [JsonProperty("identityId")]
+        public string? IdentityId { get; set; }
+
+        /// <summary>
+        /// The result of the possession check. Possible values are `success`, `pending`, `failed`, and `not_applicable`.
         /// </summary>
         [JsonProperty("possessionResult")]
         public V3VerifyStatusResponsePossessionResult PossessionResult { get; set; } = default!;
 
         /// <summary>
-        /// Success is the result of the combination of Verify Result and Possession Result. Possible values are &quot;true&quot;, &quot;pending&quot;, and &quot;false&quot;. The success value will be &quot;pending&quot; until the results of both Verify and Possession are returned or one of them fails, blocking the other.
+        /// The result of the combination of Verify Result and Possession Result. Possible values are `true`, `pending`, and `false`. The success value will be `pending` until the results of both Verify and Possession are returned or one of them fails, blocking the other.
         /// </summary>
         [JsonProperty("success")]
         public V3VerifyStatusResponseSuccess Success { get; set; } = default!;
 
         /// <summary>
-        /// Verify Result represents the result of the Verify process. Possible values are &quot;success&quot;, &quot;pending&quot;, &quot;failed&quot;, and &quot;not applicable&quot;.
+        /// The result of the Verify process. Possible values are `success`, `pending`, `failed`, and `not_applicable`.
         /// </summary>
         [JsonProperty("verifyResult")]
         public V3VerifyStatusResponseVerifyResult VerifyResult { get; set; } = default!;

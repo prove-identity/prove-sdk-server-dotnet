@@ -18,37 +18,37 @@ namespace Prove.Proveapi.Models.Components
     {
 
         /// <summary>
-        /// Addresses that belong to the individual.
+        /// An array of addresses that belong to the individual.
         /// </summary>
         [JsonProperty("addresses")]
         public List<V3ChallengeAddressEntryRequest>? Addresses { get; set; }
 
         /// <summary>
-        /// DOB is the date of birth of the individual.
+        /// The date of birth of the individual.
         /// </summary>
         [JsonProperty("dob")]
         public string? Dob { get; set; }
 
         /// <summary>
-        /// Email addresses that belong to the individual.
+        /// An array of email addresses that belong to the individual.
         /// </summary>
         [JsonProperty("emailAddresses")]
         public List<string>? EmailAddresses { get; set; }
 
         /// <summary>
-        /// First name of the individual.
+        /// The first name of the individual.
         /// </summary>
         [JsonProperty("firstName")]
         public string? FirstName { get; set; }
 
         /// <summary>
-        /// Last name of the individual.
+        /// The last name of the individual.
         /// </summary>
         [JsonProperty("lastName")]
         public string? LastName { get; set; }
 
         /// <summary>
-        /// SSN is the social security number of the individual.
+        /// The social security number of the individual.
         /// </summary>
         [JsonProperty("ssn")]
         public string? Ssn { get; set; }

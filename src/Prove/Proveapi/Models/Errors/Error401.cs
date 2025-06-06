@@ -17,13 +17,13 @@ namespace Prove.Proveapi.Models.Errors
     {
 
         /// <summary>
-        /// An internal error code that describes the problem category of the request.
+        /// An error code that describes the problem category of the request.
         /// </summary>
         [JsonProperty("code")]
         public long? Code { get; set; }
 
         /// <summary>
-        /// An error message describing the problem with the request.
+        /// The error message describing the problem with the request.
         /// </summary>
         [JsonProperty("message")]
         private string? _message { get; set; }

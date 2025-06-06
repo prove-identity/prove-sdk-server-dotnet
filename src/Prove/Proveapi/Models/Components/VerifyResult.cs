@@ -12,7 +12,7 @@ namespace Prove.Proveapi.Models.Components
     using Prove.Proveapi.Utils;
     
     /// <summary>
-    /// Verify Result represents the result of the Verify process. Possible values are &quot;success&quot;, &quot;pending&quot;, and &quot;failed&quot;. If the Verify result is pending, clients will need to call the Verify Status API to get a result.
+    /// The result of the Verify process. Possible values are `success`, `pending`, and `failed`. If the Verify result is `pending`, clients will need to call the Verify Status API to get a result.
     /// </summary>
     public class VerifyResult
     {

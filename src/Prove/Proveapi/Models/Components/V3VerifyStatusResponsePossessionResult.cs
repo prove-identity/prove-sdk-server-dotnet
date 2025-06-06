@@ -12,7 +12,7 @@ namespace Prove.Proveapi.Models.Components
     using Prove.Proveapi.Utils;
     
     /// <summary>
-    /// Possession Result represents the result of the Possession check. Possible values are &quot;success&quot;, &quot;pending&quot;, &quot;failed&quot;, and &quot;not applicable&quot;.
+    /// The result of the possession check. Possible values are `success`, `pending`, `failed`, and `not_applicable`.
     /// </summary>
     public class V3VerifyStatusResponsePossessionResult
     {

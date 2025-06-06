@@ -12,72 +12,70 @@ namespace Prove.Proveapi.Models.Components
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
     
-    /// <summary>
-    /// Request body for the V3 Verify API
-    /// </summary>
     public class V3VerifyRequest
     {
 
         /// <summary>
-        /// Client Customer ID is a client-generated unique ID for a specific customer. This can be used by clients to link calls related to the same customer, across different requests or sessions.  The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Prove does not offer any functionality around the Client Request ID at this time, and this is expected to be added in a future release. NOTE: Do not include Personally Identifiable Information (PII) in this field.
+        /// If true, the customer can request additional OTP codes if the initial code verification failed.
+        /// </summary>
+        [JsonProperty("allowOTPRetry")]
+        public bool? AllowOTPRetry { get; set; }
+
+        /// <summary>
+        /// A client-generated unique ID for a specific customer. This can be used by clients to link calls related to the same customer, across different requests or sessions.  The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Prove does not offer any functionality around the Client Customer ID. Do not include personally identifiable information (PII) in this field.
         /// </summary>
         [JsonProperty("clientCustomerId")]
         public string? ClientCustomerId { get; set; }
 
         /// <summary>
-        /// Client Request ID is a client-generated unique ID for a specific session. This can be used by clients to identify specific requests made to Prove Link. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Prove does not offer any functionality around the Client Request ID at this time, and this is expected to be added in a future release. NOTE: Do not include Personally Identifiable Information (PII) in this field.
+        /// A client-generated unique ID for a specific session. This can be used by clients to identify specific requests made. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Prove does not offer any functionality around the Client Request ID. Do not include personally identifiable information (PII) in this field.
         /// </summary>
         [JsonProperty("clientRequestId")]
         public string? ClientRequestId { get; set; }
 
         /// <summary>
-        /// Email is the email address of the customer. Acceptable characters are: alphanumeric with symbols &apos;@.+&apos;.
+        /// The email address of the customer. Acceptable characters are: alphanumeric with symbols &apos;@.+&apos;.
         /// </summary>
         [JsonProperty("emailAddress")]
         public string? EmailAddress { get; set; }
 
         /// <summary>
-        /// Final target URL is only required for when flowType=desktop. The final target URL is where the end user will be redirected at the end of Instant Link flow. Acceptable characters are: alphanumeric with symbols &apos;-._+=/:?&apos;.
+        /// The URL where the end user will be redirected at the end of the Instant Link flow. Required only when `flowType=desktop`. Acceptable characters are: alphanumeric with symbols &apos;-._+=/:?&apos;.
         /// </summary>
         [JsonProperty("finalTargetUrl")]
         public string? FinalTargetUrl { get; set; }
 
         /// <summary>
-        /// First name of the individual.
+        /// The first name of the individual.
         /// </summary>
         [JsonProperty("firstName")]
         public string FirstName { get; set; } = default!;
 
         /// <summary>
-        /// Last name of the individual.
+        /// The last name of the individual.
         /// </summary>
         [JsonProperty("lastName")]
         public string LastName { get; set; } = default!;
 
         /// <summary>
-        /// Phone number is the number of the mobile phone. The field is required in the Sandbox environment. US phone numbers can be passed in with or without a leading `+1`. Acceptable characters are: alphanumeric with symbols &apos;+&apos;.
+        /// The mobile phone number. US phone numbers can be passed in with or without a leading `+1`. International phone numbers require a leading `+1`. Use the appropriate endpoint URL based on the region the number originates from. Acceptable characters are: alphanumeric with symbols &apos;+&apos;.
         /// </summary>
         [JsonProperty("phoneNumber")]
         public string PhoneNumber { get; set; } = default!;
 
         /// <summary>
-        /// Possession type is based on the method used - either &apos;desktop&apos; if using desktop, &apos;mobile&apos; for iOS/Android native apps and mobile web, or &apos;none&apos; if no possession check is required. Acceptable options are: &apos;desktop&apos;, &apos;mobile&apos;, and &apos;none&apos;.
+        /// The type of device being user - either `desktop` for desktop web or `mobile` for iOS/Android native apps and mobile web.
         /// </summary>
         [JsonProperty("possessionType")]
         public string PossessionType { get; set; } = default!;
 
         /// <summary>
-        /// SMSMessage is an optional field to customize the message body sent in the Instant Link (flowType=desktop) or OTP (on mobile) SMS message.<br/>
+        /// The message body sent in the Instant Link (`flowType=desktop`) or OTP (`flowType=mobile`) SMS message. If not provided, the following default messages will be used:<br/>
         /// 
         /// <remarks>
-        /// If not provided, the following default messages will be used:<br/>
-        /// 1. For Instant Link: &quot;Complete your verification. If you did not make this request, do not click the link. ####&quot;<br/>
-        /// 2. For OTP: &quot;#### is your temporary code to continue your application. Caution: for your security, don&apos;t share this code with anyone.&quot;<br/>
-        /// Max length is 160 characters. Only ASCII characters are allowed.<br/>
-        /// <br/>
-        /// The placeholder format varies by flow type:<br/>
-        /// 1. For OTP (mobile flow): Use ####, #####, or ###### to generate 4-6 digit verification codes respectively.<br/>
-        /// 2. For Instant Link (desktop flow): Must use exactly #### which will be replaced with the verification URL.
+        /// Instant Link: &quot;Complete your verification. If you did not make this request, do not click the link. ####&quot; The verification URL replaces ####.<br/>
+        /// OTP: &quot;#### is your temporary code to continue your application. Caution: for your security, don&apos;t share this code with anyone.&quot; Use ####, #####, or ###### to generate 4-6 digit verification codes respectively.<br/>
+        /// Default language is English. Max length is 160 characters. Non-ASCII characters are allowed.
         /// </remarks>
         /// </summary>
         [JsonProperty("smsMessage")]

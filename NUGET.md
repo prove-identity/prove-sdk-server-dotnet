@@ -13,6 +13,7 @@ using Prove.Proveapi.Models.Components;
 var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 V3StartRequest req = new V3StartRequest() {
+    AllowOTPRetry = true,
     Dob = "1981-01",
     EmailAddress = "mpinsonm@dyndns.org",
     FinalTargetUrl = "https://www.example.com/landing-page",
@@ -76,7 +77,7 @@ When custom error responses are specified for an operation, the SDK may also thr
 
 | Error Type                                | Status Code | Content Type     |
 | ----------------------------------------- | ----------- | ---------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400         | application/json |
+| Prove.Proveapi.Models.Errors.Error        | 400         | application/json |
 | Prove.Proveapi.Models.Errors.Error401     | 401         | application/json |
 | Prove.Proveapi.Models.Errors.Error        | 500         | application/json |
 | Prove.Proveapi.Models.Errors.APIException | 4XX, 5XX    | \*/\*            |
@@ -104,7 +105,7 @@ try
 }
 catch (Exception ex)
 {
-    if (ex is Error400)
+    if (ex is Error)
     {
         // Handle exception data
         throw;
@@ -148,7 +149,7 @@ You can override the default server globally by passing a server name to the `se
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
 
-var sdk = new ProveAPI(server: "prod-eu");
+var sdk = new ProveAPI(server: SDKConfig.Server.ProdEu);
 
 V3TokenRequest req = new V3TokenRequest() {
     ClientId = "customer_id",

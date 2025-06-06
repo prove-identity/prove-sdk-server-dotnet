@@ -16,6 +16,12 @@ namespace Prove.Proveapi.Models.Components
     {
 
         /// <summary>
+        /// If true, the customer can request additional OTP codes if the initial code verification failed.
+        /// </summary>
+        [JsonProperty("allowOTPRetry")]
+        public bool? AllowOTPRetry { get; set; }
+
+        /// <summary>
         /// A client-generated unique ID for a specific customer.
         /// </summary>
         [JsonProperty("clientCustomerId")]
@@ -38,11 +44,10 @@ namespace Prove.Proveapi.Models.Components
         public string? FinalTargetUrl { get; set; }
 
         /// <summary>
-        /// The number of the mobile phone. Optional in US, required in EU.<br/>
+        /// The mobile phone number. US phone numbers can be passed in with or without a leading `+1`. International phone numbers require a leading `+1`. Use the appropriate endpoint URL based on the region the number originates from. Acceptable characters are: alphanumeric with symbols &apos;+&apos;.<br/>
         /// 
         /// <remarks>
-        /// Not allowed when possessionType is `none`. Acceptable characters are:<br/>
-        /// alphanumeric with symbols &apos;+&apos;.
+        /// Required unless Mobile Auth is enabled.
         /// </remarks>
         /// </summary>
         [JsonProperty("phoneNumber")]
@@ -60,10 +65,22 @@ namespace Prove.Proveapi.Models.Components
         public string PossessionType { get; set; } = default!;
 
         /// <summary>
-        /// The message body sent in the<br/>
+        /// Rebind should be set to `true` if the previous transaction failed with `success=false` because the Prove Key could not be validated.<br/>
         /// 
         /// <remarks>
-        /// Instant Link (`possessionType=desktop`) or OTP (`possessionType=mobile`) SMS message.
+        /// When `true`, it will re-associate the Prove Key with the newly verified phone number.
+        /// </remarks>
+        /// </summary>
+        [JsonProperty("rebind")]
+        public bool? Rebind { get; set; }
+
+        /// <summary>
+        /// The message body sent in the Instant Link (`flowType=desktop`) or OTP (`flowType=mobile`) SMS message. If not provided, the following default messages will be used:<br/>
+        /// 
+        /// <remarks>
+        /// Instant Link: &quot;Complete your verification. If you did not make this request, do not click the link. ####&quot; The verification URL replaces ####.<br/>
+        /// OTP: &quot;#### is your temporary code to continue your application. Caution: for your security, don&apos;t share this code with anyone.&quot; Use ####, #####, or ###### to generate 4-6 digit verification codes respectively.<br/>
+        /// Default language is English. Max length is 160 characters. Non-ASCII characters are allowed.
         /// </remarks>
         /// </summary>
         [JsonProperty("smsMessage")]
