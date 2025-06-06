@@ -66,18 +66,10 @@ actions:
                             PostalCode = "78285",
                             Region = "TX",
                         },
-                        new V3CompleteAddressEntryRequest() {
-                            Address = "4861 Jay Junction",
-                            City = "Boston",
-                            ExtendedAddress = "Apt 78",
-                            PostalCode = "02208",
-                            Region = "MS",
-                        },
                     },
                     Dob = "1981-01",
                     EmailAddresses = new List<string>() {
                         "jdoe@example.com",
-                        "dsmith@example.com",
                     },
                     FirstName = "Tod",
                     LastName = "Weedall",
@@ -100,6 +92,7 @@ actions:
             var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
             V3StartRequest req = new V3StartRequest() {
+                AllowOTPRetry = true,
                 Dob = "1981-01",
                 EmailAddress = "mpinsonm@dyndns.org",
                 FinalTargetUrl = "https://www.example.com/landing-page",
@@ -125,12 +118,14 @@ actions:
             var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
             V3UnifyRequest req = new V3UnifyRequest() {
+                AllowOTPRetry = true,
                 ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
                 ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
                 FinalTargetUrl = "https://www.example.com/landing-page",
                 PhoneNumber = "2001004011",
                 PossessionType = "mobile",
-                SmsMessage = "#### is your verification code",
+                Rebind = true,
+                SmsMessage = "#### is your verification code.",
             };
 
             var res = await sdk.V3.V3UnifyRequestAsync(req);
@@ -206,6 +201,7 @@ actions:
             var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
             V3VerifyRequest req = new V3VerifyRequest() {
+                AllowOTPRetry = true,
                 ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
                 ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
                 EmailAddress = "sbutrimovichb@who.int",

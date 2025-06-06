@@ -18,37 +18,37 @@ namespace Prove.Proveapi.Models.Components
     {
 
         /// <summary>
-        /// Addresses that belong to the individual.
+        /// Address of the individual. Note that though this is an array, only the first address in the array will be processed.
         /// </summary>
         [JsonProperty("addresses")]
         public List<V3CompleteAddressEntryRequest>? Addresses { get; set; }
 
         /// <summary>
-        /// DOB is the date of birth of the individual in one of these formats: YYYY-MM-DD, YYYY-MM, or MM-DD. Acceptable characters are: numeric with symbol &apos;-&apos;.
+        /// The date of birth of the individual in one of these formats: YYYY-MM-DD, YYYY-MM, or MM-DD. Acceptable characters are: numeric with symbol &apos;-&apos;.
         /// </summary>
         [JsonProperty("dob")]
         public string? Dob { get; set; }
 
         /// <summary>
-        /// Email addresses that belong to the individual.
+        /// Email address of the individual. Note that though this is an array, only the first email address in the array will be processed.
         /// </summary>
         [JsonProperty("emailAddresses")]
         public List<string>? EmailAddresses { get; set; }
 
         /// <summary>
-        /// First name of the individual.
+        /// The first name of the individual.
         /// </summary>
         [JsonProperty("firstName")]
         public string? FirstName { get; set; }
 
         /// <summary>
-        /// Last name of the individual.
+        /// The last name of the individual.
         /// </summary>
         [JsonProperty("lastName")]
         public string? LastName { get; set; }
 
         /// <summary>
-        /// SSN is the social security number of the individual.
+        /// The social security number of the individual.
         /// </summary>
         [JsonProperty("ssn")]
         public string? Ssn { get; set; }

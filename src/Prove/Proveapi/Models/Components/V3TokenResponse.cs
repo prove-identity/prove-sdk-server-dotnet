@@ -16,31 +16,31 @@ namespace Prove.Proveapi.Models.Components
     {
 
         /// <summary>
-        /// AccessToken returns the access token as a string.
+        /// The access token used to authenticate API calls.
         /// </summary>
         [JsonProperty("access_token")]
         public string AccessToken { get; set; } = default!;
 
         /// <summary>
-        /// ExpiresIn returns the lifetime of the token in seconds.
+        /// The lifetime of the token in seconds.
         /// </summary>
         [JsonProperty("expires_in")]
         public long ExpiresIn { get; set; } = default!;
 
         /// <summary>
-        /// RefreshExpiresIn returns the lifetime of the token in seconds. Not currently supported.
+        /// The lifetime of the refresh token in seconds. Not currently supported.
         /// </summary>
         [JsonProperty("refresh_expires_in")]
         public long? RefreshExpiresIn { get; set; }
 
         /// <summary>
-        /// RefreshToken returns the refresh token as a string. Not currently supported.
+        /// The token used to refresh the expiration time. Not currently supported.
         /// </summary>
         [JsonProperty("refresh_token")]
         public string? RefreshToken { get; set; }
 
         /// <summary>
-        /// TokenType returns the type of token.
+        /// The type of token.
         /// </summary>
         [JsonProperty("token_type")]
         public string TokenType { get; set; } = default!;

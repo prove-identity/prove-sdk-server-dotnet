@@ -16,19 +16,19 @@ namespace Prove.Proveapi.Models.Components
     {
 
         /// <summary>
-        /// Correlation ID is the unique ID that Prove generates for the flow. It is returned from the Start endpoint and cannot be reused outside of a single flow.
+        /// The unique ID that Prove generates for the flow. It is returned from the Start endpoint and cannot be reused outside of a single flow.
         /// </summary>
         [JsonProperty("correlationId")]
         public string CorrelationId { get; set; } = default!;
 
         /// <summary>
-        /// DOB, an optional challenge, is the date of birth in one of these formats: YYYY-MM-DD, YYYY-MM, or MM-DD. Acceptable characters are: numeric with symbol &apos;-&apos;.
+        /// The date of birth in one of these formats: YYYY-MM-DD, YYYY-MM, or MM-DD. Acceptable characters are: numeric with symbol &apos;-&apos;.
         /// </summary>
         [JsonProperty("dob")]
         public string? Dob { get; set; }
 
         /// <summary>
-        /// SSN is either the full or last 4 numbers of the social security number. Acceptable characters are: numeric.
+        /// The full or last 4 numbers of the social security number. Acceptable characters are: numeric.
         /// </summary>
         [JsonProperty("ssn")]
         public string? Ssn { get; set; }

@@ -17,31 +17,31 @@ namespace Prove.Proveapi.Models.Components
     {
 
         /// <summary>
-        /// AuthToken is a bearer token for use by the Prove Client SDK.
+        /// A bearer token for use by the Prove client SDK.
         /// </summary>
         [JsonProperty("authToken")]
         public string? AuthToken { get; set; }
 
         /// <summary>
-        /// Correlation ID is the unique ID that Prove generates for the flow. To continue the flow, the field will also be used for each of the subsequent API calls in the same flow - it cannot be reused outside of a single flow.
+        /// The unique ID that Prove generates for the flow. To continue the flow, the field will also be used for each of the subsequent API calls in the same flow - it cannot be reused outside of a single flow.
         /// </summary>
         [JsonProperty("correlationId")]
         public string CorrelationId { get; set; } = default!;
 
         /// <summary>
-        /// Possession Result represents the result of the Possession check. Possible values are &quot;pending&quot; and &quot;not_applicable&quot;, based on the Possession Type passed in the input. Clients will have to call the Verify Status API to get a result if Possession Result is pending.
+        /// The result of the possession check. Possible values are `pending` and `not_applicable`, based on the `possessionType` passed in the input. Clients will have to call the Verify Status API to get a result if `possessionResult=pending`.
         /// </summary>
         [JsonProperty("possessionResult")]
         public PossessionResult PossessionResult { get; set; } = default!;
 
         /// <summary>
-        /// Success is the result of the combination of Verify Result and Possession Result. Possible values are &quot;true&quot;, &quot;pending&quot;, and &quot;false&quot;. The success value will be &quot;pending&quot; until the results of both Verify and Possession are returned or one of them fails, blocking the other.
+        /// The result of the combination of `verifyResult` and `possessionResult`. Possible values are `true`, `pending`, and `false`. The value will be `pending` until the results of both Verify and Possession are returned or one of them fails, blocking the other.
         /// </summary>
         [JsonProperty("success")]
-        public Success Success { get; set; } = default!;
+        public V3VerifyResponseSuccess Success { get; set; } = default!;
 
         /// <summary>
-        /// Verify Result represents the result of the Verify process. Possible values are &quot;success&quot;, &quot;pending&quot;, and &quot;failed&quot;. If the Verify result is pending, clients will need to call the Verify Status API to get a result.
+        /// The result of the Verify process. Possible values are `success`, `pending`, and `failed`. If the Verify result is `pending`, clients will need to call the Verify Status API to get a result.
         /// </summary>
         [JsonProperty("verifyResult")]
         public VerifyResult VerifyResult { get; set; } = default!;

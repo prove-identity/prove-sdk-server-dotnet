@@ -52,6 +52,7 @@ using Prove.Proveapi.Models.Components;
 var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 V3StartRequest req = new V3StartRequest() {
+    AllowOTPRetry = true,
     Dob = "1981-01",
     EmailAddress = "mpinsonm@dyndns.org",
     FinalTargetUrl = "https://www.example.com/landing-page",
@@ -107,16 +108,16 @@ var res = await sdk.V3.V3TokenRequestAsync(req);
 
 ### [V3](docs/sdks/v3/README.md)
 
-* [V3TokenRequest](docs/sdks/v3/README.md#v3tokenrequest) - Request OAuth token.
-* [V3ChallengeRequest](docs/sdks/v3/README.md#v3challengerequest) - Submit challenge.
-* [V3CompleteRequest](docs/sdks/v3/README.md#v3completerequest) - Complete flow.
-* [V3StartRequest](docs/sdks/v3/README.md#v3startrequest) - Start flow.
+* [V3TokenRequest](docs/sdks/v3/README.md#v3tokenrequest) - Request OAuth Token
+* [V3ChallengeRequest](docs/sdks/v3/README.md#v3challengerequest) - Submit Challenge
+* [V3CompleteRequest](docs/sdks/v3/README.md#v3completerequest) - Complete Flow
+* [V3StartRequest](docs/sdks/v3/README.md#v3startrequest) - Start Flow
 * [V3UnifyRequest](docs/sdks/v3/README.md#v3unifyrequest) - Initiate Possession Check
 * [V3UnifyBindRequest](docs/sdks/v3/README.md#v3unifybindrequest) - Bind Prove Key
-* [V3UnifyStatusRequest](docs/sdks/v3/README.md#v3unifystatusrequest) - Check Status of Unify Session
-* [V3ValidateRequest](docs/sdks/v3/README.md#v3validaterequest) - Validate phone number.
-* [V3VerifyRequest](docs/sdks/v3/README.md#v3verifyrequest) - Initiate verified users session.
-* [V3VerifyStatusRequest](docs/sdks/v3/README.md#v3verifystatusrequest) - Perform checks for verified users session.
+* [V3UnifyStatusRequest](docs/sdks/v3/README.md#v3unifystatusrequest) - Check Status
+* [V3ValidateRequest](docs/sdks/v3/README.md#v3validaterequest) - Validate Phone Number
+* [V3VerifyRequest](docs/sdks/v3/README.md#v3verifyrequest) - Initiate Verified Users Session
+* [V3VerifyStatusRequest](docs/sdks/v3/README.md#v3verifystatusrequest) - Perform Checks for Verified Users Session
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -138,7 +139,7 @@ When custom error responses are specified for an operation, the SDK may also thr
 
 | Error Type                                | Status Code | Content Type     |
 | ----------------------------------------- | ----------- | ---------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400         | application/json |
+| Prove.Proveapi.Models.Errors.Error        | 400         | application/json |
 | Prove.Proveapi.Models.Errors.Error401     | 401         | application/json |
 | Prove.Proveapi.Models.Errors.Error        | 500         | application/json |
 | Prove.Proveapi.Models.Errors.APIException | 4XX, 5XX    | \*/\*            |
@@ -166,7 +167,7 @@ try
 }
 catch (Exception ex)
 {
-    if (ex is Error400)
+    if (ex is Error)
     {
         // Handle exception data
         throw;
@@ -210,7 +211,7 @@ You can override the default server globally by passing a server name to the `se
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
 
-var sdk = new ProveAPI(server: "prod-eu");
+var sdk = new ProveAPI(server: SDKConfig.Server.ProdEu);
 
 V3TokenRequest req = new V3TokenRequest() {
     ClientId = "customer_id",

@@ -17,25 +17,25 @@ namespace Prove.Proveapi.Models.Components
     {
 
         /// <summary>
-        /// Challenge missing returns true if a DOB or SSN needs to be passed in on the next step.
+        /// True if a DOB or SSN needs to be passed in on the next step.
         /// </summary>
         [JsonProperty("challengeMissing")]
         public bool ChallengeMissing { get; set; } = default!;
 
         /// <summary>
-        /// Next contains the next set of allowed calls in the same flow.
+        /// The next set of allowed calls in the same flow.
         /// </summary>
         [JsonProperty("next")]
         public Dictionary<string, string> Next { get; set; } = default!;
 
         /// <summary>
-        /// PhoneNumber is the number of the mobile phone for which validation was performed.
+        /// The number of the mobile phone for which validation was performed.
         /// </summary>
         [JsonProperty("phoneNumber")]
         public string? PhoneNumber { get; set; }
 
         /// <summary>
-        /// Success returns true if the phone number was validated.
+        /// True if the phone number was validated.
         /// </summary>
         [JsonProperty("success")]
         public bool Success { get; set; } = default!;

@@ -10,6 +10,7 @@
 namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
+    using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
     
     public class V3UnifyBindResponse
@@ -21,7 +22,14 @@ namespace Prove.Proveapi.Models.Components
         [JsonProperty("phoneNumber")]
         public string PhoneNumber { get; set; } = default!;
 
+        /// <summary>
+        /// The result of the possession check.<br/>
+        /// 
+        /// <remarks>
+        /// Possible values are `true`, `false`, `pending`, and `possession_required`.
+        /// </remarks>
+        /// </summary>
         [JsonProperty("success")]
-        public string Success { get; set; } = default!;
+        public V3UnifyBindResponseSuccess Success { get; set; } = default!;
     }
 }

@@ -10,6 +10,7 @@
 namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
+    using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
     
     public class V3UnifyResponse
@@ -22,12 +23,15 @@ namespace Prove.Proveapi.Models.Components
         public string? AuthToken { get; set; }
 
         /// <summary>
-        /// The unique ID that Prove generates for the flow.
+        /// The unique ID that Prove generates for the flow. To continue the flow, the field will also be used for each of the subsequent API calls in the same flow - it cannot be reused outside of a single flow.
         /// </summary>
         [JsonProperty("correlationId")]
         public string CorrelationId { get; set; } = default!;
 
+        /// <summary>
+        /// The status of the Unify request.
+        /// </summary>
         [JsonProperty("success")]
-        public string Success { get; set; } = default!;
+        public Success Success { get; set; } = default!;
     }
 }

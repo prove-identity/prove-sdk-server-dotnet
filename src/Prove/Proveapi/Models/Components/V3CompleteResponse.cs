@@ -24,13 +24,13 @@ namespace Prove.Proveapi.Models.Components
         public KYCInternal? Kyc { get; set; }
 
         /// <summary>
-        /// Next contains the next set of allowed calls in the same flow.
+        /// The next set of allowed calls in the same flow.
         /// </summary>
         [JsonProperty("next")]
         public Dictionary<string, string> Next { get; set; } = default!;
 
         /// <summary>
-        /// Success returns true if the individual was verified successfully.
+        /// True if the individual was verified successfully.
         /// </summary>
         [JsonProperty("success")]
         public bool Success { get; set; } = default!;

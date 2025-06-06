@@ -12,9 +12,9 @@ namespace Prove.Proveapi.Models.Components
     using Prove.Proveapi.Utils;
     
     /// <summary>
-    /// The result of the possession check. Possible values are `pending` and `not_applicable`, based on the `possessionType` passed in the input. Clients will have to call the Verify Status API to get a result if `possessionResult=pending`.
+    /// The result of the combination of `verifyResult` and `possessionResult`. Possible values are `true`, `pending`, and `false`. The value will be `pending` until the results of both Verify and Possession are returned or one of them fails, blocking the other.
     /// </summary>
-    public class PossessionResult
+    public class V3VerifyResponseSuccess
     {
     }
 }

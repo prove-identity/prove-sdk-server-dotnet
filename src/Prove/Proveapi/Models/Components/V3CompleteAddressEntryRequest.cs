@@ -16,31 +16,31 @@ namespace Prove.Proveapi.Models.Components
     {
 
         /// <summary>
-        /// Address is the street address of the individual.
+        /// The street address of the individual.
         /// </summary>
         [JsonProperty("address")]
         public string? Address { get; set; }
 
         /// <summary>
-        /// City of the individual.
+        /// The city of the individual.
         /// </summary>
         [JsonProperty("city")]
         public string? City { get; set; }
 
         /// <summary>
-        /// Extended address is the apartment number or other extended address information.
+        /// The apartment number or other extended address information.
         /// </summary>
         [JsonProperty("extendedAddress")]
         public string? ExtendedAddress { get; set; }
 
         /// <summary>
-        /// Postal code is the zip code of the individual.
+        /// The zip code of the individual. It can be either 5 digits (XXXXX) or ZIP+4 (XXXXX-XXXX).
         /// </summary>
         [JsonProperty("postalCode")]
         public string? PostalCode { get; set; }
 
         /// <summary>
-        /// Region is the state or locality of the individual.
+        /// The state or locality of the individual.
         /// </summary>
         [JsonProperty("region")]
         public string? Region { get; set; }
