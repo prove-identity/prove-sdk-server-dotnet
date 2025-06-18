@@ -16,7 +16,7 @@ namespace Prove.Proveapi.Models.Components
     {
 
         /// <summary>
-        /// If true, the customer can request additional OTP codes if the initial code verification failed.
+        /// If true, the customer can re-enter the OTP pin up to three times. Code must also be implemented. See client-side SDK guide for more details.
         /// </summary>
         [JsonProperty("allowOTPRetry")]
         public bool? AllowOTPRetry { get; set; }
@@ -28,13 +28,13 @@ namespace Prove.Proveapi.Models.Components
         public string? ClientCustomerId { get; set; }
 
         /// <summary>
-        /// A client-generated unique ID for a specific session.
+        /// A client-generated unique ID for a specific session. This can be used to identify specific requests. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include Personally Identifiable Information (PII) in this field.
         /// </summary>
         [JsonProperty("clientRequestId")]
         public string? ClientRequestId { get; set; }
 
         /// <summary>
-        /// The final target URL is where the end user will be redirected at the end of Instant Link flow. Required when `possessionType=desktop`.<br/>
+        /// The URL where the end user will be redirected at the end of Instant Link flow. Required when `possessionType=desktop`.<br/>
         /// 
         /// <remarks>
         /// Acceptable characters are: alphanumeric with symbols &apos;-._+=/:?&apos;.
@@ -65,11 +65,7 @@ namespace Prove.Proveapi.Models.Components
         public string PossessionType { get; set; } = default!;
 
         /// <summary>
-        /// Rebind should be set to `true` if the previous transaction failed with `success=false` because the Prove Key could not be validated.<br/>
-        /// 
-        /// <remarks>
-        /// When `true`, it will re-associate the Prove Key with the newly verified phone number.
-        /// </remarks>
+        /// If `true`, rebinds the Prove Key with the newly verified phone number.
         /// </summary>
         [JsonProperty("rebind")]
         public bool? Rebind { get; set; }

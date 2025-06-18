@@ -105,6 +105,17 @@ var res = await sdk.V3.V3TokenRequestAsync(req);
 <details open>
 <summary>Available methods</summary>
 
+### [Identity](docs/sdks/identity/README.md)
+
+* [V3BatchGetIdentities](docs/sdks/identity/README.md#v3batchgetidentities) - Batch Get Identities
+* [V3EnrollIdentity](docs/sdks/identity/README.md#v3enrollidentity) - Enroll Identity
+* [V3BatchEnrollIdentities](docs/sdks/identity/README.md#v3batchenrollidentities) - Batch Enroll Identities
+* [V3DisenrollIdentity](docs/sdks/identity/README.md#v3disenrollidentity) - Disenroll Identity
+* [V3GetIdentity](docs/sdks/identity/README.md#v3getidentity) - Get Identity
+* [V3ActivateIdentity](docs/sdks/identity/README.md#v3activateidentity) - Activate Identity
+* [V3DeactivateIdentity](docs/sdks/identity/README.md#v3deactivateidentity) - Deactivate Identity
+* [V3GetIdentitiesByPhoneNumber](docs/sdks/identity/README.md#v3getidentitiesbyphonenumber) - Get Identities By Phone Number
+
 
 ### [V3](docs/sdks/v3/README.md)
 
