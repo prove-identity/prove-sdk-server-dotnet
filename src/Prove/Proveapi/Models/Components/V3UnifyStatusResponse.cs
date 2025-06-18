@@ -10,7 +10,6 @@
 namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
-    using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
     
     public class V3UnifyStatusResponse
@@ -30,6 +29,6 @@ namespace Prove.Proveapi.Models.Components
         /// </remarks>
         /// </summary>
         [JsonProperty("success")]
-        public V3UnifyStatusResponseSuccess Success { get; set; } = default!;
+        public string Success { get; set; } = default!;
     }
 }

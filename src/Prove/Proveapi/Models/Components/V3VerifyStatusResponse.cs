@@ -10,7 +10,6 @@
 namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
-    using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
     
     public class V3VerifyStatusResponse
@@ -26,18 +25,18 @@ namespace Prove.Proveapi.Models.Components
         /// The result of the possession check. Possible values are `success`, `pending`, `failed`, and `not_applicable`.
         /// </summary>
         [JsonProperty("possessionResult")]
-        public V3VerifyStatusResponsePossessionResult PossessionResult { get; set; } = default!;
+        public string PossessionResult { get; set; } = default!;
 
         /// <summary>
         /// The result of the combination of Verify Result and Possession Result. Possible values are `true`, `pending`, and `false`. The success value will be `pending` until the results of both Verify and Possession are returned or one of them fails, blocking the other.
         /// </summary>
         [JsonProperty("success")]
-        public V3VerifyStatusResponseSuccess Success { get; set; } = default!;
+        public string Success { get; set; } = default!;
 
         /// <summary>
         /// The result of the Verify process. Possible values are `success`, `pending`, `failed`, and `not_applicable`.
         /// </summary>
         [JsonProperty("verifyResult")]
-        public V3VerifyStatusResponseVerifyResult VerifyResult { get; set; } = default!;
+        public string VerifyResult { get; set; } = default!;
     }
 }

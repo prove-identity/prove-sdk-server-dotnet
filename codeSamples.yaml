@@ -80,6 +80,152 @@ actions:
             var res = await sdk.V3.V3CompleteRequestAsync(req);
 
             // handle response
+  - target: $["paths"]["/v3/identity/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: Csharp (SDK)
+          source: |-
+            using Prove.Proveapi;
+            using Prove.Proveapi.Models.Components;
+
+            var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+            var res = await sdk.Identity.V3BatchGetIdentitiesAsync();
+
+            // handle response
+  - target: $["paths"]["/v3/identity/"]["post"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: Csharp (SDK)
+          source: |-
+            using Prove.Proveapi;
+            using Prove.Proveapi.Models.Components;
+
+            var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+            V3EnrollIdentityRequest req = new V3EnrollIdentityRequest() {
+                ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
+                ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
+                DeviceId = "bf9ea15d-7dfa-4bb4-a64c-6c26b53472fc",
+                PhoneNumber = "2001001695",
+            };
+
+            var res = await sdk.Identity.V3EnrollIdentityAsync(req);
+
+            // handle response
+  - target: $["paths"]["/v3/identity/batch"]["post"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: Csharp (SDK)
+          source: |-
+            using Prove.Proveapi;
+            using Prove.Proveapi.Models.Components;
+            using System.Collections.Generic;
+
+            var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+            V3BatchEnrollIdentitiesRequest req = new V3BatchEnrollIdentitiesRequest() {
+                ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
+                Items = new List<IdentityItem>() {
+                    new IdentityItem() {
+                        ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
+                        DeviceId = "bf9ea15d-7dfa-4bb4-a64c-6c26b53472fc",
+                        PhoneNumber = "2001001695",
+                    },
+                    new IdentityItem() {
+                        ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
+                        DeviceId = "bf9ea15d-7dfa-4bb4-a64c-6c26b53472fc",
+                        PhoneNumber = "2001001695",
+                    },
+                },
+            };
+
+            var res = await sdk.Identity.V3BatchEnrollIdentitiesAsync(req);
+
+            // handle response
+  - target: $["paths"]["/v3/identity/{identityId}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: Csharp (SDK)
+          source: |-
+            using Prove.Proveapi;
+            using Prove.Proveapi.Models.Components;
+
+            var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+            var res = await sdk.Identity.V3DisenrollIdentityAsync(identityId: "<id>");
+
+            // handle response
+  - target: $["paths"]["/v3/identity/{identityId}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: Csharp (SDK)
+          source: |-
+            using Prove.Proveapi;
+            using Prove.Proveapi.Models.Components;
+
+            var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+            var res = await sdk.Identity.V3GetIdentityAsync(identityId: "<id>");
+
+            // handle response
+  - target: $["paths"]["/v3/identity/{identityId}/activate"]["post"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: Csharp (SDK)
+          source: |-
+            using Prove.Proveapi;
+            using Prove.Proveapi.Models.Components;
+
+            var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+            var res = await sdk.Identity.V3ActivateIdentityAsync(
+                identityId: "<id>",
+                v3ActivateIdentityRequest: new Models.Components.V3ActivateIdentityRequest() {
+                    ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
+                }
+            );
+
+            // handle response
+  - target: $["paths"]["/v3/identity/{identityId}/deactivate"]["post"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: Csharp (SDK)
+          source: |-
+            using Prove.Proveapi;
+            using Prove.Proveapi.Models.Components;
+
+            var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+            var res = await sdk.Identity.V3DeactivateIdentityAsync(
+                identityId: "<id>",
+                v3IdentityDeactivateRequest: new V3IdentityDeactivateRequest() {
+                    ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
+                }
+            );
+
+            // handle response
+  - target: $["paths"]["/v3/identity/{mobileNumber}/lookup"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: Csharp (SDK)
+          source: |-
+            using Prove.Proveapi;
+            using Prove.Proveapi.Models.Components;
+
+            var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+            var res = await sdk.Identity.V3GetIdentitiesByPhoneNumberAsync(mobileNumber: "<value>");
+
+            // handle response
   - target: $["paths"]["/v3/start"]["post"]
     update:
       x-codeSamples:

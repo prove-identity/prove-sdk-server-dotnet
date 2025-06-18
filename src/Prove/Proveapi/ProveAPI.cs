@@ -31,6 +31,7 @@ namespace Prove.Proveapi
     public interface IProveAPI
     {
         public IV3 V3 { get; }
+        public IIdentity Identity { get; }
     }
 
 
@@ -47,10 +48,11 @@ namespace Prove.Proveapi
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.1.0";
-        private const string _sdkGenVersion = "2.621.3";
+        private const string _sdkVersion = "1.2.0";
+        private const string _sdkGenVersion = "2.632.0";
         private const string _openapiDocVersion = "1.0.0";
         public IV3 V3 { get; private set; }
+        public IIdentity Identity { get; private set; }
 
         public ProveAPI(SDKConfig config)
         {
@@ -58,6 +60,8 @@ namespace Prove.Proveapi
             InitHooks();
 
             V3 = new V3(SDKConfiguration);
+
+            Identity = new Identity(SDKConfiguration);
         }
 
         public ProveAPI(string? auth = null, Func<string>? authSource = null, SDKConfig.Server? server = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
@@ -92,6 +96,8 @@ namespace Prove.Proveapi
             InitHooks();
 
             V3 = new V3(SDKConfiguration);
+
+            Identity = new Identity(SDKConfiguration);
         }
 
         private void InitHooks()

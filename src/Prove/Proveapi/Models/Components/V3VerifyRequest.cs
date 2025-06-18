@@ -16,7 +16,7 @@ namespace Prove.Proveapi.Models.Components
     {
 
         /// <summary>
-        /// If true, the customer can request additional OTP codes if the initial code verification failed.
+        /// If true, the customer can re-enter the OTP pin up to three times. Code must also be implemented. See client-side SDK guide for more details.
         /// </summary>
         [JsonProperty("allowOTPRetry")]
         public bool? AllowOTPRetry { get; set; }
@@ -28,7 +28,7 @@ namespace Prove.Proveapi.Models.Components
         public string? ClientCustomerId { get; set; }
 
         /// <summary>
-        /// A client-generated unique ID for a specific session. This can be used by clients to identify specific requests made. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Prove does not offer any functionality around the Client Request ID. Do not include personally identifiable information (PII) in this field.
+        /// A client-generated unique ID for a specific session. This can be used to identify specific requests. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include Personally Identifiable Information (PII) in this field.
         /// </summary>
         [JsonProperty("clientRequestId")]
         public string? ClientRequestId { get; set; }
