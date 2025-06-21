@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 99003e79-c0db-4110-b5b2-e9c131bd48f0
 management:
-  docChecksum: c1826e3fe102d83e0ada290519069596
+  docChecksum: cf1dd35d1f8117dbcb3ce13af5fce2c5
   docVersion: 1.0.0
-  speakeasyVersion: 1.567.0
-  generationVersion: 2.632.0
-  releaseVersion: 1.2.0
-  configChecksum: bf47a95d8ba7b9fea53e4f91faf796c2
+  speakeasyVersion: 1.568.0
+  generationVersion: 2.632.2
+  releaseVersion: 1.2.1
+  configChecksum: 68ae5ebc2f1d3cfa5b737c88f178f1c0
   repoURL: https://github.com/prove-identity/prove-sdk-server-dotnet.git
   published: true
 features:
