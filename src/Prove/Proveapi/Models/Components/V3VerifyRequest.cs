@@ -16,7 +16,7 @@ namespace Prove.Proveapi.Models.Components
     {
 
         /// <summary>
-        /// If true, the customer can re-enter the OTP pin up to three times. Code must also be implemented. See client-side SDK guide for more details.
+        /// If true, the customer can re-enter the OTP up to three times. Code must also be implemented. See client-side SDK guide for more details.
         /// </summary>
         [JsonProperty("allowOTPRetry")]
         public bool? AllowOTPRetry { get; set; }
@@ -40,7 +40,7 @@ namespace Prove.Proveapi.Models.Components
         public string? EmailAddress { get; set; }
 
         /// <summary>
-        /// The URL where the end user will be redirected at the end of the Instant Link flow. Required only when `flowType=desktop`. Acceptable characters are: alphanumeric with symbols &apos;-._+=/:?&apos;.
+        /// The URL where the end user will be redirected at the end of the Instant Link flow. Required only when `flowType=desktop`. Acceptable characters are: alphanumeric with symbols &apos;-._+=/:?&apos;. Max length is 128 characters.
         /// </summary>
         [JsonProperty("finalTargetUrl")]
         public string? FinalTargetUrl { get; set; }
@@ -64,7 +64,7 @@ namespace Prove.Proveapi.Models.Components
         public string PhoneNumber { get; set; } = default!;
 
         /// <summary>
-        /// The type of device being user - either `desktop` for desktop web or `mobile` for iOS/Android native apps and mobile web.
+        /// The type of device being used - either `desktop` if using a desktop, `mobile` for iOS/Android native apps and mobile web, or `none` if no possession check is required.
         /// </summary>
         [JsonProperty("possessionType")]
         public string PossessionType { get; set; } = default!;
