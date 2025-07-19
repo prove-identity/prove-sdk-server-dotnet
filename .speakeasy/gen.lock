@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 99003e79-c0db-4110-b5b2-e9c131bd48f0
 management:
-  docChecksum: c1826e3fe102d83e0ada290519069596
+  docChecksum: e7996e97a028cb80a8648bbba75075e9
   docVersion: 1.0.0
-  speakeasyVersion: 1.567.0
-  generationVersion: 2.632.0
-  releaseVersion: 1.2.0
-  configChecksum: bf47a95d8ba7b9fea53e4f91faf796c2
+  speakeasyVersion: 1.583.0
+  generationVersion: 2.658.3
+  releaseVersion: 1.2.1
+  configChecksum: f4e9bd4032acd8da6304cbfe80365510
   repoURL: https://github.com/prove-identity/prove-sdk-server-dotnet.git
   published: true
 features:
   csharp:
     additionalDependencies: 0.1.0
     core: 3.11.1
-    examples: 2.81.5
+    examples: 2.81.6
     flattening: 2.81.3
     globalSecurity: 2.83.7
     globalSecurityCallbacks: 0.1.0
@@ -81,6 +81,7 @@ generatedFiles:
   - docs/Models/Components/V3VerifyStatusRequest.md
   - docs/Models/Components/V3VerifyStatusResponse.md
   - docs/Models/Errors/Error.md
+  - docs/Models/Errors/Error400.md
   - docs/Models/Errors/Error401.md
   - docs/Models/Errors/Error403.md
   - docs/Models/Requests/V3ActivateIdentityRequest.md
@@ -167,6 +168,7 @@ generatedFiles:
   - src/Prove/Proveapi/Models/Components/V3VerifyStatusResponse.cs
   - src/Prove/Proveapi/Models/Errors/APIException.cs
   - src/Prove/Proveapi/Models/Errors/Error.cs
+  - src/Prove/Proveapi/Models/Errors/Error400.cs
   - src/Prove/Proveapi/Models/Errors/Error401.cs
   - src/Prove/Proveapi/Models/Errors/Error403.cs
   - src/Prove/Proveapi/Models/Requests/V3ActivateIdentityRequest.cs
@@ -203,6 +205,7 @@ generatedFiles:
   - src/Prove/Proveapi/Utils/FlexibleObjectDeserializer.cs
   - src/Prove/Proveapi/Utils/HeaderSerializer.cs
   - src/Prove/Proveapi/Utils/IsoDateTimeSerializer.cs
+  - src/Prove/Proveapi/Utils/OpenEnumConverter.cs
   - src/Prove/Proveapi/Utils/RequestBodySerializer.cs
   - src/Prove/Proveapi/Utils/ResponseBodyDeserializer.cs
   - src/Prove/Proveapi/Utils/Retries/BackoffStrategy.cs
@@ -223,7 +226,7 @@ examples:
         "200":
           application/json: {"access_token": "eyJ...", "expires_in": 3600, "refresh_expires_in": 3600, "refresh_token": "eyJ...", "token_type": "Bearer"}
         "400":
-          application/json: {"code": 8000, "message": "error at prove, try again later"}
+          application/json: {"code": 8002, "message": "not authorized"}
         "401":
           application/json: {"code": 8002, "message": "not authorized"}
         "500":
@@ -236,7 +239,7 @@ examples:
         "200":
           application/json: {"individual": {"addresses": [{"address": "39 South Trail", "city": "San Antonio", "extendedAddress": "Apt 23", "postalCode": "78285", "region": "TX"}, {"address": "4861 Jay Junction", "city": "Boston", "extendedAddress": "Apt 78", "postalCode": "02208", "region": "MS"}], "dob": "1981-01-17", "emailAddresses": ["jdoe@example.com", "dsmith@example.com"], "firstName": "Tod", "lastName": "Weedall", "ssn": "265228370"}, "next": {"v3-complete": "/v3/complete"}, "success": true}
         "400":
-          application/json: {"code": 8000, "message": "error at prove, try again later"}
+          application/json: {"code": 8002, "message": "not authorized"}
         "401":
           application/json: {"code": 8002, "message": "not authorized"}
         "403":
@@ -282,7 +285,7 @@ examples:
         "200":
           application/json: {"authToken": "eyJhbGciOi...", "correlationId": "713189b8-5555-4b08-83ba-75d08780aebd", "next": {"v3-validate": "/v3/validate"}}
         "400":
-          application/json: {"code": 8000, "message": "error at prove, try again later"}
+          application/json: {"code": 8002, "message": "not authorized"}
         "401":
           application/json: {"code": 8002, "message": "not authorized"}
         "403":
@@ -297,7 +300,7 @@ examples:
         "200":
           application/json: {"authToken": "eyJhbGciOi...", "correlationId": "713189b8-5555-4b08-83ba-75d08780aebd", "success": "pending"}
         "400":
-          application/json: {"code": 8000, "message": "error at prove, try again later"}
+          application/json: {"code": 8002, "message": "not authorized"}
         "401":
           application/json: {"code": 8002, "message": "not authorized"}
         "403":
@@ -312,7 +315,7 @@ examples:
         "200":
           application/json: {"phoneNumber": "2001004011", "success": "true"}
         "400":
-          application/json: {"code": 8000, "message": "error at prove, try again later"}
+          application/json: {"code": 8002, "message": "not authorized"}
         "401":
           application/json: {"code": 8002, "message": "not authorized"}
         "403":
@@ -327,7 +330,7 @@ examples:
         "200":
           application/json: {"phoneNumber": "2001004011", "success": "true"}
         "400":
-          application/json: {"code": 8000, "message": "error at prove, try again later"}
+          application/json: {"code": 8002, "message": "not authorized"}
         "401":
           application/json: {"code": 8002, "message": "not authorized"}
         "403":
@@ -342,7 +345,7 @@ examples:
         "200":
           application/json: {"challengeMissing": true, "next": {"v3-challenge": "/v3/challenge"}, "phoneNumber": "2001001686", "success": true}
         "400":
-          application/json: {"code": 8000, "message": "error at prove, try again later"}
+          application/json: {"code": 8002, "message": "not authorized"}
         "401":
           application/json: {"code": 8002, "message": "not authorized"}
         "403":
@@ -357,7 +360,7 @@ examples:
         "200":
           application/json: {"authToken": "eyJhbGciOi...", "correlationId": "713189b8-5555-4b08-83ba-75d08780aebd", "possessionResult": "pending", "success": "pending", "verifyResult": "pending"}
         "400":
-          application/json: {"code": 8000, "message": "error at prove, try again later"}
+          application/json: {"code": 8002, "message": "not authorized"}
         "401":
           application/json: {"code": 8002, "message": "not authorized"}
         "403":
@@ -372,7 +375,7 @@ examples:
         "200":
           application/json: {"identityId": "498ce2a7-a7c1-48aa-8bd3-77621f780919", "possessionResult": "pending", "success": "pending", "verifyResult": "pending"}
         "400":
-          application/json: {"code": 8000, "message": "error at prove, try again later"}
+          application/json: {"code": 8002, "message": "not authorized"}
         "401":
           application/json: {"code": 8002, "message": "not authorized"}
         "403":
@@ -385,7 +388,7 @@ examples:
         "200":
           application/json: {"lastKey": "fNqtI2wVPka+yAFC5qRtrQ==", "results": [{"identityId": "4a6317c1-4855-4900-b369-bed138f4ec00"}, {"identityId": "e53c0597-1cce-4d8f-bd1b-e0a10f875ac9"}]}
         "400":
-          application/json: {"code": 8000, "message": "error at prove, try again later"}
+          application/json: {"code": 8002, "message": "not authorized"}
         "401":
           application/json: {"code": 8002, "message": "not authorized"}
         "403":
@@ -400,7 +403,7 @@ examples:
         "200":
           application/json: {"identityId": "863189q5-5555-4c15-89ba-15d08710aecz", "success": true}
         "400":
-          application/json: {"code": 8000, "message": "error at prove, try again later"}
+          application/json: {"code": 8002, "message": "not authorized"}
         "401":
           application/json: {"code": 8002, "message": "not authorized"}
         "403":
@@ -415,7 +418,7 @@ examples:
         "200":
           application/json: {"results": [{"identityId": "e0f78bc2-f748-4eda-9d29-d756844507fc"}, {"error": "Invalid Phone Number"}]}
         "400":
-          application/json: {"code": 8000, "message": "error at prove, try again later"}
+          application/json: {"code": 8002, "message": "not authorized"}
         "401":
           application/json: {"code": 8002, "message": "not authorized"}
         "403":
@@ -431,7 +434,7 @@ examples:
         "200":
           application/json: {"success": true}
         "400":
-          application/json: {"code": 8000, "message": "error at prove, try again later"}
+          application/json: {"code": 8002, "message": "not authorized"}
         "401":
           application/json: {"code": 8002, "message": "not authorized"}
         "403":
@@ -447,7 +450,7 @@ examples:
         "200":
           application/json: {"active": true, "carrier": "Verizon", "clientCustomerId": "e0f78bc2-f748-4eda-9d29-d756844507fc", "countryCode": "US", "createdAt": 1747671792, "creationString": "2025-05-19T16:23:12.475Z", "deviceId": "bf9ea15d-7dfa-4bb4-a64c-6c26b53472fc", "identityId": "e0f78bc2-f748-4eda-9d29-d756844507fc", "lineType": "mobile", "phoneNumber": "2001001695"}
         "400":
-          application/json: {"code": 8000, "message": "error at prove, try again later"}
+          application/json: {"code": 8002, "message": "not authorized"}
         "401":
           application/json: {"code": 8002, "message": "not authorized"}
         "403":
@@ -465,7 +468,7 @@ examples:
         "200":
           application/json: {"success": true}
         "400":
-          application/json: {"code": 8000, "message": "error at prove, try again later"}
+          application/json: {"code": 8002, "message": "not authorized"}
         "401":
           application/json: {"code": 8002, "message": "not authorized"}
         "403":
@@ -483,7 +486,7 @@ examples:
         "200":
           application/json: {"success": true}
         "400":
-          application/json: {"code": 8000, "message": "error at prove, try again later"}
+          application/json: {"code": 8002, "message": "not authorized"}
         "401":
           application/json: {"code": 8002, "message": "not authorized"}
         "403":
@@ -499,7 +502,7 @@ examples:
         "200":
           application/json: {"items": [{"active": true, "carrier": "Verizon", "clientCustomerId": "e0f78bc2-f748-4eda-9d29-d756844507fc", "countryCode": "US", "createdAt": 1747671792, "creationString": "2025-05-19T16:23:12.475Z", "deviceId": "bf9ea15d-7dfa-4bb4-a64c-6c26b53472fc", "identityId": "e0f78bc2-f748-4eda-9d29-d756844507fc", "lineType": "mobile", "phoneNumber": "2001001695"}, {"active": true, "carrier": "Verizon", "clientCustomerId": "e0f78bc2-f748-4eda-9d29-d756844507fc", "countryCode": "US", "createdAt": 1747671792, "creationString": "2025-05-19T16:23:12.475Z", "deviceId": "bf9ea15d-7dfa-4bb4-a64c-6c26b53472fc", "identityId": "e0f78bc2-f748-4eda-9d29-d756844507fc", "lineType": "mobile", "phoneNumber": "2001001695"}]}
         "400":
-          application/json: {"code": 8000, "message": "error at prove, try again later"}
+          application/json: {"code": 8002, "message": "not authorized"}
         "401":
           application/json: {"code": 8002, "message": "not authorized"}
         "403":
