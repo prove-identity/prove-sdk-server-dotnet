@@ -13,7 +13,7 @@ namespace Prove.Proveapi.Models.Errors
     using Prove.Proveapi.Utils;
     using System;
     
-    public class Error : Exception
+    public class Error400 : Exception
     {
 
         /// <summary>

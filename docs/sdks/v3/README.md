@@ -14,7 +14,7 @@
 * [V3UnifyStatusRequest](#v3unifystatusrequest) - Check Status
 * [V3ValidateRequest](#v3validaterequest) - Validate Phone Number
 * [V3VerifyRequest](#v3verifyrequest) - Initiate Verified Users Session
-* [V3VerifyStatusRequest](#v3verifystatusrequest) - Perform Checks for Verified Users Session
+* [V3VerifyStatusRequest](#v3verifystatusrequest) - Check Verification Result
 
 ## V3TokenRequest
 
@@ -53,7 +53,7 @@ var res = await sdk.V3.V3TokenRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.APIException | 4XX, 5XX                                  | \*/\*                                     |
@@ -95,7 +95,7 @@ var res = await sdk.V3.V3ChallengeRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -155,7 +155,7 @@ var res = await sdk.V3.V3CompleteRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -204,7 +204,7 @@ var res = await sdk.V3.V3StartRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -252,7 +252,7 @@ var res = await sdk.V3.V3UnifyRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -295,7 +295,7 @@ var res = await sdk.V3.V3UnifyBindRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -338,7 +338,7 @@ var res = await sdk.V3.V3UnifyStatusRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -379,7 +379,7 @@ var res = await sdk.V3.V3ValidateRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -429,7 +429,7 @@ var res = await sdk.V3.V3VerifyRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -471,7 +471,7 @@ var res = await sdk.V3.V3VerifyStatusRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |

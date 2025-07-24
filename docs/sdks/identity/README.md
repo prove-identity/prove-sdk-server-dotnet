@@ -48,7 +48,7 @@ var res = await sdk.Identity.V3BatchGetIdentitiesAsync();
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -92,7 +92,7 @@ var res = await sdk.Identity.V3EnrollIdentityAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -146,7 +146,7 @@ var res = await sdk.Identity.V3BatchEnrollIdentitiesAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -184,7 +184,7 @@ var res = await sdk.Identity.V3DisenrollIdentityAsync(identityId: "<id>");
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -222,7 +222,7 @@ var res = await sdk.Identity.V3GetIdentityAsync(identityId: "<id>");
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -242,7 +242,7 @@ var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 var res = await sdk.Identity.V3ActivateIdentityAsync(
     identityId: "<id>",
-    v3ActivateIdentityRequest: new Models.Components.V3ActivateIdentityRequest() {
+    v3ActivateIdentityRequest: new Prove.Proveapi.Models.Components.V3ActivateIdentityRequest() {
         ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
     }
 );
@@ -265,7 +265,7 @@ var res = await sdk.Identity.V3ActivateIdentityAsync(
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -308,7 +308,7 @@ var res = await sdk.Identity.V3DeactivateIdentityAsync(
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -346,7 +346,7 @@ var res = await sdk.Identity.V3GetIdentitiesByPhoneNumberAsync(mobileNumber: "<v
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
