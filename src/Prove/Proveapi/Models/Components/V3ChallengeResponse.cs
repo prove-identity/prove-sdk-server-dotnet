@@ -17,6 +17,12 @@ namespace Prove.Proveapi.Models.Components
     public class V3ChallengeResponse
     {
 
+        /// <summary>
+        /// The evaluation result for the policy
+        /// </summary>
+        [JsonProperty("evaluation")]
+        public Dictionary<string, Evaluation>? Evaluation { get; set; }
+
         [JsonProperty("individual")]
         public V3ChallengeIndividualRequest? Individual { get; set; }
 

@@ -187,7 +187,7 @@ actions:
 
             var res = await sdk.Identity.V3ActivateIdentityAsync(
                 identityId: "<id>",
-                v3ActivateIdentityRequest: new Models.Components.V3ActivateIdentityRequest() {
+                v3ActivateIdentityRequest: new Prove.Proveapi.Models.Components.V3ActivateIdentityRequest() {
                     ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
                 }
             );
