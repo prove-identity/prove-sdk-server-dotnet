@@ -27,7 +27,7 @@ namespace Prove.Proveapi.Models.Components
         /// The evaluation result for the policy
         /// </summary>
         [JsonProperty("evaluation")]
-        public Dictionary<string, V3ValidateResponseEvaluation>? Evaluation { get; set; }
+        public Dictionary<string, V3ValidateResponseEvaluation>? Evaluation { get; set; } = null;
 
         /// <summary>
         /// The next set of allowed calls in the same flow.

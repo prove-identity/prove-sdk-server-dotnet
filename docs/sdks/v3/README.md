@@ -22,6 +22,7 @@ This endpoint allows you to request an OAuth token.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3TokenRequest" method="post" path="/token" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -64,6 +65,7 @@ This endpoint allows you to submit challenge information.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3ChallengeRequest" method="post" path="/v3/challenge" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -107,6 +109,7 @@ This endpoint allows you to verify the user and complete the flow.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3CompleteRequest" method="post" path="/v3/complete" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -167,6 +170,7 @@ This endpoint allows you to start the solution flow.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3StartRequest" method="post" path="/v3/start" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -216,6 +220,7 @@ This endpoint allows you to initiate the possession check.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3UnifyRequest" method="post" path="/v3/unify" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -264,6 +269,7 @@ This endpoint allows you to bind a Prove Key to a phone number of a Unify sessio
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3UnifyBindRequest" method="post" path="/v3/unify-bind" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -307,6 +313,7 @@ This endpoint allows you to check the status of a Unify session and get the poss
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3UnifyStatusRequest" method="post" path="/v3/unify-status" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -350,6 +357,7 @@ This endpoint allows you to check if the phone number entered/discovered earlier
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3ValidateRequest" method="post" path="/v3/validate" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -391,6 +399,7 @@ This endpoint allows you to initiate a Verified Users session.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3VerifyRequest" method="post" path="/v3/verify" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -441,6 +450,7 @@ This endpoint allows you to perform the necessary checks for a Verified Users se
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3VerifyStatusRequest" method="post" path="/v3/verify-status" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;

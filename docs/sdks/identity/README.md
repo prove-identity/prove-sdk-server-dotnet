@@ -20,6 +20,7 @@ Return a list of all identities you have enrolled in Identity Manager.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3BatchGetIdentities" method="get" path="/v3/identity/" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -60,6 +61,7 @@ Enrolls a single customer for monitoring using their phone number and unique ide
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3EnrollIdentity" method="post" path="/v3/identity/" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -104,6 +106,7 @@ Enrolls multiple customers in a single request for efficient bulk operations (up
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3BatchEnrollIdentities" method="post" path="/v3/identity/batch" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -158,6 +161,7 @@ Disenrolls an identity from Identity Manager. If you wish to monitor in future, 
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3DisenrollIdentity" method="delete" path="/v3/identity/{identityId}" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -196,6 +200,7 @@ Return details of an identity given the identity ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3GetIdentity" method="get" path="/v3/identity/{identityId}" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -234,6 +239,7 @@ Sets an identity as active for monitoring.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3ActivateIdentity" method="post" path="/v3/identity/{identityId}/activate" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -277,6 +283,7 @@ Stops webhook notifications without disenrolling the identity.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3DeactivateIdentity" method="post" path="/v3/identity/{identityId}/deactivate" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -320,6 +327,7 @@ Return list of all identities you have enrolled that are associated with this ph
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3GetIdentitiesByPhoneNumber" method="get" path="/v3/identity/{mobileNumber}/lookup" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;

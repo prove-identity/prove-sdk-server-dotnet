@@ -21,7 +21,7 @@ namespace Prove.Proveapi.Models.Components
         /// The evaluation result for the policy
         /// </summary>
         [JsonProperty("evaluation")]
-        public Dictionary<string, Evaluation>? Evaluation { get; set; }
+        public Dictionary<string, Evaluation>? Evaluation { get; set; } = null;
 
         [JsonProperty("individual")]
         public V3ChallengeIndividualRequest? Individual { get; set; }

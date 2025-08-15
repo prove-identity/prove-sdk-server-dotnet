@@ -21,7 +21,7 @@ namespace Prove.Proveapi.Models.Components
         /// The evaluation result for the policy
         /// </summary>
         [JsonProperty("evaluation")]
-        public Dictionary<string, V3CompleteResponseEvaluation>? Evaluation { get; set; }
+        public Dictionary<string, V3CompleteResponseEvaluation>? Evaluation { get; set; } = null;
 
         [JsonProperty("idv")]
         public IDVDataInternal? Idv { get; set; }
