@@ -13,15 +13,15 @@ namespace Prove.Proveapi.Models.Requests
     using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
     
-    public class V3DomainLinkResponse
+    public class V3DomainConfirmLinkResponse
     {
 
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
         /// <summary>
-        /// V3DomainLinkResponse
+        /// V3DomainConfirmLinkResponse
         /// </summary>
-        public Models.Components.V3DomainLinkResponse? V3DomainLinkResponseValue { get; set; }
+        public Models.Components.V3DomainConfirmLinkResponse? V3DomainConfirmLinkResponseValue { get; set; }
     }
 }

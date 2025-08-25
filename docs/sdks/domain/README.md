@@ -6,7 +6,7 @@
 ### Available Operations
 
 * [V3DomainID](#v3domainid) - Get Domain Details
-* [V3DomainLink](#v3domainlink) - # Create a request to connect the requested domain to the domain the request is made from.
+* [V3DomainConfirmLink](#v3domainconfirmlink) - # Confirm a given domain link request.
 * [V3DomainLinked](#v3domainlinked) - Get the list of domains that are linked to this domain.
 * [V3DomainUnlink](#v3domainunlink) - # Remove a domain link or request.
 
@@ -50,37 +50,37 @@ var res = await sdk.Domain.V3DomainIDAsync(req);
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.APIException | 4XX, 5XX                                  | \*/\*                                     |
 
-## V3DomainLink
+## V3DomainConfirmLink
 
-# Create a request to connect the requested domain to the domain the request is made from.
+# Confirm a given domain link request.
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="V3DomainLink" method="post" path="/v3/domain/link" -->
+<!-- UsageSnippet language="csharp" operationID="V3DomainConfirmLink" method="post" path="/v3/domain/link" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
 
 var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
-V3DomainLinkRequest req = new V3DomainLinkRequest() {
+V3DomainConfirmLinkRequest req = new V3DomainConfirmLinkRequest() {
     Pcid = "pcid",
 };
 
-var res = await sdk.Domain.V3DomainLinkAsync(req);
+var res = await sdk.Domain.V3DomainConfirmLinkAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `request`                                                             | [V3DomainLinkRequest](../../Models/Components/V3DomainLinkRequest.md) | :heavy_check_mark:                                                    | The request object to use for the request.                            |
+| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `request`                                                                           | [V3DomainConfirmLinkRequest](../../Models/Components/V3DomainConfirmLinkRequest.md) | :heavy_check_mark:                                                                  | The request object to use for the request.                                          |
 
 ### Response
 
-**[Models.Requests.V3DomainLinkResponse](../../Models/Requests/V3DomainLinkResponse.md)**
+**[Models.Requests.V3DomainConfirmLinkResponse](../../Models/Requests/V3DomainConfirmLinkResponse.md)**
 
 ### Errors
 

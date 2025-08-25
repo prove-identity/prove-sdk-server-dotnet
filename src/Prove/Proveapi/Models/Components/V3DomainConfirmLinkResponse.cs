@@ -12,7 +12,7 @@ namespace Prove.Proveapi.Models.Components
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
     
-    public class V3DomainLinkResponse
+    public class V3DomainConfirmLinkResponse
     {
 
         /// <summary>

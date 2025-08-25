@@ -15,7 +15,7 @@ actions:
             var sdk = new ProveAPI();
 
             V3TokenRequest req = new V3TokenRequest() {
-                ClientID = "customer_id",
+                ClientId = "customer_id",
                 ClientSecret = "secret",
                 GrantType = "client_credentials",
             };
@@ -107,11 +107,11 @@ actions:
 
             var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
-            V3DomainLinkRequest req = new V3DomainLinkRequest() {
+            V3DomainConfirmLinkRequest req = new V3DomainConfirmLinkRequest() {
                 Pcid = "pcid",
             };
 
-            var res = await sdk.Domain.V3DomainLinkAsync(req);
+            var res = await sdk.Domain.V3DomainConfirmLinkAsync(req);
 
             // handle response
   - target: $["paths"]["/v3/domain/linked"]["get"]

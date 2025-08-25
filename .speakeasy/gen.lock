@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 99003e79-c0db-4110-b5b2-e9c131bd48f0
 management:
-  docChecksum: 6e2a2fa27a0836ffe8b60528019008dc
+  docChecksum: a90aa197b3d31cd16f868a87cf501c09
   docVersion: 1.0.0
-  speakeasyVersion: 1.606.3
+  speakeasyVersion: 1.606.5
   generationVersion: 2.687.1
-  releaseVersion: 1.3.0
-  configChecksum: e67fd0fa8397b5576729c613145518a4
+  releaseVersion: 1.3.1
+  configChecksum: af68a039da87165ffd7c4e00f8c7e8f9
   repoURL: https://github.com/prove-identity/prove-sdk-server-dotnet.git
   published: true
 features:
@@ -65,9 +65,9 @@ generatedFiles:
   - docs/Models/Components/V3CompleteResponseEvaluation.md
   - docs/Models/Components/V3DeactivateIdentityResponse.md
   - docs/Models/Components/V3DisenrollIdentityResponse.md
+  - docs/Models/Components/V3DomainConfirmLinkRequest.md
+  - docs/Models/Components/V3DomainConfirmLinkResponse.md
   - docs/Models/Components/V3DomainIDResponse.md
-  - docs/Models/Components/V3DomainLinkRequest.md
-  - docs/Models/Components/V3DomainLinkResponse.md
   - docs/Models/Components/V3DomainLinkedResponse.md
   - docs/Models/Components/V3DomainUnlinkRequest.md
   - docs/Models/Components/V3DomainUnlinkResponse.md
@@ -111,8 +111,8 @@ generatedFiles:
   - docs/Models/Requests/V3DeactivateIdentityResponse.md
   - docs/Models/Requests/V3DisenrollIdentityRequest.md
   - docs/Models/Requests/V3DisenrollIdentityResponse.md
+  - docs/Models/Requests/V3DomainConfirmLinkResponse.md
   - docs/Models/Requests/V3DomainIDResponse.md
-  - docs/Models/Requests/V3DomainLinkResponse.md
   - docs/Models/Requests/V3DomainLinkedResponse.md
   - docs/Models/Requests/V3DomainUnlinkResponse.md
   - docs/Models/Requests/V3EnrollIdentityResponse.md
@@ -173,9 +173,9 @@ generatedFiles:
   - src/Prove/Proveapi/Models/Components/V3CompleteResponseEvaluation.cs
   - src/Prove/Proveapi/Models/Components/V3DeactivateIdentityResponse.cs
   - src/Prove/Proveapi/Models/Components/V3DisenrollIdentityResponse.cs
+  - src/Prove/Proveapi/Models/Components/V3DomainConfirmLinkRequest.cs
+  - src/Prove/Proveapi/Models/Components/V3DomainConfirmLinkResponse.cs
   - src/Prove/Proveapi/Models/Components/V3DomainIDResponse.cs
-  - src/Prove/Proveapi/Models/Components/V3DomainLinkRequest.cs
-  - src/Prove/Proveapi/Models/Components/V3DomainLinkResponse.cs
   - src/Prove/Proveapi/Models/Components/V3DomainLinkedResponse.cs
   - src/Prove/Proveapi/Models/Components/V3DomainUnlinkRequest.cs
   - src/Prove/Proveapi/Models/Components/V3DomainUnlinkResponse.cs
@@ -220,8 +220,8 @@ generatedFiles:
   - src/Prove/Proveapi/Models/Requests/V3DeactivateIdentityResponse.cs
   - src/Prove/Proveapi/Models/Requests/V3DisenrollIdentityRequest.cs
   - src/Prove/Proveapi/Models/Requests/V3DisenrollIdentityResponse.cs
+  - src/Prove/Proveapi/Models/Requests/V3DomainConfirmLinkResponse.cs
   - src/Prove/Proveapi/Models/Requests/V3DomainIDResponse.cs
-  - src/Prove/Proveapi/Models/Requests/V3DomainLinkResponse.cs
   - src/Prove/Proveapi/Models/Requests/V3DomainLinkedResponse.cs
   - src/Prove/Proveapi/Models/Requests/V3DomainUnlinkResponse.cs
   - src/Prove/Proveapi/Models/Requests/V3EnrollIdentityResponse.cs
@@ -263,7 +263,7 @@ examples:
   V3TokenRequest:
     speakeasy-default-v3-token-request:
       requestBody:
-        application/x-www-form-urlencoded: {"ClientID": "customer_id", "ClientSecret": "secret", "GrantType": "client_credentials"}
+        application/x-www-form-urlencoded: {"client_id": "customer_id", "client_secret": "secret", "grant_type": "client_credentials"}
       responses:
         "200":
           application/json: {"access_token": "eyJ...", "expires_in": 3600, "refresh_expires_in": 3600, "refresh_token": "eyJ...", "token_type": "Bearer"}
@@ -607,6 +607,25 @@ examples:
           application/json: {"code": 8003, "message": "Access forbidden: insufficient permissions"}
         "500":
           application/json: {"code": 8000, "message": "error at prove, try again later"}
+  V3DomainConfirmLink:
+    speakeasy-default-v3-domain-confirm-link:
+      requestBody:
+        application/json: {"pcid": "pcid"}
+      responses:
+        "200":
+          application/json: {"success": true}
+        "400":
+          application/json: {"code": 8000, "message": "error at prove, try again later"}
+        "401":
+          application/json: {"code": 8002, "message": "not authorized"}
+        "403":
+          application/json: {"code": 8003, "message": "Access forbidden: insufficient permissions"}
+        "500":
+          application/json: {"code": 8000, "message": "error at prove, try again later"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## SDK Changes Detected:\n* `ProveApi.V3.V3TokenRequest()`:  `request` **Changed** **Breaking** :warning:\n* `ProveApi.Domain.V3DomainId()`: **Added**\n* `ProveApi.Domain.V3DomainLink()`: **Added**\n* `ProveApi.Domain.V3DomainLinked()`: **Added**\n* `ProveApi.Domain.V3DomainUnlink()`: **Added**\n* `ProveApi.V3.V3UnifyRequest()`: \n  *  `request.CheckReputation` **Added**\n* `ProveApi.V3.V3UnifyBindRequest()`:  `response.evaluation` **Added**\n* `ProveApi.V3.V3UnifyStatusRequest()`:  `response.evaluation` **Added**\n* `ProveApi.V3.V3VerifyRequest()`:  `response.evaluation` **Added**\n* `ProveApi.V3.V3VerifyStatusRequest()`:  `response.evaluation` **Added**\n"
+releaseNotes: |
+  ## SDK Changes Detected:
+  * `ProveApi.V3.V3TokenRequest()`:  `request` **Changed** **Breaking** :warning:
+  * `ProveApi.Domain.V3DomainConfirmLink()`: **Added**
+  * `ProveApi.Domain.V3DomainLink()`: **Deleted** **Breaking** :warning:

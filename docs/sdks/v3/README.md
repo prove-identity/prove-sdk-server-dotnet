@@ -30,7 +30,7 @@ using Prove.Proveapi.Models.Components;
 var sdk = new ProveAPI();
 
 V3TokenRequest req = new V3TokenRequest() {
-    ClientID = "customer_id",
+    ClientId = "customer_id",
     ClientSecret = "secret",
     GrantType = "client_credentials",
 };
