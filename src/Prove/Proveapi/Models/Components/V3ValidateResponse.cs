@@ -18,7 +18,11 @@ namespace Prove.Proveapi.Models.Components
     {
 
         /// <summary>
-        /// True if a DOB or SSN needs to be passed in on the next step.
+        /// True if a DOB or SSN needs to be passed in on the next step. Only applicable to Pre-Fill. If implementing Prove Identity ignore this field.<br/>
+        /// 
+        /// <remarks>
+        /// It will always return false for this use case.
+        /// </remarks>
         /// </summary>
         [JsonProperty("challengeMissing")]
         public bool ChallengeMissing { get; set; } = default!;

@@ -10,10 +10,18 @@
 namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
+    using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
+    using System.Collections.Generic;
     
     public class V3VerifyStatusResponse
     {
+
+        /// <summary>
+        /// The evaluation result for the policy
+        /// </summary>
+        [JsonProperty("evaluation")]
+        public Dictionary<string, V3VerifyStatusResponseEvaluation>? Evaluation { get; set; }
 
         /// <summary>
         /// A unique ID that Prove generates to refer to a specific identity.

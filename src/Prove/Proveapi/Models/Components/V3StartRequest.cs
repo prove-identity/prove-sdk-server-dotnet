@@ -22,7 +22,12 @@ namespace Prove.Proveapi.Models.Components
         public bool? AllowOTPRetry { get; set; }
 
         /// <summary>
-        /// The date of birth in one of these formats: YYYY-MM-DD, YYYY-MM, or MM-DD. Acceptable characters are: numeric with symbol &apos;-&apos;.
+        /// The date of birth in one of these formats: YYYY-MM-DD, YYYY-MM, or MM-DD. Acceptable characters are: numeric with symbol &apos;-&apos;.<br/>
+        /// 
+        /// <remarks>
+        /// <br/>
+        /// It is recommended you do NOT pass this value into the Start step. Prove will attempt to pre-fill data using phone number only.
+        /// </remarks>
         /// </summary>
         [JsonProperty("dob")]
         public string? Dob { get; set; }
@@ -73,7 +78,12 @@ namespace Prove.Proveapi.Models.Components
         public string? SmsMessage { get; set; }
 
         /// <summary>
-        /// The full or last 4 digits of the social security number. Acceptable characters are: numeric.
+        /// The full or last 4 digits of the social security number. Acceptable characters are: numeric.<br/>
+        /// 
+        /// <remarks>
+        /// <br/>
+        /// It is recommended you do NOT pass this value into the Start step. Prove will attempt to pre-fill data using phone number only.
+        /// </remarks>
         /// </summary>
         [JsonProperty("ssn")]
         public string? Ssn { get; set; }
