@@ -35,9 +35,9 @@ namespace Prove.Proveapi
         Task<Models.Requests.V3DomainIDResponse> V3DomainIDAsync(string? request = null);
 
         /// <summary>
-        /// # Create a request to connect the requested domain to the domain the request is made from.
+        /// # Confirm a given domain link request.
         /// </summary>
-        Task<Models.Requests.V3DomainLinkResponse> V3DomainLinkAsync(V3DomainLinkRequest? request = null);
+        Task<Models.Requests.V3DomainConfirmLinkResponse> V3DomainConfirmLinkAsync(V3DomainConfirmLinkRequest? request = null);
 
         /// <summary>
         /// Get the list of domains that are linked to this domain.
@@ -58,7 +58,7 @@ namespace Prove.Proveapi
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.3.0";
+        private const string _sdkVersion = "1.3.1";
         private const string _sdkGenVersion = "2.687.1";
         private const string _openapiDocVersion = "1.0.0";
 
@@ -194,7 +194,7 @@ namespace Prove.Proveapi
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<Models.Requests.V3DomainLinkResponse> V3DomainLinkAsync(V3DomainLinkRequest? request = null)
+        public async Task<Models.Requests.V3DomainConfirmLinkResponse> V3DomainConfirmLinkAsync(V3DomainConfirmLinkRequest? request = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
 
@@ -214,7 +214,7 @@ namespace Prove.Proveapi
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3DomainLink", new List<string> {  }, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3DomainConfirmLink", new List<string> {  }, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -254,8 +254,8 @@ namespace Prove.Proveapi
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.V3DomainLinkResponse>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    var response = new Models.Requests.V3DomainLinkResponse()
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.V3DomainConfirmLinkResponse>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    var response = new Models.Requests.V3DomainConfirmLinkResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
                         {
@@ -263,7 +263,7 @@ namespace Prove.Proveapi
                             Request = httpRequest
                         }
                     };
-                    response.V3DomainLinkResponseValue = obj;
+                    response.V3DomainConfirmLinkResponseValue = obj;
                     return response;
                 }
 

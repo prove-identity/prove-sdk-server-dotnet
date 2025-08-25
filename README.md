@@ -88,7 +88,7 @@ using Prove.Proveapi.Models.Components;
 var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 V3TokenRequest req = new V3TokenRequest() {
-    ClientID = "customer_id",
+    ClientId = "customer_id",
     ClientSecret = "secret",
     GrantType = "client_credentials",
 };
@@ -108,7 +108,7 @@ var res = await sdk.V3.V3TokenRequestAsync(req);
 ### [Domain](docs/sdks/domain/README.md)
 
 * [V3DomainID](docs/sdks/domain/README.md#v3domainid) - Get Domain Details
-* [V3DomainLink](docs/sdks/domain/README.md#v3domainlink) - # Create a request to connect the requested domain to the domain the request is made from.
+* [V3DomainConfirmLink](docs/sdks/domain/README.md#v3domainconfirmlink) - # Confirm a given domain link request.
 * [V3DomainLinked](docs/sdks/domain/README.md#v3domainlinked) - Get the list of domains that are linked to this domain.
 * [V3DomainUnlink](docs/sdks/domain/README.md#v3domainunlink) - # Remove a domain link or request.
 
@@ -174,7 +174,7 @@ var sdk = new ProveAPI();
 try
 {
     V3TokenRequest req = new V3TokenRequest() {
-        ClientID = "customer_id",
+        ClientId = "customer_id",
         ClientSecret = "secret",
         GrantType = "client_credentials",
     };
@@ -232,7 +232,7 @@ using Prove.Proveapi.Models.Components;
 var sdk = new ProveAPI(server: SDKConfig.Server.ProdEu);
 
 V3TokenRequest req = new V3TokenRequest() {
-    ClientID = "customer_id",
+    ClientId = "customer_id",
     ClientSecret = "secret",
     GrantType = "client_credentials",
 };
@@ -252,7 +252,7 @@ using Prove.Proveapi.Models.Components;
 var sdk = new ProveAPI(serverUrl: "https://platform.uat.proveapis.com");
 
 V3TokenRequest req = new V3TokenRequest() {
-    ClientID = "customer_id",
+    ClientId = "customer_id",
     ClientSecret = "secret",
     GrantType = "client_credentials",
 };

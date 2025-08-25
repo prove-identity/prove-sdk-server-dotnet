@@ -49,7 +49,7 @@ using Prove.Proveapi.Models.Components;
 var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 V3TokenRequest req = new V3TokenRequest() {
-    ClientID = "customer_id",
+    ClientId = "customer_id",
     ClientSecret = "secret",
     GrantType = "client_credentials",
 };
@@ -94,7 +94,7 @@ var sdk = new ProveAPI();
 try
 {
     V3TokenRequest req = new V3TokenRequest() {
-        ClientID = "customer_id",
+        ClientId = "customer_id",
         ClientSecret = "secret",
         GrantType = "client_credentials",
     };
@@ -152,7 +152,7 @@ using Prove.Proveapi.Models.Components;
 var sdk = new ProveAPI(server: SDKConfig.Server.ProdEu);
 
 V3TokenRequest req = new V3TokenRequest() {
-    ClientID = "customer_id",
+    ClientId = "customer_id",
     ClientSecret = "secret",
     GrantType = "client_credentials",
 };
@@ -172,7 +172,7 @@ using Prove.Proveapi.Models.Components;
 var sdk = new ProveAPI(serverUrl: "https://platform.uat.proveapis.com");
 
 V3TokenRequest req = new V3TokenRequest() {
-    ClientID = "customer_id",
+    ClientId = "customer_id",
     ClientSecret = "secret",
     GrantType = "client_credentials",
 };
