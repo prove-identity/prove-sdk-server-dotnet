@@ -7,26 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 #nullable enable
-namespace Prove.Proveapi.Models.Errors
+namespace Prove.Proveapi.Models.Requests
 {
     using Newtonsoft.Json;
+    using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
-    using System;
     
-    public class Error400 : Exception
+    public class V3DomainIDResponse
     {
 
-        /// <summary>
-        /// An error code that describes the problem category of the request.
-        /// </summary>
-        [JsonProperty("code")]
-        public long? Code { get; set; }
+        [JsonProperty("-")]
+        public HTTPMetadata HttpMeta { get; set; } = default!;
 
         /// <summary>
-        /// The error message describing the problem with the request.
+        /// V3DomainIDResponse
         /// </summary>
-        [JsonProperty("message")]
-        private string? _message { get; set; }
-        public override string Message { get {return _message ?? "";} }
+        public Models.Components.V3DomainIDResponse? V3DomainIDResponseValue { get; set; }
     }
 }

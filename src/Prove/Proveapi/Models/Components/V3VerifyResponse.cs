@@ -10,7 +10,9 @@
 namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
+    using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
+    using System.Collections.Generic;
     
     public class V3VerifyResponse
     {
@@ -26,6 +28,12 @@ namespace Prove.Proveapi.Models.Components
         /// </summary>
         [JsonProperty("correlationId")]
         public string CorrelationId { get; set; } = default!;
+
+        /// <summary>
+        /// The evaluation result for the policy
+        /// </summary>
+        [JsonProperty("evaluation")]
+        public Dictionary<string, V3VerifyResponseEvaluation>? Evaluation { get; set; }
 
         /// <summary>
         /// The result of the possession check. Possible values are `pending` and `not_applicable`, based on the `possessionType` passed in the input. Clients will have to call the Verify Status API to get a result if `possessionResult=pending`.

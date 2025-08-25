@@ -15,7 +15,7 @@ actions:
             var sdk = new ProveAPI();
 
             V3TokenRequest req = new V3TokenRequest() {
-                ClientId = "customer_id",
+                ClientID = "customer_id",
                 ClientSecret = "secret",
                 GrantType = "client_credentials",
             };
@@ -78,6 +78,73 @@ actions:
             };
 
             var res = await sdk.V3.V3CompleteRequestAsync(req);
+
+            // handle response
+  - target: $["paths"]["/v3/domain/id"]["post"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: Csharp (SDK)
+          source: |-
+            using Prove.Proveapi;
+            using Prove.Proveapi.Models.Components;
+
+            var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+            string? req = null;
+
+            var res = await sdk.Domain.V3DomainIDAsync(req);
+
+            // handle response
+  - target: $["paths"]["/v3/domain/link"]["post"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: Csharp (SDK)
+          source: |-
+            using Prove.Proveapi;
+            using Prove.Proveapi.Models.Components;
+
+            var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+            V3DomainLinkRequest req = new V3DomainLinkRequest() {
+                Pcid = "pcid",
+            };
+
+            var res = await sdk.Domain.V3DomainLinkAsync(req);
+
+            // handle response
+  - target: $["paths"]["/v3/domain/linked"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: Csharp (SDK)
+          source: |-
+            using Prove.Proveapi;
+            using Prove.Proveapi.Models.Components;
+
+            var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+            var res = await sdk.Domain.V3DomainLinkedAsync();
+
+            // handle response
+  - target: $["paths"]["/v3/domain/unlink"]["post"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: Csharp (SDK)
+          source: |-
+            using Prove.Proveapi;
+            using Prove.Proveapi.Models.Components;
+
+            var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+            V3DomainUnlinkRequest req = new V3DomainUnlinkRequest() {
+                PcidFrom = "pcidFrom",
+                PcidTo = "pcidTo",
+            };
+
+            var res = await sdk.Domain.V3DomainUnlinkAsync(req);
 
             // handle response
   - target: $["paths"]["/v3/identity/"]["get"]
@@ -265,6 +332,7 @@ actions:
 
             V3UnifyRequest req = new V3UnifyRequest() {
                 AllowOTPRetry = true,
+                CheckReputation = true,
                 ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
                 ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
                 FinalTargetUrl = "https://www.example.com/landing-page",

@@ -22,6 +22,7 @@ This endpoint allows you to request an OAuth token.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3TokenRequest" method="post" path="/token" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -29,7 +30,7 @@ using Prove.Proveapi.Models.Components;
 var sdk = new ProveAPI();
 
 V3TokenRequest req = new V3TokenRequest() {
-    ClientId = "customer_id",
+    ClientID = "customer_id",
     ClientSecret = "secret",
     GrantType = "client_credentials",
 };
@@ -53,7 +54,7 @@ var res = await sdk.V3.V3TokenRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.APIException | 4XX, 5XX                                  | \*/\*                                     |
@@ -64,6 +65,7 @@ This endpoint allows you to submit challenge information.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3ChallengeRequest" method="post" path="/v3/challenge" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -95,7 +97,7 @@ var res = await sdk.V3.V3ChallengeRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -107,6 +109,7 @@ This endpoint allows you to verify the user and complete the flow.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3CompleteRequest" method="post" path="/v3/complete" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -155,7 +158,7 @@ var res = await sdk.V3.V3CompleteRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -167,6 +170,7 @@ This endpoint allows you to start the solution flow.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3StartRequest" method="post" path="/v3/start" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -204,7 +208,7 @@ var res = await sdk.V3.V3StartRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -216,6 +220,7 @@ This endpoint allows you to initiate the possession check.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3UnifyRequest" method="post" path="/v3/unify" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -224,6 +229,7 @@ var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 V3UnifyRequest req = new V3UnifyRequest() {
     AllowOTPRetry = true,
+    CheckReputation = true,
     ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
     ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
     FinalTargetUrl = "https://www.example.com/landing-page",
@@ -252,7 +258,7 @@ var res = await sdk.V3.V3UnifyRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -264,6 +270,7 @@ This endpoint allows you to bind a Prove Key to a phone number of a Unify sessio
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3UnifyBindRequest" method="post" path="/v3/unify-bind" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -295,7 +302,7 @@ var res = await sdk.V3.V3UnifyBindRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -307,6 +314,7 @@ This endpoint allows you to check the status of a Unify session and get the poss
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3UnifyStatusRequest" method="post" path="/v3/unify-status" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -338,7 +346,7 @@ var res = await sdk.V3.V3UnifyStatusRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -350,6 +358,7 @@ This endpoint allows you to check if the phone number entered/discovered earlier
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3ValidateRequest" method="post" path="/v3/validate" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -379,7 +388,7 @@ var res = await sdk.V3.V3ValidateRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -391,6 +400,7 @@ This endpoint allows you to initiate a Verified Users session.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3VerifyRequest" method="post" path="/v3/verify" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -429,7 +439,7 @@ var res = await sdk.V3.V3VerifyRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -441,6 +451,7 @@ This endpoint allows you to perform the necessary checks for a Verified Users se
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3VerifyStatusRequest" method="post" path="/v3/verify-status" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -471,7 +482,7 @@ var res = await sdk.V3.V3VerifyStatusRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |

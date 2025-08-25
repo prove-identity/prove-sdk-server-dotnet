@@ -20,6 +20,7 @@ Return a list of all identities you have enrolled in Identity Manager.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3BatchGetIdentities" method="get" path="/v3/identity/" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -48,7 +49,7 @@ var res = await sdk.Identity.V3BatchGetIdentitiesAsync();
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -60,6 +61,7 @@ Enrolls a single customer for monitoring using their phone number and unique ide
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3EnrollIdentity" method="post" path="/v3/identity/" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -92,7 +94,7 @@ var res = await sdk.Identity.V3EnrollIdentityAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -104,6 +106,7 @@ Enrolls multiple customers in a single request for efficient bulk operations (up
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3BatchEnrollIdentities" method="post" path="/v3/identity/batch" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -146,7 +149,7 @@ var res = await sdk.Identity.V3BatchEnrollIdentitiesAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -158,6 +161,7 @@ Disenrolls an identity from Identity Manager. If you wish to monitor in future, 
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3DisenrollIdentity" method="delete" path="/v3/identity/{identityId}" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -184,7 +188,7 @@ var res = await sdk.Identity.V3DisenrollIdentityAsync(identityId: "<id>");
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -196,6 +200,7 @@ Return details of an identity given the identity ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3GetIdentity" method="get" path="/v3/identity/{identityId}" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -222,7 +227,7 @@ var res = await sdk.Identity.V3GetIdentityAsync(identityId: "<id>");
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -234,6 +239,7 @@ Sets an identity as active for monitoring.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3ActivateIdentity" method="post" path="/v3/identity/{identityId}/activate" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -265,7 +271,7 @@ var res = await sdk.Identity.V3ActivateIdentityAsync(
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -277,6 +283,7 @@ Stops webhook notifications without disenrolling the identity.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3DeactivateIdentity" method="post" path="/v3/identity/{identityId}/deactivate" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -308,7 +315,7 @@ var res = await sdk.Identity.V3DeactivateIdentityAsync(
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -320,6 +327,7 @@ Return list of all identities you have enrolled that are associated with this ph
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="V3GetIdentitiesByPhoneNumber" method="get" path="/v3/identity/{mobileNumber}/lookup" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -346,7 +354,7 @@ var res = await sdk.Identity.V3GetIdentitiesByPhoneNumberAsync(mobileNumber: "<v
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |

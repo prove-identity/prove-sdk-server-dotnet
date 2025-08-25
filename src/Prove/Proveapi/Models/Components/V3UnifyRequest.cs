@@ -22,6 +22,12 @@ namespace Prove.Proveapi.Models.Components
         public bool? AllowOTPRetry { get; set; }
 
         /// <summary>
+        /// If true, TrustScore verification will be performed.
+        /// </summary>
+        [JsonProperty("checkReputation")]
+        public bool? CheckReputation { get; set; }
+
+        /// <summary>
         /// A client-generated unique ID for a specific customer.
         /// </summary>
         [JsonProperty("clientCustomerId")]

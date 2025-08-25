@@ -10,10 +10,18 @@
 namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
+    using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
+    using System.Collections.Generic;
     
     public class V3UnifyBindResponse
     {
+
+        /// <summary>
+        /// The evaluation result for the policy
+        /// </summary>
+        [JsonProperty("evaluation")]
+        public Dictionary<string, V3UnifyBindResponseEvaluation>? Evaluation { get; set; }
 
         /// <summary>
         /// The number of the mobile phone used during the process.

@@ -17,19 +17,19 @@ namespace Prove.Proveapi.Models.Components
         /// <summary>
         /// The client ID retrieved from the <a href="https://developer.prove.com/reference/authentication">Developer Portal</a>.
         /// </summary>
-        [SpeakeasyMetadata("form:name=client_id")]
-        public string ClientId { get; set; } = default!;
+        [SpeakeasyMetadata("form:name=ClientID")]
+        public string ClientID { get; set; } = default!;
 
         /// <summary>
         /// The client secret retrieved from the <a href="https://developer.prove.com/reference/authentication">Developer Portal</a>.
         /// </summary>
-        [SpeakeasyMetadata("form:name=client_secret")]
+        [SpeakeasyMetadata("form:name=ClientSecret")]
         public string ClientSecret { get; set; } = default!;
 
         /// <summary>
         /// The grant type. This field only accepts `client_credentials`.
         /// </summary>
-        [SpeakeasyMetadata("form:name=grant_type")]
+        [SpeakeasyMetadata("form:name=GrantType")]
         public string GrantType { get; set; } = default!;
     }
 }

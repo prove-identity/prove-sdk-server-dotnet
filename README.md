@@ -88,7 +88,7 @@ using Prove.Proveapi.Models.Components;
 var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 V3TokenRequest req = new V3TokenRequest() {
-    ClientId = "customer_id",
+    ClientID = "customer_id",
     ClientSecret = "secret",
     GrantType = "client_credentials",
 };
@@ -104,6 +104,13 @@ var res = await sdk.V3.V3TokenRequestAsync(req);
 
 <details open>
 <summary>Available methods</summary>
+
+### [Domain](docs/sdks/domain/README.md)
+
+* [V3DomainID](docs/sdks/domain/README.md#v3domainid) - Get Domain Details
+* [V3DomainLink](docs/sdks/domain/README.md#v3domainlink) - # Create a request to connect the requested domain to the domain the request is made from.
+* [V3DomainLinked](docs/sdks/domain/README.md#v3domainlinked) - Get the list of domains that are linked to this domain.
+* [V3DomainUnlink](docs/sdks/domain/README.md#v3domainunlink) - # Remove a domain link or request.
 
 ### [Identity](docs/sdks/identity/README.md)
 
@@ -150,7 +157,7 @@ When custom error responses are specified for an operation, the SDK may also thr
 
 | Error Type                                | Status Code | Content Type     |
 | ----------------------------------------- | ----------- | ---------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400         | application/json |
+| Prove.Proveapi.Models.Errors.Error        | 400         | application/json |
 | Prove.Proveapi.Models.Errors.Error401     | 401         | application/json |
 | Prove.Proveapi.Models.Errors.Error        | 500         | application/json |
 | Prove.Proveapi.Models.Errors.APIException | 4XX, 5XX    | \*/\*            |
@@ -167,7 +174,7 @@ var sdk = new ProveAPI();
 try
 {
     V3TokenRequest req = new V3TokenRequest() {
-        ClientId = "customer_id",
+        ClientID = "customer_id",
         ClientSecret = "secret",
         GrantType = "client_credentials",
     };
@@ -178,7 +185,7 @@ try
 }
 catch (Exception ex)
 {
-    if (ex is Error400)
+    if (ex is Error)
     {
         // Handle exception data
         throw;
@@ -225,7 +232,7 @@ using Prove.Proveapi.Models.Components;
 var sdk = new ProveAPI(server: SDKConfig.Server.ProdEu);
 
 V3TokenRequest req = new V3TokenRequest() {
-    ClientId = "customer_id",
+    ClientID = "customer_id",
     ClientSecret = "secret",
     GrantType = "client_credentials",
 };
@@ -245,7 +252,7 @@ using Prove.Proveapi.Models.Components;
 var sdk = new ProveAPI(serverUrl: "https://platform.uat.proveapis.com");
 
 V3TokenRequest req = new V3TokenRequest() {
-    ClientId = "customer_id",
+    ClientID = "customer_id",
     ClientSecret = "secret",
     GrantType = "client_credentials",
 };
