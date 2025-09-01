@@ -7,15 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 #nullable enable
-namespace Prove.Proveapi.Models.Components
+namespace Prove.Proveapi.Models.Requests
 {
     using Newtonsoft.Json;
+    using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
     
-    public class V3DomainConfirmLinkRequest
+    public class V3DomainConfirmLinkRequestResponse
     {
 
-        [JsonProperty("pcid")]
-        public string Pcid { get; set; } = default!;
+        [JsonProperty("-")]
+        public HTTPMetadata HttpMeta { get; set; } = default!;
+
+        /// <summary>
+        /// V3DomainConfirmLinkResponse
+        /// </summary>
+        public V3DomainConfirmLinkResponse? V3DomainConfirmLinkResponse { get; set; }
     }
 }

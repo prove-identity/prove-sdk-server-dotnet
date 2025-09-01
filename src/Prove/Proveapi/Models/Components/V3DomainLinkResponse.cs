@@ -12,10 +12,13 @@ namespace Prove.Proveapi.Models.Components
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
     
-    public class V3DomainConfirmLinkRequest
+    public class V3DomainLinkResponse
     {
 
-        [JsonProperty("pcid")]
-        public string Pcid { get; set; } = default!;
+        /// <summary>
+        /// Success
+        /// </summary>
+        [JsonProperty("success")]
+        public bool Success { get; set; } = default!;
     }
 }

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 99003e79-c0db-4110-b5b2-e9c131bd48f0
 management:
-  docChecksum: a90aa197b3d31cd16f868a87cf501c09
+  docChecksum: d7f1c6ac326977f2bda0cc8381e1abca
   docVersion: 1.0.0
-  speakeasyVersion: 1.606.5
-  generationVersion: 2.687.1
-  releaseVersion: 1.3.1
-  configChecksum: af68a039da87165ffd7c4e00f8c7e8f9
+  speakeasyVersion: 1.606.9
+  generationVersion: 2.687.13
+  releaseVersion: 1.3.2
+  configChecksum: b582ea9fe6649725f5f8cfb784c2caae
   repoURL: https://github.com/prove-identity/prove-sdk-server-dotnet.git
   published: true
 features:
@@ -63,11 +63,15 @@ generatedFiles:
   - docs/Models/Components/V3CompleteRequest.md
   - docs/Models/Components/V3CompleteResponse.md
   - docs/Models/Components/V3CompleteResponseEvaluation.md
+  - docs/Models/Components/V3CrossDomainIdentityRequest.md
+  - docs/Models/Components/V3CrossDomainIdentityResponse.md
   - docs/Models/Components/V3DeactivateIdentityResponse.md
   - docs/Models/Components/V3DisenrollIdentityResponse.md
   - docs/Models/Components/V3DomainConfirmLinkRequest.md
   - docs/Models/Components/V3DomainConfirmLinkResponse.md
   - docs/Models/Components/V3DomainIDResponse.md
+  - docs/Models/Components/V3DomainLinkRequest.md
+  - docs/Models/Components/V3DomainLinkResponse.md
   - docs/Models/Components/V3DomainLinkedResponse.md
   - docs/Models/Components/V3DomainUnlinkRequest.md
   - docs/Models/Components/V3DomainUnlinkResponse.md
@@ -107,14 +111,17 @@ generatedFiles:
   - docs/Models/Requests/V3BatchGetIdentitiesResponse.md
   - docs/Models/Requests/V3ChallengeRequestResponse.md
   - docs/Models/Requests/V3CompleteRequestResponse.md
+  - docs/Models/Requests/V3CrossDomainIdentityRequest.md
+  - docs/Models/Requests/V3CrossDomainIdentityResponse.md
   - docs/Models/Requests/V3DeactivateIdentityRequest.md
   - docs/Models/Requests/V3DeactivateIdentityResponse.md
   - docs/Models/Requests/V3DisenrollIdentityRequest.md
   - docs/Models/Requests/V3DisenrollIdentityResponse.md
-  - docs/Models/Requests/V3DomainConfirmLinkResponse.md
-  - docs/Models/Requests/V3DomainIDResponse.md
-  - docs/Models/Requests/V3DomainLinkedResponse.md
-  - docs/Models/Requests/V3DomainUnlinkResponse.md
+  - docs/Models/Requests/V3DomainConfirmLinkRequestResponse.md
+  - docs/Models/Requests/V3DomainIDRequestResponse.md
+  - docs/Models/Requests/V3DomainLinkRequestResponse.md
+  - docs/Models/Requests/V3DomainLinkedRequestResponse.md
+  - docs/Models/Requests/V3DomainUnlinkRequestResponse.md
   - docs/Models/Requests/V3EnrollIdentityResponse.md
   - docs/Models/Requests/V3GetIdentitiesByPhoneNumberRequest.md
   - docs/Models/Requests/V3GetIdentitiesByPhoneNumberResponse.md
@@ -171,11 +178,15 @@ generatedFiles:
   - src/Prove/Proveapi/Models/Components/V3CompleteRequest.cs
   - src/Prove/Proveapi/Models/Components/V3CompleteResponse.cs
   - src/Prove/Proveapi/Models/Components/V3CompleteResponseEvaluation.cs
+  - src/Prove/Proveapi/Models/Components/V3CrossDomainIdentityRequest.cs
+  - src/Prove/Proveapi/Models/Components/V3CrossDomainIdentityResponse.cs
   - src/Prove/Proveapi/Models/Components/V3DeactivateIdentityResponse.cs
   - src/Prove/Proveapi/Models/Components/V3DisenrollIdentityResponse.cs
   - src/Prove/Proveapi/Models/Components/V3DomainConfirmLinkRequest.cs
   - src/Prove/Proveapi/Models/Components/V3DomainConfirmLinkResponse.cs
   - src/Prove/Proveapi/Models/Components/V3DomainIDResponse.cs
+  - src/Prove/Proveapi/Models/Components/V3DomainLinkRequest.cs
+  - src/Prove/Proveapi/Models/Components/V3DomainLinkResponse.cs
   - src/Prove/Proveapi/Models/Components/V3DomainLinkedResponse.cs
   - src/Prove/Proveapi/Models/Components/V3DomainUnlinkRequest.cs
   - src/Prove/Proveapi/Models/Components/V3DomainUnlinkResponse.cs
@@ -216,14 +227,17 @@ generatedFiles:
   - src/Prove/Proveapi/Models/Requests/V3BatchGetIdentitiesResponse.cs
   - src/Prove/Proveapi/Models/Requests/V3ChallengeRequestResponse.cs
   - src/Prove/Proveapi/Models/Requests/V3CompleteRequestResponse.cs
+  - src/Prove/Proveapi/Models/Requests/V3CrossDomainIdentityRequest.cs
+  - src/Prove/Proveapi/Models/Requests/V3CrossDomainIdentityResponse.cs
   - src/Prove/Proveapi/Models/Requests/V3DeactivateIdentityRequest.cs
   - src/Prove/Proveapi/Models/Requests/V3DeactivateIdentityResponse.cs
   - src/Prove/Proveapi/Models/Requests/V3DisenrollIdentityRequest.cs
   - src/Prove/Proveapi/Models/Requests/V3DisenrollIdentityResponse.cs
-  - src/Prove/Proveapi/Models/Requests/V3DomainConfirmLinkResponse.cs
-  - src/Prove/Proveapi/Models/Requests/V3DomainIDResponse.cs
-  - src/Prove/Proveapi/Models/Requests/V3DomainLinkedResponse.cs
-  - src/Prove/Proveapi/Models/Requests/V3DomainUnlinkResponse.cs
+  - src/Prove/Proveapi/Models/Requests/V3DomainConfirmLinkRequestResponse.cs
+  - src/Prove/Proveapi/Models/Requests/V3DomainIDRequestResponse.cs
+  - src/Prove/Proveapi/Models/Requests/V3DomainLinkRequestResponse.cs
+  - src/Prove/Proveapi/Models/Requests/V3DomainLinkedRequestResponse.cs
+  - src/Prove/Proveapi/Models/Requests/V3DomainUnlinkRequestResponse.cs
   - src/Prove/Proveapi/Models/Requests/V3EnrollIdentityResponse.cs
   - src/Prove/Proveapi/Models/Requests/V3GetIdentitiesByPhoneNumberRequest.cs
   - src/Prove/Proveapi/Models/Requests/V3GetIdentitiesByPhoneNumberResponse.cs
@@ -455,7 +469,7 @@ examples:
   V3BatchEnrollIdentities:
     speakeasy-default-v3-batch-enroll-identities:
       requestBody:
-        application/json: {"clientRequestId": "71010d88-d0e7-4a24-9297-d1be6fefde81", "items": [{"clientCustomerId": "e0f78bc2-f748-4eda-9d29-d756844507fc", "deviceId": "bf9ea15d-7dfa-4bb4-a64c-6c26b53472fc", "phoneNumber": "2001001695"}, {"clientCustomerId": "e0f78bc2-f748-4eda-9d29-d756844507fc", "deviceId": "bf9ea15d-7dfa-4bb4-a64c-6c26b53472fc", "phoneNumber": "2001001695"}]}
+        application/json: {"clientRequestId": "71010d88-d0e7-4a24-9297-d1be6fefde81", "items": [{"clientName": "\"Client A\"", "identityId": "\"e0f78bc2-f748-4eda-9d29-d756844507fc\"", "pcid": "\"12345\""}, {"clientName": "\"Client A\"", "identityId": "\"e0f78bc2-f748-4eda-9d29-d756844507fc\"", "pcid": "\"12345\""}]}
       responses:
         "200":
           application/json: {"results": [{"identityId": "e0f78bc2-f748-4eda-9d29-d756844507fc"}, {"error": "Invalid Phone Number"}]}
@@ -622,10 +636,95 @@ examples:
           application/json: {"code": 8003, "message": "Access forbidden: insufficient permissions"}
         "500":
           application/json: {"code": 8000, "message": "error at prove, try again later"}
+  V3DomainConfirmLinkRequest:
+    speakeasy-default-v3-domain-confirm-link-request:
+      requestBody:
+        application/json: {"pcid": "pcid"}
+      responses:
+        "200":
+          application/json: {"success": true}
+        "400":
+          application/json: {"code": 8000, "message": "error at prove, try again later"}
+        "401":
+          application/json: {"code": 8002, "message": "not authorized"}
+        "403":
+          application/json: {"code": 8003, "message": "Access forbidden: insufficient permissions"}
+        "500":
+          application/json: {"code": 8000, "message": "error at prove, try again later"}
+  V3DomainIDRequest:
+    speakeasy-default-v3-domain-ID-request:
+      responses:
+        "200":
+          application/json: {"name": "My Company", "pcid": "123456"}
+        "400":
+          application/json: {"code": 8000, "message": "error at prove, try again later"}
+        "401":
+          application/json: {"code": 8002, "message": "not authorized"}
+        "403":
+          application/json: {"code": 8003, "message": "Access forbidden: insufficient permissions"}
+        "500":
+          application/json: {"code": 8000, "message": "error at prove, try again later"}
+  V3DomainLinkRequest:
+    speakeasy-default-v3-domain-link-request:
+      requestBody:
+        application/json: {"pcid": "pcid"}
+      responses:
+        "200":
+          application/json: {"success": true}
+        "400":
+          application/json: {"code": 8000, "message": "error at prove, try again later"}
+        "401":
+          application/json: {"code": 8002, "message": "not authorized"}
+        "403":
+          application/json: {"code": 8003, "message": "Access forbidden: insufficient permissions"}
+        "500":
+          application/json: {"code": 8000, "message": "error at prove, try again later"}
+  V3DomainLinkedRequest:
+    speakeasy-default-v3-domain-linked-request:
+      responses:
+        "200":
+          application/json: {"linkedFrom": [{"acceptedAt": 0, "acceptedString": "acceptedString", "name": "name", "pcid": "pcid"}, {"acceptedAt": 0, "acceptedString": "acceptedString", "name": "name", "pcid": "pcid"}], "linkedTo": [{"acceptedAt": 6, "acceptedString": "acceptedString", "name": "name", "pcid": "pcid"}, {"acceptedAt": 6, "acceptedString": "acceptedString", "name": "name", "pcid": "pcid"}], "requestsFrom": [{"name": "name", "pcid": "pcid", "requestedAt": 1, "requestedString": "requestedString"}, {"name": "name", "pcid": "pcid", "requestedAt": 1, "requestedString": "requestedString"}], "requestsTo": [{"name": "name", "pcid": "pcid", "requestedAt": 5, "requestedString": "requestedString"}, {"name": "name", "pcid": "pcid", "requestedAt": 5, "requestedString": "requestedString"}]}
+        "400":
+          application/json: {"code": 8000, "message": "error at prove, try again later"}
+        "401":
+          application/json: {"code": 8002, "message": "not authorized"}
+        "403":
+          application/json: {"code": 8003, "message": "Access forbidden: insufficient permissions"}
+        "500":
+          application/json: {"code": 8000, "message": "error at prove, try again later"}
+  V3DomainUnlinkRequest:
+    speakeasy-default-v3-domain-unlink-request:
+      requestBody:
+        application/json: {"pcidFrom": "pcidFrom", "pcidTo": "pcidTo"}
+      responses:
+        "200":
+          application/json: {"success": true}
+        "400":
+          application/json: {"code": 8000, "message": "error at prove, try again later"}
+        "401":
+          application/json: {"code": 8002, "message": "not authorized"}
+        "403":
+          application/json: {"code": 8003, "message": "Access forbidden: insufficient permissions"}
+        "500":
+          application/json: {"code": 8000, "message": "error at prove, try again later"}
+  V3CrossDomainIdentity:
+    speakeasy-default-v3-cross-domain-identity:
+      parameters:
+        path:
+          identityId: "<id>"
+      requestBody:
+        application/json: {"clientRequestId": "71010d88-d0e7-4a24-9297-d1be6fefde81"}
+      responses:
+        "200":
+          application/json: {"count": 5, "identites": [{"clientName": "Client A", "identityId": "e0f78bc2-f748-4eda-9d29-d756844507fc", "pcid": "12345"}]}
+        "400":
+          application/json: {"code": 8000, "message": "error at prove, try again later"}
+        "401":
+          application/json: {"code": 8002, "message": "not authorized"}
+        "403":
+          application/json: {"code": 8003, "message": "Access forbidden: insufficient permissions"}
+        "500":
+          application/json: {"code": 8000, "message": "error at prove, try again later"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## SDK Changes Detected:
-  * `ProveApi.V3.V3TokenRequest()`:  `request` **Changed** **Breaking** :warning:
-  * `ProveApi.Domain.V3DomainConfirmLink()`: **Added**
-  * `ProveApi.Domain.V3DomainLink()`: **Deleted** **Breaking** :warning:
+releaseNotes: "## SDK Changes Detected:\n* `ProveApi.Identity.V3BatchEnrollIdentities()`: \n  *  `request.Items.[]` **Changed** **Breaking** :warning:\n* `ProveApi.Domain.V3DomainConfirmLinkRequest()`: **Added**\n* `ProveApi.Domain.V3DomainIdRequest()`: **Added**\n* `ProveApi.Domain.V3DomainLinkRequest()`: **Added**\n* `ProveApi.Domain.V3DomainLinkedRequest()`: **Added**\n* `ProveApi.Domain.V3DomainUnlinkRequest()`: **Added**\n* `ProveApi.Identity.V3CrossDomainIdentity()`: **Added**\n* `ProveApi.Domain.V3DomainId()`: **Deleted** **Breaking** :warning:\n* `ProveApi.Domain.V3DomainConfirmLink()`: **Deleted** **Breaking** :warning:\n* `ProveApi.Domain.V3DomainLinked()`: **Deleted** **Breaking** :warning:\n* `ProveApi.Domain.V3DomainUnlink()`: **Deleted** **Breaking** :warning:\n"

@@ -12,16 +12,16 @@ namespace Prove.Proveapi.Models.Requests
     using Newtonsoft.Json;
     using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
+    using System.Collections.Generic;
     
-    public class V3DomainConfirmLinkResponse
+    public class V3DomainIDRequestResponse
     {
 
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
-        /// <summary>
-        /// V3DomainConfirmLinkResponse
-        /// </summary>
-        public Models.Components.V3DomainConfirmLinkResponse? V3DomainConfirmLinkResponseValue { get; set; }
+        public V3DomainIDResponse? V3DomainIDResponse { get; set; }
+
+        public Dictionary<string, List<string>> Headers { get; set; } = default!;
     }
 }

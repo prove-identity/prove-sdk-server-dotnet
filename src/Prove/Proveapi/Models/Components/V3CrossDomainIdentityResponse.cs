@@ -10,27 +10,26 @@
 namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
+    using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
+    using System.Collections.Generic;
     
-    public class IdentityItem
+    /// <summary>
+    /// Response body for the V3 Identity Cross Domain API.
+    /// </summary>
+    public class V3CrossDomainIdentityResponse
     {
 
         /// <summary>
-        /// The name of the client associated with the identity.
+        /// The number of items in the Identities array.
         /// </summary>
-        [JsonProperty("clientName")]
-        public string ClientName { get; set; } = default!;
+        [JsonProperty("count")]
+        public long Count { get; set; } = default!;
 
         /// <summary>
-        /// The Prove-generated unique ID for the specific identity.
+        /// The list of identities from other linked accounts.
         /// </summary>
-        [JsonProperty("identityId")]
-        public string IdentityId { get; set; } = default!;
-
-        /// <summary>
-        /// The Prove Customer ID (PCID) associated with the identity.
-        /// </summary>
-        [JsonProperty("pcid")]
-        public string Pcid { get; set; } = default!;
+        [JsonProperty("identites")]
+        public List<IdentityItem> Identites { get; set; } = default!;
     }
 }
