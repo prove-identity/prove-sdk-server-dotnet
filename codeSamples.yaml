@@ -80,23 +80,7 @@ actions:
             var res = await sdk.V3.V3CompleteRequestAsync(req);
 
             // handle response
-  - target: $["paths"]["/v3/domain/id"]["post"]
-    update:
-      x-codeSamples:
-        - lang: csharp
-          label: Csharp (SDK)
-          source: |-
-            using Prove.Proveapi;
-            using Prove.Proveapi.Models.Components;
-
-            var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
-
-            string? req = null;
-
-            var res = await sdk.Domain.V3DomainIDAsync(req);
-
-            // handle response
-  - target: $["paths"]["/v3/domain/link"]["post"]
+  - target: $["paths"]["/v3/domain/confirm-link"]["post"]
     update:
       x-codeSamples:
         - lang: csharp
@@ -111,7 +95,39 @@ actions:
                 Pcid = "pcid",
             };
 
-            var res = await sdk.Domain.V3DomainConfirmLinkAsync(req);
+            var res = await sdk.Domain.V3DomainConfirmLinkRequestAsync(req);
+
+            // handle response
+  - target: $["paths"]["/v3/domain/id"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: Csharp (SDK)
+          source: |-
+            using Prove.Proveapi;
+            using Prove.Proveapi.Models.Components;
+
+            var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+            var res = await sdk.Domain.V3DomainIDRequestAsync();
+
+            // handle response
+  - target: $["paths"]["/v3/domain/link"]["post"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: Csharp (SDK)
+          source: |-
+            using Prove.Proveapi;
+            using Prove.Proveapi.Models.Components;
+
+            var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+            V3DomainLinkRequest req = new V3DomainLinkRequest() {
+                Pcid = "pcid",
+            };
+
+            var res = await sdk.Domain.V3DomainLinkRequestAsync(req);
 
             // handle response
   - target: $["paths"]["/v3/domain/linked"]["get"]
@@ -125,7 +141,7 @@ actions:
 
             var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
-            var res = await sdk.Domain.V3DomainLinkedAsync();
+            var res = await sdk.Domain.V3DomainLinkedRequestAsync();
 
             // handle response
   - target: $["paths"]["/v3/domain/unlink"]["post"]
@@ -144,10 +160,10 @@ actions:
                 PcidTo = "pcidTo",
             };
 
-            var res = await sdk.Domain.V3DomainUnlinkAsync(req);
+            var res = await sdk.Domain.V3DomainUnlinkRequestAsync(req);
 
             // handle response
-  - target: $["paths"]["/v3/identity/"]["get"]
+  - target: $["paths"]["/v3/identity"]["get"]
     update:
       x-codeSamples:
         - lang: csharp
@@ -161,7 +177,7 @@ actions:
             var res = await sdk.Identity.V3BatchGetIdentitiesAsync();
 
             // handle response
-  - target: $["paths"]["/v3/identity/"]["post"]
+  - target: $["paths"]["/v3/identity"]["post"]
     update:
       x-codeSamples:
         - lang: csharp
@@ -198,14 +214,14 @@ actions:
                 ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
                 Items = new List<IdentityItem>() {
                     new IdentityItem() {
-                        ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
-                        DeviceId = "bf9ea15d-7dfa-4bb4-a64c-6c26b53472fc",
-                        PhoneNumber = "2001001695",
+                        ClientName = "\"Client A\"",
+                        IdentityId = "\"e0f78bc2-f748-4eda-9d29-d756844507fc\"",
+                        Pcid = "\"12345\"",
                     },
                     new IdentityItem() {
-                        ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
-                        DeviceId = "bf9ea15d-7dfa-4bb4-a64c-6c26b53472fc",
-                        PhoneNumber = "2001001695",
+                        ClientName = "\"Client A\"",
+                        IdentityId = "\"e0f78bc2-f748-4eda-9d29-d756844507fc\"",
+                        Pcid = "\"12345\"",
                     },
                 },
             };
@@ -255,6 +271,25 @@ actions:
             var res = await sdk.Identity.V3ActivateIdentityAsync(
                 identityId: "<id>",
                 v3ActivateIdentityRequest: new Prove.Proveapi.Models.Components.V3ActivateIdentityRequest() {
+                    ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
+                }
+            );
+
+            // handle response
+  - target: $["paths"]["/v3/identity/{identityId}/cross-domain"]["post"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: Csharp (SDK)
+          source: |-
+            using Prove.Proveapi;
+            using Prove.Proveapi.Models.Components;
+
+            var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+            var res = await sdk.Identity.V3CrossDomainIdentityAsync(
+                identityId: "<id>",
+                v3CrossDomainIdentityRequest: new Prove.Proveapi.Models.Components.V3CrossDomainIdentityRequest() {
                     ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
                 }
             );

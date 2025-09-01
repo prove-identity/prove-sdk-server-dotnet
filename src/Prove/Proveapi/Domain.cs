@@ -26,18 +26,31 @@ namespace Prove.Proveapi
     {
 
         /// <summary>
+        /// Confirm a domain link request
+        /// 
+        /// <remarks>
+        /// Confirms a given domain link request by validating the PCID.
+        /// </remarks>
+        /// </summary>
+        Task<V3DomainConfirmLinkRequestResponse> V3DomainConfirmLinkRequestAsync(V3DomainConfirmLinkRequest? request = null);
+
+        /// <summary>
         /// Get Domain Details
         /// 
         /// <remarks>
         /// Returns the domain details.
         /// </remarks>
         /// </summary>
-        Task<Models.Requests.V3DomainIDResponse> V3DomainIDAsync(string? request = null);
+        Task<V3DomainIDRequestResponse> V3DomainIDRequestAsync();
 
         /// <summary>
-        /// # Confirm a given domain link request.
+        /// Request a domain link
+        /// 
+        /// <remarks>
+        /// Create a request to connect the requested domain to the domain the request is made from.
+        /// </remarks>
         /// </summary>
-        Task<Models.Requests.V3DomainConfirmLinkResponse> V3DomainConfirmLinkAsync(V3DomainConfirmLinkRequest? request = null);
+        Task<V3DomainLinkRequestResponse> V3DomainLinkRequestAsync(V3DomainLinkRequest? request = null);
 
         /// <summary>
         /// Get the list of domains that are linked to this domain.
@@ -46,20 +59,24 @@ namespace Prove.Proveapi
         /// Returns the accepted and pending links for this domain.
         /// </remarks>
         /// </summary>
-        Task<Models.Requests.V3DomainLinkedResponse> V3DomainLinkedAsync();
+        Task<V3DomainLinkedRequestResponse> V3DomainLinkedRequestAsync();
 
         /// <summary>
-        /// # Remove a domain link or request.
+        /// Remove a domain link or request
+        /// 
+        /// <remarks>
+        /// Remove a domain link or request between the requested domain and the domain the request is made from.
+        /// </remarks>
         /// </summary>
-        Task<Models.Requests.V3DomainUnlinkResponse> V3DomainUnlinkAsync(V3DomainUnlinkRequest? request = null);
+        Task<V3DomainUnlinkRequestResponse> V3DomainUnlinkRequestAsync(V3DomainUnlinkRequest? request = null);
     }
 
     public class Domain: IDomain
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.3.1";
-        private const string _sdkGenVersion = "2.687.1";
+        private const string _sdkVersion = "1.3.2";
+        private const string _sdkGenVersion = "2.687.13";
         private const string _openapiDocVersion = "1.0.0";
 
         public Domain(SDKConfig config)
@@ -67,265 +84,138 @@ namespace Prove.Proveapi
             SDKConfiguration = config;
         }
 
-        public async Task<Models.Requests.V3DomainIDResponse> V3DomainIDAsync(string? request = null)
+        public async Task<V3DomainConfirmLinkRequestResponse> V3DomainConfirmLinkRequestAsync(V3DomainConfirmLinkRequest? request = null)
+        {
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
+            var urlString = baseUrl + "/v3/domain/confirm-link";
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json", false, true);
+            if (serializedBody != null)
+            {
+                httpRequest.Content = serializedBody;
+            }
+
+            if (SDKConfiguration.SecuritySource != null)
+            {
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3DomainConfirmLinkRequest", new List<string> {  }, SDKConfiguration.SecuritySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<V3DomainConfirmLinkResponse>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    var response = new V3DomainConfirmLinkRequestResponse()
+                    {
+                        HttpMeta = new Models.Components.HTTPMetadata()
+                        {
+                            Response = httpResponse,
+                            Request = httpRequest
+                        }
+                    };
+                    response.V3DomainConfirmLinkResponse = obj;
+                    return response;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 400)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 401)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error401>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 403)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error403>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 500)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+            }
+
+            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
+        }
+
+        public async Task<V3DomainIDRequestResponse> V3DomainIDRequestAsync()
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
 
             var urlString = baseUrl + "/v3/domain/id";
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
-            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json", false, true);
-            if (serializedBody != null)
-            {
-                httpRequest.Content = serializedBody;
-            }
-
-            if (SDKConfiguration.SecuritySource != null)
-            {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3DomainID", new List<string> {  }, SDKConfiguration.SecuritySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.V3DomainIDResponse>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    var response = new Models.Requests.V3DomainIDResponse()
-                    {
-                        HttpMeta = new Models.Components.HTTPMetadata()
-                        {
-                            Response = httpResponse,
-                            Request = httpRequest
-                        }
-                    };
-                    response.V3DomainIDResponseValue = obj;
-                    return response;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 400)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 401)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error401>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 403)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error403>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 500)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
-        }
-
-        public async Task<Models.Requests.V3DomainConfirmLinkResponse> V3DomainConfirmLinkAsync(V3DomainConfirmLinkRequest? request = null)
-        {
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
-            var urlString = baseUrl + "/v3/domain/link";
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
-            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json", false, true);
-            if (serializedBody != null)
-            {
-                httpRequest.Content = serializedBody;
-            }
-
-            if (SDKConfiguration.SecuritySource != null)
-            {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3DomainConfirmLink", new List<string> {  }, SDKConfiguration.SecuritySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.V3DomainConfirmLinkResponse>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    var response = new Models.Requests.V3DomainConfirmLinkResponse()
-                    {
-                        HttpMeta = new Models.Components.HTTPMetadata()
-                        {
-                            Response = httpResponse,
-                            Request = httpRequest
-                        }
-                    };
-                    response.V3DomainConfirmLinkResponseValue = obj;
-                    return response;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 400)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 401)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error401>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 403)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error403>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 500)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
-        }
-
-        public async Task<Models.Requests.V3DomainLinkedResponse> V3DomainLinkedAsync()
-        {
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
-            var urlString = baseUrl + "/v3/domain/linked";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -335,7 +225,7 @@ namespace Prove.Proveapi
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3DomainLinked", new List<string> {  }, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3DomainIDRequest", new List<string> {  }, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -375,8 +265,8 @@ namespace Prove.Proveapi
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.V3DomainLinkedResponse>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new Models.Requests.V3DomainLinkedResponse()
+                    var obj = ResponseBodyDeserializer.Deserialize<V3DomainIDResponse>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new V3DomainIDRequestResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
                         {
@@ -384,7 +274,7 @@ namespace Prove.Proveapi
                             Request = httpRequest
                         }
                     };
-                    response.V3DomainLinkedResponseValue = obj;
+                    response.V3DomainIDResponse = obj;
                     return response;
                 }
 
@@ -442,11 +332,11 @@ namespace Prove.Proveapi
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<Models.Requests.V3DomainUnlinkResponse> V3DomainUnlinkAsync(V3DomainUnlinkRequest? request = null)
+        public async Task<V3DomainLinkRequestResponse> V3DomainLinkRequestAsync(V3DomainLinkRequest? request = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
 
-            var urlString = baseUrl + "/v3/domain/unlink";
+            var urlString = baseUrl + "/v3/domain/link";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -462,7 +352,7 @@ namespace Prove.Proveapi
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3DomainUnlink", new List<string> {  }, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3DomainLinkRequest", new List<string> {  }, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -502,8 +392,8 @@ namespace Prove.Proveapi
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.V3DomainUnlinkResponse>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    var response = new Models.Requests.V3DomainUnlinkResponse()
+                    var obj = ResponseBodyDeserializer.Deserialize<V3DomainLinkResponse>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    var response = new V3DomainLinkRequestResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
                         {
@@ -511,7 +401,255 @@ namespace Prove.Proveapi
                             Request = httpRequest
                         }
                     };
-                    response.V3DomainUnlinkResponseValue = obj;
+                    response.V3DomainLinkResponse = obj;
+                    return response;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 400)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 401)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error401>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 403)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error403>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 500)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+            }
+
+            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
+        }
+
+        public async Task<V3DomainLinkedRequestResponse> V3DomainLinkedRequestAsync()
+        {
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
+            var urlString = baseUrl + "/v3/domain/linked";
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+
+            if (SDKConfiguration.SecuritySource != null)
+            {
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3DomainLinkedRequest", new List<string> {  }, SDKConfiguration.SecuritySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<V3DomainLinkedResponse>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new V3DomainLinkedRequestResponse()
+                    {
+                        HttpMeta = new Models.Components.HTTPMetadata()
+                        {
+                            Response = httpResponse,
+                            Request = httpRequest
+                        }
+                    };
+                    response.V3DomainLinkedResponse = obj;
+                    return response;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 400)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 401)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error401>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 403)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error403>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 500)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+            }
+
+            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
+        }
+
+        public async Task<V3DomainUnlinkRequestResponse> V3DomainUnlinkRequestAsync(V3DomainUnlinkRequest? request = null)
+        {
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
+            var urlString = baseUrl + "/v3/domain/unlink";
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json", false, true);
+            if (serializedBody != null)
+            {
+                httpRequest.Content = serializedBody;
+            }
+
+            if (SDKConfiguration.SecuritySource != null)
+            {
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3DomainUnlinkRequest", new List<string> {  }, SDKConfiguration.SecuritySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<V3DomainUnlinkResponse>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    var response = new V3DomainUnlinkRequestResponse()
+                    {
+                        HttpMeta = new Models.Components.HTTPMetadata()
+                        {
+                            Response = httpResponse,
+                            Request = httpRequest
+                        }
+                    };
+                    response.V3DomainUnlinkResponse = obj;
                     return response;
                 }
 

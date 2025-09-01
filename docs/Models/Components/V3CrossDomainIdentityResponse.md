@@ -1,0 +1,11 @@
+# V3CrossDomainIdentityResponse
+
+Response body for the V3 Identity Cross Domain API.
+
+
+## Fields
+
+| Field                                                                                                   | Type                                                                                                    | Required                                                                                                | Description                                                                                             | Example                                                                                                 |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `Count`                                                                                                 | *long*                                                                                                  | :heavy_check_mark:                                                                                      | The number of items in the Identities array.                                                            | 5                                                                                                       |
+| `Identites`                                                                                             | List<[IdentityItem](../../Models/Components/IdentityItem.md)>                                           | :heavy_check_mark:                                                                                      | The list of identities from other linked accounts.                                                      | [<br/>{<br/>"clientName": "Client A",<br/>"identityId": "e0f78bc2-f748-4eda-9d29-d756844507fc",<br/>"pcid": "12345"<br/>}<br/>] |

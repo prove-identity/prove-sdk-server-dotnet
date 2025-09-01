@@ -107,10 +107,11 @@ var res = await sdk.V3.V3TokenRequestAsync(req);
 
 ### [Domain](docs/sdks/domain/README.md)
 
-* [V3DomainID](docs/sdks/domain/README.md#v3domainid) - Get Domain Details
-* [V3DomainConfirmLink](docs/sdks/domain/README.md#v3domainconfirmlink) - # Confirm a given domain link request.
-* [V3DomainLinked](docs/sdks/domain/README.md#v3domainlinked) - Get the list of domains that are linked to this domain.
-* [V3DomainUnlink](docs/sdks/domain/README.md#v3domainunlink) - # Remove a domain link or request.
+* [V3DomainConfirmLinkRequest](docs/sdks/domain/README.md#v3domainconfirmlinkrequest) - Confirm a domain link request
+* [V3DomainIDRequest](docs/sdks/domain/README.md#v3domainidrequest) - Get Domain Details
+* [V3DomainLinkRequest](docs/sdks/domain/README.md#v3domainlinkrequest) - Request a domain link
+* [V3DomainLinkedRequest](docs/sdks/domain/README.md#v3domainlinkedrequest) - Get the list of domains that are linked to this domain.
+* [V3DomainUnlinkRequest](docs/sdks/domain/README.md#v3domainunlinkrequest) - Remove a domain link or request
 
 ### [Identity](docs/sdks/identity/README.md)
 
@@ -120,6 +121,7 @@ var res = await sdk.V3.V3TokenRequestAsync(req);
 * [V3DisenrollIdentity](docs/sdks/identity/README.md#v3disenrollidentity) - Disenroll Identity
 * [V3GetIdentity](docs/sdks/identity/README.md#v3getidentity) - Get Identity
 * [V3ActivateIdentity](docs/sdks/identity/README.md#v3activateidentity) - Activate Identity
+* [V3CrossDomainIdentity](docs/sdks/identity/README.md#v3crossdomainidentity) - Cross Domain Identity
 * [V3DeactivateIdentity](docs/sdks/identity/README.md#v3deactivateidentity) - Deactivate Identity
 * [V3GetIdentitiesByPhoneNumber](docs/sdks/identity/README.md#v3getidentitiesbyphonenumber) - Get Identities By Phone Number
 

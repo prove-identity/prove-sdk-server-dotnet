@@ -12,16 +12,19 @@ namespace Prove.Proveapi.Models.Requests
     using Newtonsoft.Json;
     using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
+    using System.Collections.Generic;
     
-    public class V3DomainUnlinkResponse
+    public class V3DomainLinkedRequestResponse
     {
 
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
         /// <summary>
-        /// V3DomainUnlinkResponse
+        /// Successful request.
         /// </summary>
-        public Models.Components.V3DomainUnlinkResponse? V3DomainUnlinkResponseValue { get; set; }
+        public V3DomainLinkedResponse? V3DomainLinkedResponse { get; set; }
+
+        public Dictionary<string, List<string>> Headers { get; set; } = default!;
     }
 }

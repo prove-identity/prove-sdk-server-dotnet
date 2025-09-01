@@ -1,4 +1,4 @@
-# V3DomainIDResponse
+# V3DomainConfirmLinkRequestResponse
 
 
 ## Fields
@@ -6,4 +6,4 @@
 | Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           | Example                                                                               |
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | `HttpMeta`                                                                            | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                               | :heavy_check_mark:                                                                    | N/A                                                                                   |                                                                                       |
-| `V3DomainIDResponse`                                                                  | [Models.Components.V3DomainIDResponse](../../Models/Components/V3DomainIDResponse.md) | :heavy_minus_sign:                                                                    | V3DomainIDResponse                                                                    | {<br/>"name": "My Company",<br/>"pcid": 123456123456<br/>}                            |
+| `V3DomainConfirmLinkResponse`                                                         | [V3DomainConfirmLinkResponse](../../Models/Components/V3DomainConfirmLinkResponse.md) | :heavy_minus_sign:                                                                    | V3DomainConfirmLinkResponse                                                           | {<br/>"success": true<br/>}                                                           |

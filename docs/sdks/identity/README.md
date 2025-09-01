@@ -11,6 +11,7 @@
 * [V3DisenrollIdentity](#v3disenrollidentity) - Disenroll Identity
 * [V3GetIdentity](#v3getidentity) - Get Identity
 * [V3ActivateIdentity](#v3activateidentity) - Activate Identity
+* [V3CrossDomainIdentity](#v3crossdomainidentity) - Cross Domain Identity
 * [V3DeactivateIdentity](#v3deactivateidentity) - Deactivate Identity
 * [V3GetIdentitiesByPhoneNumber](#v3getidentitiesbyphonenumber) - Get Identities By Phone Number
 
@@ -20,7 +21,7 @@ Return a list of all identities you have enrolled in Identity Manager.
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="V3BatchGetIdentities" method="get" path="/v3/identity/" -->
+<!-- UsageSnippet language="csharp" operationID="V3BatchGetIdentities" method="get" path="/v3/identity" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -61,7 +62,7 @@ Enrolls a single customer for monitoring using their phone number and unique ide
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="V3EnrollIdentity" method="post" path="/v3/identity/" -->
+<!-- UsageSnippet language="csharp" operationID="V3EnrollIdentity" method="post" path="/v3/identity" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -118,14 +119,14 @@ V3BatchEnrollIdentitiesRequest req = new V3BatchEnrollIdentitiesRequest() {
     ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
     Items = new List<IdentityItem>() {
         new IdentityItem() {
-            ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
-            DeviceId = "bf9ea15d-7dfa-4bb4-a64c-6c26b53472fc",
-            PhoneNumber = "2001001695",
+            ClientName = "\"Client A\"",
+            IdentityId = "\"e0f78bc2-f748-4eda-9d29-d756844507fc\"",
+            Pcid = "\"12345\"",
         },
         new IdentityItem() {
-            ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
-            DeviceId = "bf9ea15d-7dfa-4bb4-a64c-6c26b53472fc",
-            PhoneNumber = "2001001695",
+            ClientName = "\"Client A\"",
+            IdentityId = "\"e0f78bc2-f748-4eda-9d29-d756844507fc\"",
+            Pcid = "\"12345\"",
         },
     },
 };
@@ -266,6 +267,50 @@ var res = await sdk.Identity.V3ActivateIdentityAsync(
 ### Response
 
 **[Models.Requests.V3ActivateIdentityResponse](../../Models/Requests/V3ActivateIdentityResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.APIException | 4XX, 5XX                                  | \*/\*                                     |
+
+## V3CrossDomainIdentity
+
+Retreives the list of identities from other linked accounts.
+
+### Example Usage
+
+<!-- UsageSnippet language="csharp" operationID="V3CrossDomainIdentity" method="post" path="/v3/identity/{identityId}/cross-domain" -->
+```csharp
+using Prove.Proveapi;
+using Prove.Proveapi.Models.Components;
+
+var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+var res = await sdk.Identity.V3CrossDomainIdentityAsync(
+    identityId: "<id>",
+    v3CrossDomainIdentityRequest: new Prove.Proveapi.Models.Components.V3CrossDomainIdentityRequest() {
+        ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
+    }
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                                 | Type                                                                                                      | Required                                                                                                  | Description                                                                                               | Example                                                                                                   |
+| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `IdentityId`                                                                                              | *string*                                                                                                  | :heavy_check_mark:                                                                                        | A Prove-generated unique ID for a specific identity.                                                      |                                                                                                           |
+| `V3CrossDomainIdentityRequest`                                                                            | [Models.Components.V3CrossDomainIdentityRequest](../../Models/Components/V3CrossDomainIdentityRequest.md) | :heavy_minus_sign:                                                                                        | N/A                                                                                                       | {<br/>"clientRequestId": "71010d88-d0e7-4a24-9297-d1be6fefde81"<br/>}                                     |
+
+### Response
+
+**[Models.Requests.V3CrossDomainIdentityResponse](../../Models/Requests/V3CrossDomainIdentityResponse.md)**
 
 ### Errors
 

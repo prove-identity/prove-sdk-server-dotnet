@@ -13,15 +13,15 @@ namespace Prove.Proveapi.Models.Requests
     using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
     
-    public class V3DomainIDResponse
+    public class V3CrossDomainIdentityResponse
     {
 
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
         /// <summary>
-        /// V3DomainIDResponse
+        /// V3CrossDomainIdentityResponse
         /// </summary>
-        public Models.Components.V3DomainIDResponse? V3DomainIDResponseValue { get; set; }
+        public Models.Components.V3CrossDomainIdentityResponse? V3CrossDomainIdentityResponseValue { get; set; }
     }
 }
