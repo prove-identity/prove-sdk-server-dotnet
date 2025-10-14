@@ -34,10 +34,33 @@ namespace Prove.Proveapi.Models.Components
         public string? ClientCustomerId { get; set; }
 
         /// <summary>
-        /// A client-generated unique ID for a specific session. This can be used to identify specific requests. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include Personally Identifiable Information (PII) in this field.
+        /// A client-generated unique ID to identify a specific customer across business lines.
+        /// </summary>
+        [JsonProperty("clientHumanId")]
+        public string? ClientHumanId { get; set; }
+
+        /// <summary>
+        /// A client-generated unique ID for a specific session. This can be used to identify specific requests.<br/>
+        /// 
+        /// <remarks>
+        /// The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted.<br/>
+        /// Do not include Personally Identifiable Information (PII) in this field.
+        /// </remarks>
         /// </summary>
         [JsonProperty("clientRequestId")]
-        public string? ClientRequestId { get; set; }
+        public string ClientRequestId { get; set; } = default!;
+
+        /// <summary>
+        /// The unique identifier for the Prove Key on the device.
+        /// </summary>
+        [JsonProperty("deviceId")]
+        public string? DeviceId { get; set; }
+
+        /// <summary>
+        /// The email address of the customer. Acceptable characters are: alphanumeric with symbols &apos;@.+&apos;.
+        /// </summary>
+        [JsonProperty("emailAddress")]
+        public string? EmailAddress { get; set; }
 
         /// <summary>
         /// The URL where the end user will be redirected at the end of Instant Link flow. Required when `possessionType=desktop`.<br/>
@@ -50,10 +73,17 @@ namespace Prove.Proveapi.Models.Components
         public string? FinalTargetUrl { get; set; }
 
         /// <summary>
+        /// The IP address of the customer. Acceptable characters are: Alphanumeric with &apos;.:&apos; symbols.
+        /// </summary>
+        [JsonProperty("ipAddress")]
+        public string? IpAddress { get; set; }
+
+        /// <summary>
         /// The mobile phone number. US phone numbers can be passed in with or without a leading `+1`. International phone numbers require a leading `+1`. Use the appropriate endpoint URL based on the region the number originates from. Acceptable characters are: alphanumeric with symbols &apos;+&apos;.<br/>
         /// 
         /// <remarks>
-        /// Required unless Mobile Auth is enabled.
+        /// <br/>
+        /// Required except when MobileAuth is used in US or a valid ProveID is provided.
         /// </remarks>
         /// </summary>
         [JsonProperty("phoneNumber")]
@@ -69,6 +99,17 @@ namespace Prove.Proveapi.Models.Components
         /// </summary>
         [JsonProperty("possessionType")]
         public string PossessionType { get; set; } = default!;
+
+        /// <summary>
+        /// A unique ID to identify a specific customer obtained from a previous successful authentication.<br/>
+        /// 
+        /// <remarks>
+        /// <br/>
+        /// Required if phoneNumber is not present and mobileAuth is not enabled in the US or phoneNumber is not present in the EU.
+        /// </remarks>
+        /// </summary>
+        [JsonProperty("proveId")]
+        public string? ProveId { get; set; }
 
         /// <summary>
         /// If `true`, rebinds the Prove Key with the newly verified phone number.

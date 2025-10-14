@@ -12,10 +12,10 @@ namespace Prove.Proveapi.Models.Errors
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
     using System;
-    
-    public class Error : Exception
-    {
+    using System.Net.Http;
 
+    public class ErrorPayload
+    {
         /// <summary>
         /// Code is an internal error code that describes the problem category of the request.
         /// </summary>
@@ -26,7 +26,47 @@ namespace Prove.Proveapi.Models.Errors
         /// Message is an error message describing the problem with the request.
         /// </summary>
         [JsonProperty("message")]
-        private string? _message { get; set; }
-        public override string Message { get {return _message ?? "";} }
+        public string Message { get; set; } = default!;
     }
+
+    public class Error : ProveAPIError
+    {
+        /// <summary>
+        ///  The original data that was passed to this exception.
+        /// </summary>
+        public ErrorPayload Payload { get; }
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use Error.Payload.Code instead.")]
+        public long? Code { get; set; }
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use Error.Payload.Message instead.")]
+        private string? _message { get; set; }
+
+        private static string ErrorMessage(ErrorPayload payload, string body)
+        {
+            string? message = payload.Message;
+            if (!string.IsNullOrEmpty(message))
+            {
+                return message;
+            }
+
+            return "API error occurred";
+        }
+
+        public Error(
+            ErrorPayload payload,
+            HttpRequestMessage request,
+            HttpResponseMessage response,
+            string body
+        ): base(ErrorMessage(payload, body), request, response, body)
+        {
+           Payload = payload;
+
+           #pragma warning disable CS0618
+           Code = payload.Code;
+           _message = payload.Message;
+           #pragma warning restore CS0618
+        }
+    }
+
 }

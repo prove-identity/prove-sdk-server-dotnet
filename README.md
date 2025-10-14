@@ -125,7 +125,6 @@ var res = await sdk.V3.V3TokenRequestAsync(req);
 * [V3DeactivateIdentity](docs/sdks/identity/README.md#v3deactivateidentity) - Deactivate Identity
 * [V3GetIdentitiesByPhoneNumber](docs/sdks/identity/README.md#v3getidentitiesbyphonenumber) - Get Identities By Phone Number
 
-
 ### [V3](docs/sdks/v3/README.md)
 
 * [V3TokenRequest](docs/sdks/v3/README.md#v3tokenrequest) - Request OAuth Token
@@ -137,7 +136,7 @@ var res = await sdk.V3.V3TokenRequestAsync(req);
 * [V3UnifyStatusRequest](docs/sdks/v3/README.md#v3unifystatusrequest) - Check Status
 * [V3ValidateRequest](docs/sdks/v3/README.md#v3validaterequest) - Validate Phone Number
 * [V3VerifyRequest](docs/sdks/v3/README.md#v3verifyrequest) - Initiate Verified Users Session
-* [V3VerifyStatusRequest](docs/sdks/v3/README.md#v3verifystatusrequest) - Check Verification Result
+* [V3VerifyBatchRequest](docs/sdks/v3/README.md#v3verifybatchrequest) - Batch Verify Users
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -145,24 +144,15 @@ var res = await sdk.V3.V3TokenRequestAsync(req);
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Handling errors in this SDK should largely match your expectations. All operations return a response object or throw an exception.
-
-By default, an API error will raise a `Prove.Proveapi.Models.Errors.APIException` exception, which has the following properties:
+[`ProveAPIError`](./src/Prove/Proveapi/Models/Errors/ProveAPIError.cs) is the base exception class for all HTTP error responses. It has the following properties:
 
 | Property      | Type                  | Description           |
 |---------------|-----------------------|-----------------------|
-| `Message`     | *string*              | The error message     |
-| `Request`     | *HttpRequestMessage*  | The HTTP request      |
-| `Response`    | *HttpResponseMessage* | The HTTP response     |
+| `Message`     | *string*              | Error message         |
+| `Request`     | *HttpRequestMessage*  | HTTP request object   |
+| `Response`    | *HttpResponseMessage* | HTTP response object  |
 
-When custom error responses are specified for an operation, the SDK may also throw their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `V3TokenRequestAsync` method throws the following exceptions:
-
-| Error Type                                | Status Code | Content Type     |
-| ----------------------------------------- | ----------- | ---------------- |
-| Prove.Proveapi.Models.Errors.Error        | 400         | application/json |
-| Prove.Proveapi.Models.Errors.Error401     | 401         | application/json |
-| Prove.Proveapi.Models.Errors.Error        | 500         | application/json |
-| Prove.Proveapi.Models.Errors.APIException | 4XX, 5XX    | \*/\*            |
+Some exceptions in this SDK include an additional `Payload` field, which will contain deserialized custom error data when present. Possible exceptions are listed in the [Error Classes](#error-classes) section.
 
 ### Example
 
@@ -185,30 +175,54 @@ try
 
     // handle response
 }
-catch (Exception ex)
+catch (ProveAPIError ex)  // all SDK exceptions inherit from ProveAPIError
 {
-    if (ex is Error)
+    // ex.ToString() provides a detailed error message
+    System.Console.WriteLine(ex);
+
+    // Base exception fields
+    HttpRequestMessage request = ex.Request;
+    HttpResponseMessage response = ex.Response;
+    var statusCode = (int)response.StatusCode;
+    var responseBody = ex.Body;
+
+    if (ex is Error) // different exceptions may be thrown depending on the method
     {
-        // Handle exception data
-        throw;
+        // Check error data fields
+        ErrorPayload payload = ex.Payload;
+        long Code = payload.Code;
+        string Message = payload.Message;
     }
-    else if (ex is Error401)
+
+    // An underlying cause may be provided
+    if (ex.InnerException != null)
     {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is Error)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is Prove.Proveapi.Models.Errors.APIException)
-    {
-        // Handle default exception
-        throw;
+        Exception cause = ex.InnerException;
     }
 }
+catch (System.Net.Http.HttpRequestException ex)
+{
+    // Check ex.InnerException for Network connectivity errors
+}
 ```
+
+### Error Classes
+
+**Primary exceptions:**
+* [`ProveAPIError`](./src/Prove/Proveapi/Models/Errors/ProveAPIError.cs): The base class for HTTP error responses.
+  * [`Error`](./src/Prove/Proveapi/Models/Errors/Error.cs): Bad Request. The server cannot process the request due to a client error.
+  * [`Error401`](./src/Prove/Proveapi/Models/Errors/Error401.cs): Unauthorized. Authentication is required and has failed or has not been provided. Status code `401`.
+  * [`Error403`](./src/Prove/Proveapi/Models/Errors/Error403.cs): Forbidden. The server understood the request but refuses to authorize it. Status code `403`. *
+
+<details><summary>Less common exceptions (2)</summary>
+
+* [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
+
+* Inheriting from [`ProveAPIError`](./src/Prove/Proveapi/Models/Errors/ProveAPIError.cs):
+  * [`ResponseValidationError`](./src/Prove/Proveapi/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
+</details>
+
+\* Refer to the [relevant documentation](#available-resources-and-operations) to determine whether an exception applies to a specific operation.
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->

@@ -12,7 +12,7 @@ namespace Prove.Proveapi.Models.Components
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
     
-    public class V3VerifyRequest
+    public class VerifyItem
     {
 
         /// <summary>
@@ -28,22 +28,16 @@ namespace Prove.Proveapi.Models.Components
         public string? ClientHumanId { get; set; }
 
         /// <summary>
-        /// A client-generated unique ID for a specific session. This can be used to identify specific requests. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include Personally Identifiable Information (PII) in this field.
-        /// </summary>
-        [JsonProperty("clientRequestId")]
-        public string? ClientRequestId { get; set; }
-
-        /// <summary>
         /// The email address of the customer. Acceptable characters are: alphanumeric with symbols &apos;@.+&apos;.
         /// </summary>
         [JsonProperty("emailAddress")]
         public string? EmailAddress { get; set; }
 
         /// <summary>
-        /// The first name of the individual. (required IF verificationType=VerifiedUser)
+        /// The first name of the individual.
         /// </summary>
         [JsonProperty("firstName")]
-        public string? FirstName { get; set; }
+        public string FirstName { get; set; } = default!;
 
         /// <summary>
         /// The IP address of the customer.
@@ -52,10 +46,10 @@ namespace Prove.Proveapi.Models.Components
         public string? IpAddress { get; set; }
 
         /// <summary>
-        /// The last name of the individual. (required IF verificationType=VerifiedUser)
+        /// The last name of the individual.
         /// </summary>
         [JsonProperty("lastName")]
-        public string? LastName { get; set; }
+        public string LastName { get; set; } = default!;
 
         /// <summary>
         /// The mobile phone number. US phone numbers can be passed in with or without a leading `+1`. International phone numbers require a leading `+1`. Use the appropriate endpoint URL based on the region the number originates from. Acceptable characters are: alphanumeric with symbols &apos;+&apos;.
@@ -73,6 +67,6 @@ namespace Prove.Proveapi.Models.Components
         /// The verification method based on the use case and authorization level.
         /// </summary>
         [JsonProperty("verificationType")]
-        public string VerificationType { get; set; } = default!;
+        public string? VerificationType { get; set; }
     }
 }

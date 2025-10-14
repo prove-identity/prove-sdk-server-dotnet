@@ -1,26 +1,26 @@
 lockVersion: 2.0.0
 id: 99003e79-c0db-4110-b5b2-e9c131bd48f0
 management:
-  docChecksum: d7f1c6ac326977f2bda0cc8381e1abca
+  docChecksum: 01413dfda36e6baadea90e3ae584102d
   docVersion: 1.0.0
-  speakeasyVersion: 1.606.9
-  generationVersion: 2.687.13
-  releaseVersion: 1.3.2
-  configChecksum: b582ea9fe6649725f5f8cfb784c2caae
+  speakeasyVersion: 1.636.3
+  generationVersion: 2.723.11
+  releaseVersion: 1.4.0
+  configChecksum: 70d9c3074bb6a25f2c44f1ec24fa8178
   repoURL: https://github.com/prove-identity/prove-sdk-server-dotnet.git
   published: true
 features:
   csharp:
     additionalDependencies: 0.1.0
-    core: 3.12.0
+    core: 3.13.0
     examples: 2.81.6
     flattening: 2.81.3
-    globalSecurity: 2.83.7
+    globalSecurity: 2.83.8
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
     intellisenseMarkdownSupport: 0.1.0
-    methodArguments: 0.2.0
+    methodArguments: 0.2.1
     responseFormat: 0.0.4
     sdkHooks: 0.2.0
     serverIDs: 2.82.1
@@ -29,6 +29,7 @@ generatedFiles:
   - NUGET.md
   - Prove.Proveapi.sln
   - USAGE.md
+  - docs/Models/Components/AdditionalIdentity.md
   - docs/Models/Components/AmlTypeListResponseInternal.md
   - docs/Models/Components/DataSourceAddressResponseInternal.md
   - docs/Models/Components/DataSourceEmailAddressResponseInternal.md
@@ -39,6 +40,7 @@ generatedFiles:
   - docs/Models/Components/GetBatchIdentityItem.md
   - docs/Models/Components/HTTPMetadata.md
   - docs/Models/Components/IDVDataInternal.md
+  - docs/Models/Components/Identity.md
   - docs/Models/Components/IdentityItem.md
   - docs/Models/Components/KYCFieldTypeResponseInternal.md
   - docs/Models/Components/KYCInternal.md
@@ -95,12 +97,14 @@ generatedFiles:
   - docs/Models/Components/V3ValidateRequest.md
   - docs/Models/Components/V3ValidateResponse.md
   - docs/Models/Components/V3ValidateResponseEvaluation.md
+  - docs/Models/Components/V3VerifyBatchRequest.md
+  - docs/Models/Components/V3VerifyBatchResponse.md
   - docs/Models/Components/V3VerifyRequest.md
   - docs/Models/Components/V3VerifyResponse.md
   - docs/Models/Components/V3VerifyResponseEvaluation.md
-  - docs/Models/Components/V3VerifyStatusRequest.md
-  - docs/Models/Components/V3VerifyStatusResponse.md
-  - docs/Models/Components/V3VerifyStatusResponseEvaluation.md
+  - docs/Models/Components/VerifyBatchResultItem.md
+  - docs/Models/Components/VerifyBatchResultItemEvaluation.md
+  - docs/Models/Components/VerifyItem.md
   - docs/Models/Errors/Error.md
   - docs/Models/Errors/Error401.md
   - docs/Models/Errors/Error403.md
@@ -133,17 +137,17 @@ generatedFiles:
   - docs/Models/Requests/V3UnifyRequestResponse.md
   - docs/Models/Requests/V3UnifyStatusRequestResponse.md
   - docs/Models/Requests/V3ValidateRequestResponse.md
+  - docs/Models/Requests/V3VerifyBatchRequestResponse.md
   - docs/Models/Requests/V3VerifyRequestResponse.md
-  - docs/Models/Requests/V3VerifyStatusRequestResponse.md
   - docs/sdks/domain/README.md
   - docs/sdks/identity/README.md
-  - docs/sdks/proveapi/README.md
   - docs/sdks/v3/README.md
   - global.json
   - src/Prove/Proveapi/Domain.cs
   - src/Prove/Proveapi/Hooks/HookTypes.cs
   - src/Prove/Proveapi/Hooks/SDKHooks.cs
   - src/Prove/Proveapi/Identity.cs
+  - src/Prove/Proveapi/Models/Components/AdditionalIdentity.cs
   - src/Prove/Proveapi/Models/Components/AmlTypeListResponseInternal.cs
   - src/Prove/Proveapi/Models/Components/DataSourceAddressResponseInternal.cs
   - src/Prove/Proveapi/Models/Components/DataSourceEmailAddressResponseInternal.cs
@@ -154,6 +158,7 @@ generatedFiles:
   - src/Prove/Proveapi/Models/Components/GetBatchIdentityItem.cs
   - src/Prove/Proveapi/Models/Components/HTTPMetadata.cs
   - src/Prove/Proveapi/Models/Components/IDVDataInternal.cs
+  - src/Prove/Proveapi/Models/Components/Identity.cs
   - src/Prove/Proveapi/Models/Components/IdentityItem.cs
   - src/Prove/Proveapi/Models/Components/KYCFieldTypeResponseInternal.cs
   - src/Prove/Proveapi/Models/Components/KYCInternal.cs
@@ -210,16 +215,20 @@ generatedFiles:
   - src/Prove/Proveapi/Models/Components/V3ValidateRequest.cs
   - src/Prove/Proveapi/Models/Components/V3ValidateResponse.cs
   - src/Prove/Proveapi/Models/Components/V3ValidateResponseEvaluation.cs
+  - src/Prove/Proveapi/Models/Components/V3VerifyBatchRequest.cs
+  - src/Prove/Proveapi/Models/Components/V3VerifyBatchResponse.cs
   - src/Prove/Proveapi/Models/Components/V3VerifyRequest.cs
   - src/Prove/Proveapi/Models/Components/V3VerifyResponse.cs
   - src/Prove/Proveapi/Models/Components/V3VerifyResponseEvaluation.cs
-  - src/Prove/Proveapi/Models/Components/V3VerifyStatusRequest.cs
-  - src/Prove/Proveapi/Models/Components/V3VerifyStatusResponse.cs
-  - src/Prove/Proveapi/Models/Components/V3VerifyStatusResponseEvaluation.cs
+  - src/Prove/Proveapi/Models/Components/VerifyBatchResultItem.cs
+  - src/Prove/Proveapi/Models/Components/VerifyBatchResultItemEvaluation.cs
+  - src/Prove/Proveapi/Models/Components/VerifyItem.cs
   - src/Prove/Proveapi/Models/Errors/APIException.cs
   - src/Prove/Proveapi/Models/Errors/Error.cs
   - src/Prove/Proveapi/Models/Errors/Error401.cs
   - src/Prove/Proveapi/Models/Errors/Error403.cs
+  - src/Prove/Proveapi/Models/Errors/ProveAPIError.cs
+  - src/Prove/Proveapi/Models/Errors/ResponseValidationException.cs
   - src/Prove/Proveapi/Models/Requests/V3ActivateIdentityRequest.cs
   - src/Prove/Proveapi/Models/Requests/V3ActivateIdentityResponse.cs
   - src/Prove/Proveapi/Models/Requests/V3BatchEnrollIdentitiesResponse.cs
@@ -249,8 +258,8 @@ generatedFiles:
   - src/Prove/Proveapi/Models/Requests/V3UnifyRequestResponse.cs
   - src/Prove/Proveapi/Models/Requests/V3UnifyStatusRequestResponse.cs
   - src/Prove/Proveapi/Models/Requests/V3ValidateRequestResponse.cs
+  - src/Prove/Proveapi/Models/Requests/V3VerifyBatchRequestResponse.cs
   - src/Prove/Proveapi/Models/Requests/V3VerifyRequestResponse.cs
-  - src/Prove/Proveapi/Models/Requests/V3VerifyStatusRequestResponse.cs
   - src/Prove/Proveapi/Prove.Proveapi.csproj
   - src/Prove/Proveapi/ProveAPI.cs
   - src/Prove/Proveapi/SDKConfig.cs
@@ -302,6 +311,18 @@ examples:
           application/json: {"code": 8003, "message": "Access forbidden: insufficient permissions"}
         "500":
           application/json: {"code": 8000, "message": "error at prove, try again later"}
+    Response with Success Evaluation:
+      requestBody:
+        application/json: {"correlationId": "713189b8-5555-4b08-83ba-75d08780aebd", "dob": "1981-01", "ssn": "0596"}
+      responses:
+        "200":
+          application/json: {"evaluation": {"authentication": {}, "identification": {}, "success": {}}, "next": {"v3-complete": "/v3/complete"}, "success": true}
+    Response with Failed Evaluation:
+      requestBody:
+        application/json: {"correlationId": "713189b8-5555-4b08-83ba-75d08780aebd", "dob": "1981-01", "ssn": "0596"}
+      responses:
+        "200":
+          application/json: {"evaluation": {"authentication": {}, "identification": {}, "success": {}}, "next": {"v3-complete": "/v3/complete"}, "success": false}
   V3CompleteRequest:
     Standard Response:
       requestBody:
@@ -333,6 +354,18 @@ examples:
       responses:
         "200":
           application/json: {"idv": {"dataSource1": {"address": {"addressScore": 100, "city": true, "distance": 0, "postalCode": true, "region": true, "street": true, "streetNumber": 100}, "cipConfidence": "high", "identifiers": {"dob": true, "ssn": true}, "name": {"firstName": 100, "lastName": 100, "nameScore": 100}}, "dataSource2": {"address": {"addressScore": 100, "city": true, "distance": 0, "postalCode": true, "region": true, "street": true, "streetNumber": 100}, "cipConfidence": "high", "identifiers": {"dob": true, "ssn": true}, "name": {"firstName": 100, "lastName": 100, "nameScore": 100}}, "multiCIPConfidence": "high"}, "kyc": {"totalHits": 0}, "next": {"done": "done"}, "success": true}
+    Response with Success Evaluation:
+      requestBody:
+        application/json: {"correlationId": "713189b8-5555-4b08-83ba-75d08780aebd", "individual": {"addresses": [{"address": "39 South Trail", "city": "San Antonio", "extendedAddress": "Apt 23", "postalCode": "78285", "region": "TX"}], "dob": "1981-01", "emailAddresses": ["jdoe@example.com"], "firstName": "Tod", "lastName": "Weedall", "ssn": "265228370"}}
+      responses:
+        "200":
+          application/json: {"evaluation": {"authentication": {}, "identification": {}}, "next": {"done": "done"}, "success": true}
+    Response with Failed Evaluation:
+      requestBody:
+        application/json: {"correlationId": "713189b8-5555-4b08-83ba-75d08780aebd", "individual": {"addresses": [{"address": "39 South Trail", "city": "San Antonio", "extendedAddress": "Apt 23", "postalCode": "78285", "region": "TX"}], "dob": "1981-01", "emailAddresses": ["jdoe@example.com"], "firstName": "Tod", "lastName": "Weedall", "ssn": "265228370"}}
+      responses:
+        "200":
+          application/json: {"evaluation": {"authentication": {}, "identification": {}}, "next": {"done": "done"}, "success": false}
   V3StartRequest:
     speakeasy-default-v3-start-request:
       requestBody:
@@ -351,7 +384,7 @@ examples:
   V3UnifyRequest:
     speakeasy-default-v3-unify-request:
       requestBody:
-        application/json: {"allowOTPRetry": true, "checkReputation": true, "clientCustomerId": "e0f78bc2-f748-4eda-9d29-d756844507fc", "clientRequestId": "71010d88-d0e7-4a24-9297-d1be6fefde81", "finalTargetUrl": "https://www.example.com/landing-page", "phoneNumber": "2001004011", "possessionType": "mobile", "rebind": true, "smsMessage": "#### is your verification code."}
+        application/json: {"allowOTPRetry": true, "checkReputation": true, "clientCustomerId": "e0f78bc2-f748-4eda-9d29-d756844507fc", "clientHumanId": "7bfbb91d-9df8-4ec0-99a6-de05ecc23a9e", "clientRequestId": "71010d88-d0e7-4a24-9297-d1be6fefde81", "deviceId": "bf9ea15d-7dfa-4bb4-a64c-6c26b53472fc", "emailAddress": "sbutrimovichb@who.int", "finalTargetUrl": "https://www.example.com/landing-page", "ipAddress": "192.168.0.1", "phoneNumber": "2001004011", "possessionType": "mobile", "proveId": "a07b94ce-218c-461f-beda-d92480e40f61", "rebind": true, "smsMessage": "#### is your verification code."}
       responses:
         "200":
           application/json: {"authToken": "eyJhbGciOi...", "correlationId": "713189b8-5555-4b08-83ba-75d08780aebd", "success": "pending"}
@@ -369,7 +402,7 @@ examples:
         application/json: {"clientRequestId": "71010d88-d0e7-4a24-9297-d1be6fefde81", "correlationId": "713189b8-5555-4b08-83ba-75d08780aebd", "phoneNumber": "2001004011"}
       responses:
         "200":
-          application/json: {"evaluation": {"key": {}}, "phoneNumber": "2001004011", "success": "true"}
+          application/json: {"clientHumanId": "7bfbb91d-9df8-4ec0-99a6-de05ecc23a9e", "clientRequestId": "71010d88-d0e7-4a24-9297-d1be6fefde81", "deviceId": "bf9ea15d-7dfa-4bb4-a64c-6c26b53472fc", "evaluation": {"key": {}}, "phoneNumber": "2001004011", "proveId": "a07b94ce-218c-461f-beda-d92480e40f61", "success": "true"}
         "400":
           application/json: {"code": 8000, "message": "error at prove, try again later"}
         "401":
@@ -384,7 +417,7 @@ examples:
         application/json: {"clientRequestId": "71010d88-d0e7-4a24-9297-d1be6fefde81", "correlationId": "713189b8-5555-4b08-83ba-75d08780aebd", "phoneNumber": "2001004011"}
       responses:
         "200":
-          application/json: {"evaluation": {"key": {}}, "phoneNumber": "2001004011", "success": "true"}
+          application/json: {"clientHumanId": "7bfbb91d-9df8-4ec0-99a6-de05ecc23a9e", "clientRequestId": "71010d88-d0e7-4a24-9297-d1be6fefde81", "deviceId": "bf9ea15d-7dfa-4bb4-a64c-6c26b53472fc", "evaluation": {"key": {}}, "phoneNumber": "2001004011", "proveId": "a07b94ce-218c-461f-beda-d92480e40f61", "success": "true"}
         "400":
           application/json: {"code": 8000, "message": "error at prove, try again later"}
         "401":
@@ -408,13 +441,25 @@ examples:
           application/json: {"code": 8003, "message": "Access forbidden: insufficient permissions"}
         "500":
           application/json: {"code": 8000, "message": "error at prove, try again later"}
+    Response with Success Evaluation:
+      requestBody:
+        application/json: {"correlationId": "713189b8-5555-4b08-83ba-75d08780aebd"}
+      responses:
+        "200":
+          application/json: {"challengeMissing": true, "evaluation": {"authentication": {}, "success": {}}, "next": {"v3-challenge": "/v3/challenge"}, "success": true}
+    Response with Failed Evaluation:
+      requestBody:
+        application/json: {"correlationId": "713189b8-5555-4b08-83ba-75d08780aebd"}
+      responses:
+        "200":
+          application/json: {"challengeMissing": true, "evaluation": {"authentication": {}, "success": {}}, "next": {"v3-challenge": "/v3/challenge"}, "success": false}
   V3VerifyRequest:
     speakeasy-default-v3-verify-request:
       requestBody:
-        application/json: {"allowOTPRetry": true, "clientCustomerId": "e0f78bc2-f748-4eda-9d29-d756844507fc", "clientRequestId": "71010d88-d0e7-4a24-9297-d1be6fefde81", "emailAddress": "sbutrimovichb@who.int", "finalTargetUrl": "https://www.example.com/landing-page", "firstName": "Sheilakathryn", "lastName": "Butrimovich", "phoneNumber": "2001004011", "possessionType": "mobile", "smsMessage": "#### is your temporary code to continue your application. Caution: for your security, don't share this code with anyone."}
+        application/json: {"clientCustomerId": "e0f78bc2-f748-4eda-9d29-d756844507fc", "clientHumanId": "aad25769-23bb-458c-80db-50296a82c91b", "clientRequestId": "71010d88-d0e7-4a24-9297-d1be6fefde81", "emailAddress": "sbutrimovichb@who.int", "firstName": "Sheilakathryn", "ipAddress": "192.168.1.1", "lastName": "Butrimovich", "phoneNumber": "2001004011", "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0", "verificationType": "verificationType"}
       responses:
         "200":
-          application/json: {"authToken": "eyJhbGciOi...", "correlationId": "713189b8-5555-4b08-83ba-75d08780aebd", "evaluation": {"key": {}}, "possessionResult": "pending", "success": "pending", "verifyResult": "pending"}
+          application/json: {"additionalIdentities": [{"assuranceLevel": "AL-1", "firstName": "Sheilakathryn", "lastName": "Butrimovich", "reasons": ["[AL-1a] (Poor quality identity)"]}, {"assuranceLevel": "AL-1", "firstName": "Sheilakathryn", "lastName": "Butrimovich", "reasons": ["[AL-1a] (Poor quality identity)"]}], "clientRequestId": "71010d88-d0e7-4a24-9297-d1be6fefde81", "correlationId": "713189b8-5555-4b08-83ba-75d08780aebd", "evaluation": {"key": {}}, "identity": {"assuranceLevel": "AL-1", "clientCustomerId": "261ffa66-961a-4f90-8d93-6c85a450633d", "clientHumanId": "7bfbb91d-9df8-4ec0-99a6-de05ecc23a9e", "firstName": "Sheilakathryn", "lastName": "Butrimovich", "proveId": "a07b94ce-218c-461f-beda-d92480e40f61", "provePhoneAlias": "4c01021a-7d72-4286-a8f8-d32d5b0cc342", "reasons": ["[AL-1a] (Poor quality identity)"]}, "phoneNumber": "2001004011", "success": "pending"}
         "400":
           application/json: {"code": 8000, "message": "error at prove, try again later"}
         "401":
@@ -725,6 +770,21 @@ examples:
           application/json: {"code": 8003, "message": "Access forbidden: insufficient permissions"}
         "500":
           application/json: {"code": 8000, "message": "error at prove, try again later"}
+  V3VerifyBatchRequest:
+    speakeasy-default-v3-verify-batch-request:
+      requestBody:
+        application/json: {"clientRequestId": "clientRequestId", "items": [{"clientCustomerId": "e0f78bc2-f748-4eda-9d29-d756844507fc", "clientHumanId": "clientHumanId", "emailAddress": "sbutrimovichb@who.int", "firstName": "Sheilakathryn", "ipAddress": "192.168.1.1", "lastName": "Butrimovich", "phoneNumber": "2001004011", "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0", "verificationType": "verificationType"}, {"clientCustomerId": "e0f78bc2-f748-4eda-9d29-d756844507fc", "clientHumanId": "clientHumanId", "emailAddress": "sbutrimovichb@who.int", "firstName": "Sheilakathryn", "ipAddress": "192.168.1.1", "lastName": "Butrimovich", "phoneNumber": "2001004011", "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0", "verificationType": "verificationType"}]}
+      responses:
+        "200":
+          application/json: {"clientRequestId": "71010d88-d0e7-4a24-9297-d1be6fefde81", "correlationId": "713189b8-5555-4b08-83ba-75d08780aebd", "results": [{"additionalIdentities": [{"assuranceLevel": "AL-1", "firstName": "Sheilakathryn", "lastName": "Butrimovich", "reasons": ["[AL-1a] (Poor quality identity)"]}, {"assuranceLevel": "AL-1", "firstName": "Sheilakathryn", "lastName": "Butrimovich", "reasons": ["[AL-1a] (Poor quality identity)"]}], "error": "error", "evaluation": {"key": {}}, "identity": {"assuranceLevel": "AL-1", "clientCustomerId": "261ffa66-961a-4f90-8d93-6c85a450633d", "clientHumanId": "7bfbb91d-9df8-4ec0-99a6-de05ecc23a9e", "firstName": "Sheilakathryn", "lastName": "Butrimovich", "proveId": "a07b94ce-218c-461f-beda-d92480e40f61", "provePhoneAlias": "4c01021a-7d72-4286-a8f8-d32d5b0cc342", "reasons": ["[AL-1a] (Poor quality identity)"]}, "phoneNumber": "2001004011", "success": "pending"}, {"additionalIdentities": [{"assuranceLevel": "AL-1", "firstName": "Sheilakathryn", "lastName": "Butrimovich", "reasons": ["[AL-1a] (Poor quality identity)"]}, {"assuranceLevel": "AL-1", "firstName": "Sheilakathryn", "lastName": "Butrimovich", "reasons": ["[AL-1a] (Poor quality identity)"]}], "error": "error", "evaluation": {"key": {}}, "identity": {"assuranceLevel": "AL-1", "clientCustomerId": "261ffa66-961a-4f90-8d93-6c85a450633d", "clientHumanId": "7bfbb91d-9df8-4ec0-99a6-de05ecc23a9e", "firstName": "Sheilakathryn", "lastName": "Butrimovich", "proveId": "a07b94ce-218c-461f-beda-d92480e40f61", "provePhoneAlias": "4c01021a-7d72-4286-a8f8-d32d5b0cc342", "reasons": ["[AL-1a] (Poor quality identity)"]}, "phoneNumber": "2001004011", "success": "pending"}]}
+        "400":
+          application/json: {"code": 8000, "message": "error at prove, try again later"}
+        "401":
+          application/json: {"code": 8002, "message": "not authorized"}
+        "403":
+          application/json: {"code": 8003, "message": "Access forbidden: insufficient permissions"}
+        "500":
+          application/json: {"code": 8000, "message": "error at prove, try again later"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## SDK Changes Detected:\n* `ProveApi.Identity.V3BatchEnrollIdentities()`: \n  *  `request.Items.[]` **Changed** **Breaking** :warning:\n* `ProveApi.Domain.V3DomainConfirmLinkRequest()`: **Added**\n* `ProveApi.Domain.V3DomainIdRequest()`: **Added**\n* `ProveApi.Domain.V3DomainLinkRequest()`: **Added**\n* `ProveApi.Domain.V3DomainLinkedRequest()`: **Added**\n* `ProveApi.Domain.V3DomainUnlinkRequest()`: **Added**\n* `ProveApi.Identity.V3CrossDomainIdentity()`: **Added**\n* `ProveApi.Domain.V3DomainId()`: **Deleted** **Breaking** :warning:\n* `ProveApi.Domain.V3DomainConfirmLink()`: **Deleted** **Breaking** :warning:\n* `ProveApi.Domain.V3DomainLinked()`: **Deleted** **Breaking** :warning:\n* `ProveApi.Domain.V3DomainUnlink()`: **Deleted** **Breaking** :warning:\n"
+releaseNotes: "## Csharp SDK Changes Detected:\n* `ProveApi.V3.V3UnifyRequest()`:  `request` **Changed** **Breaking** :warning:\n* `ProveApi.V3.V3VerifyRequest()`: \n  *  `request` **Changed** **Breaking** :warning:\n  *  `response` **Changed** **Breaking** :warning:\n* `ProveApi.V3.V3VerifyBatchRequest()`: **Added**\n* `ProveApi.V3.V3VerifyStatusRequest()`: **Deleted** **Breaking** :warning:\n* `ProveApi.V3.V3UnifyBindRequest()`:  `response` **Changed**\n* `ProveApi.V3.V3UnifyStatusRequest()`:  `response` **Changed**\n"

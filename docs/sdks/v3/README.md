@@ -14,7 +14,7 @@
 * [V3UnifyStatusRequest](#v3unifystatusrequest) - Check Status
 * [V3ValidateRequest](#v3validaterequest) - Validate Phone Number
 * [V3VerifyRequest](#v3verifyrequest) - Initiate Verified Users Session
-* [V3VerifyStatusRequest](#v3verifystatusrequest) - Check Verification Result
+* [V3VerifyBatchRequest](#v3verifybatchrequest) - Batch Verify Users
 
 ## V3TokenRequest
 
@@ -231,10 +231,15 @@ V3UnifyRequest req = new V3UnifyRequest() {
     AllowOTPRetry = true,
     CheckReputation = true,
     ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
+    ClientHumanId = "7bfbb91d-9df8-4ec0-99a6-de05ecc23a9e",
     ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
+    DeviceId = "bf9ea15d-7dfa-4bb4-a64c-6c26b53472fc",
+    EmailAddress = "sbutrimovichb@who.int",
     FinalTargetUrl = "https://www.example.com/landing-page",
+    IpAddress = "192.168.0.1",
     PhoneNumber = "2001004011",
     PossessionType = "mobile",
+    ProveId = "a07b94ce-218c-461f-beda-d92480e40f61",
     Rebind = true,
     SmsMessage = "#### is your verification code.",
 };
@@ -408,16 +413,16 @@ using Prove.Proveapi.Models.Components;
 var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 V3VerifyRequest req = new V3VerifyRequest() {
-    AllowOTPRetry = true,
     ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
+    ClientHumanId = "aad25769-23bb-458c-80db-50296a82c91b",
     ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
     EmailAddress = "sbutrimovichb@who.int",
-    FinalTargetUrl = "https://www.example.com/landing-page",
     FirstName = "Sheilakathryn",
+    IpAddress = "192.168.1.1",
     LastName = "Butrimovich",
     PhoneNumber = "2001004011",
-    PossessionType = "mobile",
-    SmsMessage = "#### is your temporary code to continue your application. Caution: for your security, don't share this code with anyone.",
+    UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+    VerificationType = "verificationType",
 };
 
 var res = await sdk.V3.V3VerifyRequestAsync(req);
@@ -445,38 +450,62 @@ var res = await sdk.V3.V3VerifyRequestAsync(req);
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.APIException | 4XX, 5XX                                  | \*/\*                                     |
 
-## V3VerifyStatusRequest
+## V3VerifyBatchRequest
 
-This endpoint allows you to perform the necessary checks for a Verified Users session.
+This endpoint allows you to batch verify and enroll users.
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="V3VerifyStatusRequest" method="post" path="/v3/verify-status" -->
+<!-- UsageSnippet language="csharp" operationID="V3VerifyBatchRequest" method="post" path="/v3/verify/batch" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
+using System.Collections.Generic;
 
 var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
-V3VerifyStatusRequest req = new V3VerifyStatusRequest() {
-    ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
-    CorrelationId = "713189b8-5555-4b08-83ba-75d08780aebd",
+V3VerifyBatchRequest req = new V3VerifyBatchRequest() {
+    ClientRequestId = "clientRequestId",
+    Items = new List<VerifyItem>() {
+        new VerifyItem() {
+            ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
+            ClientHumanId = "clientHumanId",
+            EmailAddress = "sbutrimovichb@who.int",
+            FirstName = "Sheilakathryn",
+            IpAddress = "192.168.1.1",
+            LastName = "Butrimovich",
+            PhoneNumber = "2001004011",
+            UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+            VerificationType = "verificationType",
+        },
+        new VerifyItem() {
+            ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
+            ClientHumanId = "clientHumanId",
+            EmailAddress = "sbutrimovichb@who.int",
+            FirstName = "Sheilakathryn",
+            IpAddress = "192.168.1.1",
+            LastName = "Butrimovich",
+            PhoneNumber = "2001004011",
+            UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+            VerificationType = "verificationType",
+        },
+    },
 };
 
-var res = await sdk.V3.V3VerifyStatusRequestAsync(req);
+var res = await sdk.V3.V3VerifyBatchRequestAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `request`                                                                 | [V3VerifyStatusRequest](../../Models/Components/V3VerifyStatusRequest.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
+| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `request`                                                               | [V3VerifyBatchRequest](../../Models/Components/V3VerifyBatchRequest.md) | :heavy_check_mark:                                                      | The request object to use for the request.                              |
 
 ### Response
 
-**[V3VerifyStatusRequestResponse](../../Models/Requests/V3VerifyStatusRequestResponse.md)**
+**[V3VerifyBatchRequestResponse](../../Models/Requests/V3VerifyBatchRequestResponse.md)**
 
 ### Errors
 

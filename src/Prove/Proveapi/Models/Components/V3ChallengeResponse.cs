@@ -18,7 +18,7 @@ namespace Prove.Proveapi.Models.Components
     {
 
         /// <summary>
-        /// The evaluation result for the policy
+        /// The evaluation result for the policy. This is an upcoming field but is not yet enabled.
         /// </summary>
         [JsonProperty("evaluation")]
         public Dictionary<string, Evaluation>? Evaluation { get; set; }
