@@ -18,16 +18,63 @@ namespace Prove.Proveapi.Models.Components
     {
 
         /// <summary>
-        /// The evaluation result for the policy.
+        /// A client-generated unique ID to identify a specific customer across business lines.<br/>
+        /// 
+        /// <remarks>
+        /// Required if success=true.
+        /// </remarks>
+        /// </summary>
+        [JsonProperty("clientHumanId")]
+        public string? ClientHumanId { get; set; }
+
+        /// <summary>
+        /// A client-generated unique ID for a specific session. This can be used to identify specific requests.<br/>
+        /// 
+        /// <remarks>
+        /// The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted.<br/>
+        /// Do not include Personally Identifiable Information (PII) in this field.
+        /// </remarks>
+        /// </summary>
+        [JsonProperty("clientRequestId")]
+        public string? ClientRequestId { get; set; }
+
+        /// <summary>
+        /// The unique identifier for the Prove Key on the device.<br/>
+        /// 
+        /// <remarks>
+        /// Required if success=true.
+        /// </remarks>
+        /// </summary>
+        [JsonProperty("deviceId")]
+        public string? DeviceId { get; set; }
+
+        /// <summary>
+        /// The evaluation result for the policy. This is an upcoming field but is not yet enabled.
         /// </summary>
         [JsonProperty("evaluation")]
         public Dictionary<string, V3UnifyStatusResponseEvaluation>? Evaluation { get; set; }
 
         /// <summary>
-        /// The number of the mobile phone used during the process.
+        /// The number of the mobile phone used during the process.<br/>
+        /// 
+        /// <remarks>
+        /// <br/>
+        /// Required except when MobileAuth is used in US or a valid ProveID is provided.
+        /// </remarks>
         /// </summary>
         [JsonProperty("phoneNumber")]
-        public string PhoneNumber { get; set; } = default!;
+        public string? PhoneNumber { get; set; }
+
+        /// <summary>
+        /// A unique ID to identify a specific customer obtained from a successful possession check.<br/>
+        /// 
+        /// <remarks>
+        /// If an existing value is available (e.g. from a previous successful possession check) then it should be returned, otherwise a new value should be generated if success=true.<br/>
+        /// Required if success=true.
+        /// </remarks>
+        /// </summary>
+        [JsonProperty("proveId")]
+        public string? ProveId { get; set; }
 
         /// <summary>
         /// The result of the possession check.<br/>

@@ -14,7 +14,7 @@ namespace Prove.Proveapi.Models.Components
     using Prove.Proveapi.Utils;
     using System.Collections.Generic;
     
-    public class V3VerifyResponse
+    public class VerifyBatchResultItem
     {
 
         /// <summary>
@@ -24,22 +24,16 @@ namespace Prove.Proveapi.Models.Components
         public List<AdditionalIdentity>? AdditionalIdentities { get; set; }
 
         /// <summary>
-        /// A client-generated unique ID for a specific session. This can be used to identify specific requests. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include Personally Identifiable Information (PII) in this field.
+        /// An error message for this corresponding specific verification.
         /// </summary>
-        [JsonProperty("clientRequestId")]
-        public string? ClientRequestId { get; set; }
-
-        /// <summary>
-        /// The unique ID that Prove generates for the flow. To continue the flow, the field will also be used for each of the subsequent API calls in the same flow - it cannot be reused outside of a single flow.
-        /// </summary>
-        [JsonProperty("correlationId")]
-        public string CorrelationId { get; set; } = default!;
+        [JsonProperty("error")]
+        public string? Error { get; set; }
 
         /// <summary>
         /// The evaluation result for the policy. This is an upcoming field but is not yet enabled.
         /// </summary>
         [JsonProperty("evaluation")]
-        public Dictionary<string, V3VerifyResponseEvaluation>? Evaluation { get; set; }
+        public Dictionary<string, VerifyBatchResultItemEvaluation>? Evaluation { get; set; }
 
         [JsonProperty("identity")]
         public Models.Components.Identity Identity { get; set; } = default!;
@@ -51,7 +45,7 @@ namespace Prove.Proveapi.Models.Components
         public string PhoneNumber { get; set; } = default!;
 
         /// <summary>
-        /// The result of verification
+        /// The result of the combination of `verifyResult` and `possessionResult`. Possible values are `true`, `pending`, and `false`. The value will be `pending` until the results of both Verify and Possession are returned or one of them fails, blocking the other.
         /// </summary>
         [JsonProperty("success")]
         public string Success { get; set; } = default!;

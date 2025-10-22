@@ -10,9 +10,11 @@
 namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
+    using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
+    using System.Collections.Generic;
     
-    public class V3VerifyStatusRequest
+    public class V3VerifyBatchResponse
     {
 
         /// <summary>
@@ -22,9 +24,12 @@ namespace Prove.Proveapi.Models.Components
         public string? ClientRequestId { get; set; }
 
         /// <summary>
-        /// The unique ID that Prove generates for the flow. It is returned from the v3/verify endpoint and cannot be reused outside of a single flow.
+        /// The unique ID that Prove generates for the flow. To continue the flow, the field will also be used for each of the subsequent API calls in the same flow - it cannot be reused outside of a single flow.
         /// </summary>
         [JsonProperty("correlationId")]
-        public string? CorrelationId { get; set; }
+        public string CorrelationId { get; set; } = default!;
+
+        [JsonProperty("results")]
+        public List<VerifyBatchResultItem>? Results { get; set; }
     }
 }

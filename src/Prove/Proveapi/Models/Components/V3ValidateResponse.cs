@@ -28,7 +28,7 @@ namespace Prove.Proveapi.Models.Components
         public bool ChallengeMissing { get; set; } = default!;
 
         /// <summary>
-        /// The evaluation result for the policy
+        /// The evaluation result for the policy. This is an upcoming field but is not yet enabled.
         /// </summary>
         [JsonProperty("evaluation")]
         public Dictionary<string, V3ValidateResponseEvaluation>? Evaluation { get; set; }
