@@ -75,8 +75,8 @@ namespace Prove.Proveapi
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.3.2";
-        private const string _sdkGenVersion = "2.687.13";
+        private const string _sdkVersion = "1.4.0";
+        private const string _sdkGenVersion = "2.728.0";
         private const string _openapiDocVersion = "1.0.0";
 
         public Domain(SDKConfig config)
@@ -104,7 +104,7 @@ namespace Prove.Proveapi
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3DomainConfirmLinkRequest", new List<string> {  }, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3DomainConfirmLinkRequest", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -144,7 +144,17 @@ namespace Prove.Proveapi
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<V3DomainConfirmLinkResponse>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    V3DomainConfirmLinkResponse obj;
+                    try
+                    {
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<V3DomainConfirmLinkResponse>(httpResponseBody, NullValueHandling.Include);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into V3DomainConfirmLinkResponse.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
                     var response = new V3DomainConfirmLinkRequestResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
@@ -157,58 +167,98 @@ namespace Prove.Proveapi
                     return response;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode == 400)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error400Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error400Payload>(httpResponseBody, NullValueHandling.Include);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error400Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error400(payload, httpRequest, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode == 401)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error401>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error401Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error401Payload>(httpResponseBody, NullValueHandling.Include);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error401Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error401(payload, httpRequest, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode == 403)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error403>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error403Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error403Payload>(httpResponseBody, NullValueHandling.Include);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error403Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error403(payload, httpRequest, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode == 500)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorPayload>(httpResponseBody, NullValueHandling.Include);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error(payload, httpRequest, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode >= 400 && responseStatusCode < 500)
             {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode >= 500 && responseStatusCode < 600)
             {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
 
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
+            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
         public async Task<V3DomainIDRequestResponse> V3DomainIDRequestAsync()
@@ -225,7 +275,7 @@ namespace Prove.Proveapi
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3DomainIDRequest", new List<string> {  }, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3DomainIDRequest", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -265,7 +315,17 @@ namespace Prove.Proveapi
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<V3DomainIDResponse>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    V3DomainIDResponse obj;
+                    try
+                    {
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<V3DomainIDResponse>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into V3DomainIDResponse.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
                     var response = new V3DomainIDRequestResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
@@ -278,58 +338,98 @@ namespace Prove.Proveapi
                     return response;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode == 400)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error400Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error400Payload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error400Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error400(payload, httpRequest, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode == 401)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error401>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error401Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error401Payload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error401Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error401(payload, httpRequest, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode == 403)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error403>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error403Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error403Payload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error403Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error403(payload, httpRequest, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode == 500)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorPayload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error(payload, httpRequest, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode >= 400 && responseStatusCode < 500)
             {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode >= 500 && responseStatusCode < 600)
             {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
 
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
+            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
         public async Task<V3DomainLinkRequestResponse> V3DomainLinkRequestAsync(V3DomainLinkRequest? request = null)
@@ -352,7 +452,7 @@ namespace Prove.Proveapi
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3DomainLinkRequest", new List<string> {  }, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3DomainLinkRequest", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -392,7 +492,17 @@ namespace Prove.Proveapi
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<V3DomainLinkResponse>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    V3DomainLinkResponse obj;
+                    try
+                    {
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<V3DomainLinkResponse>(httpResponseBody, NullValueHandling.Include);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into V3DomainLinkResponse.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
                     var response = new V3DomainLinkRequestResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
@@ -405,58 +515,98 @@ namespace Prove.Proveapi
                     return response;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode == 400)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error400Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error400Payload>(httpResponseBody, NullValueHandling.Include);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error400Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error400(payload, httpRequest, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode == 401)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error401>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error401Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error401Payload>(httpResponseBody, NullValueHandling.Include);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error401Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error401(payload, httpRequest, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode == 403)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error403>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error403Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error403Payload>(httpResponseBody, NullValueHandling.Include);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error403Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error403(payload, httpRequest, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode == 500)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorPayload>(httpResponseBody, NullValueHandling.Include);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error(payload, httpRequest, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode >= 400 && responseStatusCode < 500)
             {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode >= 500 && responseStatusCode < 600)
             {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
 
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
+            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
         public async Task<V3DomainLinkedRequestResponse> V3DomainLinkedRequestAsync()
@@ -473,7 +623,7 @@ namespace Prove.Proveapi
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3DomainLinkedRequest", new List<string> {  }, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3DomainLinkedRequest", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -513,7 +663,17 @@ namespace Prove.Proveapi
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<V3DomainLinkedResponse>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    V3DomainLinkedResponse obj;
+                    try
+                    {
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<V3DomainLinkedResponse>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into V3DomainLinkedResponse.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
                     var response = new V3DomainLinkedRequestResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
@@ -526,58 +686,98 @@ namespace Prove.Proveapi
                     return response;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode == 400)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error400Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error400Payload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error400Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error400(payload, httpRequest, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode == 401)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error401>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error401Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error401Payload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error401Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error401(payload, httpRequest, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode == 403)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error403>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error403Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error403Payload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error403Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error403(payload, httpRequest, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode == 500)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorPayload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error(payload, httpRequest, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode >= 400 && responseStatusCode < 500)
             {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode >= 500 && responseStatusCode < 600)
             {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
 
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
+            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
         public async Task<V3DomainUnlinkRequestResponse> V3DomainUnlinkRequestAsync(V3DomainUnlinkRequest? request = null)
@@ -600,7 +800,7 @@ namespace Prove.Proveapi
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3DomainUnlinkRequest", new List<string> {  }, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3DomainUnlinkRequest", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -640,7 +840,17 @@ namespace Prove.Proveapi
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<V3DomainUnlinkResponse>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    V3DomainUnlinkResponse obj;
+                    try
+                    {
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<V3DomainUnlinkResponse>(httpResponseBody, NullValueHandling.Include);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into V3DomainUnlinkResponse.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
                     var response = new V3DomainUnlinkRequestResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
@@ -653,58 +863,98 @@ namespace Prove.Proveapi
                     return response;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode == 400)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error400Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error400Payload>(httpResponseBody, NullValueHandling.Include);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error400Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error400(payload, httpRequest, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode == 401)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error401>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error401Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error401Payload>(httpResponseBody, NullValueHandling.Include);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error401Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error401(payload, httpRequest, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode == 403)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error403>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error403Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error403Payload>(httpResponseBody, NullValueHandling.Include);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error403Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error403(payload, httpRequest, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode == 500)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorPayload>(httpResponseBody, NullValueHandling.Include);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error(payload, httpRequest, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode >= 400 && responseStatusCode < 500)
             {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode >= 500 && responseStatusCode < 600)
             {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
 
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
+            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
     }
 }

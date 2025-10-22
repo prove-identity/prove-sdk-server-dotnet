@@ -47,7 +47,7 @@ var res = await sdk.Domain.V3DomainConfirmLinkRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -79,7 +79,7 @@ var res = await sdk.Domain.V3DomainIDRequestAsync();
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -121,7 +121,7 @@ var res = await sdk.Domain.V3DomainLinkRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -153,7 +153,7 @@ var res = await sdk.Domain.V3DomainLinkedRequestAsync();
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
@@ -196,7 +196,7 @@ var res = await sdk.Domain.V3DomainUnlinkRequestAsync(req);
 
 | Error Type                                | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error        | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |

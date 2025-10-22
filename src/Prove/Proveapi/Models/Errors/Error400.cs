@@ -14,7 +14,7 @@ namespace Prove.Proveapi.Models.Errors
     using System;
     using System.Net.Http;
 
-    public class Error401Payload
+    public class Error400Payload
     {
         /// <summary>
         /// An error code that describes the problem category of the request.
@@ -29,20 +29,20 @@ namespace Prove.Proveapi.Models.Errors
         public string Message { get; set; } = default!;
     }
 
-    public class Error401 : ProveAPIError
+    public class Error400 : ProveAPIError
     {
         /// <summary>
         ///  The original data that was passed to this exception.
         /// </summary>
-        public Error401Payload Payload { get; }
+        public Error400Payload Payload { get; }
 
-        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use Error401.Payload.Code instead.")]
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use Error400.Payload.Code instead.")]
         public long? Code { get; set; }
 
-        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use Error401.Payload.Message instead.")]
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use Error400.Payload.Message instead.")]
         private string? _message { get; set; }
 
-        private static string ErrorMessage(Error401Payload payload, string body)
+        private static string ErrorMessage(Error400Payload payload, string body)
         {
             string? message = payload.Message;
             if (!string.IsNullOrEmpty(message))
@@ -53,8 +53,8 @@ namespace Prove.Proveapi.Models.Errors
             return "API error occurred";
         }
 
-        public Error401(
-            Error401Payload payload,
+        public Error400(
+            Error400Payload payload,
             HttpRequestMessage request,
             HttpResponseMessage response,
             string body

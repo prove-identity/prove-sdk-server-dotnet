@@ -11,7 +11,7 @@ namespace Prove.Proveapi.Models.Components
 {
     using Prove.Proveapi.Utils;
     
-    public class V3VerifyStatusResponseEvaluation
+    public class VerifyBatchResultItemEvaluation
     {
     }
 }

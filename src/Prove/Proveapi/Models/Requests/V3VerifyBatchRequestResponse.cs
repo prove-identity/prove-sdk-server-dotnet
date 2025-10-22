@@ -12,19 +12,16 @@ namespace Prove.Proveapi.Models.Requests
     using Newtonsoft.Json;
     using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
-    using System.Collections.Generic;
     
-    public class V3VerifyStatusRequestResponse
+    public class V3VerifyBatchRequestResponse
     {
 
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
         /// <summary>
-        /// Successful Request
+        /// Successful request.
         /// </summary>
-        public V3VerifyStatusResponse? V3VerifyStatusResponse { get; set; }
-
-        public Dictionary<string, List<string>> Headers { get; set; } = default!;
+        public V3VerifyBatchResponse? V3VerifyBatchResponse { get; set; }
     }
 }
