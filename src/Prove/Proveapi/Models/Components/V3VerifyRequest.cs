@@ -10,10 +10,21 @@
 namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
+    using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
+    using System.Collections.Generic;
     
     public class V3VerifyRequest
     {
+
+        /// <summary>
+        /// An optional list of add-on features. Current allowed values: &quot;ageEstimation&quot;
+        /// </summary>
+        [JsonProperty("addOnFeature")]
+        public List<string>? AddOnFeature { get; set; }
+
+        [JsonProperty("businessName")]
+        public string? BusinessName { get; set; }
 
         /// <summary>
         /// A client-generated unique ID for a specific customer. This can be used by clients to link calls related to the same customer, across different requests or sessions.  The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Prove does not offer any functionality around the Client Customer ID. Do not include personally identifiable information (PII) in this field.
@@ -32,6 +43,12 @@ namespace Prove.Proveapi.Models.Components
         /// </summary>
         [JsonProperty("clientRequestId")]
         public string? ClientRequestId { get; set; }
+
+        /// <summary>
+        /// TODO: comments and validation
+        /// </summary>
+        [JsonProperty("dateOfBirth")]
+        public string? DateOfBirth { get; set; }
 
         /// <summary>
         /// The email address of the customer. Acceptable characters are: alphanumeric with symbols &apos;@.+&apos;.
@@ -57,11 +74,17 @@ namespace Prove.Proveapi.Models.Components
         [JsonProperty("lastName")]
         public string? LastName { get; set; }
 
+        [JsonProperty("nationalId")]
+        public string? NationalId { get; set; }
+
         /// <summary>
         /// The mobile phone number. US phone numbers can be passed in with or without a leading `+1`. International phone numbers require a leading `+1`. Use the appropriate endpoint URL based on the region the number originates from. Acceptable characters are: alphanumeric with symbols &apos;+&apos;.
         /// </summary>
         [JsonProperty("phoneNumber")]
         public string PhoneNumber { get; set; } = default!;
+
+        [JsonProperty("proveId")]
+        public string? ProveId { get; set; }
 
         /// <summary>
         /// The User agent of the customer.
@@ -70,9 +93,9 @@ namespace Prove.Proveapi.Models.Components
         public string? UserAgent { get; set; }
 
         /// <summary>
-        /// The verification method based on the use case and authorization level.
+        /// The verification method based on the use case and authorization level. Current allowed values: &quot;verifiedUser&quot;, &quot;accountOpening&quot;, &quot;bot&quot;, &quot;prefill&quot;, &quot;prefillForBiz&quot;, &quot;identityResolution&quot;.
         /// </summary>
         [JsonProperty("verificationType")]
-        public string VerificationType { get; set; } = default!;
+        public VerificationType VerificationType { get; set; } = default!;
     }
 }

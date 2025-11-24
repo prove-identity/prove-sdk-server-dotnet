@@ -149,3 +149,13 @@ Based on:
 - [csharp v1.4.0] .
 ### Releases
 - [NuGet v1.4.0] https://www.nuget.org/packages/Prove.Proveapi/1.4.0 - .
+
+## 2025-11-24 00:34:33
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.660.0 (2.760.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [csharp v1.5.0] .
+### Releases
+- [NuGet v1.5.0] https://www.nuget.org/packages/Prove.Proveapi/1.5.0 - .

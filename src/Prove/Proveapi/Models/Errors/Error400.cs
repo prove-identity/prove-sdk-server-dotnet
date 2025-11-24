@@ -17,18 +17,25 @@ namespace Prove.Proveapi.Models.Errors
     public class Error400Payload
     {
         /// <summary>
-        /// An error code that describes the problem category of the request.
+        /// Code is an internal error code that describes the problem category of the request.
         /// </summary>
         [JsonProperty("code")]
         public long? Code { get; set; }
 
         /// <summary>
-        /// The error message describing the problem with the request.
+        /// Message is an error message describing the problem with the request.
         /// </summary>
         [JsonProperty("message")]
         public string Message { get; set; } = default!;
     }
 
+    /// <summary>
+    /// Error400 is a custom error for HTTP 400. This is used to support distinguishing<br/>
+    /// 
+    /// <remarks>
+    /// between HTTP 400 and 500 in Speakeasy SDKs.
+    /// </remarks>
+    /// </summary>
     public class Error400 : ProveAPIError
     {
         /// <summary>

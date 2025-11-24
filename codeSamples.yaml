@@ -23,6 +23,172 @@ actions:
             var res = await sdk.V3.V3TokenRequestAsync(req);
 
             // handle response
+  - target: $["paths"]["/v1/server/auth/continue"]["post"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: Csharp (SDK)
+          source: |-
+            using Prove.Proveapi;
+            using Prove.Proveapi.Models.Components;
+
+            var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+            AuthContinueRequest req = new AuthContinueRequest() {
+                AuthId = "713189b8-5555-4b08-83ba-75d08780aebd",
+                RequestId = "eba12f3a-5555-47bc-b85d-21c0cbc4b973",
+                Subjects = new AuthContinueRequestSubjects() {
+                    Mobile = new AuthContinueRequestSubjectMobile() {
+                        Claim = new AuthContinueRequestSubjectMobileClaim() {
+                            MobileNumber = "12065550100",
+                        },
+                    },
+                },
+            };
+
+            var res = await sdk.Auth.AuthContinueRequestAsync(req);
+
+            // handle response
+  - target: $["paths"]["/v1/server/auth/finish"]["post"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: Csharp (SDK)
+          source: |-
+            using Prove.Proveapi;
+            using Prove.Proveapi.Models.Components;
+
+            var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+            AuthFinishRequest req = new AuthFinishRequest() {
+                AuthId = "eba12f3a-5555-47bc-b85d-21c0cbc4b973",
+            };
+
+            var res = await sdk.Auth.AuthFinishRequestAsync(req);
+
+            // handle response
+  - target: $["paths"]["/v1/server/auth/start"]["post"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: Csharp (SDK)
+          source: |-
+            using Prove.Proveapi;
+            using Prove.Proveapi.Models.Components;
+            using System.Collections.Generic;
+
+            var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+            AuthStartRequest req = new AuthStartRequest() {
+                CallbackUrl = "https://example.com/webhook",
+                Delivery = new AuthStartRequestDelivery() {
+                    Push = new AuthStartRequestDeliveryPush() {
+                        Notification = new AuthStartRequestDeliveryPushNotification() {
+                            Body = "Do you want to allow login from this device?",
+                            ConfirmBtn = "Confirm",
+                            DenyBtn = "Deny",
+                            OriginatingDevice = "iPhone12",
+                            OriginatingIp = "198.51.100.10",
+                            Title = "Confirm Login",
+                        },
+                    },
+                    Scan = new AuthStartRequestDeliveryScan() {
+                        Notification = new AuthStartRequestDeliveryScanNotification() {
+                            Body = "Please confirm you are trying to sign in...",
+                            ConfirmBtn = "Confirm",
+                            DenyBtn = "Deny",
+                            OriginatingDevice = "Google Chrome on Windows",
+                            OriginatingIp = "198.51.100.10",
+                            Title = "Confirm Sign In",
+                        },
+                    },
+                },
+                RequestId = "eba12f3a-5555-47bc-b85d-21c0cbc4b973",
+                Subjects = new AuthStartRequestSubjects() {
+                    Card = new AuthStartRequestSubjectCard() {
+                        Authenticators = new AuthStartRequestSubjectCardAuthenticators() {
+                            AirKey = new AuthStartRequestSubjectCardAuthenticatorAirKey() {
+                                Claim = new AuthStartRequestSubjectCardAuthenticatorAirKeyClaim() {
+                                    Puids = new List<string>() {
+                                        "puids",
+                                        "puids",
+                                    },
+                                },
+                                TestMode = "testMode",
+                            },
+                        },
+                    },
+                    Device = new AuthStartRequestSubjectDevice() {
+                        Authenticators = new AuthStartRequestSubjectDeviceAuthenticators() {
+                            Passive = new AuthStartRequestSubjectDeviceAuthenticatorPassive() {
+                                AllowPasscodeFallback = true,
+                                UserVerificationLevel = "userVerificationLevel",
+                            },
+                        },
+                        Claim = new AuthStartRequestSubjectDeviceClaim() {
+                            DeviceId = "deviceId",
+                        },
+                    },
+                    Mobile = new AuthStartRequestSubjectMobile() {
+                        Authenticators = new AuthStartRequestSubjectMobileAuthenticators() {
+                            Instant = new AuthStartRequestSubjectMobileAuthenticatorInstant() {
+                                Consent = new AuthStartRequestInstantAuthConsent() {
+                                    CollectedTimestamp = "2022-02-17T00:00:00Z",
+                                    Description = "Customer Application Name",
+                                    Status = "optedIn",
+                                    TransactionId = "eba12f3a-5555-47bc-b85d-21c0cbc4b973",
+                                },
+                                TestMode = "testMode",
+                            },
+                            Instantlink = new AuthStartRequestSubjectMobileAuthenticatorInstantLink() {
+                                AllowMobileNumberRePrompt = true,
+                                FinalTargetUrl = "https://example.com/finishpage",
+                                MessageText = "Please click the link to authenticate your mobile number: ####",
+                                SourceIp = "123...",
+                                SubscriptionCustomerId = "123",
+                                TestMode = "testMode",
+                            },
+                            Otp = new AuthStartRequestSubjectMobileAuthenticatorOTP() {
+                                AllowMobileNumberRePrompt = true,
+                                AllowOtpRetry = true,
+                                MessageText = "Your pin is: ####",
+                                TestMode = "testMode",
+                            },
+                            Passive = new AuthStartRequestSubjectMobileAuthenticatorPassive() {
+                                CacheResult = true,
+                                LocalDomain = true,
+                                MaxAge = 7776000,
+                                TestMode = "testMode",
+                            },
+                            Universal = new AuthStartRequestSubjectMobileAuthenticatorUniversal() {
+                                FinalTargetUrl = "https://example.com/finishpage",
+                                TestMode = "testMode",
+                            },
+                        },
+                        Claim = new AuthStartRequestSubjectMobileClaim() {
+                            MobileNumber = "12065550100",
+                        },
+                    },
+                    User = new AuthStartRequestSubjectUser() {
+                        Authenticators = new AuthStartRequestSubjectUserAuthenticators() {
+                            Docv = new Docv() {},
+                            Passive = new AuthStartRequestSubjectUserAuthenticatorPassive() {
+                                UserVerificationLevel = "userVerificationLevel",
+                            },
+                            Ppb = new Ppb() {},
+                            Present = new Present() {},
+                        },
+                        Claim = new AuthStartRequestSubjectUserClaim() {
+                            Provided = true,
+                            UserId = "eba12f3a-5555-47bc-b85d-21c0cbc4b973",
+                        },
+                    },
+                },
+            };
+
+            var res = await sdk.Auth.AuthStartRequestAsync(req);
+
+            // handle response
   - target: $["paths"]["/v3/challenge"]["post"]
     update:
       x-codeSamples:
@@ -451,20 +617,28 @@ actions:
           source: |-
             using Prove.Proveapi;
             using Prove.Proveapi.Models.Components;
+            using System.Collections.Generic;
 
             var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
             V3VerifyRequest req = new V3VerifyRequest() {
+                AddOnFeature = new List<string>() {
+                    "ageEstimation",
+                },
+                BusinessName = "businessName",
                 ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
                 ClientHumanId = "aad25769-23bb-458c-80db-50296a82c91b",
                 ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
-                EmailAddress = "sbutrimovichb@who.int",
-                FirstName = "Sheilakathryn",
+                DateOfBirth = "dateOfBirth",
+                EmailAddress = "ecoldman1h@storify.com",
+                FirstName = "Elena",
                 IpAddress = "192.168.1.1",
-                LastName = "Butrimovich",
-                PhoneNumber = "2001004011",
+                LastName = "Coldman",
+                NationalId = "nationalId",
+                PhoneNumber = "2001004053",
+                ProveId = "proveId",
                 UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
-                VerificationType = "verificationType",
+                VerificationType = VerificationType.VerifiedUser,
             };
 
             var res = await sdk.V3.V3VerifyRequestAsync(req);
@@ -488,22 +662,24 @@ actions:
                     new VerifyItem() {
                         ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
                         ClientHumanId = "clientHumanId",
-                        EmailAddress = "sbutrimovichb@who.int",
-                        FirstName = "Sheilakathryn",
+                        EmailAddress = "ecoldman1h@storify.com",
+                        FirstName = "Elena",
                         IpAddress = "192.168.1.1",
-                        LastName = "Butrimovich",
-                        PhoneNumber = "2001004011",
+                        LastName = "Coldman",
+                        PhoneNumber = "2001004053",
+                        ProveId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
                         UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
                         VerificationType = "verificationType",
                     },
                     new VerifyItem() {
                         ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
                         ClientHumanId = "clientHumanId",
-                        EmailAddress = "sbutrimovichb@who.int",
-                        FirstName = "Sheilakathryn",
+                        EmailAddress = "ecoldman1h@storify.com",
+                        FirstName = "Elena",
                         IpAddress = "192.168.1.1",
-                        LastName = "Butrimovich",
-                        PhoneNumber = "2001004011",
+                        LastName = "Coldman",
+                        PhoneNumber = "2001004053",
+                        ProveId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
                         UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
                         VerificationType = "verificationType",
                     },

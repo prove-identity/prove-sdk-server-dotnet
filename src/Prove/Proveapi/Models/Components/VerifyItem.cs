@@ -57,6 +57,9 @@ namespace Prove.Proveapi.Models.Components
         [JsonProperty("phoneNumber")]
         public string PhoneNumber { get; set; } = default!;
 
+        [JsonProperty("proveId")]
+        public string? ProveId { get; set; }
+
         /// <summary>
         /// The User agent of the customer.
         /// </summary>

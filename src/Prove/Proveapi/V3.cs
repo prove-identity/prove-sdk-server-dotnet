@@ -120,8 +120,8 @@ namespace Prove.Proveapi
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.4.0";
-        private const string _sdkGenVersion = "2.728.0";
+        private const string _sdkVersion = "1.5.0";
+        private const string _sdkGenVersion = "2.760.2";
         private const string _openapiDocVersion = "1.0.0";
 
         public V3(SDKConfig config)
