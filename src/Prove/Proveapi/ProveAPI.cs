@@ -31,6 +31,7 @@ namespace Prove.Proveapi
     public interface IProveAPI
     {
         public IV3 V3 { get; }
+        public IAuth Auth { get; }
         public IDomain Domain { get; }
         public IIdentity Identity { get; }
     }
@@ -49,10 +50,11 @@ namespace Prove.Proveapi
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.4.0";
-        private const string _sdkGenVersion = "2.728.0";
+        private const string _sdkVersion = "1.5.0";
+        private const string _sdkGenVersion = "2.760.2";
         private const string _openapiDocVersion = "1.0.0";
         public IV3 V3 { get; private set; }
+        public IAuth Auth { get; private set; }
         public IDomain Domain { get; private set; }
         public IIdentity Identity { get; private set; }
 
@@ -62,6 +64,8 @@ namespace Prove.Proveapi
             InitHooks();
 
             V3 = new V3(SDKConfiguration);
+
+            Auth = new Auth(SDKConfiguration);
 
             Domain = new Domain(SDKConfiguration);
 
@@ -110,6 +114,8 @@ namespace Prove.Proveapi
             InitHooks();
 
             V3 = new V3(SDKConfiguration);
+
+            Auth = new Auth(SDKConfiguration);
 
             Domain = new Domain(SDKConfiguration);
 

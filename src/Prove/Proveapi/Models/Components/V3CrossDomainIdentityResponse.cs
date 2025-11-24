@@ -29,7 +29,7 @@ namespace Prove.Proveapi.Models.Components
         /// <summary>
         /// The list of identities from other linked accounts.
         /// </summary>
-        [JsonProperty("identites")]
-        public List<IdentityItem> Identites { get; set; } = default!;
+        [JsonProperty("identities")]
+        public List<IdentityItem> Identities { get; set; } = default!;
     }
 }

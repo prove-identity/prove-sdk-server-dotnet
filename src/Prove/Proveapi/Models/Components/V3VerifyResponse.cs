@@ -21,7 +21,22 @@ namespace Prove.Proveapi.Models.Components
         /// (required IF verificationType=VerifiedUser)
         /// </summary>
         [JsonProperty("additionalIdentities")]
-        public List<AdditionalIdentity>? AdditionalIdentities { get; set; }
+        public List<Models.Components.Identity>? AdditionalIdentities { get; set; }
+
+        /// <summary>
+        /// TODO: usage comment. Chances are this will be a part of Identity struct.
+        /// </summary>
+        [JsonProperty("businesses")]
+        public List<Business>? Businesses { get; set; }
+
+        /// <summary>
+        /// Client-generated identifier for a given customer. This is returned as passed into the request.
+        /// </summary>
+        [JsonProperty("clientCustomerId")]
+        public string? ClientCustomerId { get; set; }
+
+        [JsonProperty("clientHumanId")]
+        public string? ClientHumanId { get; set; }
 
         /// <summary>
         /// A client-generated unique ID for a specific session. This can be used to identify specific requests. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include Personally Identifiable Information (PII) in this field.
@@ -42,13 +57,31 @@ namespace Prove.Proveapi.Models.Components
         public Dictionary<string, V3VerifyResponseEvaluation>? Evaluation { get; set; }
 
         [JsonProperty("identity")]
-        public Models.Components.Identity Identity { get; set; } = default!;
+        public Models.Components.Identity? Identity { get; set; }
+
+        [JsonProperty("linkedAccounts")]
+        public List<LinkedAccount>? LinkedAccounts { get; set; }
 
         /// <summary>
         /// The mobile phone number. US phone numbers can be passed in with or without a leading `+1`. International phone numbers require a leading `+1`. Use the appropriate endpoint URL based on the region the number originates from. Acceptable characters are: alphanumeric with symbols &apos;+&apos;.
         /// </summary>
         [JsonProperty("phoneNumber")]
         public string PhoneNumber { get; set; } = default!;
+
+        [JsonProperty("proveAccountId")]
+        public string? ProveAccountId { get; set; }
+
+        /// <summary>
+        /// (required IF verificationType=VerifiedUser)
+        /// </summary>
+        [JsonProperty("proveId")]
+        public string? ProveId { get; set; }
+
+        /// <summary>
+        /// (required IF verificationType=VerifiedUser)
+        /// </summary>
+        [JsonProperty("provePhoneAlias")]
+        public string? ProvePhoneAlias { get; set; }
 
         /// <summary>
         /// The result of verification

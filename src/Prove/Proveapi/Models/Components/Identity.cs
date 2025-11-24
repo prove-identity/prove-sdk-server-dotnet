@@ -10,20 +10,21 @@
 namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
+    using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
     using System.Collections.Generic;
     
     public class Identity
     {
 
+        [JsonProperty("addresses")]
+        public List<Address>? Addresses { get; set; }
+
         /// <summary>
         /// Prove’s tiered confidence metric, ranging from -1 to 3, that dynamically adapts to user behavior and various authentication keys. It allows for adaptive security policies, meaning you can require different levels of verification for different types of transactions.
         /// </summary>
         [JsonProperty("assuranceLevel")]
         public string AssuranceLevel { get; set; } = default!;
-
-        [JsonProperty("clientCustomerId")]
-        public string ClientCustomerId { get; set; } = default!;
 
         /// <summary>
         /// (required IF verificationType=VerifiedUser)
@@ -32,28 +33,34 @@ namespace Prove.Proveapi.Models.Components
         public string? ClientHumanId { get; set; }
 
         /// <summary>
+        /// TODO: comments and validation
+        /// </summary>
+        [JsonProperty("dateOfBirth")]
+        public string? DateOfBirth { get; set; }
+
+        [JsonProperty("emails")]
+        public List<string>? Emails { get; set; }
+
+        /// <summary>
         /// The first name of the individual. (required IF verificationType=VerifiedUser)
         /// </summary>
         [JsonProperty("firstName")]
-        public string FirstName { get; set; } = default!;
+        public string? FirstName { get; set; }
 
         /// <summary>
         /// The last name of the individual. (required IF verificationType=VerifiedUser)
         /// </summary>
         [JsonProperty("lastName")]
-        public string LastName { get; set; } = default!;
+        public string? LastName { get; set; }
 
-        /// <summary>
-        /// (required IF verificationType=VerifiedUser)
-        /// </summary>
-        [JsonProperty("proveId")]
-        public string? ProveId { get; set; }
+        [JsonProperty("maxAge")]
+        public long? MaxAge { get; set; }
 
-        /// <summary>
-        /// (required IF verificationType=VerifiedUser)
-        /// </summary>
-        [JsonProperty("provePhoneAlias")]
-        public string? ProvePhoneAlias { get; set; }
+        [JsonProperty("minAge")]
+        public long? MinAge { get; set; }
+
+        [JsonProperty("nationalId")]
+        public string? NationalId { get; set; }
 
         /// <summary>
         /// Codes explaining the verification outcome

@@ -21,7 +21,28 @@ namespace Prove.Proveapi.Models.Components
         /// (required IF verificationType=VerifiedUser)
         /// </summary>
         [JsonProperty("additionalIdentities")]
-        public List<AdditionalIdentity>? AdditionalIdentities { get; set; }
+        public List<Models.Components.Identity>? AdditionalIdentities { get; set; }
+
+        /// <summary>
+        /// Prove’s tiered confidence metric, ranging from -1 to 3, that dynamically adapts to user behavior and various authentication keys. It allows for adaptive security policies, meaning you can require different levels of verification for different types of transactions.
+        /// </summary>
+        [JsonProperty("assuranceLevel")]
+        public string AssuranceLevel { get; set; } = default!;
+
+        /// <summary>
+        /// TODO: usage comment. Chances are this will be a part of Identity struct.
+        /// </summary>
+        [JsonProperty("businesses")]
+        public List<Business>? Businesses { get; set; }
+
+        [JsonProperty("clientCustomerId")]
+        public string ClientCustomerId { get; set; } = default!;
+
+        /// <summary>
+        /// (required IF verificationType=VerifiedUser)
+        /// </summary>
+        [JsonProperty("clientHumanId")]
+        public string? ClientHumanId { get; set; }
 
         /// <summary>
         /// An error message for this corresponding specific verification.
@@ -36,13 +57,31 @@ namespace Prove.Proveapi.Models.Components
         public Dictionary<string, VerifyBatchResultItemEvaluation>? Evaluation { get; set; }
 
         [JsonProperty("identity")]
-        public Models.Components.Identity Identity { get; set; } = default!;
+        public Models.Components.Identity? Identity { get; set; }
+
+        [JsonProperty("linkedAccounts")]
+        public List<LinkedAccount>? LinkedAccounts { get; set; }
 
         /// <summary>
         /// The mobile phone number. US phone numbers can be passed in with or without a leading `+1`. International phone numbers require a leading `+1`. Use the appropriate endpoint URL based on the region the number originates from. Acceptable characters are: alphanumeric with symbols &apos;+&apos;.
         /// </summary>
         [JsonProperty("phoneNumber")]
         public string PhoneNumber { get; set; } = default!;
+
+        [JsonProperty("proveAccountId")]
+        public string? ProveAccountId { get; set; }
+
+        /// <summary>
+        /// (required IF verificationType=VerifiedUser)
+        /// </summary>
+        [JsonProperty("proveId")]
+        public string? ProveId { get; set; }
+
+        /// <summary>
+        /// (required IF verificationType=VerifiedUser)
+        /// </summary>
+        [JsonProperty("provePhoneAlias")]
+        public string? ProvePhoneAlias { get; set; }
 
         /// <summary>
         /// The result of the combination of `verifyResult` and `possessionResult`. Possible values are `true`, `pending`, and `false`. The value will be `pending` until the results of both Verify and Possession are returned or one of them fails, blocking the other.

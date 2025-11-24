@@ -409,20 +409,28 @@ This endpoint allows you to initiate a Verified Users session.
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
+using System.Collections.Generic;
 
 var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 V3VerifyRequest req = new V3VerifyRequest() {
+    AddOnFeature = new List<string>() {
+        "ageEstimation",
+    },
+    BusinessName = "businessName",
     ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
     ClientHumanId = "aad25769-23bb-458c-80db-50296a82c91b",
     ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
-    EmailAddress = "sbutrimovichb@who.int",
-    FirstName = "Sheilakathryn",
+    DateOfBirth = "dateOfBirth",
+    EmailAddress = "ecoldman1h@storify.com",
+    FirstName = "Elena",
     IpAddress = "192.168.1.1",
-    LastName = "Butrimovich",
-    PhoneNumber = "2001004011",
+    LastName = "Coldman",
+    NationalId = "nationalId",
+    PhoneNumber = "2001004053",
+    ProveId = "proveId",
     UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
-    VerificationType = "verificationType",
+    VerificationType = VerificationType.VerifiedUser,
 };
 
 var res = await sdk.V3.V3VerifyRequestAsync(req);
@@ -470,22 +478,24 @@ V3VerifyBatchRequest req = new V3VerifyBatchRequest() {
         new VerifyItem() {
             ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
             ClientHumanId = "clientHumanId",
-            EmailAddress = "sbutrimovichb@who.int",
-            FirstName = "Sheilakathryn",
+            EmailAddress = "ecoldman1h@storify.com",
+            FirstName = "Elena",
             IpAddress = "192.168.1.1",
-            LastName = "Butrimovich",
-            PhoneNumber = "2001004011",
+            LastName = "Coldman",
+            PhoneNumber = "2001004053",
+            ProveId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
             UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
             VerificationType = "verificationType",
         },
         new VerifyItem() {
             ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
             ClientHumanId = "clientHumanId",
-            EmailAddress = "sbutrimovichb@who.int",
-            FirstName = "Sheilakathryn",
+            EmailAddress = "ecoldman1h@storify.com",
+            FirstName = "Elena",
             IpAddress = "192.168.1.1",
-            LastName = "Butrimovich",
-            PhoneNumber = "2001004011",
+            LastName = "Coldman",
+            PhoneNumber = "2001004053",
+            ProveId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
             UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
             VerificationType = "verificationType",
         },

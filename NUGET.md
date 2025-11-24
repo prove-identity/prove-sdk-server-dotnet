@@ -129,9 +129,9 @@ catch (System.Net.Http.HttpRequestException ex)
 
 **Primary exceptions:**
 * [`ProveAPIError`](./src/Prove/Proveapi/Models/Errors/ProveAPIError.cs): The base class for HTTP error responses.
-  * [`Error400`](./src/Prove/Proveapi/Models/Errors/Error400.cs): Bad Request. The server cannot process the request due to a client error. Status code `400`.
-  * [`Error401`](./src/Prove/Proveapi/Models/Errors/Error401.cs): Unauthorized. Authentication is required and has failed or has not been provided. Status code `401`.
+  * [`Error400`](./src/Prove/Proveapi/Models/Errors/Error400.cs): Error400 is a custom error for HTTP 400. This is used to support distinguishing between HTTP 400 and 500 in Speakeasy SDKs. Status code `400`.
   * [`Error`](./src/Prove/Proveapi/Models/Errors/Error.cs): Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Status code `500`.
+  * [`Error401`](./src/Prove/Proveapi/Models/Errors/Error401.cs): Unauthorized. Authentication is required and has failed or has not been provided. Status code `401`. *
   * [`Error403`](./src/Prove/Proveapi/Models/Errors/Error403.cs): Forbidden. The server understood the request but refuses to authorize it. Status code `403`. *
 
 <details><summary>Less common exceptions (2)</summary>
@@ -165,7 +165,7 @@ You can override the default server globally by passing a server name to the `se
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
 
-var sdk = new ProveAPI(server: SDKConfig.Server.ProdEu);
+var sdk = new ProveAPI(server: SDKConfig.Server.UatUs);
 
 V3TokenRequest req = new V3TokenRequest() {
     ClientId = "customer_id",

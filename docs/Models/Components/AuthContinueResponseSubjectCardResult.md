@@ -1,0 +1,9 @@
+# AuthContinueResponseSubjectCardResult
+
+
+## Fields
+
+| Field                                                                             | Type                                                                              | Required                                                                          | Description                                                                       | Example                                                                           |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `Error`                                                                           | [AuthContinueResponseError](../../Models/Components/AuthContinueResponseError.md) | :heavy_minus_sign:                                                                | N/A                                                                               | {<br/>"code": 10004,<br/>"message": "device authentication missing"<br/>}         |
+| `Success`                                                                         | *bool*                                                                            | :heavy_minus_sign:                                                                | N/A                                                                               |                                                                                   |
