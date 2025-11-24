@@ -35,11 +35,18 @@ namespace Prove.Proveapi.Models.Components
         [JsonProperty("businesses")]
         public List<Business>? Businesses { get; set; }
 
+        /// <summary>
+        /// The input ClientCustomerID.
+        /// </summary>
         [JsonProperty("clientCustomerId")]
         public string ClientCustomerId { get; set; } = default!;
 
         /// <summary>
+        /// The input ClientHumanID.<br/>
+        /// 
+        /// <remarks>
         /// (required IF verificationType=VerifiedUser)
+        /// </remarks>
         /// </summary>
         [JsonProperty("clientHumanId")]
         public string? ClientHumanId { get; set; }
@@ -63,7 +70,7 @@ namespace Prove.Proveapi.Models.Components
         public List<LinkedAccount>? LinkedAccounts { get; set; }
 
         /// <summary>
-        /// The mobile phone number. US phone numbers can be passed in with or without a leading `+1`. International phone numbers require a leading `+1`. Use the appropriate endpoint URL based on the region the number originates from. Acceptable characters are: alphanumeric with symbols &apos;+&apos;.
+        /// The input phone number.
         /// </summary>
         [JsonProperty("phoneNumber")]
         public string PhoneNumber { get; set; } = default!;
@@ -72,19 +79,27 @@ namespace Prove.Proveapi.Models.Components
         public string? ProveAccountId { get; set; }
 
         /// <summary>
+        /// A Prove-generated identifier for the consumer.<br/>
+        /// 
+        /// <remarks>
         /// (required IF verificationType=VerifiedUser)
+        /// </remarks>
         /// </summary>
         [JsonProperty("proveId")]
         public string? ProveId { get; set; }
 
         /// <summary>
+        /// A persistent ID that uniquely identifies a telephone subscriber.<br/>
+        /// 
+        /// <remarks>
         /// (required IF verificationType=VerifiedUser)
+        /// </remarks>
         /// </summary>
         [JsonProperty("provePhoneAlias")]
         public string? ProvePhoneAlias { get; set; }
 
         /// <summary>
-        /// The result of the combination of `verifyResult` and `possessionResult`. Possible values are `true`, `pending`, and `false`. The value will be `pending` until the results of both Verify and Possession are returned or one of them fails, blocking the other.
+        /// The result of verification.
         /// </summary>
         [JsonProperty("success")]
         public string Success { get; set; } = default!;

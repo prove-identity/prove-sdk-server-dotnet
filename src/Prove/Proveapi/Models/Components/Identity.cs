@@ -26,29 +26,17 @@ namespace Prove.Proveapi.Models.Components
         [JsonProperty("assuranceLevel")]
         public string AssuranceLevel { get; set; } = default!;
 
-        /// <summary>
-        /// (required IF verificationType=VerifiedUser)
-        /// </summary>
-        [JsonProperty("clientHumanId")]
-        public string? ClientHumanId { get; set; }
-
-        /// <summary>
-        /// TODO: comments and validation
-        /// </summary>
-        [JsonProperty("dateOfBirth")]
-        public string? DateOfBirth { get; set; }
-
         [JsonProperty("emails")]
         public List<string>? Emails { get; set; }
 
         /// <summary>
-        /// The first name of the individual. (required IF verificationType=VerifiedUser)
+        /// The input first name. (required IF verificationType=VerifiedUser)
         /// </summary>
         [JsonProperty("firstName")]
         public string? FirstName { get; set; }
 
         /// <summary>
-        /// The last name of the individual. (required IF verificationType=VerifiedUser)
+        /// The input last name. (required IF verificationType=VerifiedUser)
         /// </summary>
         [JsonProperty("lastName")]
         public string? LastName { get; set; }
@@ -58,9 +46,6 @@ namespace Prove.Proveapi.Models.Components
 
         [JsonProperty("minAge")]
         public long? MinAge { get; set; }
-
-        [JsonProperty("nationalId")]
-        public string? NationalId { get; set; }
 
         /// <summary>
         /// Codes explaining the verification outcome
