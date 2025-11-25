@@ -23,13 +23,13 @@ namespace Prove.Proveapi.Models.Components
         public string AssuranceLevel { get; set; } = default!;
 
         /// <summary>
-        /// The input first name.
+        /// The first name of the identity.
         /// </summary>
         [JsonProperty("firstName")]
         public string? FirstName { get; set; }
 
         /// <summary>
-        /// The input last name.
+        /// The last name of the identity.
         /// </summary>
         [JsonProperty("lastName")]
         public string? LastName { get; set; }

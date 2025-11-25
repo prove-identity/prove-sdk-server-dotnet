@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 99003e79-c0db-4110-b5b2-e9c131bd48f0
 management:
-  docChecksum: 53231dde27e6d3d3b522f44e6e446a0e
+  docChecksum: f00d26adbae9db156ed666d96e873ade
   docVersion: 1.0.0
   speakeasyVersion: 1.661.1
   generationVersion: 2.763.2
-  releaseVersion: 1.5.2
-  configChecksum: 15d36350a6c545003d5f1eda3bf0af46
+  releaseVersion: 1.5.3
+  configChecksum: 547697b16f2d99e701a2d68a7dc25377
   repoURL: https://github.com/prove-identity/prove-sdk-server-dotnet.git
   published: true
 features:
@@ -975,4 +975,3 @@ examples:
           application/json: {"code": 1000, "message": "error occurred"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes Detected:\n* `ProveApi.V3.V3VerifyRequest()`: \n  *  `request.AddOnFeature` **Removed** **Breaking** :warning:\n  *  `response.additionalIdentities.[]` **Changed** **Breaking** :warning:\n* `ProveApi.V3.V3VerifyBatchRequest()`: \n  *  `request.Items.[]` **Changed** **Breaking** :warning:\n  *  `response.results.[]` **Changed** **Breaking** :warning:\n"
