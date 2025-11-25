@@ -1,18 +1,18 @@
 lockVersion: 2.0.0
 id: 99003e79-c0db-4110-b5b2-e9c131bd48f0
 management:
-  docChecksum: 545951852b7c8e35798896cb77cabb7b
+  docChecksum: 53231dde27e6d3d3b522f44e6e446a0e
   docVersion: 1.0.0
-  speakeasyVersion: 1.660.0
-  generationVersion: 2.760.2
-  releaseVersion: 1.5.1
-  configChecksum: 295c6a581499d49034212ed6d69cff0e
+  speakeasyVersion: 1.661.1
+  generationVersion: 2.763.2
+  releaseVersion: 1.5.2
+  configChecksum: 15d36350a6c545003d5f1eda3bf0af46
   repoURL: https://github.com/prove-identity/prove-sdk-server-dotnet.git
   published: true
 features:
   csharp:
     additionalDependencies: 0.1.0
-    core: 3.15.4
+    core: 3.15.5
     examples: 2.81.6
     flattening: 2.81.3
     globalSecurity: 2.83.8
@@ -29,7 +29,6 @@ generatedFiles:
   - NUGET.md
   - Prove.Proveapi.sln
   - USAGE.md
-  - docs/Models/Components/Address.md
   - docs/Models/Components/AmlTypeListResponseInternal.md
   - docs/Models/Components/AuthContinueRequest.md
   - docs/Models/Components/AuthContinueRequestSubjectMobile.md
@@ -95,8 +94,6 @@ generatedFiles:
   - docs/Models/Components/AuthStartRequestSubjectUserClaim.md
   - docs/Models/Components/AuthStartRequestSubjects.md
   - docs/Models/Components/AuthStartResponse.md
-  - docs/Models/Components/Business.md
-  - docs/Models/Components/BusinessAddress.md
   - docs/Models/Components/DataSourceAddressResponseInternal.md
   - docs/Models/Components/DataSourceEmailAddressResponseInternal.md
   - docs/Models/Components/DataSourceIdentifiersResponseInternal.md
@@ -112,7 +109,6 @@ generatedFiles:
   - docs/Models/Components/IdentityItem.md
   - docs/Models/Components/KYCFieldTypeResponseInternal.md
   - docs/Models/Components/KYCInternal.md
-  - docs/Models/Components/LinkedAccount.md
   - docs/Models/Components/LinkedFrom.md
   - docs/Models/Components/LinkedTo.md
   - docs/Models/Components/LookupIdentityItem.md
@@ -120,8 +116,6 @@ generatedFiles:
   - docs/Models/Components/Ppb.md
   - docs/Models/Components/Present.md
   - docs/Models/Components/PushToken.md
-  - docs/Models/Components/RegistrationFiling.md
-  - docs/Models/Components/RelatedPerson.md
   - docs/Models/Components/RequestsFrom.md
   - docs/Models/Components/RequestsTo.md
   - docs/Models/Components/Security.md
@@ -180,9 +174,9 @@ generatedFiles:
   - docs/Models/Components/V3VerifyResponse.md
   - docs/Models/Components/V3VerifyResponseEvaluation.md
   - docs/Models/Components/VerificationType.md
+  - docs/Models/Components/VerifyBatchRequestItem.md
   - docs/Models/Components/VerifyBatchResultItem.md
   - docs/Models/Components/VerifyBatchResultItemEvaluation.md
-  - docs/Models/Components/VerifyItem.md
   - docs/Models/Errors/Error.md
   - docs/Models/Errors/Error400.md
   - docs/Models/Errors/Error401.md
@@ -231,7 +225,6 @@ generatedFiles:
   - src/Prove/Proveapi/Hooks/HookTypes.cs
   - src/Prove/Proveapi/Hooks/SDKHooks.cs
   - src/Prove/Proveapi/Identity.cs
-  - src/Prove/Proveapi/Models/Components/Address.cs
   - src/Prove/Proveapi/Models/Components/AmlTypeListResponseInternal.cs
   - src/Prove/Proveapi/Models/Components/AuthContinueRequest.cs
   - src/Prove/Proveapi/Models/Components/AuthContinueRequestSubjectMobile.cs
@@ -297,8 +290,6 @@ generatedFiles:
   - src/Prove/Proveapi/Models/Components/AuthStartRequestSubjectUserClaim.cs
   - src/Prove/Proveapi/Models/Components/AuthStartRequestSubjects.cs
   - src/Prove/Proveapi/Models/Components/AuthStartResponse.cs
-  - src/Prove/Proveapi/Models/Components/Business.cs
-  - src/Prove/Proveapi/Models/Components/BusinessAddress.cs
   - src/Prove/Proveapi/Models/Components/DataSourceAddressResponseInternal.cs
   - src/Prove/Proveapi/Models/Components/DataSourceEmailAddressResponseInternal.cs
   - src/Prove/Proveapi/Models/Components/DataSourceIdentifiersResponseInternal.cs
@@ -314,7 +305,6 @@ generatedFiles:
   - src/Prove/Proveapi/Models/Components/IdentityItem.cs
   - src/Prove/Proveapi/Models/Components/KYCFieldTypeResponseInternal.cs
   - src/Prove/Proveapi/Models/Components/KYCInternal.cs
-  - src/Prove/Proveapi/Models/Components/LinkedAccount.cs
   - src/Prove/Proveapi/Models/Components/LinkedFrom.cs
   - src/Prove/Proveapi/Models/Components/LinkedTo.cs
   - src/Prove/Proveapi/Models/Components/LookupIdentityItem.cs
@@ -322,8 +312,6 @@ generatedFiles:
   - src/Prove/Proveapi/Models/Components/Ppb.cs
   - src/Prove/Proveapi/Models/Components/Present.cs
   - src/Prove/Proveapi/Models/Components/PushToken.cs
-  - src/Prove/Proveapi/Models/Components/RegistrationFiling.cs
-  - src/Prove/Proveapi/Models/Components/RelatedPerson.cs
   - src/Prove/Proveapi/Models/Components/RequestsFrom.cs
   - src/Prove/Proveapi/Models/Components/RequestsTo.cs
   - src/Prove/Proveapi/Models/Components/Security.cs
@@ -382,9 +370,9 @@ generatedFiles:
   - src/Prove/Proveapi/Models/Components/V3VerifyResponse.cs
   - src/Prove/Proveapi/Models/Components/V3VerifyResponseEvaluation.cs
   - src/Prove/Proveapi/Models/Components/VerificationType.cs
+  - src/Prove/Proveapi/Models/Components/VerifyBatchRequestItem.cs
   - src/Prove/Proveapi/Models/Components/VerifyBatchResultItem.cs
   - src/Prove/Proveapi/Models/Components/VerifyBatchResultItemEvaluation.cs
-  - src/Prove/Proveapi/Models/Components/VerifyItem.cs
   - src/Prove/Proveapi/Models/Errors/APIException.cs
   - src/Prove/Proveapi/Models/Errors/Error.cs
   - src/Prove/Proveapi/Models/Errors/Error400.cs
@@ -431,6 +419,7 @@ generatedFiles:
   - src/Prove/Proveapi/SDKConfig.cs
   - src/Prove/Proveapi/Utils/AnyDeserializer.cs
   - src/Prove/Proveapi/Utils/BigIntStrConverter.cs
+  - src/Prove/Proveapi/Utils/Constants.cs
   - src/Prove/Proveapi/Utils/DecimalStrConverter.cs
   - src/Prove/Proveapi/Utils/EnumConverter.cs
   - src/Prove/Proveapi/Utils/FlexibleObjectDeserializer.cs
@@ -622,10 +611,10 @@ examples:
   V3VerifyRequest:
     speakeasy-default-v3-verify-request:
       requestBody:
-        application/json: {"addOnFeature": ["ageEstimation"], "clientCustomerId": "e0f78bc2-f748-4eda-9d29-d756844507fc", "clientHumanId": "aad25769-23bb-458c-80db-50296a82c91b", "clientRequestId": "71010d88-d0e7-4a24-9297-d1be6fefde81", "emailAddress": "ecoldman1h@storify.com", "firstName": "Elena", "ipAddress": "192.168.1.1", "lastName": "Coldman", "phoneNumber": "2001004053", "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0", "verificationType": "verifiedUser"}
+        application/json: {"clientCustomerId": "e0f78bc2-f748-4eda-9d29-d756844507fc", "clientHumanId": "aad25769-23bb-458c-80db-50296a82c91b", "clientRequestId": "71010d88-d0e7-4a24-9297-d1be6fefde81", "emailAddress": "ecoldman1h@storify.com", "firstName": "Elena", "ipAddress": "192.168.1.1", "lastName": "Coldman", "phoneNumber": "2001004053", "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0", "verificationType": "verifiedUser"}
       responses:
         "200":
-          application/json: {"additionalIdentities": [{"addresses": [{"address": "address", "city": "city", "extendedAddress": "extendedAddress", "region": "region", "zipCode": "zipCode"}, {"address": "address", "city": "city", "extendedAddress": "extendedAddress", "region": "region", "zipCode": "zipCode"}], "assuranceLevel": "AL-1", "emails": ["emails", "emails"], "firstName": "Elena", "lastName": "Coldman", "maxAge": 25, "minAge": 18, "reasons": ["[AL-1a] (Poor quality identity)"]}, {"addresses": [{"address": "address", "city": "city", "extendedAddress": "extendedAddress", "region": "region", "zipCode": "zipCode"}, {"address": "address", "city": "city", "extendedAddress": "extendedAddress", "region": "region", "zipCode": "zipCode"}], "assuranceLevel": "AL-1", "emails": ["emails", "emails"], "firstName": "Elena", "lastName": "Coldman", "maxAge": 25, "minAge": 18, "reasons": ["[AL-1a] (Poor quality identity)"]}], "clientCustomerId": "261ffa66-961a-4f90-8d93-6c85a450633d", "clientHumanId": "261ffa66-961a-4f90-8d93-6c85a450633d", "clientRequestId": "71010d88-d0e7-4a24-9297-d1be6fefde81", "correlationId": "713189b8-5555-4b08-83ba-75d08780aebd", "evaluation": {"authentication": {}, "identification": {}, "success": {}}, "identity": {"addresses": [{"address": "address", "city": "city", "extendedAddress": "extendedAddress", "region": "region", "zipCode": "zipCode"}, {"address": "address", "city": "city", "extendedAddress": "extendedAddress", "region": "region", "zipCode": "zipCode"}], "assuranceLevel": "AL2", "emails": ["emails", "emails"], "firstName": "Elena", "lastName": "Coldman", "maxAge": 25, "minAge": 18, "reasons": ["[AL2a]"]}, "phoneNumber": "2001004053", "proveId": "a07b94ce-218c-461f-beda-d92480e40f61", "provePhoneAlias": "4B2C41FC4VKDEO100F960011D0AD4A8050MEK19P4SF9PD23EFE27CD2C76A6FAA8375E60AC0550604F6G32D9ED60E06262CCC570F3C15F2D16900184E", "success": "true"}
+          application/json: {"additionalIdentities": [{"assuranceLevel": "AL-1", "firstName": "Elena", "lastName": "Coldman", "reasons": ["[AL-1a] (Poor quality identity)"]}, {"assuranceLevel": "AL-1", "firstName": "Elena", "lastName": "Coldman", "reasons": ["[AL-1a] (Poor quality identity)"]}], "clientCustomerId": "261ffa66-961a-4f90-8d93-6c85a450633d", "clientHumanId": "261ffa66-961a-4f90-8d93-6c85a450633d", "clientRequestId": "71010d88-d0e7-4a24-9297-d1be6fefde81", "correlationId": "713189b8-5555-4b08-83ba-75d08780aebd", "evaluation": {"authentication": {}, "identification": {}}, "identity": {"assuranceLevel": "AL2", "firstName": "Elena", "lastName": "Coldman", "reasons": ["[AL2a]"]}, "phoneNumber": "2001004053", "proveId": "a07b94ce-218c-461f-beda-d92480e40f61", "provePhoneAlias": "4B2C41FC4VKDEO100F960011D0AD4A8050MEK19P4SF9PD23EFE27CD2C76A6FAA8375E60AC0550604F6G32D9ED60E06262CCC570F3C15F2D16900184E", "success": "true"}
         "400":
           application/json: {"code": 1001, "message": "invalid request"}
         "401":
@@ -939,10 +928,10 @@ examples:
   V3VerifyBatchRequest:
     speakeasy-default-v3-verify-batch-request:
       requestBody:
-        application/json: {"clientRequestId": "clientRequestId", "items": [{"clientCustomerId": "e0f78bc2-f748-4eda-9d29-d756844507fc", "clientHumanId": "clientHumanId", "emailAddress": "ecoldman1h@storify.com", "firstName": "Elena", "ipAddress": "192.168.1.1", "lastName": "Coldman", "phoneNumber": "2001004053", "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0", "verificationType": "verificationType"}, {"clientCustomerId": "e0f78bc2-f748-4eda-9d29-d756844507fc", "clientHumanId": "clientHumanId", "emailAddress": "ecoldman1h@storify.com", "firstName": "Elena", "ipAddress": "192.168.1.1", "lastName": "Coldman", "phoneNumber": "2001004053", "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0", "verificationType": "verificationType"}]}
+        application/json: {"clientRequestId": "3d1215f7-ec3f-4fd2-9894-7b46f00e31a6", "items": [{"clientCustomerId": "e0f78bc2-f748-4eda-9d29-d756844507fc", "clientHumanId": "clientHumanId", "emailAddress": "ecoldman1h@storify.com", "firstName": "Elena", "ipAddress": "192.168.1.1", "lastName": "Coldman", "phoneNumber": "2001004053", "proveId": "e0f78bc2-f748-4eda-9d29-d756844507fc", "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0", "verificationType": "verifiedUser"}, {"clientCustomerId": "e0f78bc2-f748-4eda-9d29-d756844507fc", "clientHumanId": "clientHumanId", "emailAddress": "ecoldman1h@storify.com", "firstName": "Elena", "ipAddress": "192.168.1.1", "lastName": "Coldman", "phoneNumber": "2001004053", "proveId": "e0f78bc2-f748-4eda-9d29-d756844507fc", "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0", "verificationType": "verifiedUser"}]}
       responses:
         "200":
-          application/json: {"clientRequestId": "71010d88-d0e7-4a24-9297-d1be6fefde81", "correlationId": "713189b8-5555-4b08-83ba-75d08780aebd", "results": [{"additionalIdentities": [{"assuranceLevel": "AL-1", "emails": ["emails", "emails"], "firstName": "Elena", "lastName": "Coldman", "maxAge": 25, "minAge": 18, "reasons": ["[AL-1a] (Poor quality identity)"]}, {"assuranceLevel": "AL-1", "emails": ["emails", "emails"], "firstName": "Elena", "lastName": "Coldman", "maxAge": 25, "minAge": 18, "reasons": ["[AL-1a] (Poor quality identity)"]}], "assuranceLevel": "AL-1", "clientCustomerId": "261ffa66-961a-4f90-8d93-6c85a450633d", "clientHumanId": "7bfbb91d-9df8-4ec0-99a6-de05ecc23a9e", "error": "", "evaluation": {"authentication": {}, "identification": {}, "success": {}}, "identity": {"assuranceLevel": "AL2", "emails": ["emails", "emails"], "firstName": "Elena", "lastName": "Coldman", "maxAge": 25, "minAge": 18, "reasons": ["[AL1a]"]}, "phoneNumber": "2001004053", "proveId": "a07b94ce-218c-461f-beda-d92480e40f61", "provePhoneAlias": "4B2C41FC4VKDEO100F960011D0AD4A8050MEK19P4SF9PD23EFE27CD2C76A6FAA8375E60AC0550604F6G32D9ED60E06262CCC570F3C15F2D16900184E", "success": "true"}, {"additionalIdentities": [{"assuranceLevel": "AL-1", "emails": ["emails", "emails"], "firstName": "Elena", "lastName": "Coldman", "maxAge": 25, "minAge": 18, "reasons": ["[AL-1a] (Poor quality identity)"]}, {"assuranceLevel": "AL-1", "emails": ["emails", "emails"], "firstName": "Elena", "lastName": "Coldman", "maxAge": 25, "minAge": 18, "reasons": ["[AL-1a] (Poor quality identity)"]}], "assuranceLevel": "AL-1", "clientCustomerId": "261ffa66-961a-4f90-8d93-6c85a450633d", "clientHumanId": "7bfbb91d-9df8-4ec0-99a6-de05ecc23a9e", "error": "", "evaluation": {"authentication": {}, "risk": {}, "success": {}}, "identity": {"assuranceLevel": "AL0", "emails": ["emails", "emails"], "firstName": "Alf", "lastName": "Novotni", "maxAge": 25, "minAge": 18, "reasons": ["[AL0b]"]}, "phoneNumber": "2001004054", "proveId": "a07b94ce-218c-461f-beda-d92480e40f61", "provePhoneAlias": "4B2C41FC4VKDEO100F960011D0AD4A8050MEK19P4SF9PD23EFE27CD2C76A6FAA8375E60AC0550604F6G32D9ED60E06262CCC570F3C15F2D16900184E", "success": "false"}]}
+          application/json: {"clientRequestId": "71010d88-d0e7-4a24-9297-d1be6fefde81", "correlationId": "713189b8-5555-4b08-83ba-75d08780aebd", "results": [{"additionalIdentities": [{"assuranceLevel": "AL-1", "firstName": "Elena", "lastName": "Coldman", "reasons": ["[AL-1a] (Poor quality identity)"]}, {"assuranceLevel": "AL-1", "firstName": "Elena", "lastName": "Coldman", "reasons": ["[AL-1a] (Poor quality identity)"]}], "assuranceLevel": "AL-1", "clientCustomerId": "261ffa66-961a-4f90-8d93-6c85a450633d", "clientHumanId": "7bfbb91d-9df8-4ec0-99a6-de05ecc23a9e", "error": "", "evaluation": {"authentication": {}, "identification": {}}, "identity": {"assuranceLevel": "AL2", "firstName": "Elena", "lastName": "Coldman", "reasons": ["[AL1a]"]}, "phoneNumber": "2001004053", "proveId": "a07b94ce-218c-461f-beda-d92480e40f61", "provePhoneAlias": "4B2C41FC4VKDEO100F960011D0AD4A8050MEK19P4SF9PD23EFE27CD2C76A6FAA8375E60AC0550604F6G32D9ED60E06262CCC570F3C15F2D16900184E", "success": "true"}, {"additionalIdentities": [{"assuranceLevel": "AL-1", "firstName": "Elena", "lastName": "Coldman", "reasons": ["[AL-1a] (Poor quality identity)"]}, {"assuranceLevel": "AL-1", "firstName": "Elena", "lastName": "Coldman", "reasons": ["[AL-1a] (Poor quality identity)"]}], "assuranceLevel": "AL-1", "clientCustomerId": "261ffa66-961a-4f90-8d93-6c85a450633d", "clientHumanId": "7bfbb91d-9df8-4ec0-99a6-de05ecc23a9e", "error": "", "evaluation": {"authentication": {}, "risk": {}, "success": {}}, "identity": {"assuranceLevel": "AL0", "firstName": "Alf", "lastName": "Novotni", "reasons": ["[AL0b]"]}, "phoneNumber": "2001004054", "proveId": "a07b94ce-218c-461f-beda-d92480e40f61", "provePhoneAlias": "4B2C41FC4VKDEO100F960011D0AD4A8050MEK19P4SF9PD23EFE27CD2C76A6FAA8375E60AC0550604F6G32D9ED60E06262CCC570F3C15F2D16900184E", "success": "false"}]}
         "400":
           application/json: {"code": 1001, "message": "invalid request"}
         "401":
@@ -986,4 +975,4 @@ examples:
           application/json: {"code": 1000, "message": "error occurred"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes Detected:\n* `ProveApi.V3.V3VerifyRequest()`: \n  *  `request` **Changed** **Breaking** :warning:\n  *  `response` **Changed** **Breaking** :warning:\n* `ProveApi.V3.V3VerifyBatchRequest()`: \n  *  `request.Items.[].ProveId` **Removed** **Breaking** :warning:\n  *  `response.results.[].AdditionalIdentities.[]` **Changed** **Breaking** :warning:\n"
+releaseNotes: "## Csharp SDK Changes Detected:\n* `ProveApi.V3.V3VerifyRequest()`: \n  *  `request.AddOnFeature` **Removed** **Breaking** :warning:\n  *  `response.additionalIdentities.[]` **Changed** **Breaking** :warning:\n* `ProveApi.V3.V3VerifyBatchRequest()`: \n  *  `request.Items.[]` **Changed** **Breaking** :warning:\n  *  `response.results.[]` **Changed** **Breaking** :warning:\n"

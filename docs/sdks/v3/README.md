@@ -401,7 +401,7 @@ var res = await sdk.V3.V3ValidateRequestAsync(req);
 
 ## V3VerifyRequest
 
-This endpoint allows you to initiate a Verified Users session.
+This endpoint allows you to verify a user depending on your particular use case.
 
 ### Example Usage
 
@@ -409,14 +409,10 @@ This endpoint allows you to initiate a Verified Users session.
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
-using System.Collections.Generic;
 
 var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 V3VerifyRequest req = new V3VerifyRequest() {
-    AddOnFeature = new List<string>() {
-        "ageEstimation",
-    },
     ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
     ClientHumanId = "aad25769-23bb-458c-80db-50296a82c91b",
     ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
@@ -469,9 +465,9 @@ using System.Collections.Generic;
 var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 V3VerifyBatchRequest req = new V3VerifyBatchRequest() {
-    ClientRequestId = "clientRequestId",
-    Items = new List<VerifyItem>() {
-        new VerifyItem() {
+    ClientRequestId = "3d1215f7-ec3f-4fd2-9894-7b46f00e31a6",
+    Items = new List<VerifyBatchRequestItem>() {
+        new VerifyBatchRequestItem() {
             ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
             ClientHumanId = "clientHumanId",
             EmailAddress = "ecoldman1h@storify.com",
@@ -479,10 +475,11 @@ V3VerifyBatchRequest req = new V3VerifyBatchRequest() {
             IpAddress = "192.168.1.1",
             LastName = "Coldman",
             PhoneNumber = "2001004053",
+            ProveId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
             UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
-            VerificationType = "verificationType",
+            VerificationType = "verifiedUser",
         },
-        new VerifyItem() {
+        new VerifyBatchRequestItem() {
             ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
             ClientHumanId = "clientHumanId",
             EmailAddress = "ecoldman1h@storify.com",
@@ -490,8 +487,9 @@ V3VerifyBatchRequest req = new V3VerifyBatchRequest() {
             IpAddress = "192.168.1.1",
             LastName = "Coldman",
             PhoneNumber = "2001004053",
+            ProveId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
             UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
-            VerificationType = "verificationType",
+            VerificationType = "verifiedUser",
         },
     },
 };

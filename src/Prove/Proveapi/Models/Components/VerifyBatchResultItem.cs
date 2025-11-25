@@ -30,12 +30,6 @@ namespace Prove.Proveapi.Models.Components
         public string AssuranceLevel { get; set; } = default!;
 
         /// <summary>
-        /// TODO: usage comment. Chances are this will be a part of Identity struct.
-        /// </summary>
-        [JsonProperty("businesses")]
-        public List<Business>? Businesses { get; set; }
-
-        /// <summary>
         /// The input ClientCustomerID.
         /// </summary>
         [JsonProperty("clientCustomerId")]
@@ -58,7 +52,7 @@ namespace Prove.Proveapi.Models.Components
         public string? Error { get; set; }
 
         /// <summary>
-        /// The evaluation result for the policy. This is an upcoming field but is not yet enabled.
+        /// The evaluation result for the policy. This will contain keys titled &quot;authentication&quot; and &quot;risk&quot; that encompass the different evaluation categories.
         /// </summary>
         [JsonProperty("evaluation")]
         public Dictionary<string, VerifyBatchResultItemEvaluation>? Evaluation { get; set; }
@@ -66,17 +60,11 @@ namespace Prove.Proveapi.Models.Components
         [JsonProperty("identity")]
         public Models.Components.Identity? Identity { get; set; }
 
-        [JsonProperty("linkedAccounts")]
-        public List<LinkedAccount>? LinkedAccounts { get; set; }
-
         /// <summary>
         /// The input phone number.
         /// </summary>
         [JsonProperty("phoneNumber")]
         public string PhoneNumber { get; set; } = default!;
-
-        [JsonProperty("proveAccountId")]
-        public string? ProveAccountId { get; set; }
 
         /// <summary>
         /// A Prove-generated identifier for the consumer.<br/>
@@ -99,7 +87,7 @@ namespace Prove.Proveapi.Models.Components
         public string? ProvePhoneAlias { get; set; }
 
         /// <summary>
-        /// The result of verification.
+        /// The result of verification. This can be &quot;true&quot; or &quot;false&quot;.
         /// </summary>
         [JsonProperty("success")]
         public string Success { get; set; } = default!;

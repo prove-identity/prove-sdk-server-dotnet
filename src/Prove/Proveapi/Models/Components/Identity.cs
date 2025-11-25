@@ -10,15 +10,11 @@
 namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
-    using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
     using System.Collections.Generic;
     
     public class Identity
     {
-
-        [JsonProperty("addresses")]
-        public List<Address>? Addresses { get; set; }
 
         /// <summary>
         /// Prove’s tiered confidence metric, ranging from -1 to 3, that dynamically adapts to user behavior and various authentication keys. It allows for adaptive security policies, meaning you can require different levels of verification for different types of transactions.
@@ -26,26 +22,17 @@ namespace Prove.Proveapi.Models.Components
         [JsonProperty("assuranceLevel")]
         public string AssuranceLevel { get; set; } = default!;
 
-        [JsonProperty("emails")]
-        public List<string>? Emails { get; set; }
-
         /// <summary>
-        /// The input first name. (required IF verificationType=VerifiedUser)
+        /// The input first name.
         /// </summary>
         [JsonProperty("firstName")]
         public string? FirstName { get; set; }
 
         /// <summary>
-        /// The input last name. (required IF verificationType=VerifiedUser)
+        /// The input last name.
         /// </summary>
         [JsonProperty("lastName")]
         public string? LastName { get; set; }
-
-        [JsonProperty("maxAge")]
-        public long? MaxAge { get; set; }
-
-        [JsonProperty("minAge")]
-        public long? MinAge { get; set; }
 
         /// <summary>
         /// Codes explaining the verification outcome

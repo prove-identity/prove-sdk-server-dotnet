@@ -18,7 +18,7 @@ namespace Prove.Proveapi.Models.Components
     {
 
         /// <summary>
-        /// (required IF verificationType=VerifiedUser)
+        /// Additional Identities found as part of the verification flow.
         /// </summary>
         [JsonProperty("additionalIdentities")]
         public List<Models.Components.Identity>? AdditionalIdentities { get; set; }
@@ -48,7 +48,7 @@ namespace Prove.Proveapi.Models.Components
         public string CorrelationId { get; set; } = default!;
 
         /// <summary>
-        /// The evaluation result for the policy. This is an upcoming field but is not yet enabled.
+        /// The evaluation result for the policy. This will contain keys titled &quot;authentication&quot; and &quot;risk&quot; that encompass the different evaluation categories.
         /// </summary>
         [JsonProperty("evaluation")]
         public Dictionary<string, V3VerifyResponseEvaluation>? Evaluation { get; set; }
@@ -63,27 +63,19 @@ namespace Prove.Proveapi.Models.Components
         public string PhoneNumber { get; set; } = default!;
 
         /// <summary>
-        /// A Prove-generated identifier for the consumer.<br/>
-        /// 
-        /// <remarks>
-        /// (required IF verificationType=VerifiedUser)
-        /// </remarks>
+        /// A Prove-generated identifier for the consumer.
         /// </summary>
         [JsonProperty("proveId")]
         public string? ProveId { get; set; }
 
         /// <summary>
-        /// A persistent ID that uniquely identifies a telephone subscriber.<br/>
-        /// 
-        /// <remarks>
-        /// (required IF verificationType=VerifiedUser)
-        /// </remarks>
+        /// A persistent ID that uniquely identifies a telephone subscriber.
         /// </summary>
         [JsonProperty("provePhoneAlias")]
         public string? ProvePhoneAlias { get; set; }
 
         /// <summary>
-        /// The result of verification.
+        /// The result of verification. This can be &quot;true&quot; or &quot;false&quot;.
         /// </summary>
         [JsonProperty("success")]
         public string Success { get; set; } = default!;
