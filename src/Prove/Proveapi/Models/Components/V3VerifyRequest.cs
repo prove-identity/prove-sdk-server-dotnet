@@ -12,25 +12,18 @@ namespace Prove.Proveapi.Models.Components
     using Newtonsoft.Json;
     using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
-    using System.Collections.Generic;
     
     public class V3VerifyRequest
     {
 
         /// <summary>
-        /// An optional list of add-on features. Current allowed values: &quot;ageEstimation&quot;
-        /// </summary>
-        [JsonProperty("addOnFeature")]
-        public List<string>? AddOnFeature { get; set; }
-
-        /// <summary>
-        /// A client-generated unique ID for a specific customer. This can be used by clients to link calls related to the same customer, across different requests or sessions.  The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Prove does not offer any functionality around the Client Customer ID. Do not include personally identifiable information (PII) in this field.
+        /// A client-generated unique ID for a specific customer. This can be used by clients to link calls related to the same customer, across different requests or sessions. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Prove does not offer any functionality around the Client Customer ID. Do not include personally identifiable information (PII) in this field.
         /// </summary>
         [JsonProperty("clientCustomerId")]
         public string? ClientCustomerId { get; set; }
 
         /// <summary>
-        /// An optional client-generated unique ID our Enterprise customer inputs for that consumer across business lines. If the Enterprise customer has been able to identify a consumer across business lines and has a unique identifier for the consumer, they would input this value to Prove.The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include personally identifiable information (PII) in this field.
+        /// An optional client-generated unique ID our Enterprise customer inputs for that consumer across business lines. If the Enterprise customer has been able to identify a consumer across business lines and has a unique identifier for the consumer, they would input this value to Prove. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include personally identifiable information (PII) in this field.
         /// </summary>
         [JsonProperty("clientHumanId")]
         public string? ClientHumanId { get; set; }
@@ -48,7 +41,7 @@ namespace Prove.Proveapi.Models.Components
         public string? EmailAddress { get; set; }
 
         /// <summary>
-        /// The first name of the individual. (required IF verificationType=VerifiedUser)
+        /// The first name of the individual.
         /// </summary>
         [JsonProperty("firstName")]
         public string? FirstName { get; set; }
@@ -60,7 +53,7 @@ namespace Prove.Proveapi.Models.Components
         public string? IpAddress { get; set; }
 
         /// <summary>
-        /// The last name of the individual. (required IF verificationType=VerifiedUser)
+        /// The last name of the individual.
         /// </summary>
         [JsonProperty("lastName")]
         public string? LastName { get; set; }

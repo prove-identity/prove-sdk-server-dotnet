@@ -17,6 +17,9 @@ namespace Prove.Proveapi.Models.Components
     public class V3VerifyBatchRequest
     {
 
+        /// <summary>
+        /// A client-generated unique ID for a specific session. This can be used to identify specific requests. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include Personally Identifiable Information (PII) in this field.
+        /// </summary>
         [JsonProperty("clientRequestId")]
         public string? ClientRequestId { get; set; }
 
@@ -24,6 +27,6 @@ namespace Prove.Proveapi.Models.Components
         /// Batch of verify requests to process. The array length cannot exceed 1000 items.
         /// </summary>
         [JsonProperty("items")]
-        public List<VerifyItem> Items { get; set; } = default!;
+        public List<VerifyBatchRequestItem> Items { get; set; } = default!;
     }
 }

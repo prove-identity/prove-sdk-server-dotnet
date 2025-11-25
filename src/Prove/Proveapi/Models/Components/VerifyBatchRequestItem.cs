@@ -12,7 +12,7 @@ namespace Prove.Proveapi.Models.Components
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
     
-    public class VerifyItem
+    public class VerifyBatchRequestItem
     {
 
         /// <summary>
@@ -57,6 +57,9 @@ namespace Prove.Proveapi.Models.Components
         [JsonProperty("phoneNumber")]
         public string PhoneNumber { get; set; } = default!;
 
+        [JsonProperty("proveId")]
+        public string? ProveId { get; set; }
+
         /// <summary>
         /// The User agent of the customer.
         /// </summary>
@@ -67,6 +70,6 @@ namespace Prove.Proveapi.Models.Components
         /// The verification method based on the use case and authorization level.
         /// </summary>
         [JsonProperty("verificationType")]
-        public string? VerificationType { get; set; }
+        public string VerificationType { get; set; } = default!;
     }
 }

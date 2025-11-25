@@ -56,7 +56,7 @@ namespace Prove.Proveapi
             Client = client ?? new SpeakeasyHttpClient();
             ServerUrl = "";
             ServerName = null;
-            UserAgent = "speakeasy-sdk/csharp 1.5.1 2.760.2 1.0.0 Prove.Proveapi";
+            UserAgent = "speakeasy-sdk/csharp 1.5.2 2.763.2 1.0.0 Prove.Proveapi";
             SecuritySource = null;
             Hooks = new SDKHooks();
             RetryConfig = null;
