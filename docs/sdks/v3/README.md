@@ -13,7 +13,7 @@
 * [V3UnifyBindRequest](#v3unifybindrequest) - Bind Prove Key
 * [V3UnifyStatusRequest](#v3unifystatusrequest) - Check Status
 * [V3ValidateRequest](#v3validaterequest) - Validate Phone Number
-* [V3VerifyRequest](#v3verifyrequest) - Initiate Verified Users Session
+* [V3VerifyRequest](#v3verifyrequest) - Verify User
 * [V3VerifyBatchRequest](#v3verifybatchrequest) - Batch Verify Users
 
 ## V3TokenRequest

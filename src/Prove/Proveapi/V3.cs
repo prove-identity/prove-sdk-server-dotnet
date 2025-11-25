@@ -98,7 +98,7 @@ namespace Prove.Proveapi
         Task<V3ValidateRequestResponse> V3ValidateRequestAsync(V3ValidateRequest? request = null);
 
         /// <summary>
-        /// Initiate Verified Users Session
+        /// Verify User
         /// 
         /// <remarks>
         /// This endpoint allows you to verify a user depending on your particular use case.
