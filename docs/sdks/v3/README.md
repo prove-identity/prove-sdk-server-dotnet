@@ -1,5 +1,4 @@
 # V3
-(*V3*)
 
 ## Overview
 
