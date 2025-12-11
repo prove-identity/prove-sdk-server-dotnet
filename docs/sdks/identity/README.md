@@ -1,5 +1,4 @@
 # Identity
-(*Identity*)
 
 ## Overview
 

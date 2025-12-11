@@ -131,7 +131,7 @@ namespace Prove.Proveapi
                 ShowInactive = showInactive,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v3/identity", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v3/identity", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -660,7 +660,7 @@ namespace Prove.Proveapi
                 ClientRequestId = clientRequestId,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v3/identity/{identityId}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v3/identity/{identityId}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -835,7 +835,7 @@ namespace Prove.Proveapi
                 ClientRequestId = clientRequestId,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v3/identity/{identityId}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v3/identity/{identityId}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -1010,7 +1010,7 @@ namespace Prove.Proveapi
                 V3ActivateIdentityRequestValue = v3ActivateIdentityRequest,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v3/identity/{identityId}/activate", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v3/identity/{identityId}/activate", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -1191,7 +1191,7 @@ namespace Prove.Proveapi
                 V3CrossDomainIdentityRequestValue = v3CrossDomainIdentityRequest,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v3/identity/{identityId}/cross-domain", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v3/identity/{identityId}/cross-domain", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -1372,7 +1372,7 @@ namespace Prove.Proveapi
                 V3IdentityDeactivateRequest = v3IdentityDeactivateRequest,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v3/identity/{identityId}/deactivate", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v3/identity/{identityId}/deactivate", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -1553,7 +1553,7 @@ namespace Prove.Proveapi
                 ClientRequestId = clientRequestId,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v3/identity/{mobileNumber}/lookup", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v3/identity/{mobileNumber}/lookup", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);

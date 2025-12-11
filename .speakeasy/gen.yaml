@@ -20,12 +20,13 @@ generation:
   schemas:
     allOfMergeStrategy: shallowMerge
   requestBodyFieldName: ""
+  persistentEdits: {}
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 1.5.3
+  version: 1.6.0
   additionalDependencies: []
   author: Speakeasy
   baseErrorName: ProveAPIError
@@ -51,6 +52,7 @@ csharp:
   inputModelSuffix: input
   maxMethodParams: 4
   methodArguments: infer-optional-args
+  multipartArrayFormat: legacy
   outputModelSuffix: output
   packageName: Prove.Proveapi
   packageTags: ""
