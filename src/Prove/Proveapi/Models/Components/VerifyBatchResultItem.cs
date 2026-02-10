@@ -13,12 +13,11 @@ namespace Prove.Proveapi.Models.Components
     using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
     using System.Collections.Generic;
-    
+
     public class VerifyBatchResultItem
     {
-
         /// <summary>
-        /// (required IF verificationType=VerifiedUser)
+        /// (required IF verificationType=VerifiedUser).
         /// </summary>
         [JsonProperty("additionalIdentities")]
         public List<Models.Components.Identity>? AdditionalIdentities { get; set; }
@@ -37,10 +36,7 @@ namespace Prove.Proveapi.Models.Components
 
         /// <summary>
         /// The input ClientHumanID.<br/>
-        /// 
-        /// <remarks>
-        /// (required IF verificationType=VerifiedUser)
-        /// </remarks>
+        /// (required IF verificationType=VerifiedUser).
         /// </summary>
         [JsonProperty("clientHumanId")]
         public string? ClientHumanId { get; set; }
@@ -52,7 +48,7 @@ namespace Prove.Proveapi.Models.Components
         public string? Error { get; set; }
 
         /// <summary>
-        /// The evaluation result for the policy. This will contain keys titled &quot;authentication&quot; and &quot;risk&quot; that encompass the different evaluation categories.
+        /// The evaluation result for the policy. This will contain keys titled "authentication" and "risk" that encompass the different evaluation categories.
         /// </summary>
         [JsonProperty("evaluation")]
         public Dictionary<string, VerifyBatchResultItemEvaluation>? Evaluation { get; set; }
@@ -68,26 +64,20 @@ namespace Prove.Proveapi.Models.Components
 
         /// <summary>
         /// A Prove-generated identifier for the consumer.<br/>
-        /// 
-        /// <remarks>
-        /// (required IF verificationType=VerifiedUser)
-        /// </remarks>
+        /// (required IF verificationType=VerifiedUser).
         /// </summary>
         [JsonProperty("proveId")]
         public string? ProveId { get; set; }
 
         /// <summary>
         /// A persistent ID that uniquely identifies a telephone subscriber.<br/>
-        /// 
-        /// <remarks>
-        /// (required IF verificationType=VerifiedUser)
-        /// </remarks>
+        /// (required IF verificationType=VerifiedUser).
         /// </summary>
         [JsonProperty("provePhoneAlias")]
         public string? ProvePhoneAlias { get; set; }
 
         /// <summary>
-        /// The result of verification. This can be &quot;true&quot; or &quot;false&quot;.
+        /// The result of verification. This can be "true" or "false".
         /// </summary>
         [JsonProperty("success")]
         public string Success { get; set; } = default!;

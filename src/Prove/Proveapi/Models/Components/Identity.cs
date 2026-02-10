@@ -12,10 +12,9 @@ namespace Prove.Proveapi.Models.Components
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
     using System.Collections.Generic;
-    
+
     public class Identity
     {
-
         /// <summary>
         /// Prove’s tiered confidence metric, ranging from -1 to 3, that dynamically adapts to user behavior and various authentication keys. It allows for adaptive security policies, meaning you can require different levels of verification for different types of transactions.
         /// </summary>
@@ -35,7 +34,7 @@ namespace Prove.Proveapi.Models.Components
         public string? LastName { get; set; }
 
         /// <summary>
-        /// Codes explaining the verification outcome
+        /// Codes explaining the verification outcome.
         /// </summary>
         [JsonProperty("reasons")]
         public List<string> Reasons { get; set; } = default!;

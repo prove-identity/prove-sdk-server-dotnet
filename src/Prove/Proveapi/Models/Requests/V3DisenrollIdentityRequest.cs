@@ -10,10 +10,9 @@
 namespace Prove.Proveapi.Models.Requests
 {
     using Prove.Proveapi.Utils;
-    
+
     public class V3DisenrollIdentityRequest
     {
-
         /// <summary>
         /// A Prove-generated unique ID for a specific identity.
         /// </summary>

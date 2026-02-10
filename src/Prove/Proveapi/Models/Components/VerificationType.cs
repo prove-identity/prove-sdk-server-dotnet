@@ -12,9 +12,9 @@ namespace Prove.Proveapi.Models.Components
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
     using System;
-    
+
     /// <summary>
-    /// The verification method based on the use case and authorization level. Current allowed values: &quot;verifiedUser&quot;, &quot;accountOpening&quot;, &quot;bot&quot;, &quot;prefill&quot;, &quot;prefillForBiz&quot;, &quot;identityResolution&quot;.
+    /// The verification method based on the use case and authorization level. Current allowed values: "verifiedUser", "accountOpening", "bot", "prefill", "prefillForBiz", "identityResolution".
     /// </summary>
     public enum VerificationType
     {
@@ -64,5 +64,4 @@ namespace Prove.Proveapi.Models.Components
             throw new Exception($"Unknown value {value} for enum VerificationType");
         }
     }
-
 }

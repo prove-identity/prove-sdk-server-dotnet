@@ -11,10 +11,9 @@ namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
-    
+
     public class V3ChallengeRequest
     {
-
         /// <summary>
         /// The unique ID that Prove generates for the flow. It is returned from the Start endpoint and cannot be reused outside of a single flow.
         /// </summary>
@@ -22,7 +21,7 @@ namespace Prove.Proveapi.Models.Components
         public string CorrelationId { get; set; } = default!;
 
         /// <summary>
-        /// The date of birth in one of these formats: YYYY-MM-DD, YYYY-MM, or MM-DD. Acceptable characters are: numeric with symbol &apos;-&apos;.
+        /// The date of birth in one of these formats: YYYY-MM-DD, YYYY-MM, or MM-DD. Acceptable characters are: numeric with symbol '-'.
         /// </summary>
         [JsonProperty("dob")]
         public string? Dob { get; set; }

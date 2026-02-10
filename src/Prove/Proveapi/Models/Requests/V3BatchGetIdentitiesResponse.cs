@@ -12,15 +12,14 @@ namespace Prove.Proveapi.Models.Requests
     using Newtonsoft.Json;
     using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
-    
+
     public class V3BatchGetIdentitiesResponse
     {
-
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
         /// <summary>
-        /// V3BatchGetIdentitiesResponse
+        /// V3BatchGetIdentitiesResponse.
         /// </summary>
         public Models.Components.V3BatchGetIdentitiesResponse? V3BatchGetIdentitiesResponseValue { get; set; }
     }

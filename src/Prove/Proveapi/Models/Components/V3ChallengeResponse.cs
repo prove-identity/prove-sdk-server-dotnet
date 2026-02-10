@@ -13,10 +13,9 @@ namespace Prove.Proveapi.Models.Components
     using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
     using System.Collections.Generic;
-    
+
     public class V3ChallengeResponse
     {
-
         /// <summary>
         /// The evaluation result for the policy. This is an upcoming field but is not yet enabled.
         /// </summary>

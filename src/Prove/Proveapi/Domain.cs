@@ -24,71 +24,125 @@ namespace Prove.Proveapi
 
     public interface IDomain
     {
-
         /// <summary>
-        /// Confirm a domain link request
-        /// 
+        /// Confirm a domain link request.
+        /// </summary>
         /// <remarks>
         /// Confirms a given domain link request by validating the PCID.
         /// </remarks>
-        /// </summary>
-        Task<V3DomainConfirmLinkRequestResponse> V3DomainConfirmLinkRequestAsync(V3DomainConfirmLinkRequest? request = null);
+        /// <param name="request">A <see cref="V3DomainConfirmLinkRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="V3DomainConfirmLinkRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<V3DomainConfirmLinkRequestResponse> V3DomainConfirmLinkRequestAsync(
+            V3DomainConfirmLinkRequest? request = null
+        );
 
         /// <summary>
-        /// Get Domain Details
-        /// 
+        /// Get Domain Details.
+        /// </summary>
         /// <remarks>
         /// Returns the domain details.
         /// </remarks>
-        /// </summary>
-        Task<V3DomainIDRequestResponse> V3DomainIDRequestAsync();
+        /// <returns>An awaitable task that returns a <see cref="V3DomainIDRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<V3DomainIDRequestResponse> V3DomainIDRequestAsync();
 
         /// <summary>
-        /// Request a domain link
-        /// 
+        /// Request a domain link.
+        /// </summary>
         /// <remarks>
         /// Create a request to connect the requested domain to the domain the request is made from.
         /// </remarks>
-        /// </summary>
-        Task<V3DomainLinkRequestResponse> V3DomainLinkRequestAsync(V3DomainLinkRequest? request = null);
+        /// <param name="request">A <see cref="V3DomainLinkRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="V3DomainLinkRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<V3DomainLinkRequestResponse> V3DomainLinkRequestAsync(V3DomainLinkRequest? request = null);
 
         /// <summary>
         /// Get the list of domains that are linked to this domain.
-        /// 
+        /// </summary>
         /// <remarks>
         /// Returns the accepted and pending links for this domain.
         /// </remarks>
-        /// </summary>
-        Task<V3DomainLinkedRequestResponse> V3DomainLinkedRequestAsync();
+        /// <returns>An awaitable task that returns a <see cref="V3DomainLinkedRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<V3DomainLinkedRequestResponse> V3DomainLinkedRequestAsync();
 
         /// <summary>
-        /// Remove a domain link or request
-        /// 
+        /// Remove a domain link or request.
+        /// </summary>
         /// <remarks>
         /// Remove a domain link or request between the requested domain and the domain the request is made from.
         /// </remarks>
-        /// </summary>
-        Task<V3DomainUnlinkRequestResponse> V3DomainUnlinkRequestAsync(V3DomainUnlinkRequest? request = null);
+        /// <param name="request">A <see cref="V3DomainUnlinkRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="V3DomainUnlinkRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<V3DomainUnlinkRequestResponse> V3DomainUnlinkRequestAsync(V3DomainUnlinkRequest? request = null);
     }
 
     public class Domain: IDomain
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Domain(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<V3DomainConfirmLinkRequestResponse> V3DomainConfirmLinkRequestAsync(V3DomainConfirmLinkRequest? request = null)
+        /// <summary>
+        /// Confirm a domain link request.
+        /// </summary>
+        /// <remarks>
+        /// Confirms a given domain link request by validating the PCID.
+        /// </remarks>
+        /// <param name="request">A <see cref="V3DomainConfirmLinkRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="V3DomainConfirmLinkRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<V3DomainConfirmLinkRequestResponse> V3DomainConfirmLinkRequestAsync(
+            V3DomainConfirmLinkRequest? request = null
+        )
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
             var urlString = baseUrl + "/v3/domain/confirm-link";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -115,7 +169,7 @@ namespace Prove.Proveapi
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -262,10 +316,24 @@ namespace Prove.Proveapi
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<V3DomainIDRequestResponse> V3DomainIDRequestAsync()
+
+        /// <summary>
+        /// Get Domain Details.
+        /// </summary>
+        /// <remarks>
+        /// Returns the domain details.
+        /// </remarks>
+        /// <returns>An awaitable task that returns a <see cref="V3DomainIDRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<V3DomainIDRequestResponse> V3DomainIDRequestAsync()
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
             var urlString = baseUrl + "/v3/domain/id";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
@@ -286,7 +354,7 @@ namespace Prove.Proveapi
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -333,7 +401,8 @@ namespace Prove.Proveapi
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.V3DomainIDResponse = obj;
                     return response;
@@ -433,10 +502,25 @@ namespace Prove.Proveapi
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<V3DomainLinkRequestResponse> V3DomainLinkRequestAsync(V3DomainLinkRequest? request = null)
+
+        /// <summary>
+        /// Request a domain link.
+        /// </summary>
+        /// <remarks>
+        /// Create a request to connect the requested domain to the domain the request is made from.
+        /// </remarks>
+        /// <param name="request">A <see cref="V3DomainLinkRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="V3DomainLinkRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<V3DomainLinkRequestResponse> V3DomainLinkRequestAsync(V3DomainLinkRequest? request = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
             var urlString = baseUrl + "/v3/domain/link";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -463,7 +547,7 @@ namespace Prove.Proveapi
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -610,10 +694,24 @@ namespace Prove.Proveapi
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<V3DomainLinkedRequestResponse> V3DomainLinkedRequestAsync()
+
+        /// <summary>
+        /// Get the list of domains that are linked to this domain.
+        /// </summary>
+        /// <remarks>
+        /// Returns the accepted and pending links for this domain.
+        /// </remarks>
+        /// <returns>An awaitable task that returns a <see cref="V3DomainLinkedRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<V3DomainLinkedRequestResponse> V3DomainLinkedRequestAsync()
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
             var urlString = baseUrl + "/v3/domain/linked";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
@@ -634,7 +732,7 @@ namespace Prove.Proveapi
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -681,7 +779,8 @@ namespace Prove.Proveapi
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.V3DomainLinkedResponse = obj;
                     return response;
@@ -781,10 +880,27 @@ namespace Prove.Proveapi
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<V3DomainUnlinkRequestResponse> V3DomainUnlinkRequestAsync(V3DomainUnlinkRequest? request = null)
+
+        /// <summary>
+        /// Remove a domain link or request.
+        /// </summary>
+        /// <remarks>
+        /// Remove a domain link or request between the requested domain and the domain the request is made from.
+        /// </remarks>
+        /// <param name="request">A <see cref="V3DomainUnlinkRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="V3DomainUnlinkRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<V3DomainUnlinkRequestResponse> V3DomainUnlinkRequestAsync(
+            V3DomainUnlinkRequest? request = null
+        )
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
             var urlString = baseUrl + "/v3/domain/unlink";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -811,7 +927,7 @@ namespace Prove.Proveapi
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -957,5 +1073,6 @@ namespace Prove.Proveapi
 
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
+
     }
 }

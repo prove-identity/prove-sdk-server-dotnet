@@ -13,13 +13,12 @@ namespace Prove.Proveapi.Models.Components
     using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
     using System.Collections.Generic;
-    
+
     /// <summary>
     /// Response body for the V3 Batch Enroll Identities API.
     /// </summary>
     public class V3BatchEnrollIdentitiesResponse
     {
-
         [JsonProperty("results")]
         public List<PostBatchResultItem>? Results { get; set; }
     }

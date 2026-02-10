@@ -13,13 +13,12 @@ namespace Prove.Proveapi.Models.Components
     using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
     using System.Collections.Generic;
-    
+
     /// <summary>
     /// Response body for the V3 Batch Get Identities API.
     /// </summary>
     public class V3BatchGetIdentitiesResponse
     {
-
         /// <summary>
         /// A pagination token for callers that have more identities left to return. Pass this back in directly to the Get Batch API with the startKey query parameter to get the next page of results.
         /// </summary>

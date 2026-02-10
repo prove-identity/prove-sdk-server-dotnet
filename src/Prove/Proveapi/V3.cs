@@ -24,116 +24,206 @@ namespace Prove.Proveapi
 
     public interface IV3
     {
-
         /// <summary>
-        /// Request OAuth Token
-        /// 
+        /// Request OAuth Token.
+        /// </summary>
         /// <remarks>
         /// This endpoint allows you to request an OAuth token.
         /// </remarks>
-        /// </summary>
-        Task<V3TokenRequestResponse> V3TokenRequestAsync(V3TokenRequest? request = null);
+        /// <param name="request">A <see cref="V3TokenRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="V3TokenRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<V3TokenRequestResponse> V3TokenRequestAsync(V3TokenRequest? request = null);
 
         /// <summary>
-        /// Submit Challenge
-        /// 
+        /// Submit Challenge.
+        /// </summary>
         /// <remarks>
         /// This endpoint allows you to submit challenge information.
         /// </remarks>
-        /// </summary>
-        Task<V3ChallengeRequestResponse> V3ChallengeRequestAsync(V3ChallengeRequest? request = null);
+        /// <param name="request">A <see cref="V3ChallengeRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="V3ChallengeRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<V3ChallengeRequestResponse> V3ChallengeRequestAsync(V3ChallengeRequest? request = null);
 
         /// <summary>
-        /// Complete Flow
-        /// 
+        /// Complete Flow.
+        /// </summary>
         /// <remarks>
         /// This endpoint allows you to verify the user and complete the flow.
         /// </remarks>
-        /// </summary>
-        Task<V3CompleteRequestResponse> V3CompleteRequestAsync(V3CompleteRequest? request = null);
+        /// <param name="request">A <see cref="V3CompleteRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="V3CompleteRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<V3CompleteRequestResponse> V3CompleteRequestAsync(V3CompleteRequest? request = null);
 
         /// <summary>
-        /// Start Flow
-        /// 
+        /// Start Flow.
+        /// </summary>
         /// <remarks>
         /// This endpoint allows you to start the solution flow.
         /// </remarks>
-        /// </summary>
-        Task<V3StartRequestResponse> V3StartRequestAsync(V3StartRequest? request = null);
+        /// <param name="request">A <see cref="V3StartRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="V3StartRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<V3StartRequestResponse> V3StartRequestAsync(V3StartRequest? request = null);
 
         /// <summary>
-        /// Initiate Possession Check
-        /// 
+        /// Initiate Possession Check.
+        /// </summary>
         /// <remarks>
         /// This endpoint allows you to initiate the possession check.
         /// </remarks>
-        /// </summary>
-        Task<V3UnifyRequestResponse> V3UnifyRequestAsync(V3UnifyRequest? request = null);
+        /// <param name="request">A <see cref="V3UnifyRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="V3UnifyRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<V3UnifyRequestResponse> V3UnifyRequestAsync(V3UnifyRequest? request = null);
 
         /// <summary>
-        /// Bind Prove Key
-        /// 
+        /// Bind Prove Key.
+        /// </summary>
         /// <remarks>
         /// This endpoint allows you to bind a Prove Key to a phone number of a Unify session and get the possession result.
         /// </remarks>
-        /// </summary>
-        Task<V3UnifyBindRequestResponse> V3UnifyBindRequestAsync(V3UnifyBindRequest? request = null);
+        /// <param name="request">A <see cref="V3UnifyBindRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="V3UnifyBindRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<V3UnifyBindRequestResponse> V3UnifyBindRequestAsync(V3UnifyBindRequest? request = null);
 
         /// <summary>
-        /// Check Status
-        /// 
+        /// Check Status.
+        /// </summary>
         /// <remarks>
         /// This endpoint allows you to check the status of a Unify session and get the possession result.
         /// </remarks>
-        /// </summary>
-        Task<V3UnifyStatusRequestResponse> V3UnifyStatusRequestAsync(V3UnifyStatusRequest? request = null);
+        /// <param name="request">A <see cref="V3UnifyStatusRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="V3UnifyStatusRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<V3UnifyStatusRequestResponse> V3UnifyStatusRequestAsync(V3UnifyStatusRequest? request = null);
 
         /// <summary>
-        /// Validate Phone Number
-        /// 
+        /// Validate Phone Number.
+        /// </summary>
         /// <remarks>
         /// This endpoint allows you to check if the phone number entered/discovered earlier in the flow is validated.
         /// </remarks>
-        /// </summary>
-        Task<V3ValidateRequestResponse> V3ValidateRequestAsync(V3ValidateRequest? request = null);
+        /// <param name="request">A <see cref="V3ValidateRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="V3ValidateRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<V3ValidateRequestResponse> V3ValidateRequestAsync(V3ValidateRequest? request = null);
 
         /// <summary>
-        /// Verify User
-        /// 
+        /// Verify User.
+        /// </summary>
         /// <remarks>
         /// This endpoint allows you to verify a user depending on your particular use case.
         /// </remarks>
-        /// </summary>
-        Task<V3VerifyRequestResponse> V3VerifyRequestAsync(V3VerifyRequest? request = null);
+        /// <param name="request">A <see cref="V3VerifyRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="V3VerifyRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<V3VerifyRequestResponse> V3VerifyRequestAsync(V3VerifyRequest? request = null);
 
         /// <summary>
-        /// Batch Verify Users
-        /// 
+        /// Batch Verify Users.
+        /// </summary>
         /// <remarks>
         /// This endpoint allows you to batch verify and enroll users.
         /// </remarks>
-        /// </summary>
-        Task<V3VerifyBatchRequestResponse> V3VerifyBatchRequestAsync(V3VerifyBatchRequest? request = null);
+        /// <param name="request">A <see cref="V3VerifyBatchRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="V3VerifyBatchRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<V3VerifyBatchRequestResponse> V3VerifyBatchRequestAsync(V3VerifyBatchRequest? request = null);
     }
 
     public class V3: IV3
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public V3(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<V3TokenRequestResponse> V3TokenRequestAsync(V3TokenRequest? request = null)
+        /// <summary>
+        /// Request OAuth Token.
+        /// </summary>
+        /// <remarks>
+        /// This endpoint allows you to request an OAuth token.
+        /// </remarks>
+        /// <param name="request">A <see cref="V3TokenRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="V3TokenRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<V3TokenRequestResponse> V3TokenRequestAsync(V3TokenRequest? request = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
             var urlString = baseUrl + "/token";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -155,7 +245,7 @@ namespace Prove.Proveapi
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -282,10 +372,25 @@ namespace Prove.Proveapi
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<V3ChallengeRequestResponse> V3ChallengeRequestAsync(V3ChallengeRequest? request = null)
+
+        /// <summary>
+        /// Submit Challenge.
+        /// </summary>
+        /// <remarks>
+        /// This endpoint allows you to submit challenge information.
+        /// </remarks>
+        /// <param name="request">A <see cref="V3ChallengeRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="V3ChallengeRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<V3ChallengeRequestResponse> V3ChallengeRequestAsync(V3ChallengeRequest? request = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
             var urlString = baseUrl + "/v3/challenge";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -312,7 +417,7 @@ namespace Prove.Proveapi
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -459,10 +564,25 @@ namespace Prove.Proveapi
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<V3CompleteRequestResponse> V3CompleteRequestAsync(V3CompleteRequest? request = null)
+
+        /// <summary>
+        /// Complete Flow.
+        /// </summary>
+        /// <remarks>
+        /// This endpoint allows you to verify the user and complete the flow.
+        /// </remarks>
+        /// <param name="request">A <see cref="V3CompleteRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="V3CompleteRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<V3CompleteRequestResponse> V3CompleteRequestAsync(V3CompleteRequest? request = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
             var urlString = baseUrl + "/v3/complete";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -489,7 +609,7 @@ namespace Prove.Proveapi
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -636,10 +756,25 @@ namespace Prove.Proveapi
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<V3StartRequestResponse> V3StartRequestAsync(V3StartRequest? request = null)
+
+        /// <summary>
+        /// Start Flow.
+        /// </summary>
+        /// <remarks>
+        /// This endpoint allows you to start the solution flow.
+        /// </remarks>
+        /// <param name="request">A <see cref="V3StartRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="V3StartRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<V3StartRequestResponse> V3StartRequestAsync(V3StartRequest? request = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
             var urlString = baseUrl + "/v3/start";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -666,7 +801,7 @@ namespace Prove.Proveapi
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -813,10 +948,25 @@ namespace Prove.Proveapi
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<V3UnifyRequestResponse> V3UnifyRequestAsync(V3UnifyRequest? request = null)
+
+        /// <summary>
+        /// Initiate Possession Check.
+        /// </summary>
+        /// <remarks>
+        /// This endpoint allows you to initiate the possession check.
+        /// </remarks>
+        /// <param name="request">A <see cref="V3UnifyRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="V3UnifyRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<V3UnifyRequestResponse> V3UnifyRequestAsync(V3UnifyRequest? request = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
             var urlString = baseUrl + "/v3/unify";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -843,7 +993,7 @@ namespace Prove.Proveapi
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -990,10 +1140,25 @@ namespace Prove.Proveapi
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<V3UnifyBindRequestResponse> V3UnifyBindRequestAsync(V3UnifyBindRequest? request = null)
+
+        /// <summary>
+        /// Bind Prove Key.
+        /// </summary>
+        /// <remarks>
+        /// This endpoint allows you to bind a Prove Key to a phone number of a Unify session and get the possession result.
+        /// </remarks>
+        /// <param name="request">A <see cref="V3UnifyBindRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="V3UnifyBindRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<V3UnifyBindRequestResponse> V3UnifyBindRequestAsync(V3UnifyBindRequest? request = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
             var urlString = baseUrl + "/v3/unify-bind";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -1020,7 +1185,7 @@ namespace Prove.Proveapi
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1067,7 +1232,8 @@ namespace Prove.Proveapi
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.V3UnifyBindResponse = obj;
                     return response;
@@ -1167,10 +1333,25 @@ namespace Prove.Proveapi
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<V3UnifyStatusRequestResponse> V3UnifyStatusRequestAsync(V3UnifyStatusRequest? request = null)
+
+        /// <summary>
+        /// Check Status.
+        /// </summary>
+        /// <remarks>
+        /// This endpoint allows you to check the status of a Unify session and get the possession result.
+        /// </remarks>
+        /// <param name="request">A <see cref="V3UnifyStatusRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="V3UnifyStatusRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<V3UnifyStatusRequestResponse> V3UnifyStatusRequestAsync(V3UnifyStatusRequest? request = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
             var urlString = baseUrl + "/v3/unify-status";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -1197,7 +1378,7 @@ namespace Prove.Proveapi
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1244,7 +1425,8 @@ namespace Prove.Proveapi
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.V3UnifyStatusResponse = obj;
                     return response;
@@ -1344,10 +1526,25 @@ namespace Prove.Proveapi
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<V3ValidateRequestResponse> V3ValidateRequestAsync(V3ValidateRequest? request = null)
+
+        /// <summary>
+        /// Validate Phone Number.
+        /// </summary>
+        /// <remarks>
+        /// This endpoint allows you to check if the phone number entered/discovered earlier in the flow is validated.
+        /// </remarks>
+        /// <param name="request">A <see cref="V3ValidateRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="V3ValidateRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<V3ValidateRequestResponse> V3ValidateRequestAsync(V3ValidateRequest? request = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
             var urlString = baseUrl + "/v3/validate";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -1374,7 +1571,7 @@ namespace Prove.Proveapi
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1521,10 +1718,25 @@ namespace Prove.Proveapi
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<V3VerifyRequestResponse> V3VerifyRequestAsync(V3VerifyRequest? request = null)
+
+        /// <summary>
+        /// Verify User.
+        /// </summary>
+        /// <remarks>
+        /// This endpoint allows you to verify a user depending on your particular use case.
+        /// </remarks>
+        /// <param name="request">A <see cref="V3VerifyRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="V3VerifyRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<V3VerifyRequestResponse> V3VerifyRequestAsync(V3VerifyRequest? request = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
             var urlString = baseUrl + "/v3/verify";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -1551,7 +1763,7 @@ namespace Prove.Proveapi
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1698,10 +1910,25 @@ namespace Prove.Proveapi
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<V3VerifyBatchRequestResponse> V3VerifyBatchRequestAsync(V3VerifyBatchRequest? request = null)
+
+        /// <summary>
+        /// Batch Verify Users.
+        /// </summary>
+        /// <remarks>
+        /// This endpoint allows you to batch verify and enroll users.
+        /// </remarks>
+        /// <param name="request">A <see cref="V3VerifyBatchRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="V3VerifyBatchRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<V3VerifyBatchRequestResponse> V3VerifyBatchRequestAsync(V3VerifyBatchRequest? request = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
             var urlString = baseUrl + "/v3/verify/batch";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -1728,7 +1955,7 @@ namespace Prove.Proveapi
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1874,5 +2101,6 @@ namespace Prove.Proveapi
 
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
+
     }
 }

@@ -13,10 +13,9 @@ namespace Prove.Proveapi.Models.Components
     using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
     using System.Collections.Generic;
-    
+
     public class AmlTypeListResponseInternal
     {
-
         [JsonProperty("amlType")]
         public string? AmlType { get; set; }
 

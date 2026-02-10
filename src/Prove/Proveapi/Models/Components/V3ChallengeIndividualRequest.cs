@@ -13,10 +13,9 @@ namespace Prove.Proveapi.Models.Components
     using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
     using System.Collections.Generic;
-    
+
     public class V3ChallengeIndividualRequest
     {
-
         /// <summary>
         /// An array of addresses that belong to the individual.
         /// </summary>

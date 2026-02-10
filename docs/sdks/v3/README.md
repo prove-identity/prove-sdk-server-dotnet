@@ -62,9 +62,28 @@ var res = await sdk.V3.V3TokenRequestAsync(req);
 
 This endpoint allows you to submit challenge information.
 
-### Example Usage
+### Example Usage: Response with Failed Evaluation
 
-<!-- UsageSnippet language="csharp" operationID="V3ChallengeRequest" method="post" path="/v3/challenge" -->
+<!-- UsageSnippet language="csharp" operationID="V3ChallengeRequest" method="post" path="/v3/challenge" example="Response with Failed Evaluation" -->
+```csharp
+using Prove.Proveapi;
+using Prove.Proveapi.Models.Components;
+
+var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+V3ChallengeRequest req = new V3ChallengeRequest() {
+    CorrelationId = "713189b8-5555-4b08-83ba-75d08780aebd",
+    Dob = "1981-01",
+    Ssn = "0596",
+};
+
+var res = await sdk.V3.V3ChallengeRequestAsync(req);
+
+// handle response
+```
+### Example Usage: Response with Success Evaluation
+
+<!-- UsageSnippet language="csharp" operationID="V3ChallengeRequest" method="post" path="/v3/challenge" example="Response with Success Evaluation" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -106,9 +125,225 @@ var res = await sdk.V3.V3ChallengeRequestAsync(req);
 
 This endpoint allows you to verify the user and complete the flow.
 
-### Example Usage
+### Example Usage: Response with Failed Evaluation
 
-<!-- UsageSnippet language="csharp" operationID="V3CompleteRequest" method="post" path="/v3/complete" -->
+<!-- UsageSnippet language="csharp" operationID="V3CompleteRequest" method="post" path="/v3/complete" example="Response with Failed Evaluation" -->
+```csharp
+using Prove.Proveapi;
+using Prove.Proveapi.Models.Components;
+using System.Collections.Generic;
+
+var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+V3CompleteRequest req = new V3CompleteRequest() {
+    CorrelationId = "713189b8-5555-4b08-83ba-75d08780aebd",
+    Individual = new V3CompleteIndividualRequest() {
+        Addresses = new List<V3CompleteAddressEntryRequest>() {
+            new V3CompleteAddressEntryRequest() {
+                Address = "39 South Trail",
+                City = "San Antonio",
+                ExtendedAddress = "Apt 23",
+                PostalCode = "78285",
+                Region = "TX",
+            },
+        },
+        Dob = "1981-01",
+        EmailAddresses = new List<string>() {
+            "jdoe@example.com",
+        },
+        FirstName = "Tod",
+        LastName = "Weedall",
+        Ssn = "265228370",
+    },
+};
+
+var res = await sdk.V3.V3CompleteRequestAsync(req);
+
+// handle response
+```
+### Example Usage: Response with High MultiCIP
+
+<!-- UsageSnippet language="csharp" operationID="V3CompleteRequest" method="post" path="/v3/complete" example="Response with High MultiCIP" -->
+```csharp
+using Prove.Proveapi;
+using Prove.Proveapi.Models.Components;
+using System.Collections.Generic;
+
+var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+V3CompleteRequest req = new V3CompleteRequest() {
+    CorrelationId = "713189b8-5555-4b08-83ba-75d08780aebd",
+    Individual = new V3CompleteIndividualRequest() {
+        Addresses = new List<V3CompleteAddressEntryRequest>() {
+            new V3CompleteAddressEntryRequest() {
+                Address = "39 South Trail",
+                City = "San Antonio",
+                ExtendedAddress = "Apt 23",
+                PostalCode = "78285",
+                Region = "TX",
+            },
+        },
+        Dob = "1981-01",
+        EmailAddresses = new List<string>() {
+            "jdoe@example.com",
+        },
+        FirstName = "Tod",
+        LastName = "Weedall",
+        Ssn = "265228370",
+    },
+};
+
+var res = await sdk.V3.V3CompleteRequestAsync(req);
+
+// handle response
+```
+### Example Usage: Response with KYC - 0 hits
+
+<!-- UsageSnippet language="csharp" operationID="V3CompleteRequest" method="post" path="/v3/complete" example="Response with KYC - 0 hits" -->
+```csharp
+using Prove.Proveapi;
+using Prove.Proveapi.Models.Components;
+using System.Collections.Generic;
+
+var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+V3CompleteRequest req = new V3CompleteRequest() {
+    CorrelationId = "713189b8-5555-4b08-83ba-75d08780aebd",
+    Individual = new V3CompleteIndividualRequest() {
+        Addresses = new List<V3CompleteAddressEntryRequest>() {
+            new V3CompleteAddressEntryRequest() {
+                Address = "39 South Trail",
+                City = "San Antonio",
+                ExtendedAddress = "Apt 23",
+                PostalCode = "78285",
+                Region = "TX",
+            },
+        },
+        Dob = "1981-01",
+        EmailAddresses = new List<string>() {
+            "jdoe@example.com",
+        },
+        FirstName = "Tod",
+        LastName = "Weedall",
+        Ssn = "265228370",
+    },
+};
+
+var res = await sdk.V3.V3CompleteRequestAsync(req);
+
+// handle response
+```
+### Example Usage: Response with KYC - 4 hits
+
+<!-- UsageSnippet language="csharp" operationID="V3CompleteRequest" method="post" path="/v3/complete" example="Response with KYC - 4 hits" -->
+```csharp
+using Prove.Proveapi;
+using Prove.Proveapi.Models.Components;
+using System.Collections.Generic;
+
+var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+V3CompleteRequest req = new V3CompleteRequest() {
+    CorrelationId = "713189b8-5555-4b08-83ba-75d08780aebd",
+    Individual = new V3CompleteIndividualRequest() {
+        Addresses = new List<V3CompleteAddressEntryRequest>() {
+            new V3CompleteAddressEntryRequest() {
+                Address = "39 South Trail",
+                City = "San Antonio",
+                ExtendedAddress = "Apt 23",
+                PostalCode = "78285",
+                Region = "TX",
+            },
+        },
+        Dob = "1981-01",
+        EmailAddresses = new List<string>() {
+            "jdoe@example.com",
+        },
+        FirstName = "Tod",
+        LastName = "Weedall",
+        Ssn = "265228370",
+    },
+};
+
+var res = await sdk.V3.V3CompleteRequestAsync(req);
+
+// handle response
+```
+### Example Usage: Response with Low MultiCIP
+
+<!-- UsageSnippet language="csharp" operationID="V3CompleteRequest" method="post" path="/v3/complete" example="Response with Low MultiCIP" -->
+```csharp
+using Prove.Proveapi;
+using Prove.Proveapi.Models.Components;
+using System.Collections.Generic;
+
+var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+V3CompleteRequest req = new V3CompleteRequest() {
+    CorrelationId = "713189b8-5555-4b08-83ba-75d08780aebd",
+    Individual = new V3CompleteIndividualRequest() {
+        Addresses = new List<V3CompleteAddressEntryRequest>() {
+            new V3CompleteAddressEntryRequest() {
+                Address = "39 South Trail",
+                City = "San Antonio",
+                ExtendedAddress = "Apt 23",
+                PostalCode = "78285",
+                Region = "TX",
+            },
+        },
+        Dob = "1981-01",
+        EmailAddresses = new List<string>() {
+            "jdoe@example.com",
+        },
+        FirstName = "Tod",
+        LastName = "Weedall",
+        Ssn = "265228370",
+    },
+};
+
+var res = await sdk.V3.V3CompleteRequestAsync(req);
+
+// handle response
+```
+### Example Usage: Response with Success Evaluation
+
+<!-- UsageSnippet language="csharp" operationID="V3CompleteRequest" method="post" path="/v3/complete" example="Response with Success Evaluation" -->
+```csharp
+using Prove.Proveapi;
+using Prove.Proveapi.Models.Components;
+using System.Collections.Generic;
+
+var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+V3CompleteRequest req = new V3CompleteRequest() {
+    CorrelationId = "713189b8-5555-4b08-83ba-75d08780aebd",
+    Individual = new V3CompleteIndividualRequest() {
+        Addresses = new List<V3CompleteAddressEntryRequest>() {
+            new V3CompleteAddressEntryRequest() {
+                Address = "39 South Trail",
+                City = "San Antonio",
+                ExtendedAddress = "Apt 23",
+                PostalCode = "78285",
+                Region = "TX",
+            },
+        },
+        Dob = "1981-01",
+        EmailAddresses = new List<string>() {
+            "jdoe@example.com",
+        },
+        FirstName = "Tod",
+        LastName = "Weedall",
+        Ssn = "265228370",
+    },
+};
+
+var res = await sdk.V3.V3CompleteRequestAsync(req);
+
+// handle response
+```
+### Example Usage: Standard Response
+
+<!-- UsageSnippet language="csharp" operationID="V3CompleteRequest" method="post" path="/v3/complete" example="Standard Response" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -316,9 +551,9 @@ var res = await sdk.V3.V3UnifyBindRequestAsync(req);
 
 This endpoint allows you to check the status of a Unify session and get the possession result.
 
-### Example Usage
+### Example Usage: Response with Failed Evaluation
 
-<!-- UsageSnippet language="csharp" operationID="V3UnifyStatusRequest" method="post" path="/v3/unify-status" -->
+<!-- UsageSnippet language="csharp" operationID="V3UnifyStatusRequest" method="post" path="/v3/unify-status" example="Response with Failed Evaluation" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
@@ -328,7 +563,24 @@ var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 V3UnifyStatusRequest req = new V3UnifyStatusRequest() {
     ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
     CorrelationId = "713189b8-5555-4b08-83ba-75d08780aebd",
-    PhoneNumber = "2001004011",
+};
+
+var res = await sdk.V3.V3UnifyStatusRequestAsync(req);
+
+// handle response
+```
+### Example Usage: Response with Success Evaluation
+
+<!-- UsageSnippet language="csharp" operationID="V3UnifyStatusRequest" method="post" path="/v3/unify-status" example="Response with Success Evaluation" -->
+```csharp
+using Prove.Proveapi;
+using Prove.Proveapi.Models.Components;
+
+var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+V3UnifyStatusRequest req = new V3UnifyStatusRequest() {
+    ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
+    CorrelationId = "713189b8-5555-4b08-83ba-75d08780aebd",
 };
 
 var res = await sdk.V3.V3UnifyStatusRequestAsync(req);
@@ -360,9 +612,26 @@ var res = await sdk.V3.V3UnifyStatusRequestAsync(req);
 
 This endpoint allows you to check if the phone number entered/discovered earlier in the flow is validated.
 
-### Example Usage
+### Example Usage: Response with Failed Evaluation
 
-<!-- UsageSnippet language="csharp" operationID="V3ValidateRequest" method="post" path="/v3/validate" -->
+<!-- UsageSnippet language="csharp" operationID="V3ValidateRequest" method="post" path="/v3/validate" example="Response with Failed Evaluation" -->
+```csharp
+using Prove.Proveapi;
+using Prove.Proveapi.Models.Components;
+
+var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+V3ValidateRequest req = new V3ValidateRequest() {
+    CorrelationId = "713189b8-5555-4b08-83ba-75d08780aebd",
+};
+
+var res = await sdk.V3.V3ValidateRequestAsync(req);
+
+// handle response
+```
+### Example Usage: Response with Success Evaluation
+
+<!-- UsageSnippet language="csharp" operationID="V3ValidateRequest" method="post" path="/v3/validate" example="Response with Success Evaluation" -->
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;

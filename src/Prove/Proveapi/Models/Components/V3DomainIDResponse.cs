@@ -11,18 +11,17 @@ namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
-    
+
     public class V3DomainIDResponse
     {
-
         /// <summary>
-        /// Customer friendly name
+        /// Customer friendly name.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
 
         /// <summary>
-        /// Customer ID
+        /// Customer ID.
         /// </summary>
         [JsonProperty("pcid")]
         public string Pcid { get; set; } = default!;

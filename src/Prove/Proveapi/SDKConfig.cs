@@ -17,6 +17,9 @@ namespace Prove.Proveapi
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// Main configuration for the SDK.
+    /// </summary>
     public struct SDKConfig
     {
         /// <summary>
@@ -56,7 +59,7 @@ namespace Prove.Proveapi
             Client = client ?? new SpeakeasyHttpClient();
             ServerUrl = "";
             ServerName = null;
-            UserAgent = "speakeasy-sdk/csharp 1.6.0 2.779.2 1.0.0 Prove.Proveapi";
+            UserAgent = "speakeasy-sdk/csharp 1.6.1 2.814.0 1.0.0 Prove.Proveapi";
             SecuritySource = null;
             Hooks = new SDKHooks();
             RetryConfig = null;

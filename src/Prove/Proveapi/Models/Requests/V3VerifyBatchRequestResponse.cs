@@ -12,10 +12,9 @@ namespace Prove.Proveapi.Models.Requests
     using Newtonsoft.Json;
     using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
-    
+
     public class V3VerifyBatchRequestResponse
     {
-
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 

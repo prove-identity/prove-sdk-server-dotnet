@@ -11,10 +11,9 @@ namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
-    
+
     public class V3UnifyRequest
     {
-
         /// <summary>
         /// If true, the customer can re-enter the OTP up to three times. Code must also be implemented. See client-side SDK guide for more details.
         /// </summary>
@@ -41,11 +40,8 @@ namespace Prove.Proveapi.Models.Components
 
         /// <summary>
         /// A client-generated unique ID for a specific session. This can be used to identify specific requests.<br/>
-        /// 
-        /// <remarks>
         /// The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted.<br/>
         /// Do not include Personally Identifiable Information (PII) in this field.
-        /// </remarks>
         /// </summary>
         [JsonProperty("clientRequestId")]
         public string ClientRequestId { get; set; } = default!;
@@ -57,56 +53,44 @@ namespace Prove.Proveapi.Models.Components
         public string? DeviceId { get; set; }
 
         /// <summary>
-        /// The email address of the customer. Acceptable characters are: alphanumeric with symbols &apos;@.+&apos;.
+        /// The email address of the customer. Acceptable characters are: alphanumeric with symbols '@.+'.
         /// </summary>
         [JsonProperty("emailAddress")]
         public string? EmailAddress { get; set; }
 
         /// <summary>
         /// The URL where the end user will be redirected at the end of Instant Link flow. Required when `possessionType=desktop`.<br/>
-        /// 
-        /// <remarks>
-        /// Acceptable characters are: alphanumeric with symbols &apos;-._+=/:?&apos;. Max length is 128 characters.
-        /// </remarks>
+        /// Acceptable characters are: alphanumeric with symbols '-._+=/:?'. Max length is 128 characters.
         /// </summary>
         [JsonProperty("finalTargetUrl")]
         public string? FinalTargetUrl { get; set; }
 
         /// <summary>
-        /// The IP address of the customer. Acceptable characters are: Alphanumeric with &apos;.:&apos; symbols.
+        /// The IP address of the customer. Acceptable characters are: Alphanumeric with '.:' symbols.
         /// </summary>
         [JsonProperty("ipAddress")]
         public string? IpAddress { get; set; }
 
         /// <summary>
-        /// The mobile phone number. US phone numbers can be passed in with or without a leading `+1`. International phone numbers require a leading `+1`. Use the appropriate endpoint URL based on the region the number originates from. Acceptable characters are: alphanumeric with symbols &apos;+&apos;.<br/>
-        /// 
-        /// <remarks>
+        /// The mobile phone number. US phone numbers can be passed in with or without a leading `+1`. International phone numbers require a leading `+1`. Use the appropriate endpoint URL based on the region the number originates from. Acceptable characters are: alphanumeric with symbols '+'.<br/>
         /// <br/>
         /// Required except when MobileAuth is used in US or a valid ProveID is provided.
-        /// </remarks>
         /// </summary>
         [JsonProperty("phoneNumber")]
         public string? PhoneNumber { get; set; }
 
         /// <summary>
         /// The type of device being used - either `desktop` if using a desktop,<br/>
-        /// 
-        /// <remarks>
         /// `mobile` for iOS/Android native apps and mobile web, or `none` if no possession<br/>
         /// check is required.
-        /// </remarks>
         /// </summary>
         [JsonProperty("possessionType")]
         public string PossessionType { get; set; } = default!;
 
         /// <summary>
         /// A unique ID to identify a specific customer obtained from a previous successful authentication.<br/>
-        /// 
-        /// <remarks>
         /// <br/>
         /// Required if phoneNumber is not present and mobileAuth is not enabled in the US or phoneNumber is not present in the EU.
-        /// </remarks>
         /// </summary>
         [JsonProperty("proveId")]
         public string? ProveId { get; set; }
@@ -119,12 +103,9 @@ namespace Prove.Proveapi.Models.Components
 
         /// <summary>
         /// The message body sent in the Instant Link (`flowType=desktop`) or OTP (`flowType=mobile`) SMS message. If not provided, the following default messages will be used:<br/>
-        /// 
-        /// <remarks>
-        /// Instant Link: &quot;Complete your verification. If you did not make this request, do not click the link. ####&quot; The verification URL replaces ####.<br/>
-        /// OTP: &quot;#### is your temporary code to continue your application. Caution: for your security, don&apos;t share this code with anyone.&quot; Use ####, #####, or ###### to generate 4-6 digit verification codes respectively.<br/>
+        /// Instant Link: "Complete your verification. If you did not make this request, do not click the link. ####" The verification URL replaces ####.<br/>
+        /// OTP: "#### is your temporary code to continue your application. Caution: for your security, don't share this code with anyone." Use ####, #####, or ###### to generate 4-6 digit verification codes respectively.<br/>
         /// Default language is English. Max length is 160 characters. Non-ASCII characters are allowed.
-        /// </remarks>
         /// </summary>
         [JsonProperty("smsMessage")]
         public string? SmsMessage { get; set; }

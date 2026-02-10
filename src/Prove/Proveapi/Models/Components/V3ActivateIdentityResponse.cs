@@ -11,13 +11,12 @@ namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
-    
+
     /// <summary>
     /// Response body for the V3 Activate Identity API.
     /// </summary>
     public class V3ActivateIdentityResponse
     {
-
         /// <summary>
         /// If true, the activate operation was successful.
         /// </summary>

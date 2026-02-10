@@ -11,10 +11,9 @@ namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
-    
+
     public class DataSourceNameResponseInternal
     {
-
         [JsonProperty("firstName")]
         public long? FirstName { get; set; }
 

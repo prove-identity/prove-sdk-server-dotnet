@@ -12,15 +12,14 @@ namespace Prove.Proveapi.Models.Requests
     using Newtonsoft.Json;
     using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
-    
+
     public class V3EnrollIdentityResponse
     {
-
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
         /// <summary>
-        /// V3EnrollIdentityResponse
+        /// V3EnrollIdentityResponse.
         /// </summary>
         public Models.Components.V3EnrollIdentityResponse? V3EnrollIdentityResponseValue { get; set; }
     }

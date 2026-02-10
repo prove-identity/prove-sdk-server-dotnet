@@ -11,13 +11,12 @@ namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
-    
+
     /// <summary>
     /// Response body for the V3 Disenroll Identity API.
     /// </summary>
     public class V3DisenrollIdentityResponse
     {
-
         /// <summary>
         /// If true, the disenroll operation was successful.
         /// </summary>

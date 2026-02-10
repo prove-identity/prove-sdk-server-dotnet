@@ -13,15 +13,14 @@ namespace Prove.Proveapi.Models.Requests
     using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
     using System.Collections.Generic;
-    
+
     public class V3DomainIDRequestResponse
     {
-
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
         public V3DomainIDResponse? V3DomainIDResponse { get; set; }
 
-        public Dictionary<string, List<string>> Headers { get; set; } = default!;
+        public Dictionary<string, List<string>> Headers { get; set; } = new Dictionary<string, List<string>>();
     }
 }

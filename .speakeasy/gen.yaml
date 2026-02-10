@@ -13,6 +13,7 @@ generation:
     requestResponseComponentNamesFeb2024: true
     securityFeb2025: true
     sharedErrorComponentsApr2025: false
+    sharedNestedComponentsJan2026: false
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
@@ -20,13 +21,14 @@ generation:
   schemas:
     allOfMergeStrategy: shallowMerge
   requestBodyFieldName: ""
+  versioningStrategy: automatic
   persistentEdits: {}
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 1.6.0
+  version: 1.6.1
   additionalDependencies: []
   author: Speakeasy
   baseErrorName: ProveAPIError
@@ -56,6 +58,7 @@ csharp:
   outputModelSuffix: output
   packageName: Prove.Proveapi
   packageTags: ""
+  respectTitlesForPrimitiveUnionMembers: false
   responseFormat: envelope-http
   sourceDirectory: src
   useNodatime: true

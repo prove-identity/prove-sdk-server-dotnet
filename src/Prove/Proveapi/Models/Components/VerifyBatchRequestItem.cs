@@ -11,10 +11,9 @@ namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
-    
+
     public class VerifyBatchRequestItem
     {
-
         /// <summary>
         /// A client-generated unique ID for a specific customer. This can be used by clients to link calls related to the same customer, across different requests or sessions.  The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Prove does not offer any functionality around the Client Customer ID. Do not include personally identifiable information (PII) in this field.
         /// </summary>
@@ -28,7 +27,7 @@ namespace Prove.Proveapi.Models.Components
         public string? ClientHumanId { get; set; }
 
         /// <summary>
-        /// The email address of the customer. Acceptable characters are: alphanumeric with symbols &apos;@.+&apos;.
+        /// The email address of the customer. Acceptable characters are: alphanumeric with symbols '@.+'.
         /// </summary>
         [JsonProperty("emailAddress")]
         public string? EmailAddress { get; set; }
@@ -52,7 +51,7 @@ namespace Prove.Proveapi.Models.Components
         public string LastName { get; set; } = default!;
 
         /// <summary>
-        /// The mobile phone number. US phone numbers can be passed in with or without a leading `+1`. International phone numbers require a leading `+1`. Use the appropriate endpoint URL based on the region the number originates from. Acceptable characters are: alphanumeric with symbols &apos;+&apos;.
+        /// The mobile phone number. US phone numbers can be passed in with or without a leading `+1`. International phone numbers require a leading `+1`. Use the appropriate endpoint URL based on the region the number originates from. Acceptable characters are: alphanumeric with symbols '+'.
         /// </summary>
         [JsonProperty("phoneNumber")]
         public string PhoneNumber { get; set; } = default!;

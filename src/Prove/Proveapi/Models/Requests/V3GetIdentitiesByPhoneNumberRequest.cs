@@ -10,12 +10,11 @@
 namespace Prove.Proveapi.Models.Requests
 {
     using Prove.Proveapi.Utils;
-    
+
     public class V3GetIdentitiesByPhoneNumberRequest
     {
-
         /// <summary>
-        /// The phone number to find identities for. US phone numbers can be passed in with or without a leading +1. Acceptable characters are: alphanumeric with symbols &apos;+&apos;.
+        /// The phone number to find identities for. US phone numbers can be passed in with or without a leading +1. Acceptable characters are: alphanumeric with symbols '+'.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=mobileNumber")]
         public string MobileNumber { get; set; } = default!;

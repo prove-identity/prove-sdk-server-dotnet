@@ -9,6 +9,9 @@
 #nullable enable
 namespace Prove.Proveapi.Utils.Retries
 {
+    /// <summary>
+    /// Exponential backoff strategy configuration.
+    /// </summary>
     public class BackoffStrategy
     {
         public readonly long InitialIntervalMs;

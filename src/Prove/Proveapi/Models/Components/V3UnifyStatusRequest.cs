@@ -11,40 +11,22 @@ namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
-    
+
     public class V3UnifyStatusRequest
     {
-
         /// <summary>
         /// A client-generated unique ID for a specific session. This can be used to identify specific requests.<br/>
-        /// 
-        /// <remarks>
         /// The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted.<br/>
         /// Do not include Personally Identifiable Information (PII) in this field.
-        /// </remarks>
         /// </summary>
         [JsonProperty("clientRequestId")]
         public string? ClientRequestId { get; set; }
 
         /// <summary>
         /// The unique ID that Prove generates for the flow. It is returned<br/>
-        /// 
-        /// <remarks>
         /// from the v3/unify endpoint and cannot be reused outside of a single flow.
-        /// </remarks>
         /// </summary>
         [JsonProperty("correlationId")]
         public string CorrelationId { get; set; } = default!;
-
-        /// <summary>
-        /// The mobile phone number. US phone numbers can be passed in with or without a leading `+1`. International phone numbers require a leading `+1`. Use the appropriate endpoint URL based on the region the number originates from. Acceptable characters are: alphanumeric with symbols &apos;+&apos;. Required when `possessionType=none` in the initial Unify request.<br/>
-        /// 
-        /// <remarks>
-        /// <br/>
-        /// Required except when MobileAuth is used in US or a valid ProveID is provided.
-        /// </remarks>
-        /// </summary>
-        [JsonProperty("phoneNumber")]
-        public string? PhoneNumber { get; set; }
     }
 }

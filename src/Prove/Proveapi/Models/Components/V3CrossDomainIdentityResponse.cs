@@ -13,13 +13,12 @@ namespace Prove.Proveapi.Models.Components
     using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
     using System.Collections.Generic;
-    
+
     /// <summary>
     /// Response body for the V3 Identity Cross Domain API.
     /// </summary>
     public class V3CrossDomainIdentityResponse
     {
-
         /// <summary>
         /// The number of items in the Identities array.
         /// </summary>

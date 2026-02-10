@@ -12,10 +12,9 @@ namespace Prove.Proveapi.Models.Components
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
     using System.Collections.Generic;
-    
+
     public class V3StartResponse
     {
-
         /// <summary>
         /// A bearer token used by the client-side SDK.
         /// </summary>

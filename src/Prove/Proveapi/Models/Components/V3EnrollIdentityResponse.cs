@@ -11,13 +11,12 @@ namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
-    
+
     /// <summary>
     /// Response body for the V3 Enroll Identity method.
     /// </summary>
     public class V3EnrollIdentityResponse
     {
-
         /// <summary>
         /// A unique Prove-generated identifier for the enrolled identity. This is a UUID that can be used to reference the identity in future requests.
         /// </summary>

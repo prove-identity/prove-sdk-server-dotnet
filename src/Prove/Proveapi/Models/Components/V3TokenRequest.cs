@@ -10,10 +10,9 @@
 namespace Prove.Proveapi.Models.Components
 {
     using Prove.Proveapi.Utils;
-    
+
     public class V3TokenRequest
     {
-
         /// <summary>
         /// The client ID retrieved from the <a href="https://developer.prove.com/reference/authentication">Developer Portal</a>.
         /// </summary>

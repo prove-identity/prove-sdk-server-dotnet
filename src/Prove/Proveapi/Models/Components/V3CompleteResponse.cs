@@ -13,12 +13,11 @@ namespace Prove.Proveapi.Models.Components
     using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
     using System.Collections.Generic;
-    
+
     public class V3CompleteResponse
     {
-
         /// <summary>
-        /// The evaluation result for the policy
+        /// The evaluation result for the policy.
         /// </summary>
         [JsonProperty("evaluation")]
         public Dictionary<string, V3CompleteResponseEvaluation>? Evaluation { get; set; }

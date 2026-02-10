@@ -11,10 +11,9 @@ namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
-    
+
     public class IdentityItem
     {
-
         /// <summary>
         /// The name of the client associated with the identity.
         /// </summary>

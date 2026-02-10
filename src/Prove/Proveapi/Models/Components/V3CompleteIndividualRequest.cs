@@ -13,10 +13,9 @@ namespace Prove.Proveapi.Models.Components
     using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
     using System.Collections.Generic;
-    
+
     public class V3CompleteIndividualRequest
     {
-
         /// <summary>
         /// Address of the individual. Note that though this is an array, only the first address in the array will be processed.
         /// </summary>
@@ -24,7 +23,7 @@ namespace Prove.Proveapi.Models.Components
         public List<V3CompleteAddressEntryRequest>? Addresses { get; set; }
 
         /// <summary>
-        /// The date of birth of the individual in one of these formats: YYYY-MM-DD, YYYY-MM, or MM-DD. Acceptable characters are: numeric with symbol &apos;-&apos;.
+        /// The date of birth of the individual in one of these formats: YYYY-MM-DD, YYYY-MM, or MM-DD. Acceptable characters are: numeric with symbol '-'.
         /// </summary>
         [JsonProperty("dob")]
         public string? Dob { get; set; }
