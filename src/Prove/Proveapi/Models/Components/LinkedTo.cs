@@ -11,10 +11,9 @@ namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
-    
+
     public class LinkedTo
     {
-
         [JsonProperty("acceptedAt")]
         public long? AcceptedAt { get; set; }
 

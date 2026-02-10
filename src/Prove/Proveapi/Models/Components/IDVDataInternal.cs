@@ -12,10 +12,9 @@ namespace Prove.Proveapi.Models.Components
     using Newtonsoft.Json;
     using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
-    
+
     public class IDVDataInternal
     {
-
         [JsonProperty("dataSource1")]
         public DataSourceInternal? DataSource1 { get; set; }
 

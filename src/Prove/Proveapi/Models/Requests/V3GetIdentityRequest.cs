@@ -10,10 +10,9 @@
 namespace Prove.Proveapi.Models.Requests
 {
     using Prove.Proveapi.Utils;
-    
+
     public class V3GetIdentityRequest
     {
-
         /// <summary>
         /// A unique Prove-generated identifier for the enrolled identity.
         /// </summary>

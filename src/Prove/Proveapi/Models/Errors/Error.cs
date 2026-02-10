@@ -17,13 +17,13 @@ namespace Prove.Proveapi.Models.Errors
     public class ErrorPayload
     {
         /// <summary>
-        /// Code is an internal error code that describes the problem category of the request.
+        /// An error code that describes the problem category of the request.
         /// </summary>
         [JsonProperty("code")]
         public long? Code { get; set; }
 
         /// <summary>
-        /// Message is an error message describing the problem with the request.
+        /// The error message describing the problem with the request.
         /// </summary>
         [JsonProperty("message")]
         public string Message { get; set; } = default!;
@@ -68,5 +68,4 @@ namespace Prove.Proveapi.Models.Errors
            #pragma warning restore CS0618
         }
     }
-
 }

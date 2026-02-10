@@ -24,104 +24,239 @@ namespace Prove.Proveapi
 
     public interface IIdentity
     {
-
         /// <summary>
-        /// Batch Get Identities
-        /// 
+        /// Batch Get Identities.
+        /// </summary>
         /// <remarks>
         /// Return a list of all identities you have enrolled in Identity Manager.
         /// </remarks>
-        /// </summary>
-        Task<Models.Requests.V3BatchGetIdentitiesResponse> V3BatchGetIdentitiesAsync(string? clientRequestId = null, long? limit = null, string? startKey = null, bool? showInactive = null);
+        /// <param name="clientRequestId">A client-generated unique ID for a specific session. This can be used to identify specific requests. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include Personally Identifiable Information (PII) in this field.</param>
+        /// <param name="limit">The maximum number of identities to return per call. Default value is 100.</param>
+        /// <param name="startKey">The pagination token for the GET /v3/identity API. Use this to retrieve the next page of results after a previous call to GET /v3/identity. This token is returned as lastKey in the GET /v3/identity API response - pass it in directly as startKey to get the next page of results.</param>
+        /// <param name="showInactive">Whether to show identities associated with the current client that are currently marked as inactive. Default value is false.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3BatchGetIdentitiesResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<Models.Requests.V3BatchGetIdentitiesResponse> V3BatchGetIdentitiesAsync(
+            string? clientRequestId = null,
+            long? limit = null,
+            string? startKey = null,
+            bool? showInactive = null
+        );
 
         /// <summary>
-        /// Enroll Identity
-        /// 
+        /// Enroll Identity.
+        /// </summary>
         /// <remarks>
         /// Enrolls a single customer for monitoring using their phone number and unique identifier.
         /// </remarks>
-        /// </summary>
-        Task<Models.Requests.V3EnrollIdentityResponse> V3EnrollIdentityAsync(V3EnrollIdentityRequest? request = null);
+        /// <param name="request">A <see cref="V3EnrollIdentityRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3EnrollIdentityResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<Models.Requests.V3EnrollIdentityResponse> V3EnrollIdentityAsync(
+            V3EnrollIdentityRequest? request = null
+        );
 
         /// <summary>
-        /// Batch Enroll Identities
-        /// 
+        /// Batch Enroll Identities.
+        /// </summary>
         /// <remarks>
         /// Enrolls multiple customers in a single request for efficient bulk operations (up to 100).
         /// </remarks>
-        /// </summary>
-        Task<Models.Requests.V3BatchEnrollIdentitiesResponse> V3BatchEnrollIdentitiesAsync(V3BatchEnrollIdentitiesRequest? request = null);
+        /// <param name="request">A <see cref="V3BatchEnrollIdentitiesRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3BatchEnrollIdentitiesResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<Models.Requests.V3BatchEnrollIdentitiesResponse> V3BatchEnrollIdentitiesAsync(
+            V3BatchEnrollIdentitiesRequest? request = null
+        );
 
         /// <summary>
-        /// Disenroll Identity
-        /// 
+        /// Disenroll Identity.
+        /// </summary>
         /// <remarks>
         /// Disenrolls an identity from Identity Manager. If you wish to monitor in future, re-enrollment of that identity is required.
         /// </remarks>
-        /// </summary>
-        Task<Models.Requests.V3DisenrollIdentityResponse> V3DisenrollIdentityAsync(string identityId, string? clientRequestId = null);
+        /// <param name="identityId">A Prove-generated unique ID for a specific identity.</param>
+        /// <param name="clientRequestId">A client-generated unique ID for a specific session. This can be used to identify specific requests. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include Personally Identifiable Information (PII) in this field.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3DisenrollIdentityResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="identityId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<Models.Requests.V3DisenrollIdentityResponse> V3DisenrollIdentityAsync(
+            string identityId,
+            string? clientRequestId = null
+        );
 
         /// <summary>
-        /// Get Identity
-        /// 
+        /// Get Identity.
+        /// </summary>
         /// <remarks>
         /// Return details of an identity given the identity ID.
         /// </remarks>
-        /// </summary>
-        Task<Models.Requests.V3GetIdentityResponse> V3GetIdentityAsync(string identityId, string? clientRequestId = null);
+        /// <param name="identityId">A unique Prove-generated identifier for the enrolled identity.</param>
+        /// <param name="clientRequestId">A client-generated unique ID for a specific session. This can be used to identify specific requests. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include Personally Identifiable Information (PII) in this field.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3GetIdentityResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="identityId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<Models.Requests.V3GetIdentityResponse> V3GetIdentityAsync(
+            string identityId,
+            string? clientRequestId = null
+        );
 
         /// <summary>
-        /// Activate Identity
-        /// 
+        /// Activate Identity.
+        /// </summary>
         /// <remarks>
         /// Sets an identity as active for monitoring.
         /// </remarks>
-        /// </summary>
-        Task<Models.Requests.V3ActivateIdentityResponse> V3ActivateIdentityAsync(string identityId, Models.Components.V3ActivateIdentityRequest? v3ActivateIdentityRequest = null);
+        /// <param name="identityId">A Prove-generated unique ID for a specific identity.</param>
+        /// <param name="v3ActivateIdentityRequest">A <see cref="Prove.Proveapi.Models.Components.V3ActivateIdentityRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3ActivateIdentityResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="identityId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<Models.Requests.V3ActivateIdentityResponse> V3ActivateIdentityAsync(
+            string identityId,
+            Models.Components.V3ActivateIdentityRequest? v3ActivateIdentityRequest = null
+        );
 
         /// <summary>
-        /// Cross Domain Identity
-        /// 
+        /// Cross Domain Identity.
+        /// </summary>
         /// <remarks>
         /// Retreives the list of identities from other linked accounts.
         /// </remarks>
-        /// </summary>
-        Task<Models.Requests.V3CrossDomainIdentityResponse> V3CrossDomainIdentityAsync(string identityId, Models.Components.V3CrossDomainIdentityRequest? v3CrossDomainIdentityRequest = null);
+        /// <param name="identityId">A Prove-generated unique ID for a specific identity.</param>
+        /// <param name="v3CrossDomainIdentityRequest">A <see cref="Prove.Proveapi.Models.Components.V3CrossDomainIdentityRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3CrossDomainIdentityResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="identityId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<Models.Requests.V3CrossDomainIdentityResponse> V3CrossDomainIdentityAsync(
+            string identityId,
+            Models.Components.V3CrossDomainIdentityRequest? v3CrossDomainIdentityRequest = null
+        );
 
         /// <summary>
-        /// Deactivate Identity
-        /// 
+        /// Deactivate Identity.
+        /// </summary>
         /// <remarks>
         /// Stops webhook notifications without disenrolling the identity.
         /// </remarks>
-        /// </summary>
-        Task<Models.Requests.V3DeactivateIdentityResponse> V3DeactivateIdentityAsync(string identityId, V3IdentityDeactivateRequest? v3IdentityDeactivateRequest = null);
+        /// <param name="identityId">A Prove-generated unique ID for a specific identity.</param>
+        /// <param name="v3IdentityDeactivateRequest">A <see cref="V3IdentityDeactivateRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3DeactivateIdentityResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="identityId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<Models.Requests.V3DeactivateIdentityResponse> V3DeactivateIdentityAsync(
+            string identityId,
+            V3IdentityDeactivateRequest? v3IdentityDeactivateRequest = null
+        );
 
         /// <summary>
-        /// Get Identities By Phone Number
-        /// 
+        /// Get Identities By Phone Number.
+        /// </summary>
         /// <remarks>
         /// Return list of all identities you have enrolled that are associated with this phone number.
         /// </remarks>
-        /// </summary>
-        Task<Models.Requests.V3GetIdentitiesByPhoneNumberResponse> V3GetIdentitiesByPhoneNumberAsync(string mobileNumber, string? clientRequestId = null);
+        /// <param name="mobileNumber">The phone number to find identities for. US phone numbers can be passed in with or without a leading +1. Acceptable characters are: alphanumeric with symbols '+'.</param>
+        /// <param name="clientRequestId">A client-generated unique ID for a specific session. This can be used to identify specific requests. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include Personally Identifiable Information (PII) in this field.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3GetIdentitiesByPhoneNumberResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="mobileNumber"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<Models.Requests.V3GetIdentitiesByPhoneNumberResponse> V3GetIdentitiesByPhoneNumberAsync(
+            string mobileNumber,
+            string? clientRequestId = null
+        );
     }
 
     public class Identity: IIdentity
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Identity(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<Models.Requests.V3BatchGetIdentitiesResponse> V3BatchGetIdentitiesAsync(string? clientRequestId = null, long? limit = null, string? startKey = null, bool? showInactive = null)
+        /// <summary>
+        /// Batch Get Identities.
+        /// </summary>
+        /// <remarks>
+        /// Return a list of all identities you have enrolled in Identity Manager.
+        /// </remarks>
+        /// <param name="clientRequestId">A client-generated unique ID for a specific session. This can be used to identify specific requests. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include Personally Identifiable Information (PII) in this field.</param>
+        /// <param name="limit">The maximum number of identities to return per call. Default value is 100.</param>
+        /// <param name="startKey">The pagination token for the GET /v3/identity API. Use this to retrieve the next page of results after a previous call to GET /v3/identity. This token is returned as lastKey in the GET /v3/identity API response - pass it in directly as startKey to get the next page of results.</param>
+        /// <param name="showInactive">Whether to show identities associated with the current client that are currently marked as inactive. Default value is false.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3BatchGetIdentitiesResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<Models.Requests.V3BatchGetIdentitiesResponse> V3BatchGetIdentitiesAsync(
+            string? clientRequestId = null,
+            long? limit = null,
+            string? startKey = null,
+            bool? showInactive = null
+        )
         {
             var request = new V3BatchGetIdentitiesRequest()
             {
@@ -130,6 +265,7 @@ namespace Prove.Proveapi
                 StartKey = startKey,
                 ShowInactive = showInactive,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v3/identity", request, null);
 
@@ -151,7 +287,7 @@ namespace Prove.Proveapi
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -298,10 +434,27 @@ namespace Prove.Proveapi
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<Models.Requests.V3EnrollIdentityResponse> V3EnrollIdentityAsync(V3EnrollIdentityRequest? request = null)
+
+        /// <summary>
+        /// Enroll Identity.
+        /// </summary>
+        /// <remarks>
+        /// Enrolls a single customer for monitoring using their phone number and unique identifier.
+        /// </remarks>
+        /// <param name="request">A <see cref="V3EnrollIdentityRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3EnrollIdentityResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<Models.Requests.V3EnrollIdentityResponse> V3EnrollIdentityAsync(
+            V3EnrollIdentityRequest? request = null
+        )
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
             var urlString = baseUrl + "/v3/identity";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -328,7 +481,7 @@ namespace Prove.Proveapi
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -475,10 +628,27 @@ namespace Prove.Proveapi
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<Models.Requests.V3BatchEnrollIdentitiesResponse> V3BatchEnrollIdentitiesAsync(V3BatchEnrollIdentitiesRequest? request = null)
+
+        /// <summary>
+        /// Batch Enroll Identities.
+        /// </summary>
+        /// <remarks>
+        /// Enrolls multiple customers in a single request for efficient bulk operations (up to 100).
+        /// </remarks>
+        /// <param name="request">A <see cref="V3BatchEnrollIdentitiesRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3BatchEnrollIdentitiesResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<Models.Requests.V3BatchEnrollIdentitiesResponse> V3BatchEnrollIdentitiesAsync(
+            V3BatchEnrollIdentitiesRequest? request = null
+        )
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
             var urlString = baseUrl + "/v3/identity/batch";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -505,7 +675,7 @@ namespace Prove.Proveapi
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -652,13 +822,37 @@ namespace Prove.Proveapi
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<Models.Requests.V3DisenrollIdentityResponse> V3DisenrollIdentityAsync(string identityId, string? clientRequestId = null)
+
+        /// <summary>
+        /// Disenroll Identity.
+        /// </summary>
+        /// <remarks>
+        /// Disenrolls an identity from Identity Manager. If you wish to monitor in future, re-enrollment of that identity is required.
+        /// </remarks>
+        /// <param name="identityId">A Prove-generated unique ID for a specific identity.</param>
+        /// <param name="clientRequestId">A client-generated unique ID for a specific session. This can be used to identify specific requests. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include Personally Identifiable Information (PII) in this field.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3DisenrollIdentityResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="identityId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<Models.Requests.V3DisenrollIdentityResponse> V3DisenrollIdentityAsync(
+            string identityId,
+            string? clientRequestId = null
+        )
         {
+            if (identityId == null) throw new ArgumentNullException(nameof(identityId));
+
             var request = new V3DisenrollIdentityRequest()
             {
                 IdentityId = identityId,
                 ClientRequestId = clientRequestId,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v3/identity/{identityId}", request, null);
 
@@ -680,7 +874,7 @@ namespace Prove.Proveapi
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -827,13 +1021,37 @@ namespace Prove.Proveapi
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<Models.Requests.V3GetIdentityResponse> V3GetIdentityAsync(string identityId, string? clientRequestId = null)
+
+        /// <summary>
+        /// Get Identity.
+        /// </summary>
+        /// <remarks>
+        /// Return details of an identity given the identity ID.
+        /// </remarks>
+        /// <param name="identityId">A unique Prove-generated identifier for the enrolled identity.</param>
+        /// <param name="clientRequestId">A client-generated unique ID for a specific session. This can be used to identify specific requests. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include Personally Identifiable Information (PII) in this field.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3GetIdentityResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="identityId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<Models.Requests.V3GetIdentityResponse> V3GetIdentityAsync(
+            string identityId,
+            string? clientRequestId = null
+        )
         {
+            if (identityId == null) throw new ArgumentNullException(nameof(identityId));
+
             var request = new V3GetIdentityRequest()
             {
                 IdentityId = identityId,
                 ClientRequestId = clientRequestId,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v3/identity/{identityId}", request, null);
 
@@ -855,7 +1073,7 @@ namespace Prove.Proveapi
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1002,13 +1220,37 @@ namespace Prove.Proveapi
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<Models.Requests.V3ActivateIdentityResponse> V3ActivateIdentityAsync(string identityId, Models.Components.V3ActivateIdentityRequest? v3ActivateIdentityRequest = null)
+
+        /// <summary>
+        /// Activate Identity.
+        /// </summary>
+        /// <remarks>
+        /// Sets an identity as active for monitoring.
+        /// </remarks>
+        /// <param name="identityId">A Prove-generated unique ID for a specific identity.</param>
+        /// <param name="v3ActivateIdentityRequest">A <see cref="Prove.Proveapi.Models.Components.V3ActivateIdentityRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3ActivateIdentityResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="identityId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<Models.Requests.V3ActivateIdentityResponse> V3ActivateIdentityAsync(
+            string identityId,
+            Models.Components.V3ActivateIdentityRequest? v3ActivateIdentityRequest = null
+        )
         {
+            if (identityId == null) throw new ArgumentNullException(nameof(identityId));
+
             var request = new Models.Requests.V3ActivateIdentityRequest()
             {
                 IdentityId = identityId,
                 V3ActivateIdentityRequestValue = v3ActivateIdentityRequest,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v3/identity/{identityId}/activate", request, null);
 
@@ -1036,7 +1278,7 @@ namespace Prove.Proveapi
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1183,13 +1425,37 @@ namespace Prove.Proveapi
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<Models.Requests.V3CrossDomainIdentityResponse> V3CrossDomainIdentityAsync(string identityId, Models.Components.V3CrossDomainIdentityRequest? v3CrossDomainIdentityRequest = null)
+
+        /// <summary>
+        /// Cross Domain Identity.
+        /// </summary>
+        /// <remarks>
+        /// Retreives the list of identities from other linked accounts.
+        /// </remarks>
+        /// <param name="identityId">A Prove-generated unique ID for a specific identity.</param>
+        /// <param name="v3CrossDomainIdentityRequest">A <see cref="Prove.Proveapi.Models.Components.V3CrossDomainIdentityRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3CrossDomainIdentityResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="identityId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<Models.Requests.V3CrossDomainIdentityResponse> V3CrossDomainIdentityAsync(
+            string identityId,
+            Models.Components.V3CrossDomainIdentityRequest? v3CrossDomainIdentityRequest = null
+        )
         {
+            if (identityId == null) throw new ArgumentNullException(nameof(identityId));
+
             var request = new Models.Requests.V3CrossDomainIdentityRequest()
             {
                 IdentityId = identityId,
                 V3CrossDomainIdentityRequestValue = v3CrossDomainIdentityRequest,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v3/identity/{identityId}/cross-domain", request, null);
 
@@ -1217,7 +1483,7 @@ namespace Prove.Proveapi
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1364,13 +1630,37 @@ namespace Prove.Proveapi
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<Models.Requests.V3DeactivateIdentityResponse> V3DeactivateIdentityAsync(string identityId, V3IdentityDeactivateRequest? v3IdentityDeactivateRequest = null)
+
+        /// <summary>
+        /// Deactivate Identity.
+        /// </summary>
+        /// <remarks>
+        /// Stops webhook notifications without disenrolling the identity.
+        /// </remarks>
+        /// <param name="identityId">A Prove-generated unique ID for a specific identity.</param>
+        /// <param name="v3IdentityDeactivateRequest">A <see cref="V3IdentityDeactivateRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3DeactivateIdentityResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="identityId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<Models.Requests.V3DeactivateIdentityResponse> V3DeactivateIdentityAsync(
+            string identityId,
+            V3IdentityDeactivateRequest? v3IdentityDeactivateRequest = null
+        )
         {
+            if (identityId == null) throw new ArgumentNullException(nameof(identityId));
+
             var request = new V3DeactivateIdentityRequest()
             {
                 IdentityId = identityId,
                 V3IdentityDeactivateRequest = v3IdentityDeactivateRequest,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v3/identity/{identityId}/deactivate", request, null);
 
@@ -1398,7 +1688,7 @@ namespace Prove.Proveapi
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1545,13 +1835,37 @@ namespace Prove.Proveapi
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<Models.Requests.V3GetIdentitiesByPhoneNumberResponse> V3GetIdentitiesByPhoneNumberAsync(string mobileNumber, string? clientRequestId = null)
+
+        /// <summary>
+        /// Get Identities By Phone Number.
+        /// </summary>
+        /// <remarks>
+        /// Return list of all identities you have enrolled that are associated with this phone number.
+        /// </remarks>
+        /// <param name="mobileNumber">The phone number to find identities for. US phone numbers can be passed in with or without a leading +1. Acceptable characters are: alphanumeric with symbols '+'.</param>
+        /// <param name="clientRequestId">A client-generated unique ID for a specific session. This can be used to identify specific requests. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include Personally Identifiable Information (PII) in this field.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3GetIdentitiesByPhoneNumberResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="mobileNumber"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<Models.Requests.V3GetIdentitiesByPhoneNumberResponse> V3GetIdentitiesByPhoneNumberAsync(
+            string mobileNumber,
+            string? clientRequestId = null
+        )
         {
+            if (mobileNumber == null) throw new ArgumentNullException(nameof(mobileNumber));
+
             var request = new V3GetIdentitiesByPhoneNumberRequest()
             {
                 MobileNumber = mobileNumber,
                 ClientRequestId = clientRequestId,
             };
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v3/identity/{mobileNumber}/lookup", request, null);
 
@@ -1573,7 +1887,7 @@ namespace Prove.Proveapi
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1719,5 +2033,6 @@ namespace Prove.Proveapi
 
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
+
     }
 }

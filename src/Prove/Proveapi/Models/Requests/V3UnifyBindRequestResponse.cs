@@ -13,10 +13,9 @@ namespace Prove.Proveapi.Models.Requests
     using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
     using System.Collections.Generic;
-    
+
     public class V3UnifyBindRequestResponse
     {
-
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
@@ -25,6 +24,6 @@ namespace Prove.Proveapi.Models.Requests
         /// </summary>
         public V3UnifyBindResponse? V3UnifyBindResponse { get; set; }
 
-        public Dictionary<string, List<string>> Headers { get; set; } = default!;
+        public Dictionary<string, List<string>> Headers { get; set; } = new Dictionary<string, List<string>>();
     }
 }

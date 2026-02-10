@@ -13,10 +13,9 @@ namespace Prove.Proveapi.Models.Components
     using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
     using System.Collections.Generic;
-    
+
     public class V3VerifyResponse
     {
-
         /// <summary>
         /// Additional Identities found as part of the verification flow.
         /// </summary>
@@ -48,7 +47,7 @@ namespace Prove.Proveapi.Models.Components
         public string CorrelationId { get; set; } = default!;
 
         /// <summary>
-        /// The evaluation result for the policy. This will contain keys titled &quot;authentication&quot; and &quot;risk&quot; that encompass the different evaluation categories.
+        /// The evaluation result for the policy. This will contain keys titled "authentication" and "risk" that encompass the different evaluation categories.
         /// </summary>
         [JsonProperty("evaluation")]
         public Dictionary<string, V3VerifyResponseEvaluation>? Evaluation { get; set; }
@@ -75,7 +74,7 @@ namespace Prove.Proveapi.Models.Components
         public string? ProvePhoneAlias { get; set; }
 
         /// <summary>
-        /// The result of verification. This can be &quot;true&quot; or &quot;false&quot;.
+        /// The result of verification. This can be "true" or "false".
         /// </summary>
         [JsonProperty("success")]
         public string Success { get; set; } = default!;

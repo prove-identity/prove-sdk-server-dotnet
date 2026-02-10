@@ -13,10 +13,9 @@ namespace Prove.Proveapi.Models.Components
     using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
     using System.Collections.Generic;
-    
+
     public class V3DomainLinkedResponse
     {
-
         [JsonProperty("linkedFrom")]
         public List<LinkedFrom>? LinkedFrom { get; set; }
 

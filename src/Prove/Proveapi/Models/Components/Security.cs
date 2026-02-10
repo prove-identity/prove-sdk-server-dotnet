@@ -10,10 +10,9 @@
 namespace Prove.Proveapi.Models.Components
 {
     using Prove.Proveapi.Utils;
-    
+
     public class Security
     {
-
         [SpeakeasyMetadata("security:scheme=true,type=oauth2,name=Authorization")]
         public string? Auth { get; set; }
     }

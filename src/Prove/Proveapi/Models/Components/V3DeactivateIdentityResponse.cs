@@ -11,13 +11,12 @@ namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
-    
+
     /// <summary>
     /// Response body for the V3 Deactivate Identity API.
     /// </summary>
     public class V3DeactivateIdentityResponse
     {
-
         /// <summary>
         /// If true, the deactivate operation was successful.
         /// </summary>

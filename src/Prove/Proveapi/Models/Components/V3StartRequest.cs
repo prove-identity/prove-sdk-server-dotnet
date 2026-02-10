@@ -11,10 +11,9 @@ namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
-    
+
     public class V3StartRequest
     {
-
         /// <summary>
         /// If true, the customer can re-enter the OTP up to three times. Code must also be implemented. See client-side SDK guide for more details.
         /// </summary>
@@ -22,24 +21,21 @@ namespace Prove.Proveapi.Models.Components
         public bool? AllowOTPRetry { get; set; }
 
         /// <summary>
-        /// The date of birth in one of these formats: YYYY-MM-DD, YYYY-MM, or MM-DD. Acceptable characters are: numeric with symbol &apos;-&apos;.<br/>
-        /// 
-        /// <remarks>
+        /// The date of birth in one of these formats: YYYY-MM-DD, YYYY-MM, or MM-DD. Acceptable characters are: numeric with symbol '-'.<br/>
         /// <br/>
         /// It is recommended you do NOT pass this value into the Start step. Prove will attempt to pre-fill data using phone number only.
-        /// </remarks>
         /// </summary>
         [JsonProperty("dob")]
         public string? Dob { get; set; }
 
         /// <summary>
-        /// The email address of the customer. Acceptable characters are: alphanumeric with symbols &apos;@.+&apos;.
+        /// The email address of the customer. Acceptable characters are: alphanumeric with symbols '@.+'.
         /// </summary>
         [JsonProperty("emailAddress")]
         public string? EmailAddress { get; set; }
 
         /// <summary>
-        /// The URL where the end user will be redirected at the end of the Instant Link flow. Required only when `flowType=desktop`. Acceptable characters are: alphanumeric with symbols &apos;-._+=/:?&apos;. Max length is 128 characters.
+        /// The URL where the end user will be redirected at the end of the Instant Link flow. Required only when `flowType=desktop`. Acceptable characters are: alphanumeric with symbols '-._+=/:?'. Max length is 128 characters.
         /// </summary>
         [JsonProperty("finalTargetUrl")]
         public string? FinalTargetUrl { get; set; }
@@ -51,39 +47,33 @@ namespace Prove.Proveapi.Models.Components
         public string FlowType { get; set; } = default!;
 
         /// <summary>
-        /// The IP address of the mobile device. Acceptable characters are: numeric with symbols &apos;:.&apos;.
+        /// The IP address of the mobile device. Acceptable characters are: numeric with symbols ':.'.
         /// </summary>
         [JsonProperty("ipAddress")]
         public string? IpAddress { get; set; }
 
         /// <summary>
-        /// The number of the mobile phone. Refer to the <a href="https://developer.prove.com/docs/prove-pre-fill-implementation-guide#implement-prove-pre-fill">Prove Pre-Fill Implementation guide</a> and <a href="https://developer.prove.com/docs/prove-identity-implementation-guide#implement-prove-identity">Prove Identity Implementation guide</a> for situations where this field is not required. Acceptable characters are: alphanumeric with symbols &apos;+&apos;.
+        /// The number of the mobile phone. Refer to the <a href="https://developer.prove.com/docs/prove-pre-fill-implementation-guide#implement-prove-pre-fill">Prove Pre-Fill Implementation guide</a> and <a href="https://developer.prove.com/docs/prove-identity-implementation-guide#implement-prove-identity">Prove Identity Implementation guide</a> for situations where this field is not required. Acceptable characters are: alphanumeric with symbols '+'.
         /// </summary>
         [JsonProperty("phoneNumber")]
         public string? PhoneNumber { get; set; }
 
         /// <summary>
         /// The message body sent in the Instant Link (`flowType=desktop`) or OTP (`flowType=mobile`) SMS message. If not provided, the following default messages will be used:<br/>
-        /// 
-        /// <remarks>
         /// <br/>
-        /// Instant Link: &quot;Complete your verification. If you did not make this request, do not click the link. ####&quot; _The verification URL replaces ####._<br/>
+        /// Instant Link: "Complete your verification. If you did not make this request, do not click the link. ####" _The verification URL replaces ####._<br/>
         /// <br/>
-        /// OTP: &quot;#### is your temporary code to continue your application. Caution: for your security, don&apos;t share this code with anyone.&quot; _Use ####, #####, or ###### to generate 4-6 digit verification codes respectively._<br/>
+        /// OTP: "#### is your temporary code to continue your application. Caution: for your security, don't share this code with anyone." _Use ####, #####, or ###### to generate 4-6 digit verification codes respectively._<br/>
         /// <br/>
         /// Max length is 160 characters. Non-ASCII characters are allowed.
-        /// </remarks>
         /// </summary>
         [JsonProperty("smsMessage")]
         public string? SmsMessage { get; set; }
 
         /// <summary>
         /// The full or last 4 digits of the social security number. Acceptable characters are: numeric.<br/>
-        /// 
-        /// <remarks>
         /// <br/>
         /// It is recommended you do NOT pass this value into the Start step. Prove will attempt to pre-fill data using phone number only.
-        /// </remarks>
         /// </summary>
         [JsonProperty("ssn")]
         public string? Ssn { get; set; }

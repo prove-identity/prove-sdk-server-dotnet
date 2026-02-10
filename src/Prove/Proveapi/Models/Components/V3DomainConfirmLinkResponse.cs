@@ -11,12 +11,11 @@ namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
-    
+
     public class V3DomainConfirmLinkResponse
     {
-
         /// <summary>
-        /// Success
+        /// Success.
         /// </summary>
         [JsonProperty("success")]
         public bool Success { get; set; } = default!;

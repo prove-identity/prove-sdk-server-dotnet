@@ -68,5 +68,4 @@ namespace Prove.Proveapi.Models.Errors
            #pragma warning restore CS0618
         }
     }
-
 }

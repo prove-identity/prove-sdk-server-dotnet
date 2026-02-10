@@ -11,10 +11,9 @@ namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
-    
+
     public class V3UnifyResponse
     {
-
         /// <summary>
         /// The one-time use JWT for the client-side SDK.
         /// </summary>

@@ -11,13 +11,12 @@ namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
-    
+
     /// <summary>
     /// Response body for the Identity API GET method.
     /// </summary>
     public class V3GetIdentityResponse
     {
-
         /// <summary>
         /// If true, the identity is currently active.
         /// </summary>
@@ -73,7 +72,7 @@ namespace Prove.Proveapi.Models.Components
         public string? LineType { get; set; }
 
         /// <summary>
-        /// The number of the mobile phone. Refer to the Prove Pre-Fill with Mobile Auth and Prove Identity with Mobile Auth documentation for situations where this field is not required. US phone numbers can be passed in with or without a leading +1. Acceptable characters are: alphanumeric with symbols &apos;+&apos;.
+        /// The number of the mobile phone. Refer to the Prove Pre-Fill with Mobile Auth and Prove Identity with Mobile Auth documentation for situations where this field is not required. US phone numbers can be passed in with or without a leading +1. Acceptable characters are: alphanumeric with symbols '+'.
         /// </summary>
         [JsonProperty("phoneNumber")]
         public string PhoneNumber { get; set; } = default!;

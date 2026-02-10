@@ -19,53 +19,54 @@ namespace Prove.Proveapi
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     /// <summary>
     /// Prove APIs: This specification describes the Prove API.<br/>
-    /// 
-    /// <remarks>
     /// <br/>
     /// OpenAPI Spec - generated.
-    /// </remarks>
     /// </summary>
     public interface IProveAPI
     {
         public IV3 V3 { get; }
-        public IAuth Auth { get; }
+
         public IDomain Domain { get; }
+
         public IIdentity Identity { get; }
     }
 
-
     /// <summary>
     /// Prove APIs: This specification describes the Prove API.<br/>
-    /// 
-    /// <remarks>
     /// <br/>
     /// OpenAPI Spec - generated.
-    /// </remarks>
     /// </summary>
     public class ProveAPI: IProveAPI
     {
+        /// <summary>
+        /// The main SDK Configuration.
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
+        /// <summary>
+        /// The V3 sub-SDK.
+        /// </summary>
         public IV3 V3 { get; private set; }
-        public IAuth Auth { get; private set; }
+        /// <summary>
+        /// The Domain sub-SDK.
+        /// </summary>
         public IDomain Domain { get; private set; }
+        /// <summary>
+        /// The Identity sub-SDK.
+        /// </summary>
         public IIdentity Identity { get; private set; }
 
+        /// <summary>
+        /// Initializes a new instance of the SDK based on a <see cref="SDKConfig"/> configuration object.
+        /// </summary>
+        /// <param name="config">The SDK configuration object.</param>
         public ProveAPI(SDKConfig config)
         {
             SDKConfiguration = config;
             InitHooks();
 
             V3 = new V3(SDKConfiguration);
-
-            Auth = new Auth(SDKConfiguration);
 
             Domain = new Domain(SDKConfiguration);
 
@@ -82,7 +83,15 @@ namespace Prove.Proveapi
         /// <param name="urlParams">A dictionary of parameters to use for templating the serverUrl. Only used when serverUrl is provided.</param>
         /// <param name="client">A custom HTTP client implementation to use for making API requests. If not provided, the default SpeakeasyHttpClient will be used.</param>
         /// <param name="retryConfig">Configuration for retry behavior when API requests fail. Defines retry strategies, backoff policies, and maximum retry attempts.</param>
-        public ProveAPI(string? auth = null, Func<string>? authSource = null, SDKConfig.Server? server = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
+        public ProveAPI(
+            string? auth = null,
+            Func<string>? authSource = null,
+            SDKConfig.Server? server = null,
+            string? serverUrl = null,
+            Dictionary<string, string>? urlParams = null,
+            ISpeakeasyHttpClient? client = null,
+            RetryConfig? retryConfig = null
+        )
         {
 
             if (serverUrl != null)
@@ -115,8 +124,6 @@ namespace Prove.Proveapi
 
             V3 = new V3(SDKConfiguration);
 
-            Auth = new Auth(SDKConfiguration);
-
             Domain = new Domain(SDKConfiguration);
 
             Identity = new Identity(SDKConfiguration);
@@ -135,18 +142,27 @@ namespace Prove.Proveapi
             SDKConfiguration = config;
         }
 
+        /// <summary>
+        /// Builder class for constructing an instance of the SDK.
+        /// </summary>
         public class SDKBuilder
         {
             private SDKConfig _sdkConfig = new SDKConfig(client: new SpeakeasyHttpClient());
 
             public SDKBuilder() { }
 
+            /// <summary>
+            /// Overrides the default server by name.
+            /// </summary>
             public SDKBuilder WithServer(SDKConfig.Server server)
             {
                 _sdkConfig.ServerName = server;
                 return this;
             }
 
+            /// <summary>
+            /// Overrides the default server URL for the SDK.
+            /// </summary>
             public SDKBuilder WithServerUrl(string serverUrl, Dictionary<string, string>? serverVariables = null)
             {
                 if (serverVariables != null)
@@ -157,30 +173,45 @@ namespace Prove.Proveapi
                 return this;
             }
 
+            /// <summary>
+            /// Sets the authSource security parameter for the SDK.
+            /// </summary>
             public SDKBuilder WithAuthSource(Func<string> authSource)
             {
                 _sdkConfig.SecuritySource = () => new Prove.Proveapi.Models.Components.Security() { Auth = authSource() };
                 return this;
             }
 
+            /// <summary>
+            /// Sets the auth security parameter for the SDK.
+            /// </summary>
             public SDKBuilder WithAuth(string auth)
             {
                 _sdkConfig.SecuritySource = () => new Prove.Proveapi.Models.Components.Security() { Auth = auth };
                 return this;
             }
 
+            /// <summary>
+            /// Sets a custom HTTP client to be used by the SDK.
+            /// </summary>
             public SDKBuilder WithClient(ISpeakeasyHttpClient client)
             {
                 _sdkConfig.Client = client;
                 return this;
             }
 
+            /// <summary>
+            /// Sets the retry configuration for the SDK.
+            /// </summary>
             public SDKBuilder WithRetryConfig(RetryConfig retryConfig)
             {
                 _sdkConfig.RetryConfig = retryConfig;
                 return this;
             }
 
+            /// <summary>
+            /// Builds and returns the SDK instance.
+            /// </summary>
             public ProveAPI Build()
             {
               return new ProveAPI(_sdkConfig);

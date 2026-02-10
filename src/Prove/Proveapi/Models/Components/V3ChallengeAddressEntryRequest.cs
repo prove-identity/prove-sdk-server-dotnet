@@ -11,10 +11,9 @@ namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
-    
+
     public class V3ChallengeAddressEntryRequest
     {
-
         /// <summary>
         /// The street address of the individual.
         /// </summary>

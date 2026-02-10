@@ -11,10 +11,9 @@ namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
-    
+
     public class V3ValidateRequest
     {
-
         /// <summary>
         /// The unique ID that Prove generates for the flow. It is returned from the Start endpoint and cannot be reused outside of a single flow.
         /// </summary>

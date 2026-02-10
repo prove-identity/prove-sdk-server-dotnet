@@ -12,15 +12,14 @@ namespace Prove.Proveapi.Models.Requests
     using Newtonsoft.Json;
     using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
-    
+
     public class V3GetIdentitiesByPhoneNumberResponse
     {
-
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
         /// <summary>
-        /// V3GetIdentitiesByPhoneNumberResponse
+        /// V3GetIdentitiesByPhoneNumberResponse.
         /// </summary>
         public Models.Components.V3GetIdentitiesByPhoneNumberResponse? V3GetIdentitiesByPhoneNumberResponseValue { get; set; }
     }

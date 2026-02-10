@@ -11,10 +11,9 @@ namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
-    
+
     public class V3TokenResponse
     {
-
         /// <summary>
         /// The access token used to authenticate API calls.
         /// </summary>

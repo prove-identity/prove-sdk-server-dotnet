@@ -11,13 +11,12 @@ namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
-    
+
     /// <summary>
     /// Represents a single identity item in the response.
     /// </summary>
     public class PostBatchResultItem
     {
-
         /// <summary>
         /// An error message that is returned if the identity cannot be successfully enrolled.
         /// </summary>
