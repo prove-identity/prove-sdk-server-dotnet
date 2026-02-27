@@ -4,6 +4,7 @@
 
 ### Available Operations
 
+* [V3FetchRequest](#v3fetchrequest) - Fetch Identity Attributes
 * [V3BatchGetIdentities](#v3batchgetidentities) - Batch Get Identities
 * [V3EnrollIdentity](#v3enrollidentity) - Enroll Identity
 * [V3BatchEnrollIdentities](#v3batchenrollidentities) - Batch Enroll Identities
@@ -13,6 +14,50 @@
 * [V3CrossDomainIdentity](#v3crossdomainidentity) - Cross Domain Identity
 * [V3DeactivateIdentity](#v3deactivateidentity) - Deactivate Identity
 * [V3GetIdentitiesByPhoneNumber](#v3getidentitiesbyphonenumber) - Get Identities By Phone Number
+
+## V3FetchRequest
+
+Fetch actual identity attribute values (e.g., walletID) based on the customer ProveID and attribute UUID.
+
+### Example Usage
+
+<!-- UsageSnippet language="csharp" operationID="V3FetchRequest" method="get" path="/v3/fetch" -->
+```csharp
+using Prove.Proveapi;
+using Prove.Proveapi.Models.Components;
+
+var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+var res = await sdk.Identity.V3FetchRequestAsync(
+    proveId: "<id>",
+    attributeId: "<id>"
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                                                                                                    | Type                                                                                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                                                                                  |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ProveId`                                                                                                                                                                                                                                                                                    | *string*                                                                                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                                                                                           | A unique Prove-generated identifier for the enrolled identity (UUID).                                                                                                                                                                                                                        |
+| `AttributeId`                                                                                                                                                                                                                                                                                | *string*                                                                                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                                                                                           | A unique identifier for the identity attribute (UUID), as returned by the discover endpoint.                                                                                                                                                                                                 |
+| `ClientRequestId`                                                                                                                                                                                                                                                                            | *string*                                                                                                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                                                                                           | A client-generated unique ID for a specific session. This can be used to identify specific requests. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include Personally Identifiable Information (PII) in this field. |
+
+### Response
+
+**[V3FetchRequestResponse](../../Models/Requests/V3FetchRequestResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error404     | 404                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.APIException | 4XX, 5XX                                  | \*/\*                                     |
 
 ## V3BatchGetIdentities
 
@@ -65,6 +110,7 @@ Enrolls a single customer for monitoring using their phone number and unique ide
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
+using System.Collections.Generic;
 
 var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
@@ -72,6 +118,12 @@ V3EnrollIdentityRequest req = new V3EnrollIdentityRequest() {
     ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
     ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
     DeviceId = "bf9ea15d-7dfa-4bb4-a64c-6c26b53472fc",
+    IdentityAttributes = new List<IdentityAttribute>() {
+        new IdentityAttribute() {
+            AttributeType = "myWalletId",
+            AttributeValue = "token123",
+        },
+    },
     PhoneNumber = "2001001695",
 };
 

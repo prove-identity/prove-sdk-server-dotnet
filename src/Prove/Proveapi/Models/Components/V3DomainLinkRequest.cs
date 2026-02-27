@@ -11,10 +11,14 @@ namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
+    using System.Collections.Generic;
 
     public class V3DomainLinkRequest
     {
         [JsonProperty("pcid")]
         public string Pcid { get; set; } = default!;
+
+        [JsonProperty("scopes")]
+        public List<string>? Scopes { get; set; }
     }
 }

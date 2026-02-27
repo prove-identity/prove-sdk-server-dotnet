@@ -9,3 +9,4 @@
 | `AcceptedString`   | *string*           | :heavy_minus_sign: | N/A                |
 | `Name`             | *string*           | :heavy_minus_sign: | N/A                |
 | `Pcid`             | *string*           | :heavy_minus_sign: | N/A                |
+| `Scopes`           | List<*string*>     | :heavy_minus_sign: | N/A                |

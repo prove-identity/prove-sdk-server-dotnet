@@ -53,7 +53,12 @@ namespace Prove.Proveapi.Models.Components
         public string? IpAddress { get; set; }
 
         /// <summary>
-        /// The number of the mobile phone. Refer to the <a href="https://developer.prove.com/docs/prove-pre-fill-implementation-guide#implement-prove-pre-fill">Prove Pre-Fill Implementation guide</a> and <a href="https://developer.prove.com/docs/prove-identity-implementation-guide#implement-prove-identity">Prove Identity Implementation guide</a> for situations where this field is not required. Acceptable characters are: alphanumeric with symbols '+'.
+        /// The number of the mobile phone.<br/>
+        /// US and Canada phone numbers can be passed in with or without a leading `+1`.<br/>
+        /// International phone numbers require a leading `+` followed by the country code.<br/>
+        /// Refer to the <a href="https://developer.prove.com/docs/prove-pre-fill-implementation-guide#implement-prove-pre-fill">Prove Pre-Fill Implementation guide</a> and<br/>
+        /// <a href="https://developer.prove.com/docs/prove-identity-implementation-guide#implement-prove-identity">Prove Identity Implementation guide</a> for situations<br/>
+        /// where this field is not required. Acceptable characters are: alphanumeric with symbols '+'.
         /// </summary>
         [JsonProperty("phoneNumber")]
         public string? PhoneNumber { get; set; }

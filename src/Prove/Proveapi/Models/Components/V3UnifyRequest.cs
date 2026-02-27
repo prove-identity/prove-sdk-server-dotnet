@@ -72,7 +72,9 @@ namespace Prove.Proveapi.Models.Components
         public string? IpAddress { get; set; }
 
         /// <summary>
-        /// The mobile phone number. US phone numbers can be passed in with or without a leading `+1`. International phone numbers require a leading `+1`. Use the appropriate endpoint URL based on the region the number originates from. Acceptable characters are: alphanumeric with symbols '+'.<br/>
+        /// The mobile phone number. US and Canada phone numbers can be passed in with or without a leading `+1`.<br/>
+        /// International phone numbers require a leading `+` followed by the country code. Use the appropriate endpoint URL<br/>
+        /// based on the region the number originates from. Acceptable characters are: alphanumeric with symbols '+'.<br/>
         /// <br/>
         /// Required except when MobileAuth is used in US or a valid ProveID is provided.
         /// </summary>

@@ -28,6 +28,8 @@ namespace Prove.Proveapi
     {
         public IV3 V3 { get; }
 
+        public IAuth Auth { get; }
+
         public IDomain Domain { get; }
 
         public IIdentity Identity { get; }
@@ -49,6 +51,10 @@ namespace Prove.Proveapi
         /// </summary>
         public IV3 V3 { get; private set; }
         /// <summary>
+        /// The Auth sub-SDK.
+        /// </summary>
+        public IAuth Auth { get; private set; }
+        /// <summary>
         /// The Domain sub-SDK.
         /// </summary>
         public IDomain Domain { get; private set; }
@@ -67,6 +73,8 @@ namespace Prove.Proveapi
             InitHooks();
 
             V3 = new V3(SDKConfiguration);
+
+            Auth = new Auth(SDKConfiguration);
 
             Domain = new Domain(SDKConfiguration);
 
@@ -123,6 +131,8 @@ namespace Prove.Proveapi
             InitHooks();
 
             V3 = new V3(SDKConfiguration);
+
+            Auth = new Auth(SDKConfiguration);
 
             Domain = new Domain(SDKConfiguration);
 

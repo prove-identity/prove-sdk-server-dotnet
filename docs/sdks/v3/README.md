@@ -7,6 +7,7 @@
 * [V3TokenRequest](#v3tokenrequest) - Request OAuth Token
 * [V3ChallengeRequest](#v3challengerequest) - Submit Challenge
 * [V3CompleteRequest](#v3completerequest) - Complete Flow
+* [V3DeviceRevokeRequest](#v3devicerevokerequest) - Revoke Device
 * [V3StartRequest](#v3startrequest) - Start Flow
 * [V3UnifyRequest](#v3unifyrequest) - Initiate Possession Check
 * [V3UnifyBindRequest](#v3unifybindrequest) - Bind Prove Key
@@ -398,6 +399,50 @@ var res = await sdk.V3.V3CompleteRequestAsync(req);
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.APIException | 4XX, 5XX                                  | \*/\*                                     |
 
+## V3DeviceRevokeRequest
+
+This endpoint allows you to revoke a Prove Key device, marking it as inactive
+so it can no longer be used in an auth flow.
+
+### Example Usage
+
+<!-- UsageSnippet language="csharp" operationID="V3DeviceRevokeRequest" method="post" path="/v3/device/revoke" -->
+```csharp
+using Prove.Proveapi;
+using Prove.Proveapi.Models.Components;
+
+var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
+
+V3DeviceRevokeRequest req = new V3DeviceRevokeRequest() {
+    ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
+    DeviceId = "bf9ea15d-7dfa-4bb4-a64c-6c26b53472fc",
+};
+
+var res = await sdk.V3.V3DeviceRevokeRequestAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `request`                                                                 | [V3DeviceRevokeRequest](../../Models/Components/V3DeviceRevokeRequest.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
+
+### Response
+
+**[V3DeviceRevokeRequestResponse](../../Models/Requests/V3DeviceRevokeRequestResponse.md)**
+
+### Errors
+
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.APIException | 4XX, 5XX                                  | \*/\*                                     |
+
 ## V3StartRequest
 
 This endpoint allows you to start the solution flow.
@@ -677,6 +722,7 @@ This endpoint allows you to verify a user depending on your particular use case.
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
+using System.Collections.Generic;
 
 var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
@@ -686,6 +732,12 @@ V3VerifyRequest req = new V3VerifyRequest() {
     ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
     EmailAddress = "ecoldman1h@storify.com",
     FirstName = "Elena",
+    IdentityAttributes = new List<IdentityAttribute>() {
+        new IdentityAttribute() {
+            AttributeType = "walletId",
+            AttributeValue = "wallet123",
+        },
+    },
     IpAddress = "192.168.1.1",
     LastName = "Coldman",
     PhoneNumber = "2001004053",

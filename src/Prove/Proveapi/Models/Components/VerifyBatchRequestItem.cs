@@ -51,7 +51,9 @@ namespace Prove.Proveapi.Models.Components
         public string LastName { get; set; } = default!;
 
         /// <summary>
-        /// The mobile phone number. US phone numbers can be passed in with or without a leading `+1`. International phone numbers require a leading `+1`. Use the appropriate endpoint URL based on the region the number originates from. Acceptable characters are: alphanumeric with symbols '+'.
+        /// The mobile phone number. US and Canada phone numbers can be passed in with or without a leading `+1`.<br/>
+        /// International phone numbers require a leading `+` followed by the country code. Use the appropriate endpoint URL<br/>
+        /// based on the region the number originates from. Acceptable characters are: alphanumeric with symbols '+'.
         /// </summary>
         [JsonProperty("phoneNumber")]
         public string PhoneNumber { get; set; } = default!;
