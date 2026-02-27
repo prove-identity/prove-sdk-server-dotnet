@@ -106,6 +106,12 @@ var res = await sdk.V3.V3TokenRequestAsync(req);
 <details open>
 <summary>Available methods</summary>
 
+### [Auth](docs/sdks/auth/README.md)
+
+* [AuthContinueRequest](docs/sdks/auth/README.md#authcontinuerequest) - AuthContinue /v1/server/auth/continue
+* [AuthFinishRequest](docs/sdks/auth/README.md#authfinishrequest) - AuthFinish /v1/server/auth/finish
+* [AuthStartRequest](docs/sdks/auth/README.md#authstartrequest) - AuthStart /v1/server/auth/start
+
 ### [Domain](docs/sdks/domain/README.md)
 
 * [V3DomainConfirmLinkRequest](docs/sdks/domain/README.md#v3domainconfirmlinkrequest) - Confirm a domain link request
@@ -116,6 +122,7 @@ var res = await sdk.V3.V3TokenRequestAsync(req);
 
 ### [Identity](docs/sdks/identity/README.md)
 
+* [V3FetchRequest](docs/sdks/identity/README.md#v3fetchrequest) - Fetch Identity Attributes
 * [V3BatchGetIdentities](docs/sdks/identity/README.md#v3batchgetidentities) - Batch Get Identities
 * [V3EnrollIdentity](docs/sdks/identity/README.md#v3enrollidentity) - Enroll Identity
 * [V3BatchEnrollIdentities](docs/sdks/identity/README.md#v3batchenrollidentities) - Batch Enroll Identities
@@ -131,6 +138,7 @@ var res = await sdk.V3.V3TokenRequestAsync(req);
 * [V3TokenRequest](docs/sdks/v3/README.md#v3tokenrequest) - Request OAuth Token
 * [V3ChallengeRequest](docs/sdks/v3/README.md#v3challengerequest) - Submit Challenge
 * [V3CompleteRequest](docs/sdks/v3/README.md#v3completerequest) - Complete Flow
+* [V3DeviceRevokeRequest](docs/sdks/v3/README.md#v3devicerevokerequest) - Revoke Device
 * [V3StartRequest](docs/sdks/v3/README.md#v3startrequest) - Start Flow
 * [V3UnifyRequest](docs/sdks/v3/README.md#v3unifyrequest) - Initiate Possession Check
 * [V3UnifyBindRequest](docs/sdks/v3/README.md#v3unifybindrequest) - Bind Prove Key
@@ -211,16 +219,17 @@ catch (System.Net.Http.HttpRequestException ex)
 
 **Primary exceptions:**
 * [`ProveAPIError`](./src/Prove/Proveapi/Models/Errors/ProveAPIError.cs): The base class for HTTP error responses.
-  * [`Error400`](./src/Prove/Proveapi/Models/Errors/Error400.cs): Bad Request. The server cannot process the request due to a client error. Status code `400`.
-  * [`Error401`](./src/Prove/Proveapi/Models/Errors/Error401.cs): Unauthorized. Authentication is required and has failed or has not been provided. Status code `401`.
+  * [`Error400`](./src/Prove/Proveapi/Models/Errors/Error400.cs): Error400 is a custom error for HTTP 400. This is used to support distinguishing between HTTP 400 and 500 in Speakeasy SDKs. Status code `400`.
   * [`Error`](./src/Prove/Proveapi/Models/Errors/Error.cs): Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Status code `500`.
+  * [`Error401`](./src/Prove/Proveapi/Models/Errors/Error401.cs): Unauthorized. Authentication is required and has failed or has not been provided. Status code `401`. *
   * [`Error403`](./src/Prove/Proveapi/Models/Errors/Error403.cs): Forbidden. The server understood the request but refuses to authorize it. Status code `403`. *
 
-<details><summary>Less common exceptions (2)</summary>
+<details><summary>Less common exceptions (3)</summary>
 
 * [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
 
 * Inheriting from [`ProveAPIError`](./src/Prove/Proveapi/Models/Errors/ProveAPIError.cs):
+  * [`Error404`](./src/Prove/Proveapi/Models/Errors/Error404.cs): Not Found. The server cannot find the requested resource. Status code `404`. Applicable to 1 of 29 methods.*
   * [`ResponseValidationError`](./src/Prove/Proveapi/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
 </details>
 

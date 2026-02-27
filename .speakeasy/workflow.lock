@@ -1,21 +1,21 @@
-speakeasyVersion: 1.709.3
+speakeasyVersion: 1.731.4
 sources:
     Proveapi-OAS:
         sourceNamespace: proveapi-oas
-        sourceRevisionDigest: sha256:7dc55b087e8de43160d8d275555e28038528c28d85b04ca6c5787cfdf3b06ac0
-        sourceBlobDigest: sha256:5f2f016abac592671c7ba6935e3c72a7bf6ea1566e2b1af4ffcee2cdd096e3e5
+        sourceRevisionDigest: sha256:30cf0f9f028fa2dbb99a1fb701120f902563b159b045dfe2ba7a5777a86e8f15
+        sourceBlobDigest: sha256:f787d0ea3418e23b45d9f896010149709e16c3c7a0ca60d086aecb4e80813e95
         tags:
             - latest
-            - speakeasy-sdk-regen-1769042240
+            - speakeasy-sdk-regen-1772193780
             - 1.0.0
 targets:
     proveapi:
         source: Proveapi-OAS
         sourceNamespace: proveapi-oas
-        sourceRevisionDigest: sha256:7dc55b087e8de43160d8d275555e28038528c28d85b04ca6c5787cfdf3b06ac0
-        sourceBlobDigest: sha256:5f2f016abac592671c7ba6935e3c72a7bf6ea1566e2b1af4ffcee2cdd096e3e5
+        sourceRevisionDigest: sha256:30cf0f9f028fa2dbb99a1fb701120f902563b159b045dfe2ba7a5777a86e8f15
+        sourceBlobDigest: sha256:f787d0ea3418e23b45d9f896010149709e16c3c7a0ca60d086aecb4e80813e95
         codeSamplesNamespace: proveapi-oas-csharp-code-samples
-        codeSamplesRevisionDigest: sha256:616808d4c43e0279e3bc2a54bceb3e7eb4d574443cb1bb26aff602d82a307ff8
+        codeSamplesRevisionDigest: sha256:ab3ce0d879cdc06c501a89b268859ae82f231dff0e76ab4ed6e2dceaa7007cea
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

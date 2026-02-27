@@ -1,0 +1,9 @@
+# AuthFinishResponseError
+
+
+## Fields
+
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `Code`                                                                             | *long*                                                                             | :heavy_minus_sign:                                                                 | Code is an internal error code that describes the problem category of the request. | 10004                                                                              |
+| `Message`                                                                          | *string*                                                                           | :heavy_check_mark:                                                                 | Message is an error message describing the problem with the request.               | device authentication missing                                                      |

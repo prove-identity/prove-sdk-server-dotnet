@@ -10,7 +10,9 @@
 namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
+    using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Request body for the V3 Enroll Identity API.
@@ -36,7 +38,14 @@ namespace Prove.Proveapi.Models.Components
         public string? DeviceId { get; set; }
 
         /// <summary>
-        /// The number of the consumer being enrolled. US phone numbers can be passed in with or without a leading +1. Acceptable characters are: alphanumeric with symbols '+'.
+        /// Attributes is a list of objects contains attribute Type and Value.
+        /// </summary>
+        [JsonProperty("identityAttributes")]
+        public List<IdentityAttribute>? IdentityAttributes { get; set; }
+
+        /// <summary>
+        /// The number of the consumer being enrolled. US and Canada phone numbers can be passed in with or without a leading `+1`.<br/>
+        /// International phone numbers require a leading `+` followed by the country code. Acceptable characters are: alphanumeric with symbols '+'.
         /// </summary>
         [JsonProperty("phoneNumber")]
         public string PhoneNumber { get; set; } = default!;

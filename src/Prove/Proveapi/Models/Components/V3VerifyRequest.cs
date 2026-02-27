@@ -12,6 +12,7 @@ namespace Prove.Proveapi.Models.Components
     using Newtonsoft.Json;
     using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
+    using System.Collections.Generic;
 
     public class V3VerifyRequest
     {
@@ -46,6 +47,12 @@ namespace Prove.Proveapi.Models.Components
         public string? FirstName { get; set; }
 
         /// <summary>
+        /// An optional list of identity attributes.
+        /// </summary>
+        [JsonProperty("identityAttributes")]
+        public List<IdentityAttribute>? IdentityAttributes { get; set; }
+
+        /// <summary>
         /// The public IP address of the session of the individual. Acceptable characters.
         /// </summary>
         [JsonProperty("ipAddress")]
@@ -58,7 +65,9 @@ namespace Prove.Proveapi.Models.Components
         public string? LastName { get; set; }
 
         /// <summary>
-        /// The mobile phone number. US phone numbers can be passed in with or without a leading `+1`. International phone numbers require a leading `+1`. Use the appropriate endpoint URL based on the region the number originates from. Acceptable characters are: alphanumeric with symbols '+'.
+        /// The mobile phone number. US and Canada phone numbers can be passed in with or without a leading `+1`.<br/>
+        /// International phone numbers require a leading `+` followed by the country code. Use the appropriate endpoint URL<br/>
+        /// based on the region the number originates from. Acceptable characters are: alphanumeric with symbols '+'.
         /// </summary>
         [JsonProperty("phoneNumber")]
         public string PhoneNumber { get; set; } = default!;

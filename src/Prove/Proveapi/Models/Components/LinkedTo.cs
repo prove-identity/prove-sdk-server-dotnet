@@ -11,6 +11,7 @@ namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
+    using System.Collections.Generic;
 
     public class LinkedTo
     {
@@ -25,5 +26,8 @@ namespace Prove.Proveapi.Models.Components
 
         [JsonProperty("pcid")]
         public string? Pcid { get; set; }
+
+        [JsonProperty("scopes")]
+        public List<string>? Scopes { get; set; }
     }
 }

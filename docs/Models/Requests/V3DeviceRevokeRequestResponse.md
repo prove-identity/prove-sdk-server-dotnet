@@ -1,0 +1,10 @@
+# V3DeviceRevokeRequestResponse
+
+
+## Fields
+
+| Field                                                                       | Type                                                                        | Required                                                                    | Description                                                                 | Example                                                                     |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `HttpMeta`                                                                  | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                     | :heavy_check_mark:                                                          | N/A                                                                         |                                                                             |
+| `V3DeviceRevokeResponse`                                                    | [V3DeviceRevokeResponse](../../Models/Components/V3DeviceRevokeResponse.md) | :heavy_minus_sign:                                                          | Successful Request.                                                         | {<br/>"success": true<br/>}                                                 |
+| `Headers`                                                                   | Dictionary<String, List<*string*>>                                          | :heavy_check_mark:                                                          | N/A                                                                         |                                                                             |

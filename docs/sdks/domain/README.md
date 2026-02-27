@@ -94,11 +94,16 @@ Create a request to connect the requested domain to the domain the request is ma
 ```csharp
 using Prove.Proveapi;
 using Prove.Proveapi.Models.Components;
+using System.Collections.Generic;
 
 var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 V3DomainLinkRequest req = new V3DomainLinkRequest() {
     Pcid = "pcid",
+    Scopes = new List<string>() {
+        "scopes",
+        "scopes",
+    },
 };
 
 var res = await sdk.Domain.V3DomainLinkRequestAsync(req);
