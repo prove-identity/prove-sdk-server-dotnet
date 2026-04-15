@@ -5,15 +5,15 @@ management:
   docVersion: 1.0.0
   speakeasyVersion: 1.761.5
   generationVersion: 2.879.13
-  releaseVersion: 1.6.3
-  configChecksum: c3067413e0c3a51116c82499f46e4f77
+  releaseVersion: 1.6.4
+  configChecksum: 5a6f444be17e670236ecb05926fe85f2
   repoURL: https://github.com/prove-identity/prove-sdk-server-dotnet.git
   installationURL: https://github.com/prove-identity/prove-sdk-server-dotnet
   published: true
 persistentEdits:
-  generation_id: e85d757e-67bb-4986-b5b6-f552a98403f9
-  pristine_commit_hash: 1ed25846818e1150aea69c00a9f021d6902d2ec1
-  pristine_tree_hash: 7315aaf4f7851b026a2ccda69ef64280d2f93aeb
+  generation_id: fa05a13d-6f4f-418c-b91d-6f8ec0f72f2b
+  pristine_commit_hash: 6a5787bf39b686ea58d5f125ea1d703f8e846a60
+  pristine_tree_hash: 0845069d42f870d7869c9ff5563c2d14651b55eb
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -1692,16 +1692,16 @@ trackedFiles:
     pristine_git_object: ef2fe0508f0b797a55220030c1d501d6ce6725b7
   src/Prove/Proveapi/Prove.Proveapi.csproj:
     id: 0c514bb0cb20
-    last_write_checksum: sha1:31006f6484b9e79f597bbf469cae0000cecf0d2d
-    pristine_git_object: 4ec16a2ace419491876447bd268413d0cc161bc2
+    last_write_checksum: sha1:eb3ea9f1f5370dd2db23b833114b3070877c7108
+    pristine_git_object: c7ecb8ec111496b836d856aeaef727cd01eb4196
   src/Prove/Proveapi/ProveAPI.cs:
     id: ddd3d4d675e9
     last_write_checksum: sha1:760c93e9ce5e574fa2cb5b54dc15f7b83be88fd7
     pristine_git_object: 9213809100ab68b53698ca6fd655d9f3a55bc92f
   src/Prove/Proveapi/SDKConfig.cs:
     id: aa1d0c1aff23
-    last_write_checksum: sha1:15d4574ea6a94bf6576a97fddf7cf18a4ef80354
-    pristine_git_object: 220ceadd728f4bbebfbb5837e4e1f053875af656
+    last_write_checksum: sha1:ec4d4bb6ee5fd9c1d3ca30eb7060ee57a4c06aae
+    pristine_git_object: 7e04781b5c92994354f359b3a0482b7f112da7bc
   src/Prove/Proveapi/Utils/AnyDeserializer.cs:
     id: 2fe7a3fb3c41
     last_write_checksum: sha1:1e01b18e0f06bf80c023bd22f4f13cb22b7b2ddf
@@ -1712,8 +1712,8 @@ trackedFiles:
     pristine_git_object: 5dda728a64f84b1a39ea6f68729ffed1af4bf9c2
   src/Prove/Proveapi/Utils/Constants.cs:
     id: 0c5fbf7d5761
-    last_write_checksum: sha1:d0e92fb715901720f6c2d188b2a15114fe34fea4
-    pristine_git_object: aa2a1bb17fe440c0fbadd768ecc2e82a012fbebd
+    last_write_checksum: sha1:44ff565ddfd864fcb5bf752cf73e44aa5d02c749
+    pristine_git_object: 8324f185ffb74813deacfb225cf73af1547a232f
   src/Prove/Proveapi/Utils/DecimalStrConverter.cs:
     id: b2c99ef932d2
     last_write_checksum: sha1:6a96dd66fca006bff7f9975b2fcea0000697a07a
@@ -2390,7 +2390,6 @@ examples:
           application/json: {"code": 1000, "message": "error occurred"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes:\n* `ProveApi.Identity.V3EnrollIdentity()`: \n  *  `request.ClientHumanId` **Added**\n  *  `response` **Changed** (Breaking ⚠️)\n* `ProveApi.V3.V3VerifyRequest()`: \n  *  `request.VerificationType` **Changed** (Breaking ⚠️)\n* `ProveApi.Identity.V3BatchGetIdentities()`:  `response.results[]` **Changed** (Breaking ⚠️)\n* `ProveApi.Identity.V3BatchEnrollIdentities()`:  `response.results[]` **Changed** (Breaking ⚠️)\n* `ProveApi.Identity.V3DisenrollIdentity()`:  `request` **Changed** (Breaking ⚠️)\n* `ProveApi.Identity.V3GetIdentity()`: \n  *  `request` **Changed** (Breaking ⚠️)\n  *  `response` **Changed** (Breaking ⚠️)\n* `ProveApi.Identity.V3ActivateIdentity()`:  `request` **Changed** (Breaking ⚠️)\n* `ProveApi.Identity.V3DeactivateIdentity()`:  `request` **Changed** (Breaking ⚠️)\n* `ProveApi.Identity.V3GetIdentitiesByPhoneNumber()`:  `response.items[]` **Changed** (Breaking ⚠️)\n* `ProveApi.V3.V3DeviceRevokeRequest()`:  `error.status[404]` **Added**\n* `ProveApi.V3.V3UnifyRequest()`: \n  *  `request.MobileAuthEnabled` **Added**\n* `ProveApi.Domain.V3DomainIdRequest()`:  `response.issuerId` **Added**\n* `ProveApi.Identity.V3DiscoverRequest()`: **Added**\n"
 generatedFiles:
   - .gitattributes
   - NUGET.md

@@ -14,7 +14,7 @@ targets:
         sourceRevisionDigest: sha256:d9819419d8bb21f42d3c8b2b4f3ef7d824c7ad14fe47aeebed53157f14d6095f
         sourceBlobDigest: sha256:d1ae3c5d882f665d578d7c316c282b61986ae76f82f56bd078848a64f80fe0af
         codeSamplesNamespace: proveapi-oas-csharp-code-samples
-        codeSamplesRevisionDigest: sha256:3b69ad1fb4b023689aaa80c4aba2ca111946cdae9c95599ccb9ddadbe7a9d82e
+        codeSamplesRevisionDigest: sha256:237d1f07af5b8b111ebf66bbd72a255d38a5a19f98b4c613ae730c6e9ab24641
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
