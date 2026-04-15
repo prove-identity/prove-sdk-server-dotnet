@@ -72,6 +72,13 @@ namespace Prove.Proveapi.Models.Components
         public string? IpAddress { get; set; }
 
         /// <summary>
+        /// A workaround input parameter to indicate if Mobile Auth should be enabled for this Unified Auth session.<br/>
+        /// This input parameter should not be communicated to any customer except Bumble.
+        /// </summary>
+        [JsonProperty("mobileAuthEnabled")]
+        public bool? MobileAuthEnabled { get; set; }
+
+        /// <summary>
         /// The mobile phone number. US and Canada phone numbers can be passed in with or without a leading `+1`.<br/>
         /// International phone numbers require a leading `+` followed by the country code. Use the appropriate endpoint URL<br/>
         /// based on the region the number originates from. Acceptable characters are: alphanumeric with symbols '+'.<br/>

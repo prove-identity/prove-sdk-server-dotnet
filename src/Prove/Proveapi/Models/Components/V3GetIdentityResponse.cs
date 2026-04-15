@@ -60,12 +60,6 @@ namespace Prove.Proveapi.Models.Components
         public string? DeviceId { get; set; }
 
         /// <summary>
-        /// A unique Prove-generated identifier for the enrolled identity. This is a UUID that can be used to reference the identity in future requests.
-        /// </summary>
-        [JsonProperty("identityId")]
-        public string? IdentityId { get; set; }
-
-        /// <summary>
         /// The type of line associated with this identity/mobile number.
         /// </summary>
         [JsonProperty("lineType")]
@@ -78,5 +72,11 @@ namespace Prove.Proveapi.Models.Components
         /// </summary>
         [JsonProperty("phoneNumber")]
         public string PhoneNumber { get; set; } = default!;
+
+        /// <summary>
+        /// A unique Prove-generated identifier for the enrolled identity. This is a UUID that can be used to reference the identity in future requests.
+        /// </summary>
+        [JsonProperty("proveId")]
+        public string? ProveId { get; set; }
     }
 }

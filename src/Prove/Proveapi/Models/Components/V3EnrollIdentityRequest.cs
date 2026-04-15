@@ -26,6 +26,12 @@ namespace Prove.Proveapi.Models.Components
         public string? ClientCustomerId { get; set; }
 
         /// <summary>
+        /// An optional client-generated unique ID our Enterprise customer inputs for that consumer across business lines. If the Enterprise customer has been able to identify a consumer across business lines and has a unique identifier for the consumer, they would input this value to Prove. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include personally identifiable information (PII) in this field.
+        /// </summary>
+        [JsonProperty("clientHumanId")]
+        public string? ClientHumanId { get; set; }
+
+        /// <summary>
         /// A client-generated unique ID for a specific session. This can be used to identify specific requests. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include Personally Identifiable Information (PII) in this field.
         /// </summary>
         [JsonProperty("clientRequestId")]

@@ -10,14 +10,16 @@
 namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
+    using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
+    using System.Collections.Generic;
 
-    public class GetBatchIdentityItem
+    public class V3DiscoverResponse
     {
         /// <summary>
-        /// A unique Prove-generated identifier for the enrolled identity. This is a UUID that can be used to reference the identity in future requests.
+        /// A list of discovered attributes for the given ProveID.
         /// </summary>
-        [JsonProperty("proveId")]
-        public string? ProveId { get; set; }
+        [JsonProperty("results")]
+        public List<Result>? Results { get; set; }
     }
 }

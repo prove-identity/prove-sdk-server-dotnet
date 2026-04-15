@@ -16,7 +16,7 @@ namespace Prove.Proveapi.Models.Errors
     /// <summary>
     /// Default API Exception.
     /// </summary>
-    public class APIException : ProveAPIError
+    public class APIException : BaseException
     {
         /// <summary>
         /// Default API exception.

@@ -440,6 +440,7 @@ var res = await sdk.V3.V3DeviceRevokeRequestAsync(req);
 | Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
+| Prove.Proveapi.Models.Errors.Error404     | 404                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
 | Prove.Proveapi.Models.Errors.APIException | 4XX, 5XX                                  | \*/\*                                     |
 
@@ -516,6 +517,7 @@ V3UnifyRequest req = new V3UnifyRequest() {
     EmailAddress = "sbutrimovichb@who.int",
     FinalTargetUrl = "https://www.example.com/landing-page",
     IpAddress = "192.168.0.1",
+    MobileAuthEnabled = true,
     PhoneNumber = "2001004011",
     PossessionType = "mobile",
     ProveId = "a07b94ce-218c-461f-beda-d92480e40f61",

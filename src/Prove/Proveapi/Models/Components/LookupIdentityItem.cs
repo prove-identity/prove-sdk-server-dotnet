@@ -60,12 +60,6 @@ namespace Prove.Proveapi.Models.Components
         public string? DeviceId { get; set; }
 
         /// <summary>
-        /// A Prove-generated unique ID for a specific identity.
-        /// </summary>
-        [JsonProperty("identityId")]
-        public string? IdentityId { get; set; }
-
-        /// <summary>
         /// The type of line associated with this identity/mobile number.
         /// </summary>
         [JsonProperty("lineType")]
@@ -78,5 +72,11 @@ namespace Prove.Proveapi.Models.Components
         /// </summary>
         [JsonProperty("phoneNumber")]
         public string PhoneNumber { get; set; } = default!;
+
+        /// <summary>
+        /// A Prove-generated unique ID for a specific identity.
+        /// </summary>
+        [JsonProperty("proveId")]
+        public string? ProveId { get; set; }
     }
 }

@@ -88,6 +88,7 @@ namespace Prove.Proveapi
         /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
         /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
         /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">Not Found. The server cannot find the requested resource. Thrown when the API returns a 404 response.</exception>
         /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
         public  Task<V3DeviceRevokeRequestResponse> V3DeviceRevokeRequestAsync(V3DeviceRevokeRequest? request = null);
@@ -804,6 +805,7 @@ namespace Prove.Proveapi
         /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
         /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
         /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">Not Found. The server cannot find the requested resource. Thrown when the API returns a 404 response.</exception>
         /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
         public async  Task<V3DeviceRevokeRequestResponse> V3DeviceRevokeRequestAsync(
@@ -954,6 +956,26 @@ namespace Prove.Proveapi
                     }
 
                     throw new Error403(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 404)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error404Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error404Payload>(httpResponseBody, NullValueHandling.Include);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error404Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error404(payload, httpRequest, httpResponse, httpResponseBody);
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());

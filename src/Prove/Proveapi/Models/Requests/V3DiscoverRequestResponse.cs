@@ -7,17 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 #nullable enable
-namespace Prove.Proveapi.Models.Components
+namespace Prove.Proveapi.Models.Requests
 {
     using Newtonsoft.Json;
+    using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
+    using System.Collections.Generic;
 
-    public class GetBatchIdentityItem
+    public class V3DiscoverRequestResponse
     {
+        [JsonProperty("-")]
+        public HTTPMetadata HttpMeta { get; set; } = default!;
+
         /// <summary>
-        /// A unique Prove-generated identifier for the enrolled identity. This is a UUID that can be used to reference the identity in future requests.
+        /// Successful Request.
         /// </summary>
-        [JsonProperty("proveId")]
-        public string? ProveId { get; set; }
+        public V3DiscoverResponse? V3DiscoverResponse { get; set; }
+
+        public Dictionary<string, List<string>> Headers { get; set; } = new Dictionary<string, List<string>>();
     }
 }

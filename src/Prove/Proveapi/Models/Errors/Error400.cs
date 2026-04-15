@@ -33,7 +33,7 @@ namespace Prove.Proveapi.Models.Errors
     /// Error400 is a custom error for HTTP 400. This is used to support distinguishing<br/>
     /// between HTTP 400 and 500 in Speakeasy SDKs.
     /// </summary>
-    public class Error400 : ProveAPIError
+    public class Error400 : BaseException
     {
         /// <summary>
         ///  The original data that was passed to this exception.

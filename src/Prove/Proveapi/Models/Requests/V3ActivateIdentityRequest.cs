@@ -17,8 +17,8 @@ namespace Prove.Proveapi.Models.Requests
         /// <summary>
         /// A Prove-generated unique ID for a specific identity.
         /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=identityId")]
-        public string IdentityId { get; set; } = default!;
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=proveId")]
+        public string ProveId { get; set; } = default!;
 
         [SpeakeasyMetadata("request:mediaType=application/json")]
         public Models.Components.V3ActivateIdentityRequest? V3ActivateIdentityRequestValue { get; set; }

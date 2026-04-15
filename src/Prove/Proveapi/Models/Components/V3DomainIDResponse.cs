@@ -15,6 +15,12 @@ namespace Prove.Proveapi.Models.Components
     public class V3DomainIDResponse
     {
         /// <summary>
+        /// Issuer ID.
+        /// </summary>
+        [JsonProperty("issuerId")]
+        public string IssuerId { get; set; } = default!;
+
+        /// <summary>
         /// Customer friendly name.
         /// </summary>
         [JsonProperty("name")]

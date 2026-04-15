@@ -26,7 +26,7 @@ namespace Prove.Proveapi.Models.Components
         /// <summary>
         /// A unique Prove-generated identifier for the enrolled identity. This is a UUID that can be used to reference the identity in future requests.
         /// </summary>
-        [JsonProperty("identityId")]
-        public string? IdentityId { get; set; }
+        [JsonProperty("proveId")]
+        public string? ProveId { get; set; }
     }
 }
