@@ -12,12 +12,18 @@ namespace Prove.Proveapi.Models.Components
     using Newtonsoft.Json;
     using Prove.Proveapi.Utils;
 
-    public class GetBatchIdentityItem
+    public class Result
     {
         /// <summary>
-        /// A unique Prove-generated identifier for the enrolled identity. This is a UUID that can be used to reference the identity in future requests.
+        /// The unique ID for the attribute value.
         /// </summary>
-        [JsonProperty("proveId")]
-        public string? ProveId { get; set; }
+        [JsonProperty("attributeId")]
+        public string? AttributeId { get; set; }
+
+        /// <summary>
+        /// The human-readable name for the issuer of the attribute.
+        /// </summary>
+        [JsonProperty("issuerId")]
+        public string? IssuerId { get; set; }
     }
 }

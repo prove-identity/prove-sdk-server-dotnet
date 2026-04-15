@@ -16,7 +16,7 @@ namespace Prove.Proveapi.Models.Errors
     /// <summary>
     /// Raised if the response data could not be deserialized into the expected model.
     /// </summary>
-    public class ResponseValidationException : ProveAPIError
+    public class ResponseValidationException : BaseException
     {
 
         public ResponseValidationException(

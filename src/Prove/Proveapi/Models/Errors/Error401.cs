@@ -29,7 +29,7 @@ namespace Prove.Proveapi.Models.Errors
         public string Message { get; set; } = default!;
     }
 
-    public class Error401 : ProveAPIError
+    public class Error401 : BaseException
     {
         /// <summary>
         ///  The original data that was passed to this exception.

@@ -30,9 +30,9 @@ namespace Prove.Proveapi
 
         public IAuth Auth { get; }
 
-        public IDomain Domain { get; }
-
         public IIdentity Identity { get; }
+
+        public IDomain Domain { get; }
     }
 
     /// <summary>
@@ -55,13 +55,13 @@ namespace Prove.Proveapi
         /// </summary>
         public IAuth Auth { get; private set; }
         /// <summary>
-        /// The Domain sub-SDK.
-        /// </summary>
-        public IDomain Domain { get; private set; }
-        /// <summary>
         /// The Identity sub-SDK.
         /// </summary>
         public IIdentity Identity { get; private set; }
+        /// <summary>
+        /// The Domain sub-SDK.
+        /// </summary>
+        public IDomain Domain { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the SDK based on a <see cref="SDKConfig"/> configuration object.
@@ -76,9 +76,9 @@ namespace Prove.Proveapi
 
             Auth = new Auth(SDKConfiguration);
 
-            Domain = new Domain(SDKConfiguration);
-
             Identity = new Identity(SDKConfiguration);
+
+            Domain = new Domain(SDKConfiguration);
         }
 
         /// <summary>
@@ -134,9 +134,9 @@ namespace Prove.Proveapi
 
             Auth = new Auth(SDKConfiguration);
 
-            Domain = new Domain(SDKConfiguration);
-
             Identity = new Identity(SDKConfiguration);
+
+            Domain = new Domain(SDKConfiguration);
         }
 
         private void InitHooks()

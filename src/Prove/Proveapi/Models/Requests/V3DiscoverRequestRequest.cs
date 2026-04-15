@@ -11,12 +11,12 @@ namespace Prove.Proveapi.Models.Requests
 {
     using Prove.Proveapi.Utils;
 
-    public class V3DisenrollIdentityRequest
+    public class V3DiscoverRequestRequest
     {
         /// <summary>
-        /// A Prove-generated unique ID for a specific identity.
+        /// A unique Prove-generated identifier for the enrolled identity (UUID).
         /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=proveId")]
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=proveId")]
         public string ProveId { get; set; } = default!;
 
         /// <summary>

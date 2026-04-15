@@ -17,7 +17,7 @@ namespace Prove.Proveapi.Models.Errors
     /// <summary>
     /// Base Exception for API Errors.
     /// </summary>
-    public class ProveAPIError : Exception
+    public class BaseException : Exception
     {
         /// <summary>
         /// Error Message
@@ -39,14 +39,14 @@ namespace Prove.Proveapi.Models.Errors
         /// </summary>
         public string Body { get; }
 
-        public ProveAPIError(
+        public BaseException(
             string message,
             HttpRequestMessage request,
             HttpResponseMessage response,
             string body
         ) : this(message, request, response, body, null) {}
 
-        public ProveAPIError(
+        public BaseException(
             string message,
             HttpRequestMessage request,
             HttpResponseMessage response,

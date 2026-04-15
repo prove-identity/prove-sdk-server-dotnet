@@ -25,6 +25,28 @@ namespace Prove.Proveapi
     public interface IIdentity
     {
         /// <summary>
+        /// Discover Identity Attributes.
+        /// </summary>
+        /// <remarks>
+        /// Discover which identity attributes (e.g., walletID, email) are available for a given ProveID.<br/>
+        /// This endpoint returns a list of attribute IDs and their corresponding issuer IDs, which can then<br/>
+        /// be used to fetch actual attribute values in the /v3/fetch endpoint.
+        /// </remarks>
+        /// <param name="proveId">A unique Prove-generated identifier for the enrolled identity (UUID).</param>
+        /// <param name="clientRequestId">A client-generated unique ID for a specific session. This can be used to identify specific requests. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include Personally Identifiable Information (PII) in this field.</param>
+        /// <returns>An awaitable task that returns a <see cref="V3DiscoverRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="proveId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">Not Found. The server cannot find the requested resource. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<V3DiscoverRequestResponse> V3DiscoverRequestAsync(string proveId, string? clientRequestId = null);
+
+        /// <summary>
         /// Fetch Identity Attributes.
         /// </summary>
         /// <remarks>
@@ -113,72 +135,6 @@ namespace Prove.Proveapi
         );
 
         /// <summary>
-        /// Disenroll Identity.
-        /// </summary>
-        /// <remarks>
-        /// Disenrolls an identity from Identity Manager. If you wish to monitor in future, re-enrollment of that identity is required.
-        /// </remarks>
-        /// <param name="identityId">A Prove-generated unique ID for a specific identity.</param>
-        /// <param name="clientRequestId">A client-generated unique ID for a specific session. This can be used to identify specific requests. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include Personally Identifiable Information (PII) in this field.</param>
-        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3DisenrollIdentityResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="identityId"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
-        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
-        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
-        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
-        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<Models.Requests.V3DisenrollIdentityResponse> V3DisenrollIdentityAsync(
-            string identityId,
-            string? clientRequestId = null
-        );
-
-        /// <summary>
-        /// Get Identity.
-        /// </summary>
-        /// <remarks>
-        /// Return details of an identity given the identity ID.
-        /// </remarks>
-        /// <param name="identityId">A unique Prove-generated identifier for the enrolled identity.</param>
-        /// <param name="clientRequestId">A client-generated unique ID for a specific session. This can be used to identify specific requests. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include Personally Identifiable Information (PII) in this field.</param>
-        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3GetIdentityResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="identityId"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
-        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
-        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
-        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
-        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<Models.Requests.V3GetIdentityResponse> V3GetIdentityAsync(
-            string identityId,
-            string? clientRequestId = null
-        );
-
-        /// <summary>
-        /// Activate Identity.
-        /// </summary>
-        /// <remarks>
-        /// Sets an identity as active for monitoring.
-        /// </remarks>
-        /// <param name="identityId">A Prove-generated unique ID for a specific identity.</param>
-        /// <param name="v3ActivateIdentityRequest">A <see cref="Prove.Proveapi.Models.Components.V3ActivateIdentityRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3ActivateIdentityResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="identityId"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
-        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
-        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
-        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
-        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<Models.Requests.V3ActivateIdentityResponse> V3ActivateIdentityAsync(
-            string identityId,
-            Models.Components.V3ActivateIdentityRequest? v3ActivateIdentityRequest = null
-        );
-
-        /// <summary>
         /// Cross Domain Identity.
         /// </summary>
         /// <remarks>
@@ -198,28 +154,6 @@ namespace Prove.Proveapi
         public  Task<Models.Requests.V3CrossDomainIdentityResponse> V3CrossDomainIdentityAsync(
             string identityId,
             Models.Components.V3CrossDomainIdentityRequest? v3CrossDomainIdentityRequest = null
-        );
-
-        /// <summary>
-        /// Deactivate Identity.
-        /// </summary>
-        /// <remarks>
-        /// Stops webhook notifications without disenrolling the identity.
-        /// </remarks>
-        /// <param name="identityId">A Prove-generated unique ID for a specific identity.</param>
-        /// <param name="v3IdentityDeactivateRequest">A <see cref="V3IdentityDeactivateRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3DeactivateIdentityResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="identityId"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
-        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
-        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
-        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
-        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<Models.Requests.V3DeactivateIdentityResponse> V3DeactivateIdentityAsync(
-            string identityId,
-            V3IdentityDeactivateRequest? v3IdentityDeactivateRequest = null
         );
 
         /// <summary>
@@ -243,6 +177,94 @@ namespace Prove.Proveapi
             string mobileNumber,
             string? clientRequestId = null
         );
+
+        /// <summary>
+        /// Disenroll Identity.
+        /// </summary>
+        /// <remarks>
+        /// Disenrolls an identity from Identity Manager. If you wish to monitor in future, re-enrollment of that identity is required.
+        /// </remarks>
+        /// <param name="proveId">A Prove-generated unique ID for a specific identity.</param>
+        /// <param name="clientRequestId">A client-generated unique ID for a specific session. This can be used to identify specific requests. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include Personally Identifiable Information (PII) in this field.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3DisenrollIdentityResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="proveId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<Models.Requests.V3DisenrollIdentityResponse> V3DisenrollIdentityAsync(
+            string proveId,
+            string? clientRequestId = null
+        );
+
+        /// <summary>
+        /// Get Identity.
+        /// </summary>
+        /// <remarks>
+        /// Return details of an identity given the prove ID.
+        /// </remarks>
+        /// <param name="proveId">A unique Prove-generated identifier for the enrolled identity.</param>
+        /// <param name="clientRequestId">A client-generated unique ID for a specific session. This can be used to identify specific requests. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include Personally Identifiable Information (PII) in this field.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3GetIdentityResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="proveId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<Models.Requests.V3GetIdentityResponse> V3GetIdentityAsync(
+            string proveId,
+            string? clientRequestId = null
+        );
+
+        /// <summary>
+        /// Activate Identity.
+        /// </summary>
+        /// <remarks>
+        /// Sets an identity as active for monitoring.
+        /// </remarks>
+        /// <param name="proveId">A Prove-generated unique ID for a specific identity.</param>
+        /// <param name="v3ActivateIdentityRequest">A <see cref="Prove.Proveapi.Models.Components.V3ActivateIdentityRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3ActivateIdentityResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="proveId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<Models.Requests.V3ActivateIdentityResponse> V3ActivateIdentityAsync(
+            string proveId,
+            Models.Components.V3ActivateIdentityRequest? v3ActivateIdentityRequest = null
+        );
+
+        /// <summary>
+        /// Deactivate Identity.
+        /// </summary>
+        /// <remarks>
+        /// Stops webhook notifications without disenrolling the identity.
+        /// </remarks>
+        /// <param name="proveId">A Prove-generated unique ID for a specific identity.</param>
+        /// <param name="v3IdentityDeactivateRequest">A <see cref="V3IdentityDeactivateRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3DeactivateIdentityResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="proveId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<Models.Requests.V3DeactivateIdentityResponse> V3DeactivateIdentityAsync(
+            string proveId,
+            V3IdentityDeactivateRequest? v3IdentityDeactivateRequest = null
+        );
     }
 
     public class Identity: IIdentity
@@ -257,6 +279,234 @@ namespace Prove.Proveapi
         {
             SDKConfiguration = config;
         }
+
+        /// <summary>
+        /// Discover Identity Attributes.
+        /// </summary>
+        /// <remarks>
+        /// Discover which identity attributes (e.g., walletID, email) are available for a given ProveID.<br/>
+        /// This endpoint returns a list of attribute IDs and their corresponding issuer IDs, which can then<br/>
+        /// be used to fetch actual attribute values in the /v3/fetch endpoint.
+        /// </remarks>
+        /// <param name="proveId">A unique Prove-generated identifier for the enrolled identity (UUID).</param>
+        /// <param name="clientRequestId">A client-generated unique ID for a specific session. This can be used to identify specific requests. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include Personally Identifiable Information (PII) in this field.</param>
+        /// <returns>An awaitable task that returns a <see cref="V3DiscoverRequestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="proveId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">Not Found. The server cannot find the requested resource. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<V3DiscoverRequestResponse> V3DiscoverRequestAsync(
+            string proveId,
+            string? clientRequestId = null
+        )
+        {
+            if (proveId == null) throw new ArgumentNullException(nameof(proveId));
+
+            var request = new V3DiscoverRequestRequest()
+            {
+                ProveId = proveId,
+                ClientRequestId = clientRequestId,
+            };
+
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/v3/discover", request, null);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
+            if (SDKConfiguration.SecuritySource != null)
+            {
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3DiscoverRequest", null, SDKConfiguration.SecuritySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception _hookError)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    V3DiscoverResponse obj;
+                    try
+                    {
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<V3DiscoverResponse>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into V3DiscoverResponse.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    var response = new V3DiscoverRequestResponse()
+                    {
+                        HttpMeta = new Models.Components.HTTPMetadata()
+                        {
+                            Response = httpResponse,
+                            Request = httpRequest
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
+                    };
+                    response.V3DiscoverResponse = obj;
+                    return response;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 400)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error400Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error400Payload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error400Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error400(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 401)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error401Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error401Payload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error401Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error401(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 403)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error403Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error403Payload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error403Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error403(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 404)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error404Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error404Payload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error404Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error404(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 500)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorPayload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+
+            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+        }
+
 
         /// <summary>
         /// Fetch Identity Attributes.
@@ -1093,624 +1343,6 @@ namespace Prove.Proveapi
 
 
         /// <summary>
-        /// Disenroll Identity.
-        /// </summary>
-        /// <remarks>
-        /// Disenrolls an identity from Identity Manager. If you wish to monitor in future, re-enrollment of that identity is required.
-        /// </remarks>
-        /// <param name="identityId">A Prove-generated unique ID for a specific identity.</param>
-        /// <param name="clientRequestId">A client-generated unique ID for a specific session. This can be used to identify specific requests. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include Personally Identifiable Information (PII) in this field.</param>
-        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3DisenrollIdentityResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="identityId"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
-        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
-        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
-        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
-        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<Models.Requests.V3DisenrollIdentityResponse> V3DisenrollIdentityAsync(
-            string identityId,
-            string? clientRequestId = null
-        )
-        {
-            if (identityId == null) throw new ArgumentNullException(nameof(identityId));
-
-            var request = new V3DisenrollIdentityRequest()
-            {
-                IdentityId = identityId,
-                ClientRequestId = clientRequestId,
-            };
-
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v3/identity/{identityId}", request, null);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
-            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
-
-            if (SDKConfiguration.SecuritySource != null)
-            {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3DisenrollIdentity", null, SDKConfiguration.SecuritySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception _hookError)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Models.Components.V3DisenrollIdentityResponse obj;
-                    try
-                    {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<Models.Components.V3DisenrollIdentityResponse>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into Models.Components.V3DisenrollIdentityResponse.", httpRequest, httpResponse, httpResponseBody, ex);
-                    }
-
-                    var response = new Models.Requests.V3DisenrollIdentityResponse()
-                    {
-                        HttpMeta = new Models.Components.HTTPMetadata()
-                        {
-                            Response = httpResponse,
-                            Request = httpRequest
-                        }
-                    };
-                    response.V3DisenrollIdentityResponseValue = obj;
-                    return response;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 400)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Error400Payload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error400Payload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into Error400Payload.", httpRequest, httpResponse, httpResponseBody, ex);
-                    }
-
-                    throw new Error400(payload, httpRequest, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 401)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Error401Payload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error401Payload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into Error401Payload.", httpRequest, httpResponse, httpResponseBody, ex);
-                    }
-
-                    throw new Error401(payload, httpRequest, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 403)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Error403Payload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error403Payload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into Error403Payload.", httpRequest, httpResponse, httpResponseBody, ex);
-                    }
-
-                    throw new Error403(payload, httpRequest, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 500)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    ErrorPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorPayload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpRequest, httpResponse, httpResponseBody, ex);
-                    }
-
-                    throw new Error(payload, httpRequest, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-        }
-
-
-        /// <summary>
-        /// Get Identity.
-        /// </summary>
-        /// <remarks>
-        /// Return details of an identity given the identity ID.
-        /// </remarks>
-        /// <param name="identityId">A unique Prove-generated identifier for the enrolled identity.</param>
-        /// <param name="clientRequestId">A client-generated unique ID for a specific session. This can be used to identify specific requests. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include Personally Identifiable Information (PII) in this field.</param>
-        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3GetIdentityResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="identityId"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
-        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
-        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
-        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
-        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<Models.Requests.V3GetIdentityResponse> V3GetIdentityAsync(
-            string identityId,
-            string? clientRequestId = null
-        )
-        {
-            if (identityId == null) throw new ArgumentNullException(nameof(identityId));
-
-            var request = new V3GetIdentityRequest()
-            {
-                IdentityId = identityId,
-                ClientRequestId = clientRequestId,
-            };
-
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v3/identity/{identityId}", request, null);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
-
-            if (SDKConfiguration.SecuritySource != null)
-            {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3GetIdentity", null, SDKConfiguration.SecuritySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception _hookError)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Models.Components.V3GetIdentityResponse obj;
-                    try
-                    {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<Models.Components.V3GetIdentityResponse>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into Models.Components.V3GetIdentityResponse.", httpRequest, httpResponse, httpResponseBody, ex);
-                    }
-
-                    var response = new Models.Requests.V3GetIdentityResponse()
-                    {
-                        HttpMeta = new Models.Components.HTTPMetadata()
-                        {
-                            Response = httpResponse,
-                            Request = httpRequest
-                        }
-                    };
-                    response.V3GetIdentityResponseValue = obj;
-                    return response;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 400)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Error400Payload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error400Payload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into Error400Payload.", httpRequest, httpResponse, httpResponseBody, ex);
-                    }
-
-                    throw new Error400(payload, httpRequest, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 401)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Error401Payload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error401Payload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into Error401Payload.", httpRequest, httpResponse, httpResponseBody, ex);
-                    }
-
-                    throw new Error401(payload, httpRequest, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 403)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Error403Payload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error403Payload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into Error403Payload.", httpRequest, httpResponse, httpResponseBody, ex);
-                    }
-
-                    throw new Error403(payload, httpRequest, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 500)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    ErrorPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorPayload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpRequest, httpResponse, httpResponseBody, ex);
-                    }
-
-                    throw new Error(payload, httpRequest, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-        }
-
-
-        /// <summary>
-        /// Activate Identity.
-        /// </summary>
-        /// <remarks>
-        /// Sets an identity as active for monitoring.
-        /// </remarks>
-        /// <param name="identityId">A Prove-generated unique ID for a specific identity.</param>
-        /// <param name="v3ActivateIdentityRequest">A <see cref="Prove.Proveapi.Models.Components.V3ActivateIdentityRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3ActivateIdentityResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="identityId"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
-        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
-        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
-        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
-        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<Models.Requests.V3ActivateIdentityResponse> V3ActivateIdentityAsync(
-            string identityId,
-            Models.Components.V3ActivateIdentityRequest? v3ActivateIdentityRequest = null
-        )
-        {
-            if (identityId == null) throw new ArgumentNullException(nameof(identityId));
-
-            var request = new Models.Requests.V3ActivateIdentityRequest()
-            {
-                IdentityId = identityId,
-                V3ActivateIdentityRequestValue = v3ActivateIdentityRequest,
-            };
-
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v3/identity/{identityId}/activate", request, null);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
-            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
-
-            var serializedBody = RequestBodySerializer.Serialize(request, "V3ActivateIdentityRequestValue", "json", false, true);
-            if (serializedBody != null)
-            {
-                httpRequest.Content = serializedBody;
-            }
-
-            if (SDKConfiguration.SecuritySource != null)
-            {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3ActivateIdentity", null, SDKConfiguration.SecuritySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception _hookError)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Models.Components.V3ActivateIdentityResponse obj;
-                    try
-                    {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<Models.Components.V3ActivateIdentityResponse>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into Models.Components.V3ActivateIdentityResponse.", httpRequest, httpResponse, httpResponseBody, ex);
-                    }
-
-                    var response = new Models.Requests.V3ActivateIdentityResponse()
-                    {
-                        HttpMeta = new Models.Components.HTTPMetadata()
-                        {
-                            Response = httpResponse,
-                            Request = httpRequest
-                        }
-                    };
-                    response.V3ActivateIdentityResponseValue = obj;
-                    return response;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 400)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Error400Payload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error400Payload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into Error400Payload.", httpRequest, httpResponse, httpResponseBody, ex);
-                    }
-
-                    throw new Error400(payload, httpRequest, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 401)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Error401Payload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error401Payload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into Error401Payload.", httpRequest, httpResponse, httpResponseBody, ex);
-                    }
-
-                    throw new Error401(payload, httpRequest, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 403)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Error403Payload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error403Payload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into Error403Payload.", httpRequest, httpResponse, httpResponseBody, ex);
-                    }
-
-                    throw new Error403(payload, httpRequest, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 500)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    ErrorPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorPayload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpRequest, httpResponse, httpResponseBody, ex);
-                    }
-
-                    throw new Error(payload, httpRequest, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-        }
-
-
-        /// <summary>
         /// Cross Domain Identity.
         /// </summary>
         /// <remarks>
@@ -1921,216 +1553,6 @@ namespace Prove.Proveapi
 
 
         /// <summary>
-        /// Deactivate Identity.
-        /// </summary>
-        /// <remarks>
-        /// Stops webhook notifications without disenrolling the identity.
-        /// </remarks>
-        /// <param name="identityId">A Prove-generated unique ID for a specific identity.</param>
-        /// <param name="v3IdentityDeactivateRequest">A <see cref="V3IdentityDeactivateRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3DeactivateIdentityResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="identityId"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
-        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
-        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
-        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
-        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<Models.Requests.V3DeactivateIdentityResponse> V3DeactivateIdentityAsync(
-            string identityId,
-            V3IdentityDeactivateRequest? v3IdentityDeactivateRequest = null
-        )
-        {
-            if (identityId == null) throw new ArgumentNullException(nameof(identityId));
-
-            var request = new V3DeactivateIdentityRequest()
-            {
-                IdentityId = identityId,
-                V3IdentityDeactivateRequest = v3IdentityDeactivateRequest,
-            };
-
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v3/identity/{identityId}/deactivate", request, null);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
-            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
-
-            var serializedBody = RequestBodySerializer.Serialize(request, "V3IdentityDeactivateRequest", "json", false, true);
-            if (serializedBody != null)
-            {
-                httpRequest.Content = serializedBody;
-            }
-
-            if (SDKConfiguration.SecuritySource != null)
-            {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3DeactivateIdentity", null, SDKConfiguration.SecuritySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception _hookError)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Models.Components.V3DeactivateIdentityResponse obj;
-                    try
-                    {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<Models.Components.V3DeactivateIdentityResponse>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into Models.Components.V3DeactivateIdentityResponse.", httpRequest, httpResponse, httpResponseBody, ex);
-                    }
-
-                    var response = new Models.Requests.V3DeactivateIdentityResponse()
-                    {
-                        HttpMeta = new Models.Components.HTTPMetadata()
-                        {
-                            Response = httpResponse,
-                            Request = httpRequest
-                        }
-                    };
-                    response.V3DeactivateIdentityResponseValue = obj;
-                    return response;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 400)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Error400Payload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error400Payload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into Error400Payload.", httpRequest, httpResponse, httpResponseBody, ex);
-                    }
-
-                    throw new Error400(payload, httpRequest, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 401)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Error401Payload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error401Payload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into Error401Payload.", httpRequest, httpResponse, httpResponseBody, ex);
-                    }
-
-                    throw new Error401(payload, httpRequest, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 403)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Error403Payload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error403Payload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into Error403Payload.", httpRequest, httpResponse, httpResponseBody, ex);
-                    }
-
-                    throw new Error403(payload, httpRequest, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 500)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    ErrorPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorPayload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpRequest, httpResponse, httpResponseBody, ex);
-                    }
-
-                    throw new Error(payload, httpRequest, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
-        }
-
-
-        /// <summary>
         /// Get Identities By Phone Number.
         /// </summary>
         /// <remarks>
@@ -2236,6 +1658,834 @@ namespace Prove.Proveapi
                         }
                     };
                     response.V3GetIdentitiesByPhoneNumberResponseValue = obj;
+                    return response;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 400)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error400Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error400Payload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error400Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error400(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 401)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error401Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error401Payload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error401Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error401(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 403)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error403Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error403Payload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error403Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error403(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 500)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorPayload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+
+            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+        }
+
+
+        /// <summary>
+        /// Disenroll Identity.
+        /// </summary>
+        /// <remarks>
+        /// Disenrolls an identity from Identity Manager. If you wish to monitor in future, re-enrollment of that identity is required.
+        /// </remarks>
+        /// <param name="proveId">A Prove-generated unique ID for a specific identity.</param>
+        /// <param name="clientRequestId">A client-generated unique ID for a specific session. This can be used to identify specific requests. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include Personally Identifiable Information (PII) in this field.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3DisenrollIdentityResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="proveId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<Models.Requests.V3DisenrollIdentityResponse> V3DisenrollIdentityAsync(
+            string proveId,
+            string? clientRequestId = null
+        )
+        {
+            if (proveId == null) throw new ArgumentNullException(nameof(proveId));
+
+            var request = new V3DisenrollIdentityRequest()
+            {
+                ProveId = proveId,
+                ClientRequestId = clientRequestId,
+            };
+
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/v3/identity/{proveId}", request, null);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
+            if (SDKConfiguration.SecuritySource != null)
+            {
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3DisenrollIdentity", null, SDKConfiguration.SecuritySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception _hookError)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Models.Components.V3DisenrollIdentityResponse obj;
+                    try
+                    {
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<Models.Components.V3DisenrollIdentityResponse>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Models.Components.V3DisenrollIdentityResponse.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    var response = new Models.Requests.V3DisenrollIdentityResponse()
+                    {
+                        HttpMeta = new Models.Components.HTTPMetadata()
+                        {
+                            Response = httpResponse,
+                            Request = httpRequest
+                        }
+                    };
+                    response.V3DisenrollIdentityResponseValue = obj;
+                    return response;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 400)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error400Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error400Payload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error400Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error400(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 401)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error401Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error401Payload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error401Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error401(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 403)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error403Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error403Payload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error403Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error403(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 500)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorPayload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+
+            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+        }
+
+
+        /// <summary>
+        /// Get Identity.
+        /// </summary>
+        /// <remarks>
+        /// Return details of an identity given the prove ID.
+        /// </remarks>
+        /// <param name="proveId">A unique Prove-generated identifier for the enrolled identity.</param>
+        /// <param name="clientRequestId">A client-generated unique ID for a specific session. This can be used to identify specific requests. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include Personally Identifiable Information (PII) in this field.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3GetIdentityResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="proveId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<Models.Requests.V3GetIdentityResponse> V3GetIdentityAsync(
+            string proveId,
+            string? clientRequestId = null
+        )
+        {
+            if (proveId == null) throw new ArgumentNullException(nameof(proveId));
+
+            var request = new V3GetIdentityRequest()
+            {
+                ProveId = proveId,
+                ClientRequestId = clientRequestId,
+            };
+
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/v3/identity/{proveId}", request, null);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
+            if (SDKConfiguration.SecuritySource != null)
+            {
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3GetIdentity", null, SDKConfiguration.SecuritySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception _hookError)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Models.Components.V3GetIdentityResponse obj;
+                    try
+                    {
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<Models.Components.V3GetIdentityResponse>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Models.Components.V3GetIdentityResponse.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    var response = new Models.Requests.V3GetIdentityResponse()
+                    {
+                        HttpMeta = new Models.Components.HTTPMetadata()
+                        {
+                            Response = httpResponse,
+                            Request = httpRequest
+                        }
+                    };
+                    response.V3GetIdentityResponseValue = obj;
+                    return response;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 400)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error400Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error400Payload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error400Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error400(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 401)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error401Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error401Payload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error401Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error401(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 403)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error403Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error403Payload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error403Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error403(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 500)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorPayload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+
+            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+        }
+
+
+        /// <summary>
+        /// Activate Identity.
+        /// </summary>
+        /// <remarks>
+        /// Sets an identity as active for monitoring.
+        /// </remarks>
+        /// <param name="proveId">A Prove-generated unique ID for a specific identity.</param>
+        /// <param name="v3ActivateIdentityRequest">A <see cref="Prove.Proveapi.Models.Components.V3ActivateIdentityRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3ActivateIdentityResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="proveId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<Models.Requests.V3ActivateIdentityResponse> V3ActivateIdentityAsync(
+            string proveId,
+            Models.Components.V3ActivateIdentityRequest? v3ActivateIdentityRequest = null
+        )
+        {
+            if (proveId == null) throw new ArgumentNullException(nameof(proveId));
+
+            var request = new Models.Requests.V3ActivateIdentityRequest()
+            {
+                ProveId = proveId,
+                V3ActivateIdentityRequestValue = v3ActivateIdentityRequest,
+            };
+
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/v3/identity/{proveId}/activate", request, null);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "V3ActivateIdentityRequestValue", "json", false, true);
+            if (serializedBody != null)
+            {
+                httpRequest.Content = serializedBody;
+            }
+
+            if (SDKConfiguration.SecuritySource != null)
+            {
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3ActivateIdentity", null, SDKConfiguration.SecuritySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception _hookError)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Models.Components.V3ActivateIdentityResponse obj;
+                    try
+                    {
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<Models.Components.V3ActivateIdentityResponse>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Models.Components.V3ActivateIdentityResponse.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    var response = new Models.Requests.V3ActivateIdentityResponse()
+                    {
+                        HttpMeta = new Models.Components.HTTPMetadata()
+                        {
+                            Response = httpResponse,
+                            Request = httpRequest
+                        }
+                    };
+                    response.V3ActivateIdentityResponseValue = obj;
+                    return response;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 400)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error400Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error400Payload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error400Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error400(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 401)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error401Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error401Payload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error401Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error401(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 403)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Error403Payload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error403Payload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Error403Payload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error403(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 500)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorPayload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error(payload, httpRequest, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+
+            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
+        }
+
+
+        /// <summary>
+        /// Deactivate Identity.
+        /// </summary>
+        /// <remarks>
+        /// Stops webhook notifications without disenrolling the identity.
+        /// </remarks>
+        /// <param name="proveId">A Prove-generated unique ID for a specific identity.</param>
+        /// <param name="v3IdentityDeactivateRequest">A <see cref="V3IdentityDeactivateRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Requests.V3DeactivateIdentityResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="proveId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">Bad Request. The server cannot process the request due to a client error. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">Unauthorized. Authentication is required and has failed or has not been provided. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">Forbidden. The server understood the request but refuses to authorize it. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error">Internal Server Error. The server encountered an unexpected condition that prevented it from fulfilling the request. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<Models.Requests.V3DeactivateIdentityResponse> V3DeactivateIdentityAsync(
+            string proveId,
+            V3IdentityDeactivateRequest? v3IdentityDeactivateRequest = null
+        )
+        {
+            if (proveId == null) throw new ArgumentNullException(nameof(proveId));
+
+            var request = new V3DeactivateIdentityRequest()
+            {
+                ProveId = proveId,
+                V3IdentityDeactivateRequest = v3IdentityDeactivateRequest,
+            };
+
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/v3/identity/{proveId}/deactivate", request, null);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "V3IdentityDeactivateRequest", "json", false, true);
+            if (serializedBody != null)
+            {
+                httpRequest.Content = serializedBody;
+            }
+
+            if (SDKConfiguration.SecuritySource != null)
+            {
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "V3DeactivateIdentity", null, SDKConfiguration.SecuritySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception _hookError)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    Models.Components.V3DeactivateIdentityResponse obj;
+                    try
+                    {
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<Models.Components.V3DeactivateIdentityResponse>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into Models.Components.V3DeactivateIdentityResponse.", httpRequest, httpResponse, httpResponseBody, ex);
+                    }
+
+                    var response = new Models.Requests.V3DeactivateIdentityResponse()
+                    {
+                        HttpMeta = new Models.Components.HTTPMetadata()
+                        {
+                            Response = httpResponse,
+                            Request = httpRequest
+                        }
+                    };
+                    response.V3DeactivateIdentityResponseValue = obj;
                     return response;
                 }
 

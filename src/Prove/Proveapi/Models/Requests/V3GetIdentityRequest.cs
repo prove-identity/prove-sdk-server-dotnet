@@ -16,8 +16,8 @@ namespace Prove.Proveapi.Models.Requests
         /// <summary>
         /// A unique Prove-generated identifier for the enrolled identity.
         /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=identityId")]
-        public string IdentityId { get; set; } = default!;
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=proveId")]
+        public string ProveId { get; set; } = default!;
 
         /// <summary>
         /// A client-generated unique ID for a specific session. This can be used to identify specific requests. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Do not include Personally Identifiable Information (PII) in this field.
