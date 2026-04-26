@@ -23,6 +23,12 @@ namespace Prove.Proveapi.Models.Components
         public List<Models.Components.Identity>? AdditionalIdentities { get; set; }
 
         /// <summary>
+        /// Businesses is used for business prefill.
+        /// </summary>
+        [JsonProperty("businesses")]
+        public List<Business>? Businesses { get; set; }
+
+        /// <summary>
         /// The input ClientCustomerID.
         /// </summary>
         [JsonProperty("clientCustomerId")]
@@ -54,6 +60,12 @@ namespace Prove.Proveapi.Models.Components
 
         [JsonProperty("identity")]
         public Models.Components.Identity? Identity { get; set; }
+
+        /// <summary>
+        /// IsEnrolled indicates whether the identity was successfully enrolled into Identity Manager.
+        /// </summary>
+        [JsonProperty("isEnrolled")]
+        public bool? IsEnrolled { get; set; }
 
         /// <summary>
         /// The input phone number.
