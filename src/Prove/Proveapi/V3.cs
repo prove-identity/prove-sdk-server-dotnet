@@ -179,10 +179,60 @@ namespace Prove.Proveapi
         public  Task<V3ValidateRequestResponse> V3ValidateRequestAsync(V3ValidateRequest? request = null);
 
         /// <summary>
-        /// Verify User.
+        /// Verify.
         /// </summary>
         /// <remarks>
-        /// This endpoint allows you to verify a user depending on your particular use case.
+        /// Runs Prove verification flows in one endpoint. Set `verificationType` in the request body to select the flow.<br/>
+        /// <br/>
+        /// ## Pre-fill for consumers (identity)<br/>
+        /// <br/>
+        /// Use `verificationType` = `prefill` for consumer identity pre-fill. Requires the appropriate pre-fill product on the token.<br/>
+        /// Response fields vary by flow; for pre-fill, `identity` may include name, contact, address, and assurance fields, and<br/>
+        /// `evaluation` may include `authentication`, `identification`, and `risk` objects with a `result` (for example `pass` or `fail`).<br/>
+        /// <br/>
+        /// Illustrative **200** response body for this flow (values are synthetic, not real data):<br/>
+        /// <br/>
+        /// {<br/>
+        /// "success": "true",<br/>
+        /// "correlationId": "11111111-2222-3333-4444-555555555555",<br/>
+        /// "phoneNumber": "+15555550123",<br/>
+        /// "proveId": "22222222-3333-4444-5555-666666666666",<br/>
+        /// "provePhoneAlias": "SYNTHPFA00000000000000000000000000000000000000000000000000000001",<br/>
+        /// "clientRequestId": "client-synthetic-prefill-001",<br/>
+        /// "identity": {<br/>
+        /// "firstName": "Sample",<br/>
+        /// "lastName": "Person",<br/>
+        /// "dateOfBirth": "1990-06-15",<br/>
+        /// "nationalId": "900-00-0000",<br/>
+        /// "emails": [<br/>
+        /// "sample.person@example.invalid",<br/>
+        /// "s.person@example.invalid"<br/>
+        /// ],<br/>
+        /// "addresses": [<br/>
+        /// {<br/>
+        /// "address": "100 Synthetic St",<br/>
+        /// "extendedAddress": "Unit 1",<br/>
+        /// "city": "Exampletown",<br/>
+        /// "region": "EX",<br/>
+        /// "zipCode": "00001"<br/>
+        /// },<br/>
+        /// {<br/>
+        /// "address": "200 Placeholder Rd",<br/>
+        /// "extendedAddress": "",<br/>
+        /// "city": "Demo City",<br/>
+        /// "region": "DM",<br/>
+        /// "zipCode": "00002"<br/>
+        /// }<br/>
+        /// ],<br/>
+        /// "assuranceLevel": "AL3",<br/>
+        /// "reasons": ["AL3a"]<br/>
+        /// },<br/>
+        /// "evaluation": {<br/>
+        /// "authentication": { "result": "pass" },<br/>
+        /// "identification": { "result": "pass" },<br/>
+        /// "risk": { "result": "pass" }<br/>
+        /// }<br/>
+        /// }
         /// </remarks>
         /// <param name="request">A <see cref="V3VerifyRequest"/> parameter.</param>
         /// <returns>An awaitable task that returns a <see cref="V3VerifyRequestResponse"/> response envelope when completed.</returns>
@@ -2001,10 +2051,60 @@ namespace Prove.Proveapi
 
 
         /// <summary>
-        /// Verify User.
+        /// Verify.
         /// </summary>
         /// <remarks>
-        /// This endpoint allows you to verify a user depending on your particular use case.
+        /// Runs Prove verification flows in one endpoint. Set `verificationType` in the request body to select the flow.<br/>
+        /// <br/>
+        /// ## Pre-fill for consumers (identity)<br/>
+        /// <br/>
+        /// Use `verificationType` = `prefill` for consumer identity pre-fill. Requires the appropriate pre-fill product on the token.<br/>
+        /// Response fields vary by flow; for pre-fill, `identity` may include name, contact, address, and assurance fields, and<br/>
+        /// `evaluation` may include `authentication`, `identification`, and `risk` objects with a `result` (for example `pass` or `fail`).<br/>
+        /// <br/>
+        /// Illustrative **200** response body for this flow (values are synthetic, not real data):<br/>
+        /// <br/>
+        /// {<br/>
+        /// "success": "true",<br/>
+        /// "correlationId": "11111111-2222-3333-4444-555555555555",<br/>
+        /// "phoneNumber": "+15555550123",<br/>
+        /// "proveId": "22222222-3333-4444-5555-666666666666",<br/>
+        /// "provePhoneAlias": "SYNTHPFA00000000000000000000000000000000000000000000000000000001",<br/>
+        /// "clientRequestId": "client-synthetic-prefill-001",<br/>
+        /// "identity": {<br/>
+        /// "firstName": "Sample",<br/>
+        /// "lastName": "Person",<br/>
+        /// "dateOfBirth": "1990-06-15",<br/>
+        /// "nationalId": "900-00-0000",<br/>
+        /// "emails": [<br/>
+        /// "sample.person@example.invalid",<br/>
+        /// "s.person@example.invalid"<br/>
+        /// ],<br/>
+        /// "addresses": [<br/>
+        /// {<br/>
+        /// "address": "100 Synthetic St",<br/>
+        /// "extendedAddress": "Unit 1",<br/>
+        /// "city": "Exampletown",<br/>
+        /// "region": "EX",<br/>
+        /// "zipCode": "00001"<br/>
+        /// },<br/>
+        /// {<br/>
+        /// "address": "200 Placeholder Rd",<br/>
+        /// "extendedAddress": "",<br/>
+        /// "city": "Demo City",<br/>
+        /// "region": "DM",<br/>
+        /// "zipCode": "00002"<br/>
+        /// }<br/>
+        /// ],<br/>
+        /// "assuranceLevel": "AL3",<br/>
+        /// "reasons": ["AL3a"]<br/>
+        /// },<br/>
+        /// "evaluation": {<br/>
+        /// "authentication": { "result": "pass" },<br/>
+        /// "identification": { "result": "pass" },<br/>
+        /// "risk": { "result": "pass" }<br/>
+        /// }<br/>
+        /// }
         /// </remarks>
         /// <param name="request">A <see cref="V3VerifyRequest"/> parameter.</param>
         /// <returns>An awaitable task that returns a <see cref="V3VerifyRequestResponse"/> response envelope when completed.</returns>
