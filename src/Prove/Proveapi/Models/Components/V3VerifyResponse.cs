@@ -56,7 +56,7 @@ namespace Prove.Proveapi.Models.Components
         /// The evaluation result for the policy. This will contain keys titled "authentication" and "risk" that encompass the different evaluation categories.
         /// </summary>
         [JsonProperty("evaluation")]
-        public Dictionary<string, V3VerifyResponseEvaluation>? Evaluation { get; set; }
+        public Dictionary<string, object>? Evaluation { get; set; }
 
         [JsonProperty("identity")]
         public Models.Components.Identity? Identity { get; set; }

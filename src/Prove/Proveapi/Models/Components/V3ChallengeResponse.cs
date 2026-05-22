@@ -20,7 +20,7 @@ namespace Prove.Proveapi.Models.Components
         /// The evaluation result for the policy. This is an upcoming field but is not yet enabled.
         /// </summary>
         [JsonProperty("evaluation")]
-        public Dictionary<string, Evaluation>? Evaluation { get; set; }
+        public Dictionary<string, object>? Evaluation { get; set; }
 
         [JsonProperty("individual")]
         public V3ChallengeIndividualRequest? Individual { get; set; }

@@ -22,12 +22,12 @@ namespace Prove.Proveapi.Utils
         /// <summary>
         /// The version of the SDK.
         /// </summary>
-        public const string SdkVersion = "1.6.5";
+        public const string SdkVersion = "1.6.6";
 
         /// <summary>
         /// The version of the SDK generator used to create this SDK.
         /// </summary>
-        public const string SdkGenVersion = "2.881.4";
+        public const string SdkGenVersion = "2.884.13";
 
         /// <summary>
         /// The version of the OpenAPI document used to generate this SDK.

@@ -14,7 +14,6 @@
 * [V3UnifyStatusRequest](#v3unifystatusrequest) - Check Status
 * [V3ValidateRequest](#v3validaterequest) - Validate Phone Number
 * [V3VerifyRequest](#v3verifyrequest) - Verify
-* [V3VerifyBatchRequest](#v3verifybatchrequest) - Batch Verify Users
 
 ## V3TokenRequest
 
@@ -517,7 +516,6 @@ V3UnifyRequest req = new V3UnifyRequest() {
     EmailAddress = "sbutrimovichb@who.int",
     FinalTargetUrl = "https://www.example.com/landing-page",
     IpAddress = "192.168.0.1",
-    MobileAuthEnabled = true,
     PhoneNumber = "2001004011",
     PossessionType = "mobile",
     ProveId = "a07b94ce-218c-461f-beda-d92480e40f61",
@@ -811,75 +809,6 @@ var res = await sdk.V3.V3VerifyRequestAsync(req);
 ### Response
 
 **[V3VerifyRequestResponse](../../Models/Requests/V3VerifyRequestResponse.md)**
-
-### Errors
-
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| Prove.Proveapi.Models.Errors.Error400     | 400                                       | application/json                          |
-| Prove.Proveapi.Models.Errors.Error401     | 401                                       | application/json                          |
-| Prove.Proveapi.Models.Errors.Error403     | 403                                       | application/json                          |
-| Prove.Proveapi.Models.Errors.Error        | 500                                       | application/json                          |
-| Prove.Proveapi.Models.Errors.APIException | 4XX, 5XX                                  | \*/\*                                     |
-
-## V3VerifyBatchRequest
-
-This endpoint allows you to batch verify and enroll users.
-
-### Example Usage
-
-<!-- UsageSnippet language="csharp" operationID="V3VerifyBatchRequest" method="post" path="/v3/verify/batch" -->
-```csharp
-using Prove.Proveapi;
-using Prove.Proveapi.Models.Components;
-using System.Collections.Generic;
-
-var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
-
-V3VerifyBatchRequest req = new V3VerifyBatchRequest() {
-    ClientRequestId = "3d1215f7-ec3f-4fd2-9894-7b46f00e31a6",
-    Items = new List<VerifyBatchRequestItem>() {
-        new VerifyBatchRequestItem() {
-            ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
-            ClientHumanId = "clientHumanId",
-            EmailAddress = "ecoldman1h@storify.com",
-            FirstName = "Elena",
-            IpAddress = "192.168.1.1",
-            LastName = "Coldman",
-            PhoneNumber = "2001004053",
-            ProveId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
-            UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
-            VerificationType = "verifiedUser",
-        },
-        new VerifyBatchRequestItem() {
-            ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
-            ClientHumanId = "clientHumanId",
-            EmailAddress = "ecoldman1h@storify.com",
-            FirstName = "Elena",
-            IpAddress = "192.168.1.1",
-            LastName = "Coldman",
-            PhoneNumber = "2001004053",
-            ProveId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
-            UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
-            VerificationType = "verifiedUser",
-        },
-    },
-};
-
-var res = await sdk.V3.V3VerifyBatchRequestAsync(req);
-
-// handle response
-```
-
-### Parameters
-
-| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `request`                                                               | [V3VerifyBatchRequest](../../Models/Components/V3VerifyBatchRequest.md) | :heavy_check_mark:                                                      | The request object to use for the request.                              |
-
-### Response
-
-**[V3VerifyBatchRequestResponse](../../Models/Requests/V3VerifyBatchRequestResponse.md)**
 
 ### Errors
 
