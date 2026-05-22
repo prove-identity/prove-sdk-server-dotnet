@@ -10,7 +10,6 @@
 namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
-    using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
     using System.Collections.Generic;
 
@@ -27,7 +26,7 @@ namespace Prove.Proveapi.Models.Components
         /// The evaluation result for the policy. This is an upcoming field but is not yet enabled.
         /// </summary>
         [JsonProperty("evaluation")]
-        public Dictionary<string, V3ValidateResponseEvaluation>? Evaluation { get; set; }
+        public Dictionary<string, object>? Evaluation { get; set; }
 
         /// <summary>
         /// The next set of allowed calls in the same flow.

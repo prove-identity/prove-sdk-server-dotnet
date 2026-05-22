@@ -146,7 +146,6 @@ var res = await sdk.V3.V3TokenRequestAsync(req);
 * [V3UnifyStatusRequest](docs/sdks/v3/README.md#v3unifystatusrequest) - Check Status
 * [V3ValidateRequest](docs/sdks/v3/README.md#v3validaterequest) - Validate Phone Number
 * [V3VerifyRequest](docs/sdks/v3/README.md#v3verifyrequest) - Verify
-* [V3VerifyBatchRequest](docs/sdks/v3/README.md#v3verifybatchrequest) - Batch Verify Users
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -230,7 +229,7 @@ catch (System.Net.Http.HttpRequestException ex)
 * [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
 
 * Inheriting from [`BaseException`](./src/Prove/Proveapi/Models/Errors/BaseException.cs):
-  * [`Error404`](./src/Prove/Proveapi/Models/Errors/Error404.cs): Not Found. The server cannot find the requested resource. Status code `404`. Applicable to 3 of 30 methods.*
+  * [`Error404`](./src/Prove/Proveapi/Models/Errors/Error404.cs): Not Found. The server cannot find the requested resource. Status code `404`. Applicable to 3 of 29 methods.*
   * [`ResponseValidationError`](./src/Prove/Proveapi/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
 </details>
 

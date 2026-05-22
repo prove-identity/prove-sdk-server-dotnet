@@ -26,6 +26,12 @@ namespace Prove.Proveapi.Models.Components
         public string AssuranceLevel { get; set; } = default!;
 
         /// <summary>
+        /// The unique ID that we generate for the identity.
+        /// </summary>
+        [JsonProperty("clientHumanId")]
+        public string? ClientHumanId { get; set; }
+
+        /// <summary>
         /// TODO: comments and validation.
         /// </summary>
         [JsonProperty("dateOfBirth")]
