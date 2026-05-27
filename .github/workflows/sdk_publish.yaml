@@ -19,5 +19,5 @@ jobs:
       target: proveapi
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
-      nuget_api_key: ${{ secrets.NUGET_API_KEY }}
+      nuget_api_key: ${{ secrets.NUGET_TOKEN || secrets.NUGET_API_KEY }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
