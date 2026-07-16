@@ -14,7 +14,7 @@ namespace Prove.Proveapi.Models.Components
     using System;
 
     /// <summary>
-    /// The verification method based on the use case and authorization level. Current allowed values: "verifiedUser", "accountOpening", "humanAssurance", "prefill", "prefillForBiz", "identityResolution".
+    /// The verification method based on the use case and authorization level. Current allowed values: "verifiedUser", "accountOpening", "humanAssurance", "prefill", "prefillForBiz", "identityResolution", "validate".
     /// </summary>
     public enum VerificationType
     {
@@ -30,6 +30,8 @@ namespace Prove.Proveapi.Models.Components
         PrefillForBiz,
         [JsonProperty("identityResolution")]
         IdentityResolution,
+        [JsonProperty("validate")]
+        Validate,
     }
 
     public static class VerificationTypeExtension

@@ -17,6 +17,13 @@ namespace Prove.Proveapi.Models.Components
     public class V3VerifyRequest
     {
         /// <summary>
+        /// An optional list of addresses submitted by the user for validation. Used with verificationType=validate<br/>
+        /// to validate user-edited addresses against data-service records via SmartyStreets normalisation.
+        /// </summary>
+        [JsonProperty("addresses")]
+        public List<Address>? Addresses { get; set; }
+
+        /// <summary>
         /// A client-generated unique ID for a specific customer. This can be used by clients to link calls related to the same customer, across different requests or sessions. The format of this ID is defined by the client - Prove recommends using a GUID, but any format can be accepted. Prove does not offer any functionality around the Client Customer ID. Do not include personally identifiable information (PII) in this field.
         /// </summary>
         [JsonProperty("clientCustomerId")]
@@ -33,6 +40,12 @@ namespace Prove.Proveapi.Models.Components
         /// </summary>
         [JsonProperty("clientRequestId")]
         public string? ClientRequestId { get; set; }
+
+        /// <summary>
+        /// Indicates whether the consumer has provided consent. Accepts true or false. Defaults to false if not provided.
+        /// </summary>
+        [JsonProperty("consent")]
+        public bool? Consent { get; set; }
 
         /// <summary>
         /// The email address of the customer. Acceptable characters are: alphanumeric with symbols '@.+'.
@@ -73,13 +86,20 @@ namespace Prove.Proveapi.Models.Components
         public string PhoneNumber { get; set; } = default!;
 
         /// <summary>
+        /// PreviousCorrelationID is the correlationId returned by the preceding prefill response.<br/>
+        /// When provided, it is echoed back in the validate response to link the two flows.
+        /// </summary>
+        [JsonProperty("previousCorrelationId")]
+        public string? PreviousCorrelationId { get; set; }
+
+        /// <summary>
         /// The User agent of the session of the individual.
         /// </summary>
         [JsonProperty("userAgent")]
         public string? UserAgent { get; set; }
 
         /// <summary>
-        /// The verification method based on the use case and authorization level. Current allowed values: "verifiedUser", "accountOpening", "humanAssurance", "prefill", "prefillForBiz", "identityResolution".
+        /// The verification method based on the use case and authorization level. Current allowed values: "verifiedUser", "accountOpening", "humanAssurance", "prefill", "prefillForBiz", "identityResolution", "validate".
         /// </summary>
         [JsonProperty("verificationType")]
         public VerificationType VerificationType { get; set; } = default!;
