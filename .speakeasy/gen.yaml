@@ -29,7 +29,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 1.6.6
+  version: 1.6.7
   additionalDependencies: []
   author: Speakeasy
   baseErrorName: BaseException
@@ -60,7 +60,10 @@ csharp:
   outputModelSuffix: output
   packageName: Prove.Proveapi
   packageTags: ""
+  presenceAwareJsonSerialization: false
   respectTitlesForPrimitiveUnionMembers: false
   responseFormat: envelope-http
   sourceDirectory: src
+  targetFramework: dotnetVersion
+  unionStrategy: left-to-right
   useNodatime: true

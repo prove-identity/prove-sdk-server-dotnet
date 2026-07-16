@@ -10,11 +10,15 @@
 namespace Prove.Proveapi.Models.Components
 {
     using Newtonsoft.Json;
+    using Prove.Proveapi.Models.Components;
     using Prove.Proveapi.Utils;
     using System.Collections.Generic;
 
     public class V3UnifyStatusResponse
     {
+        [JsonProperty("authenticationResults")]
+        public AuthenticationResults? AuthenticationResults { get; set; }
+
         /// <summary>
         /// A client-generated unique ID to identify a specific customer across business lines.<br/>
         /// Required if success=true.

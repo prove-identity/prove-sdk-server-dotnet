@@ -1,23 +1,23 @@
 lockVersion: 2.0.0
 id: 99003e79-c0db-4110-b5b2-e9c131bd48f0
 management:
-  docChecksum: 2606b2a497037963034da8bce20aaeb5
+  docChecksum: b79ae79a4f4e6bd4050b20e5ffe6ea5f
   docVersion: 1.0.0
-  speakeasyVersion: 1.763.6
-  generationVersion: 2.884.13
-  releaseVersion: 1.6.6
-  configChecksum: b5b8d6c183f583fbf4183391ac6c6cbe
+  speakeasyVersion: 1.790.2
+  generationVersion: 2.918.3
+  releaseVersion: 1.6.7
+  configChecksum: e00f9b99724aba5f7d5d8a7e5347db86
   repoURL: https://github.com/prove-identity/prove-sdk-server-dotnet.git
   installationURL: https://github.com/prove-identity/prove-sdk-server-dotnet
   published: true
 persistentEdits:
-  generation_id: 7fa4b3a3-f1fb-46fe-82e7-aedf7d59e7fc
-  pristine_commit_hash: 41d915f0c7336127c612f8de5a715478e918b0f4
-  pristine_tree_hash: 1c5449b473dfba90129a3e1c969cc57a0133085a
+  generation_id: 667ba726-ad9b-4828-a184-da5161791a91
+  pristine_commit_hash: 3044fccbae854c057f79fe21bacbd1de7a886af6
+  pristine_tree_hash: 7498b32f0627cf9b2a24292bc4d2347ee522c7b3
 features:
   csharp:
     additionalDependencies: 0.1.0
-    core: 3.15.21
+    core: 3.15.25
     examples: 2.81.8
     flattening: 2.81.3
     globalSecurity: 2.83.11
@@ -310,6 +310,10 @@ trackedFiles:
     id: 9c6e43d74630
     last_write_checksum: sha1:b7ce55c34ca2f8446e20e31c2768ed7aee65648c
     pristine_git_object: c6a6f4286c360d463e65e64ce23c67f390595906
+  docs/Models/Components/AuthenticationResults.md:
+    id: ead8ad543795
+    last_write_checksum: sha1:ef838ea2991198944dabac5e3847e50da73045f8
+    pristine_git_object: 9d3eef19cf38932b77c5902abbaf318575d0b91f
   docs/Models/Components/Business.md:
     id: 057cfd0d492c
     last_write_checksum: sha1:996fe12bf763ba2368c36d311514989514b5fdcf
@@ -434,6 +438,10 @@ trackedFiles:
     id: 7bcd54fda13a
     last_write_checksum: sha1:4d68e0dff6ab15dd3bfa1d1497ea61391232d549
     pristine_git_object: d5e0b63582b58302a00692d797ea6a002981edbd
+  docs/Models/Components/Signals.md:
+    id: 6e617fcacba1
+    last_write_checksum: sha1:37fa5467dcd8b14f4902ba9ee4d2d745eff2471d
+    pristine_git_object: bf7d519998e82e16b59351b75db8024299e4df8b
   docs/Models/Components/SubScores.md:
     id: a593041488b3
     last_write_checksum: sha1:3f49f51a71635b5969b1d02de3d6861a10f9b1f9
@@ -620,8 +628,8 @@ trackedFiles:
     pristine_git_object: a338bc59fb5734dfd1f3db19290e9510d9280a50
   docs/Models/Components/V3UnifyStatusResponse.md:
     id: 0df7f72b5f87
-    last_write_checksum: sha1:cbe4ca3db70cc80cc705aa9e69fc2e2462f222d1
-    pristine_git_object: ae54cafcf88dfbddc390dcc28a0c886e652b5343
+    last_write_checksum: sha1:20f96bfe9f85c1a5dbaf45eb7732cc1999b1d378
+    pristine_git_object: 75db23ff373c8c8de1ea63b5330834ca4d0dc098
   docs/Models/Components/V3ValidateRequest.md:
     id: 05fb18056d2c
     last_write_checksum: sha1:f318e80ddb1770ddc89fad37620b01dd1527996a
@@ -632,16 +640,16 @@ trackedFiles:
     pristine_git_object: d2756ed982b9e8abf6f346f8589d0eecd95bf0c2
   docs/Models/Components/V3VerifyRequest.md:
     id: cb290e22402b
-    last_write_checksum: sha1:f65426fb51ee69400f64e05dc7fa218ea6e36b93
-    pristine_git_object: ada1f5cb20f139d34ecc4f9346bf0ebde605fb73
+    last_write_checksum: sha1:716e382188c9f8cc00a9135396cceb1482d45772
+    pristine_git_object: a796b28304cc76f7c839b546bb44090fbeb4e8b8
   docs/Models/Components/V3VerifyResponse.md:
     id: 669f469d54e4
-    last_write_checksum: sha1:7aa2f2e8f2838fc9af6f2a5e0d8440b69950623e
-    pristine_git_object: 3e7d45fea39925ce36b0d2333e593c5f70c5148c
+    last_write_checksum: sha1:1977942b24ff4309016b7cd317f864341658700d
+    pristine_git_object: 3fce2c72bcf9847537715b5b5e6a9870fc7d55a7
   docs/Models/Components/VerificationType.md:
     id: e5d951ba0433
-    last_write_checksum: sha1:b7688b6e9de0211961fee22828131eeb8b7753dd
-    pristine_git_object: d1d6c70b053c463247da3d8748ed5200f067dfb7
+    last_write_checksum: sha1:7b9ded86e1aa9d7a80f6888932567a4e11a42579
+    pristine_git_object: c744a0324292e4841caf778ecfbfd126303af2e7
   docs/Models/Errors/Error.md:
     id: 5c07b0d61f4b
     last_write_checksum: sha1:4f55209f15d7195d29d90c08465eb5b25b5f739a
@@ -804,16 +812,16 @@ trackedFiles:
     pristine_git_object: 9a833b155e690afaca061079381eba036b9f159a
   docs/Models/Requests/V3UnifyStatusRequestResponse.md:
     id: cea0f2f57586
-    last_write_checksum: sha1:1a0adf2c13039fa9851d629de70955661e6a96a3
-    pristine_git_object: 8ac8c5cec533b5c05d6ab77aa262a8289ca04a9e
+    last_write_checksum: sha1:4ee919d02d5284020d54475a703a688cf3ababed
+    pristine_git_object: 61405b8f5f155fb523e7b6d30f7e9c70d2697c05
   docs/Models/Requests/V3ValidateRequestResponse.md:
     id: 91e8458900af
     last_write_checksum: sha1:6e3e6edb65445bdf4ac61c0f98c11effbc798557
     pristine_git_object: d89abdca49e280f83bbc01a052816a8147833465
   docs/Models/Requests/V3VerifyRequestResponse.md:
     id: ed0c4576c2b2
-    last_write_checksum: sha1:c51369311c3853c651115d3d09f96cbdef26f6de
-    pristine_git_object: 53a4676ac0ff63bf0203ec88b7d8c944792cd35e
+    last_write_checksum: sha1:042c0df2f67e20b6471eef0f52aec6dd523d96f4
+    pristine_git_object: d65c3f4becbb693adf94f9bb7413e142c29bcd07
   docs/sdks/auth/README.md:
     id: e9724f17945f
     last_write_checksum: sha1:14721c1f99c1f5d204c006002933acc5d3ab762e
@@ -828,8 +836,8 @@ trackedFiles:
     pristine_git_object: 7c97da109145631056a81ca2f34bc316852bbab3
   docs/sdks/v3/README.md:
     id: ee683463fcdd
-    last_write_checksum: sha1:3373001645532991f08636da4f75324f377274ae
-    pristine_git_object: 29be96b35d871edd579e0773e74bd909cd5286b3
+    last_write_checksum: sha1:f65cea9c423494d2098a8ac0a37f4136a15d1394
+    pristine_git_object: 9396df403af0bef402ce8ced990cf0ce0c592544
   global.json:
     id: 908e72401bf4
     last_write_checksum: sha1:3161b880f51cd74e7d1dea069b541d8bf4736dc9
@@ -1118,6 +1126,10 @@ trackedFiles:
     id: 2218f3dc0c83
     last_write_checksum: sha1:9a724695ce8bb8a925860e2512f0890955be1f11
     pristine_git_object: a9e17a11c04bc55d790171cb562ed83a1a2b2a41
+  src/Prove/Proveapi/Models/Components/AuthenticationResults.cs:
+    id: 777aa6d157ff
+    last_write_checksum: sha1:5c30c3034c9b35ba890ca65e4b220aaa7e5ba919
+    pristine_git_object: 6c82cb07154505c3122b436b31009b845b7600f5
   src/Prove/Proveapi/Models/Components/Business.cs:
     id: 4dba2d031db1
     last_write_checksum: sha1:57be2ebd12b7def4d5c82af643258ba68bd0e1e5
@@ -1242,6 +1254,10 @@ trackedFiles:
     id: 65e811c11ddb
     last_write_checksum: sha1:de56d14e10484c6b89d91964b4a3ef14db8c74f4
     pristine_git_object: 2d77c62e93dd9724ab4ac434d2426f99b51c63db
+  src/Prove/Proveapi/Models/Components/Signals.cs:
+    id: bdb24f9ed755
+    last_write_checksum: sha1:860cce4eaef5568789407b53f4d9ebc0cc08b592
+    pristine_git_object: 3a89726684f1257a6463ccb4585eaf131d057f15
   src/Prove/Proveapi/Models/Components/SubScores.cs:
     id: 3117590666b3
     last_write_checksum: sha1:368f659fa818ac34a4d9cd1cbda1e17501cd803b
@@ -1428,8 +1444,8 @@ trackedFiles:
     pristine_git_object: 02dfb87c89316c1cbd2f51ef2e5ebc3eebee81f0
   src/Prove/Proveapi/Models/Components/V3UnifyStatusResponse.cs:
     id: bf46a112fe3a
-    last_write_checksum: sha1:a416f1667feed339e2f4d80b3020d0f9751bdca2
-    pristine_git_object: 66dc1b39e655378cd10978df83c0eae3ca0a0c32
+    last_write_checksum: sha1:22433dd3658f636a0adbed4288ccd9d26116455e
+    pristine_git_object: f7bfc47a5edfc4b287010a8b3aa363b8e68d8c0b
   src/Prove/Proveapi/Models/Components/V3ValidateRequest.cs:
     id: 0fd04ed92871
     last_write_checksum: sha1:5d0c6fdb183180198299b3005d6f8556c3977e2b
@@ -1440,16 +1456,16 @@ trackedFiles:
     pristine_git_object: fb64b8fee3c82cf1e2538614f19aada891eb79ac
   src/Prove/Proveapi/Models/Components/V3VerifyRequest.cs:
     id: ff4d6a2e30ba
-    last_write_checksum: sha1:80d2bea81b0ee4562e48eaafab3d7d87e886d666
-    pristine_git_object: 155ab15bc4c4f765091bc3cde0589abbfb9b36e1
+    last_write_checksum: sha1:f53452f9562151a3b87a9432deeae0e8cbdb95a3
+    pristine_git_object: 2092979646062e9e151b7459c167dde557de049d
   src/Prove/Proveapi/Models/Components/V3VerifyResponse.cs:
     id: 06c8ce6b391d
-    last_write_checksum: sha1:66500cb25764eb45fa7362e06245f54d6d824ec2
-    pristine_git_object: a25761795b6157ddb857de164f0d31b752f7d8e0
+    last_write_checksum: sha1:51c1183f9a717236b9ef0b25b0d28db9b3e4f65f
+    pristine_git_object: 922db685a0d4d9091d76d18e9f63218cef72a7f0
   src/Prove/Proveapi/Models/Components/VerificationType.cs:
     id: 69489a0c4b95
-    last_write_checksum: sha1:35b0d4cd37bf45e1313aef8b34b4f0f1d1b4190e
-    pristine_git_object: 7e46fd0f816fceda068b3e1b2b0b8ed44df2fd2f
+    last_write_checksum: sha1:c15a0f8dc969e4da06e484d448cc21c7423bbc4f
+    pristine_git_object: 2d3037ec83df0344905b20af708e858166faea8a
   src/Prove/Proveapi/Models/Errors/APIException.cs:
     id: c47588c28f33
     last_write_checksum: sha1:91c1ebc14449457c79b039b1d73f6492493d5357
@@ -1636,16 +1652,16 @@ trackedFiles:
     pristine_git_object: ef2fe0508f0b797a55220030c1d501d6ce6725b7
   src/Prove/Proveapi/Prove.Proveapi.csproj:
     id: 0c514bb0cb20
-    last_write_checksum: sha1:63d9e1e1e805c5ca63246ffa3e353561ed9ca3a8
-    pristine_git_object: 525d1840552b0f1188a1e618a20c295692d09a0a
+    last_write_checksum: sha1:86213316c5d1ebe3b18b943a6d36ed3540bc0a7f
+    pristine_git_object: a3acad5ba2c142cac6a9b3090889082bdb88b5cc
   src/Prove/Proveapi/ProveAPI.cs:
     id: ddd3d4d675e9
     last_write_checksum: sha1:760c93e9ce5e574fa2cb5b54dc15f7b83be88fd7
     pristine_git_object: 9213809100ab68b53698ca6fd655d9f3a55bc92f
   src/Prove/Proveapi/SDKConfig.cs:
     id: aa1d0c1aff23
-    last_write_checksum: sha1:02e551bbada5e4b31fee09cacf7cfbb62f42f375
-    pristine_git_object: 3874db8759ed75885b444072e5f0684446a4bf09
+    last_write_checksum: sha1:fd630c3ddac2155939c687975a7a0f3b99424ebf
+    pristine_git_object: ccc6604ef42b6e810e956654530b37cff9c52855
   src/Prove/Proveapi/Utils/AnyDeserializer.cs:
     id: 2fe7a3fb3c41
     last_write_checksum: sha1:1e01b18e0f06bf80c023bd22f4f13cb22b7b2ddf
@@ -1656,8 +1672,8 @@ trackedFiles:
     pristine_git_object: 5dda728a64f84b1a39ea6f68729ffed1af4bf9c2
   src/Prove/Proveapi/Utils/Constants.cs:
     id: 0c5fbf7d5761
-    last_write_checksum: sha1:77ba8c5c821af7a87f56cdffaf23c63b2f9b3ab1
-    pristine_git_object: 8bf9838a6253a5bb93ce7807490da50ea595e6b8
+    last_write_checksum: sha1:f7bd88633b1271978263c795137110c100c88926
+    pristine_git_object: d01a7c0494fbee8330c82f4cd730d5fb32929bee
   src/Prove/Proveapi/Utils/DecimalStrConverter.cs:
     id: b2c99ef932d2
     last_write_checksum: sha1:6a96dd66fca006bff7f9975b2fcea0000697a07a
@@ -1696,8 +1712,8 @@ trackedFiles:
     pristine_git_object: c361f78d0fa24044a319e771b161794099c8a1af
   src/Prove/Proveapi/Utils/Retries/Retries.cs:
     id: 72c0372450f6
-    last_write_checksum: sha1:1e28232a9cf8fc18ce3a0ad58ba1a872b53531f2
-    pristine_git_object: 9da7a21ef5416c27aeec03c0ec9336c2e21e8bf9
+    last_write_checksum: sha1:d7544b2cbb1a37f5da8a1a0b445a283b6c678155
+    pristine_git_object: 5132c70d0398fde7c44c99e967cbaff902208da0
   src/Prove/Proveapi/Utils/Retries/RetryConfig.cs:
     id: 5014d9f53442
     last_write_checksum: sha1:84b0474c9e0cd5f16b1c493af88fbe07a8118145
@@ -1724,8 +1740,8 @@ trackedFiles:
     pristine_git_object: d1775168b72d8b9fa30e557ae04a6e5b8f762e89
   src/Prove/Proveapi/V3.cs:
     id: a6b7c7ced51f
-    last_write_checksum: sha1:97b988ed3dcbe76665d48356ce50b3bfcac10bf5
-    pristine_git_object: 6957ad69599227561d04dd14718e53b989a58b16
+    last_write_checksum: sha1:a2352702d216152be72916b6f3f90f91ada54628
+    pristine_git_object: aa4e920edec98d287ed39aa5399469e06749cef6
 examples:
   V3TokenRequest:
     speakeasy-default-v3-token-request:
@@ -1926,7 +1942,7 @@ examples:
           application/json: {"code": 1000, "message": "error occurred"}
     Prefill consumer identity (synthetic):
       requestBody:
-        application/json: {"clientCustomerId": "e0f78bc2-f748-4eda-9d29-d756844507fc", "clientHumanId": "aad25769-23bb-458c-80db-50296a82c91b", "clientRequestId": "71010d88-d0e7-4a24-9297-d1be6fefde81", "emailAddress": "ecoldman1h@storify.com", "firstName": "Elena", "identityAttributes": [{"attributeType": "walletId", "attributeValue": "wallet123"}], "ipAddress": "192.168.1.1", "lastName": "Coldman", "phoneNumber": "2001004053", "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0", "verificationType": "verifiedUser"}
+        application/json: {"addresses": [{"address": "123 Main St", "city": "Springfield", "extendedAddress": "Apt 2", "region": "IL", "zipCode": "62701"}], "clientCustomerId": "e0f78bc2-f748-4eda-9d29-d756844507fc", "clientHumanId": "aad25769-23bb-458c-80db-50296a82c91b", "clientRequestId": "71010d88-d0e7-4a24-9297-d1be6fefde81", "consent": true, "emailAddress": "ecoldman1h@storify.com", "firstName": "Elena", "identityAttributes": [{"attributeType": "walletId", "attributeValue": "wallet123"}], "ipAddress": "192.168.1.1", "lastName": "Coldman", "phoneNumber": "2001004053", "previousCorrelationId": "713189b8-5555-4b08-83ba-75d08780aebd", "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0", "verificationType": "verifiedUser"}
       responses:
         "200":
           application/json: {"clientRequestId": "client-synthetic-prefill-001", "correlationId": "71010d88-d0e7-4a24-9297-d1be6fefde81", "evaluation": {"authentication": {"result": "pass"}, "identification": {"result": "pass"}, "risk": {"result": "pass"}}, "identity": {"addresses": [{"address": "100 Synthetic St", "city": "Exampletown", "extendedAddress": "Unit 1", "region": "EX", "zipCode": "00001"}, {"address": "200 Placeholder Rd", "city": "Demo City", "extendedAddress": "", "region": "DM", "zipCode": "00002"}], "assuranceLevel": "AL3", "dateOfBirth": "1990-06-15", "emails": ["sample.person@example.invalid", "s.person@example.invalid"], "firstName": "Sample", "lastName": "Person", "nationalId": "900-00-0000", "reasons": ["AL3a"]}, "isEnrolled": true, "phoneNumber": "+15555550123", "proveId": "a07b94ce-218c-461f-beda-d92480e40f61", "provePhoneAlias": "SYNTHPFA00000000000000000000000000000000000000000000000000000001", "success": "true"}
@@ -2340,7 +2356,7 @@ examples:
           application/json: {"code": 1000, "message": "error occurred"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes:\n* `ProveApi.V3.V3ChallengeRequest()`:  `response.evaluation.Map<any>` **Changed** (Breaking ⚠️)\n* `ProveApi.V3.V3CompleteRequest()`:  `response.evaluation.Map<any>` **Changed** (Breaking ⚠️)\n* `ProveApi.V3.V3UnifyRequest()`: \n  *  `request.MobileAuthEnabled` **Removed** (Breaking ⚠️)\n* `ProveApi.V3.V3UnifyBindRequest()`:  `response.evaluation.Map<any>` **Changed** (Breaking ⚠️)\n* `ProveApi.V3.V3UnifyStatusRequest()`:  `response.evaluation.Map<any>` **Changed** (Breaking ⚠️)\n* `ProveApi.V3.V3ValidateRequest()`:  `response.evaluation.Map<any>` **Changed** (Breaking ⚠️)\n* `ProveApi.V3.V3VerifyRequest()`:  `response` **Changed** (Breaking ⚠️)\n* `ProveApi.V3.V3VerifyBatchRequest()`: **Removed** (Breaking ⚠️)\n"
+releaseNotes: "## Csharp SDK Changes:\n* `ProveApi.V3.V3UnifyStatusRequest()`:  `response.authenticationResults` **Added**\n* `ProveApi.V3.V3VerifyRequest()`: \n  *  `request` **Changed**\n  *  `response` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - NUGET.md

@@ -721,11 +721,11 @@ Runs Prove verification flows in one endpoint. Set `verificationType` in the req
 Use `verificationType` = `prefill` for consumer identity pre-fill. Requires the appropriate pre-fill product on the token.
 Response fields vary by flow; for pre-fill, `identity` may include name, contact, address, and assurance fields, and
 `evaluation` may include `authentication`, `identification`, and `risk` objects with a `result` (for example `pass` or `fail`).
+Evaluation is omitted from the response when `evaluation.includeEvaluation` is not enabled.
 
 Illustrative **200** response body for this flow (values are synthetic, not real data):
 
 {
-"success": "true",
 "correlationId": "11111111-2222-3333-4444-555555555555",
 "phoneNumber": "+15555550123",
 "proveId": "22222222-3333-4444-5555-666666666666",
@@ -777,9 +777,19 @@ using System.Collections.Generic;
 var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 
 V3VerifyRequest req = new V3VerifyRequest() {
+    Addresses = new List<Address>() {
+        new Address() {
+            AddressValue = "123 Main St",
+            City = "Springfield",
+            ExtendedAddress = "Apt 2",
+            Region = "IL",
+            ZipCode = "62701",
+        },
+    },
     ClientCustomerId = "e0f78bc2-f748-4eda-9d29-d756844507fc",
     ClientHumanId = "aad25769-23bb-458c-80db-50296a82c91b",
     ClientRequestId = "71010d88-d0e7-4a24-9297-d1be6fefde81",
+    Consent = true,
     EmailAddress = "ecoldman1h@storify.com",
     FirstName = "Elena",
     IdentityAttributes = new List<IdentityAttribute>() {
@@ -791,6 +801,7 @@ V3VerifyRequest req = new V3VerifyRequest() {
     IpAddress = "192.168.1.1",
     LastName = "Coldman",
     PhoneNumber = "2001004053",
+    PreviousCorrelationId = "713189b8-5555-4b08-83ba-75d08780aebd",
     UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
     VerificationType = VerificationType.VerifiedUser,
 };

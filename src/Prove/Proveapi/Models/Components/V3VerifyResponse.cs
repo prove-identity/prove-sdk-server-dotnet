@@ -23,6 +23,14 @@ namespace Prove.Proveapi.Models.Components
         public List<Models.Components.Identity>? AdditionalIdentities { get; set; }
 
         /// <summary>
+        /// AddressMatchScore is the fuzzy address match score (0–100) produced during validate flow.<br/>
+        /// Absent when no address was provided in the request.<br/>
+        /// Only present for verificationType=validate.
+        /// </summary>
+        [JsonProperty("addressMatchScore")]
+        public long? AddressMatchScore { get; set; }
+
+        /// <summary>
         /// Businesses is used for business prefill.
         /// </summary>
         [JsonProperty("businesses")]
@@ -53,7 +61,7 @@ namespace Prove.Proveapi.Models.Components
         public string CorrelationId { get; set; } = default!;
 
         /// <summary>
-        /// The evaluation result for the policy. This will contain keys titled "authentication" and "risk" that encompass the different evaluation categories.
+        /// Policy evaluation outputs from Luna. May include authentication, identification, and risk categories. Omitted from the response when evaluation.includeEvaluation is not enabled.
         /// </summary>
         [JsonProperty("evaluation")]
         public Dictionary<string, object>? Evaluation { get; set; }
@@ -68,10 +76,26 @@ namespace Prove.Proveapi.Models.Components
         public bool? IsEnrolled { get; set; }
 
         /// <summary>
+        /// NameMatchScore is the fuzzy name match score (0–100) produced during validate flow.<br/>
+        /// Absent when name scoring was not performed.<br/>
+        /// Only present for verificationType=validate.
+        /// </summary>
+        [JsonProperty("nameMatchScore")]
+        public long? NameMatchScore { get; set; }
+
+        /// <summary>
         /// The input phone number.
         /// </summary>
         [JsonProperty("phoneNumber")]
         public string PhoneNumber { get; set; } = default!;
+
+        /// <summary>
+        /// PreviousCorrelationID is the correlationId from the prefill response that preceded this<br/>
+        /// validate request. Set to an empty string when no preceding prefill was cached.<br/>
+        /// Only present for verificationType=validate.
+        /// </summary>
+        [JsonProperty("previousCorrelationId")]
+        public string? PreviousCorrelationId { get; set; }
 
         /// <summary>
         /// A Prove-generated identifier for the consumer.
@@ -86,9 +110,23 @@ namespace Prove.Proveapi.Models.Components
         public string? ProvePhoneAlias { get; set; }
 
         /// <summary>
-        /// The result of verification. This can be "true" or "false".
+        /// Signals.
+        /// </summary>
+        [JsonProperty("signals")]
+        public List<Dictionary<string, Signals>>? Signals { get; set; }
+
+        /// <summary>
+        /// The result of verification. This can be "true" or "false".<br/>
+        /// Omitted from the response when blank.
         /// </summary>
         [JsonProperty("success")]
-        public string Success { get; set; } = default!;
+        public string? Success { get; set; }
+
+        /// <summary>
+        /// ValidationStatus indicates whether all configured thresholds passed.<br/>
+        /// Only present for verificationType=validate.
+        /// </summary>
+        [JsonProperty("validationStatus")]
+        public bool? ValidationStatus { get; set; }
     }
 }
