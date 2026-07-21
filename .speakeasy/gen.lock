@@ -3,17 +3,17 @@ id: 99003e79-c0db-4110-b5b2-e9c131bd48f0
 management:
   docChecksum: b79ae79a4f4e6bd4050b20e5ffe6ea5f
   docVersion: 1.0.0
-  speakeasyVersion: 1.790.2
-  generationVersion: 2.918.3
-  releaseVersion: 1.6.7
-  configChecksum: e00f9b99724aba5f7d5d8a7e5347db86
+  speakeasyVersion: 1.790.3
+  generationVersion: 2.918.4
+  releaseVersion: 1.6.8
+  configChecksum: cee932f6e517fdf0a97dadadaf957b9b
   repoURL: https://github.com/prove-identity/prove-sdk-server-dotnet.git
   installationURL: https://github.com/prove-identity/prove-sdk-server-dotnet
   published: true
 persistentEdits:
-  generation_id: 667ba726-ad9b-4828-a184-da5161791a91
-  pristine_commit_hash: 3044fccbae854c057f79fe21bacbd1de7a886af6
-  pristine_tree_hash: 7498b32f0627cf9b2a24292bc4d2347ee522c7b3
+  generation_id: eccc1b08-afe9-421a-998a-b3f50f1a14a7
+  pristine_commit_hash: 23f3d70cf57fff244005cffa3c0898a99cfc44ee
+  pristine_tree_hash: 2892351d4d2fb1e41691d4ad7680b6016501d853
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -1652,16 +1652,16 @@ trackedFiles:
     pristine_git_object: ef2fe0508f0b797a55220030c1d501d6ce6725b7
   src/Prove/Proveapi/Prove.Proveapi.csproj:
     id: 0c514bb0cb20
-    last_write_checksum: sha1:86213316c5d1ebe3b18b943a6d36ed3540bc0a7f
-    pristine_git_object: a3acad5ba2c142cac6a9b3090889082bdb88b5cc
+    last_write_checksum: sha1:d601af9b498c9f0a3fb5bbe4571f06fb4839322f
+    pristine_git_object: b0c33fd32befbcd345c39dd62105780e895f74f6
   src/Prove/Proveapi/ProveAPI.cs:
     id: ddd3d4d675e9
     last_write_checksum: sha1:760c93e9ce5e574fa2cb5b54dc15f7b83be88fd7
     pristine_git_object: 9213809100ab68b53698ca6fd655d9f3a55bc92f
   src/Prove/Proveapi/SDKConfig.cs:
     id: aa1d0c1aff23
-    last_write_checksum: sha1:fd630c3ddac2155939c687975a7a0f3b99424ebf
-    pristine_git_object: ccc6604ef42b6e810e956654530b37cff9c52855
+    last_write_checksum: sha1:14ef96b294beb600a37c7ffa4d84991e5f7e420c
+    pristine_git_object: 200021ecfdd64f7486616f4e444f79439d9f6c34
   src/Prove/Proveapi/Utils/AnyDeserializer.cs:
     id: 2fe7a3fb3c41
     last_write_checksum: sha1:1e01b18e0f06bf80c023bd22f4f13cb22b7b2ddf
@@ -1672,8 +1672,8 @@ trackedFiles:
     pristine_git_object: 5dda728a64f84b1a39ea6f68729ffed1af4bf9c2
   src/Prove/Proveapi/Utils/Constants.cs:
     id: 0c5fbf7d5761
-    last_write_checksum: sha1:f7bd88633b1271978263c795137110c100c88926
-    pristine_git_object: d01a7c0494fbee8330c82f4cd730d5fb32929bee
+    last_write_checksum: sha1:77d2edbb866b2688e414c2a16a569ee6a0d7092b
+    pristine_git_object: 3065c07541e91a4324439e12d395e51e7df1d5b5
   src/Prove/Proveapi/Utils/DecimalStrConverter.cs:
     id: b2c99ef932d2
     last_write_checksum: sha1:6a96dd66fca006bff7f9975b2fcea0000697a07a
@@ -2356,7 +2356,6 @@ examples:
           application/json: {"code": 1000, "message": "error occurred"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes:\n* `ProveApi.V3.V3UnifyStatusRequest()`:  `response.authenticationResults` **Added**\n* `ProveApi.V3.V3VerifyRequest()`: \n  *  `request` **Changed**\n  *  `response` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - NUGET.md
