@@ -5,15 +5,15 @@ management:
   docVersion: 1.0.0
   speakeasyVersion: 1.790.3
   generationVersion: 2.918.4
-  releaseVersion: 1.6.8
-  configChecksum: cee932f6e517fdf0a97dadadaf957b9b
+  releaseVersion: 1.6.9
+  configChecksum: e043b11d8039e69f0773383e47e58df0
   repoURL: https://github.com/prove-identity/prove-sdk-server-dotnet.git
   installationURL: https://github.com/prove-identity/prove-sdk-server-dotnet
   published: true
 persistentEdits:
-  generation_id: eccc1b08-afe9-421a-998a-b3f50f1a14a7
-  pristine_commit_hash: 23f3d70cf57fff244005cffa3c0898a99cfc44ee
-  pristine_tree_hash: 2892351d4d2fb1e41691d4ad7680b6016501d853
+  generation_id: 8644e4f7-e92d-4394-b1c7-984925106ccf
+  pristine_commit_hash: 75dbebcce97a5a790ec198bf20dd5e471ed18242
+  pristine_tree_hash: cc628fd691973f9d279bee578789d4d50819a82a
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -1652,16 +1652,16 @@ trackedFiles:
     pristine_git_object: ef2fe0508f0b797a55220030c1d501d6ce6725b7
   src/Prove/Proveapi/Prove.Proveapi.csproj:
     id: 0c514bb0cb20
-    last_write_checksum: sha1:d601af9b498c9f0a3fb5bbe4571f06fb4839322f
-    pristine_git_object: b0c33fd32befbcd345c39dd62105780e895f74f6
+    last_write_checksum: sha1:27e366c6ef00adb615915598c67aa5a6600a35c0
+    pristine_git_object: 633fa440468072b0b4d829996bfc7153eea3d35f
   src/Prove/Proveapi/ProveAPI.cs:
     id: ddd3d4d675e9
     last_write_checksum: sha1:760c93e9ce5e574fa2cb5b54dc15f7b83be88fd7
     pristine_git_object: 9213809100ab68b53698ca6fd655d9f3a55bc92f
   src/Prove/Proveapi/SDKConfig.cs:
     id: aa1d0c1aff23
-    last_write_checksum: sha1:14ef96b294beb600a37c7ffa4d84991e5f7e420c
-    pristine_git_object: 200021ecfdd64f7486616f4e444f79439d9f6c34
+    last_write_checksum: sha1:62f00e16c01e8ef337ba3a3730dfaea69833f4d4
+    pristine_git_object: 9c8b25fec3f112d0fbeb92c995435a994913cf6c
   src/Prove/Proveapi/Utils/AnyDeserializer.cs:
     id: 2fe7a3fb3c41
     last_write_checksum: sha1:1e01b18e0f06bf80c023bd22f4f13cb22b7b2ddf
@@ -1672,8 +1672,8 @@ trackedFiles:
     pristine_git_object: 5dda728a64f84b1a39ea6f68729ffed1af4bf9c2
   src/Prove/Proveapi/Utils/Constants.cs:
     id: 0c5fbf7d5761
-    last_write_checksum: sha1:77d2edbb866b2688e414c2a16a569ee6a0d7092b
-    pristine_git_object: 3065c07541e91a4324439e12d395e51e7df1d5b5
+    last_write_checksum: sha1:62b66d892d341a7c4892fa94d66bd7a8129592eb
+    pristine_git_object: 3eb5a7b7951bb65bd383a7c6077022c509ee3c46
   src/Prove/Proveapi/Utils/DecimalStrConverter.cs:
     id: b2c99ef932d2
     last_write_checksum: sha1:6a96dd66fca006bff7f9975b2fcea0000697a07a
