@@ -1,6 +1,10 @@
 # prove-sdk-server-dotnet
 .NET Server SDK for Prove APIs - Customer Access
 
+**Note: This package has been unlisted on Nuget and can no longer be published.**
+
+https://www.nuget.org/packages/Prove.Proveapi
+
 <!-- Start Summary [summary] -->
 ## Summary
 
