@@ -46,7 +46,7 @@ namespace Prove.Proveapi.Utils
 
             if (extensionType == null)
             {
-                return Enum.ToObject(objectType, reader.Value);
+                return System.Enum.ToObject(objectType, reader.Value);
             }
 
             var method = extensionType.GetMethod("ToEnum");

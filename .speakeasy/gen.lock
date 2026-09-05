@@ -1,23 +1,23 @@
 lockVersion: 2.0.0
 id: 99003e79-c0db-4110-b5b2-e9c131bd48f0
 management:
-  docChecksum: b79ae79a4f4e6bd4050b20e5ffe6ea5f
+  docChecksum: bde2c4d90becca55124adaff86672ee8
   docVersion: 1.0.0
-  speakeasyVersion: 1.790.3
-  generationVersion: 2.918.4
-  releaseVersion: 1.6.9
-  configChecksum: e043b11d8039e69f0773383e47e58df0
+  speakeasyVersion: 1.796.4
+  generationVersion: 2.935.1
+  releaseVersion: 1.6.10
+  configChecksum: 59cf24ba621bf5811874606385c84c97
   repoURL: https://github.com/prove-identity/prove-sdk-server-dotnet.git
   installationURL: https://github.com/prove-identity/prove-sdk-server-dotnet
   published: true
 persistentEdits:
-  generation_id: 8644e4f7-e92d-4394-b1c7-984925106ccf
-  pristine_commit_hash: 75dbebcce97a5a790ec198bf20dd5e471ed18242
-  pristine_tree_hash: cc628fd691973f9d279bee578789d4d50819a82a
+  generation_id: 43352a04-33b0-4988-9c77-aeec6851189a
+  pristine_commit_hash: e05dca697f3b335bfe80435d20823eee6df29e06
+  pristine_tree_hash: c1bd111b48e7000b5189a8f87c723ec484b1f7ba
 features:
   csharp:
     additionalDependencies: 0.1.0
-    core: 3.15.25
+    core: 3.15.28
     examples: 2.81.8
     flattening: 2.81.3
     globalSecurity: 2.83.11
@@ -1652,16 +1652,16 @@ trackedFiles:
     pristine_git_object: ef2fe0508f0b797a55220030c1d501d6ce6725b7
   src/Prove/Proveapi/Prove.Proveapi.csproj:
     id: 0c514bb0cb20
-    last_write_checksum: sha1:27e366c6ef00adb615915598c67aa5a6600a35c0
-    pristine_git_object: 633fa440468072b0b4d829996bfc7153eea3d35f
+    last_write_checksum: sha1:86c17bbedeb0c073d8d73b5c04b894db3fb0b381
+    pristine_git_object: d1b9589e5577ce52d3f8445050e833aa868ded88
   src/Prove/Proveapi/ProveAPI.cs:
     id: ddd3d4d675e9
     last_write_checksum: sha1:760c93e9ce5e574fa2cb5b54dc15f7b83be88fd7
     pristine_git_object: 9213809100ab68b53698ca6fd655d9f3a55bc92f
   src/Prove/Proveapi/SDKConfig.cs:
     id: aa1d0c1aff23
-    last_write_checksum: sha1:62f00e16c01e8ef337ba3a3730dfaea69833f4d4
-    pristine_git_object: 9c8b25fec3f112d0fbeb92c995435a994913cf6c
+    last_write_checksum: sha1:21ed1f8f7f2e8aff38b68490936cafb28d6ca3d5
+    pristine_git_object: 767b56cffeeb6a9af190837a9ac2eac6159dc199
   src/Prove/Proveapi/Utils/AnyDeserializer.cs:
     id: 2fe7a3fb3c41
     last_write_checksum: sha1:1e01b18e0f06bf80c023bd22f4f13cb22b7b2ddf
@@ -1672,16 +1672,16 @@ trackedFiles:
     pristine_git_object: 5dda728a64f84b1a39ea6f68729ffed1af4bf9c2
   src/Prove/Proveapi/Utils/Constants.cs:
     id: 0c5fbf7d5761
-    last_write_checksum: sha1:62b66d892d341a7c4892fa94d66bd7a8129592eb
-    pristine_git_object: 3eb5a7b7951bb65bd383a7c6077022c509ee3c46
+    last_write_checksum: sha1:5edc62652a7a6fb5b9164e8558413e93f78c2e6f
+    pristine_git_object: 9dc88ca5b1ad172c338885780d0da2498ab76ec5
   src/Prove/Proveapi/Utils/DecimalStrConverter.cs:
     id: b2c99ef932d2
     last_write_checksum: sha1:6a96dd66fca006bff7f9975b2fcea0000697a07a
     pristine_git_object: 684a9c1ed057b6f5dbe9e970b2d733c11976a3a9
   src/Prove/Proveapi/Utils/EnumConverter.cs:
     id: 0d4bc1f42a10
-    last_write_checksum: sha1:25189640fc944c7877ec0e95564e8ca26e1cbe36
-    pristine_git_object: 4ee78aaddfaccf0065ae79da8a3f7387e9bc03e0
+    last_write_checksum: sha1:1b4fa422cfe386cc1c60244cd1b66fbbb6148fe2
+    pristine_git_object: 6ee3114cfe476848816b88fa31cc85ca54afef62
   src/Prove/Proveapi/Utils/FlexibleObjectDeserializer.cs:
     id: ed19b4e558c0
     last_write_checksum: sha1:8b1217ea1c9db76c5a7cb728526cba70a28a61e5
@@ -1690,14 +1690,18 @@ trackedFiles:
     id: fa4fbbd7f034
     last_write_checksum: sha1:2c230788890df4ed4f3ad5ef975c5a5639575e08
     pristine_git_object: 63e3adddf44040aa7ed5dd20658de82fc2ef22ed
+  src/Prove/Proveapi/Utils/IOpenEnum.cs:
+    id: 942cf8873615
+    last_write_checksum: sha1:25be27d686a98e3175146f0dc2f6af16aa60830d
+    pristine_git_object: 067aa447e97a5171076217dd57a63510ccc56f51
   src/Prove/Proveapi/Utils/IsoDateTimeSerializer.cs:
     id: bd37b2e78179
     last_write_checksum: sha1:e446cb40b4be9731ae8c4db74ab50fbab4cfa56e
     pristine_git_object: 244a0ca0d0385a279e7071947f95eb2c35e98ed7
   src/Prove/Proveapi/Utils/OpenEnumConverter.cs:
     id: d2e7f3fe2202
-    last_write_checksum: sha1:832855b35653cfc8bd5f6e295d637839a9bef7b4
-    pristine_git_object: 2bf6873f0c93df25a0d031f25c3ce7d2eab6b2fa
+    last_write_checksum: sha1:239cb0eab992fb424f14d036d19f38219ce50267
+    pristine_git_object: 4043fe9311c8645b0d5b01125628d77e2258de31
   src/Prove/Proveapi/Utils/RequestBodySerializer.cs:
     id: 21f2d455fb1e
     last_write_checksum: sha1:44ba850c47ebe85fc919f0d64041589ef969d53f
@@ -1728,16 +1732,16 @@ trackedFiles:
     pristine_git_object: 37ba66abb1822b9b8f44eed9d55abd242599bf38
   src/Prove/Proveapi/Utils/SpeakeasyMetadata.cs:
     id: a84cf63f2d19
-    last_write_checksum: sha1:132d037b0d2bccd74b7c6a94252440482ebf1143
-    pristine_git_object: ee8fb65e033f43d848b3952531fd005e3ae63ef9
+    last_write_checksum: sha1:c2cff9d911ecc08f6fec6ce1c07977140f60f0a6
+    pristine_git_object: 4db56d022a50944fc5828b52186b2c21e0beedd1
   src/Prove/Proveapi/Utils/URLBuilder.cs:
     id: e2be8221ecba
-    last_write_checksum: sha1:0a712306da1e7f47b2eec5729879eaf5e4d00f6f
-    pristine_git_object: 896f6a387e7cbadc0225646479181273d32ddd10
+    last_write_checksum: sha1:1a1925ed20af906c6316b1a47e6d75e8647a470a
+    pristine_git_object: df64cfadebc9af98362ba46da21a478c551a3e05
   src/Prove/Proveapi/Utils/Utilities.cs:
     id: 708d1e12a50c
-    last_write_checksum: sha1:ff47317def5535117d3d9d1ed515478368c94d39
-    pristine_git_object: d1775168b72d8b9fa30e557ae04a6e5b8f762e89
+    last_write_checksum: sha1:ce6335913a4ee8407b29f8df922dbc68aef3e867
+    pristine_git_object: f74bf79fd29111bd4815638484048a1020e2cfa4
   src/Prove/Proveapi/V3.cs:
     id: a6b7c7ced51f
     last_write_checksum: sha1:a2352702d216152be72916b6f3f90f91ada54628
@@ -1891,7 +1895,7 @@ examples:
         application/json: {"clientRequestId": "71010d88-d0e7-4a24-9297-d1be6fefde81", "correlationId": "713189b8-5555-4b08-83ba-75d08780aebd"}
       responses:
         "200":
-          application/json: {"clientHumanId": "7bfbb91d-9df8-4ec0-99a6-de05ecc23a9e", "clientRequestId": "71010d88-d0e7-4a24-9297-d1be6fefde81", "deviceId": "bf9ea15d-7dfa-4bb4-a64c-6c26b53472fc", "evaluation": {"authentication": {"result": "pass"}, "identification": {"result": "pass"}, "success": true}, "phoneNumber": "2001004011", "proveId": "a07b94ce-218c-461f-beda-d92480e40f61", "success": "true"}
+          application/json: {"authenticationResults": {"mobile": "otp"}, "clientHumanId": "7bfbb91d-9df8-4ec0-99a6-de05ecc23a9e", "clientRequestId": "71010d88-d0e7-4a24-9297-d1be6fefde81", "deviceId": "bf9ea15d-7dfa-4bb4-a64c-6c26b53472fc", "evaluation": {"authentication": {"result": "pass"}, "identification": {"result": "pass"}, "success": true}, "phoneNumber": "2001004011", "proveId": "a07b94ce-218c-461f-beda-d92480e40f61", "success": "true"}
     Response with Failed Evaluation:
       requestBody:
         application/json: {"clientRequestId": "71010d88-d0e7-4a24-9297-d1be6fefde81", "correlationId": "713189b8-5555-4b08-83ba-75d08780aebd"}
