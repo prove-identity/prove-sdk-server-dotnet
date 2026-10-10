@@ -27,6 +27,12 @@ namespace Prove.Proveapi.Models.Components
         public string? Dob { get; set; }
 
         /// <summary>
+        /// The email address of the individual.
+        /// </summary>
+        [JsonProperty("email")]
+        public string? Email { get; set; }
+
+        /// <summary>
         /// The full or last 4 numbers of the social security number. Acceptable characters are: numeric.
         /// </summary>
         [JsonProperty("ssn")]

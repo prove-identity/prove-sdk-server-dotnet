@@ -60,7 +60,7 @@ namespace Prove.Proveapi.Models.Components
 
         /// <summary>
         /// The URL where the end user will be redirected at the end of Instant Link flow. Required when `possessionType=desktop`.<br/>
-        /// Acceptable characters are: alphanumeric with symbols '-._+=/:?'. Max length is 128 characters.
+        /// Acceptable characters are: alphanumeric with symbols '-._+=/:?'. Max length is 2048 characters.
         /// </summary>
         [JsonProperty("finalTargetUrl")]
         public string? FinalTargetUrl { get; set; }
