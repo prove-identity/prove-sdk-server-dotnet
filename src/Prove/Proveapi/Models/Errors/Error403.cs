@@ -17,10 +17,22 @@ namespace Prove.Proveapi.Models.Errors
     public class Error403Payload
     {
         /// <summary>
+        /// The input ClientRequestID, echoed when provided on the request.
+        /// </summary>
+        [JsonProperty("clientRequestId")]
+        public string? ClientRequestId { get; set; }
+
+        /// <summary>
         /// An error code that identifies the specific authorization issue.
         /// </summary>
         [JsonProperty("code")]
         public long? Code { get; set; }
+
+        /// <summary>
+        /// The correlation ID for the flow, echoed when available.
+        /// </summary>
+        [JsonProperty("correlationId")]
+        public string? CorrelationId { get; set; }
 
         /// <summary>
         /// The error message describing why access is forbidden.
@@ -36,8 +48,14 @@ namespace Prove.Proveapi.Models.Errors
         /// </summary>
         public Error403Payload Payload { get; }
 
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use Error403.Payload.ClientRequestId instead.")]
+        public string? ClientRequestId { get; set; }
+
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use Error403.Payload.Code instead.")]
         public long? Code { get; set; }
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use Error403.Payload.CorrelationId instead.")]
+        public string? CorrelationId { get; set; }
 
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use Error403.Payload.Message instead.")]
         private string? _message { get; set; }
@@ -63,7 +81,9 @@ namespace Prove.Proveapi.Models.Errors
            Payload = payload;
 
            #pragma warning disable CS0618
+           ClientRequestId = payload.ClientRequestId;
            Code = payload.Code;
+           CorrelationId = payload.CorrelationId;
            _message = payload.Message;
            #pragma warning restore CS0618
         }
