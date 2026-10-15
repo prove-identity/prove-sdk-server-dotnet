@@ -74,6 +74,7 @@ var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 V3ChallengeRequest req = new V3ChallengeRequest() {
     CorrelationId = "713189b8-5555-4b08-83ba-75d08780aebd",
     Dob = "1981-01",
+    Email = "user@example.com",
     Ssn = "0596",
 };
 
@@ -93,6 +94,7 @@ var sdk = new ProveAPI(auth: "<YOUR_AUTH_HERE>");
 V3ChallengeRequest req = new V3ChallengeRequest() {
     CorrelationId = "713189b8-5555-4b08-83ba-75d08780aebd",
     Dob = "1981-01",
+    Email = "user@example.com",
     Ssn = "0596",
 };
 

@@ -15,6 +15,12 @@ namespace Prove.Proveapi.Models.Components
     public class AuthenticationResults
     {
         /// <summary>
+        /// An indication of the last authentication method used when the Prove Key was created.
+        /// </summary>
+        [JsonProperty("keySource")]
+        public string? KeySource { get; set; }
+
+        /// <summary>
         /// An indication of which mobile authentication method was used.
         /// </summary>
         [JsonProperty("mobile")]
